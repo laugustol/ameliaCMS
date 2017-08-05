@@ -1,6 +1,6 @@
 # ameliaCMS
 Simple CMS escalable con arquitectura MVC
-Importar base de datos
-Editar el archivo core/config.php
-Usuario: admin
-Clave: 1234
+<br>Importar base de datos
+<br>Editar el archivo core/config.php
+<br>Usuario: admin
+<br>Clave: 1234

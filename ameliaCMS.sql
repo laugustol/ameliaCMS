@@ -1614,7 +1614,7 @@ CREATE TABLE IF NOT EXISTS `tconfiguration` (
 --
 
 INSERT INTO `tconfiguration` (`number_question_answer`, `login`, `new_password_sent_email`, `email_host`, `email_port`, `email_security_smtp`, `email_type_security_smtp`, `email_user`, `email_password`, `email_subject`, `email_message`, `number_days_password_diferrence`, `number_answer_allowed`) VALUES
-(2, 1, 1, 'smtp.gmail.com', '587', '1', 'TLS', 'desarrollo.aa.servicios@gmail.com', 'tulito123', 'Recuperacion de clave', 'Estimado usuario su clave ha sido cambiada, para acceder ahora debe introducir :password con su usuario', 1, 3);
+(2, 1, 1, 'smtp.gmail.com', '587', '1', 'TLS', '', '', 'Recuperacion de clave', 'Estimado usuario su clave ha sido cambiada, para acceder ahora debe introducir :password con su usuario', 1, 3);
 
 -- --------------------------------------------------------
 

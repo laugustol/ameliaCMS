@@ -13,7 +13,7 @@ class countryController{
 		$data["dependencies"] = $this->country->dependencies();
 		view("address.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->country->idaddress=$id;
 		$this->country->name=$_POST["name"];
 	}

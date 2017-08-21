@@ -89,7 +89,7 @@
 				<div class="form-group">
 					<label class="col-md-2 text-right"><?=person_identification_card?>:</label>
 					<div class="col-md-4">
-						<input type="text" name="identification_card" id="identification_card" value="<?=$d["identification_card"]?>" aajs="required,number,min7" class="width-full" data-toggle="tooltip" title="<?=person_identification_card_title?>" placeholder="<?=person_identification_card_placeholder?>">
+						<input type="text" name="identification_card" id="identification_card" value="<?=$d["identification_card"]?>" aajs="required,number,min{7}" class="width-full" data-toggle="tooltip" title="<?=person_identification_card_title?>" placeholder="<?=person_identification_card_placeholder?>">
 					</div>
 					<label class="col-md-2 text-right"><?=person_birth_date?>:</label>
 					<div class="col-md-4">

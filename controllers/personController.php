@@ -13,7 +13,7 @@ class personController{
 		$data["dependencies"] = $this->person->dependencies();
 		view("person.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->person->idperson=$id;
 		$this->person->idnationality=$_POST["idnationality"];
 		$this->person->idethnicity=$_POST["idethnicity"];

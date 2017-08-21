@@ -175,7 +175,7 @@
 				<form action='<?=url_base.controller?>/question_answer' method='POST' class='form-horizontal'>
 					<input type="hidden" name="event" id="event">
 					<?php
-						for($a=0;$a<$dependencies["configuration"][0]["number_question_answer"];$a++){
+						for($a=0;$a<$dependencies["organization"][0]["number_question_answer"];$a++){
 							echo "<div class='form-group'>
 									<label class='col-md-2 text-right'>".profile_question." ".($a+1).":</label>
 									<div class='col-md-4'>
@@ -220,7 +220,7 @@
 				</div>
 			</div>
 			<?php
-				for($a=0;$a<$dependencies["configuration"][0]["number_question_answer"];$a++){
+				for($a=0;$a<$dependencies["organization"][0]["number_question_answer"];$a++){
 					echo "<div class='form-group'>
 							<label class='col-md-2 text-right'>".profile_question." ".($a+1).":</label>
 							<div class='col-md-4'>

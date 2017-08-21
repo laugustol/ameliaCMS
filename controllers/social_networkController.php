@@ -13,7 +13,7 @@ class social_networkController{
 		$data["dependencies"] = $this->social_network->dependencies();
 		view("social_network.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->social_network->idsocial_network=$id;
 		$this->social_network->name=$_POST["name"];
 		$this->social_network->url=$_POST["url"];

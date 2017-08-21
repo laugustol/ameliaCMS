@@ -1,11 +1,15 @@
 <?php
 namespace core;
-require_once("config.php");
 require_once("spdo.php");
 class ameliaBD{
 	private $db,$resource;
 	public function __construct(){
 		$this->db = spdo::singleton();
+		if($_SESSION["environment"]=="1"){
+			$this->db->exec("USE ".DB_TEST);
+		}else{
+			$this->db->exec("USE ".DB_PRODUCTION);
+		}
 	}
 	public function prepare($sql){
 		$sql = $this->string($sql);
@@ -18,7 +22,6 @@ class ameliaBD{
 	public function execute($array=Array()){
 		try{
 			$this->resource->execute($array);
-			//echo inverso(5) . "\n";
 		}catch(PDOException $e){
 			$this->errores($e->getCode(),$e->getMessage());
 		}
@@ -46,75 +49,57 @@ class ameliaBD{
 			echo $e->getCode();
 		}
 	}
-	public function query_nativo($sql){
+	public function exec_native($sql){
 		try{
-			return $this->resource->query($sql);	
+			return $this->db->exec($sql);	
 		}catch(PDOException $e){
 			echo $e->getCode();
 		}
 	}
 	private function string($sql){
-		$str2 = substr($sql,0,6);
-		if($str2 == "SELECT"){
-			if(DRIVER == "mysql"){
-				$str3 = $sql;
-				$str4 = explode("FROM", $str3);
-				$str5 = substr($str4[0], 6);
-				$str6 = explode(",", $str5);
-				$count_str = count($str6);
-				for($a=0;$a<$count_str;$a++){
-					$str6[$a] = str_replace("||", ",", $str6[$a]);
-					if($str6[$a][0]=="(" || $str6[$a][1]=="("){//CONCATENACION
-						$str6[$a]= "CONCAT".$str6[$a];
-					}else if($str6[$a][0]=="T" || $str6[$a][1]=="T"){//TO_CHAR
-						$str6[$a] = str_replace("TO_CHAR", "DATE_FORMAT", $str6[$a]);
-						$a++;
-						$str6[$a]=str_replace("DD", "%d", $str6[$a]);
-						$str6[$a]=str_replace("MM", "%m", $str6[$a]);
-						$str6[$a]=str_replace("YYYY", "%Y", $str6[$a]);
-						$str6[$a]=str_replace("HH24", "%H", $str6[$a]);
-						$str6[$a]=str_replace("HH12", "%h", $str6[$a]);
-						$str6[$a]=str_replace("MI", "%i", $str6[$a]);
-						$str6[$a]=str_replace("SS", "%s", $str6[$a]);
-						$str6[$a]=str_replace("AM", "%p", $str6[$a]);
-					}
+		if(DRIVER == "mysql"){
+			/*$sql = str_replace("CONCAT", "", $sql);
+			$sql = str_replace("||", ",", $sql);
+			$sql = str_replace("TO_CHAR", "DATE_FORMAT", $sql);
+			$sql = str_replace("DD", "%d", $sql);
+			$sql = str_replace("MM", "%m", $sql);
+			$sql = str_replace("YYYY", "%Y", $sql);
+			$sql = str_replace("HH24", "%H", $sql);
+			$sql = str_replace("HH12", "%h", $sql);
+			$sql = str_replace("MI", "%i", substr($sql,0,strpos($sql,"LIMIT"))).substr($sql, strpos($sql,"LIMIT"));
+			$sql = str_replace("SS", "%s", $sql);
+			$sql = str_replace("AM", "%p", $sql);*/
+		}else if(DRIVER == "pgsql"){
+			$str3 = $sql;
+			$str3 = str_replace(",' ',", "||' '||", $str3);
+			$str3 = str_replace(",'-',", "||'-'||", $str3);
+			$str3 = str_replace(",'/',", "||'/'||", $str3);
+			$str3 = str_replace(",'+',", "||'+'||", $str3);
+			$str3 = str_replace(",'.',", "||'.'||", $str3);
+			$str4 = explode("FROM", $str3);
+			$str5 = substr($str4[0], 6);				
+			$str6 = explode(",", $str5);
+			$count_str = count($str6);
+			for($a=0;$a<$count_str;$a++){
+				if( ($str6[$a][0]=="C" && $str6[$a][1]=="O") || ($str6[$a][1]=="C" && $str6[$a][2]=="O") ){ //CONCAT
+					$str6[$a] = str_replace("CONCAT" , "" , $str6[$a]);						
+				}else if($str6[$a][0]=="D" || $str6[$a][1]=="D"){ //DATE_FORMAT
+					$str6[$a] = str_replace("DATE_FORMAT", "TO_CHAR", $str6[$a]);
+					$a++;
+					$str6[$a]=str_replace("%d", "DD", $str6[$a]);
+					$str6[$a]=str_replace("%m", "MM", $str6[$a]);
+					$str6[$a]=str_replace("%Y", "YYYY", $str6[$a]);
+					$str6[$a]=str_replace("%H", "HH24", $str6[$a]);
+					$str6[$a]=str_replace("%h", "HH12", $str6[$a]);
+					$str6[$a]=str_replace("%i", "MI", $str6[$a]);
+					$str6[$a]=str_replace("%s", "SS", $str6[$a]);
+					$str6[$a]=str_replace("%p", "AM", $str6[$a]);
 				}
-				$str6 = implode(",",$str6);
-				$str = "SELECT ".$str6." FROM ".$str4[1];
-			}else if(DRIVER == "pgsql"){
-				$str3 = $sql;
-				$str3 = str_replace(",' ',", "||' '||", $str3);
-				$str3 = str_replace(",'-',", "||'-'||", $str3);
-				$str3 = str_replace(",'/',", "||'/'||", $str3);
-				$str3 = str_replace(",'+',", "||'+'||", $str3);
-				$str3 = str_replace(",'.',", "||'.'||", $str3);
-				$str4 = explode("FROM", $str3);
-				$str5 = substr($str4[0], 6);				
-				$str6 = explode(",", $str5);
-				$count_str = count($str6);
-				for($a=0;$a<$count_str;$a++){
-					if( ($str6[$a][0]=="C" && $str6[$a][1]=="O") || ($str6[$a][1]=="C" && $str6[$a][2]=="O") ){ //CONCAT
-						$str6[$a] = str_replace("CONCAT" , "" , $str6[$a]);						
-					}else if($str6[$a][0]=="D" || $str6[$a][1]=="D"){ //DATE_FORMAT
-						$str6[$a] = str_replace("DATE_FORMAT", "TO_CHAR", $str6[$a]);
-						$a++;
-						$str6[$a]=str_replace("%d", "DD", $str6[$a]);
-						$str6[$a]=str_replace("%m", "MM", $str6[$a]);
-						$str6[$a]=str_replace("%Y", "YYYY", $str6[$a]);
-						$str6[$a]=str_replace("%H", "HH24", $str6[$a]);
-						$str6[$a]=str_replace("%h", "HH12", $str6[$a]);
-						$str6[$a]=str_replace("%i", "MI", $str6[$a]);
-						$str6[$a]=str_replace("%s", "SS", $str6[$a]);
-						$str6[$a]=str_replace("%p", "AM", $str6[$a]);
-					}
-				}
-				$str6 = implode(",",$str6);
-				$str = "SELECT ".$str6." FROM ".$str4[1];
 			}
-		}else{
-			$str = $sql;
+			$str6 = implode(",",$str6);
+			$str = "SELECT ".$str6." FROM ".$str4[1];
 		}
-		return $str;
+		return $sql;
 	}
 	private function errores($num,$error){
 		//MYSQL	

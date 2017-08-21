@@ -13,7 +13,7 @@ class actionController{
 		$data["dependencies"] = $this->action->dependencies();
 		view("action.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->action->idaction=$id;
 		$this->action->name=$_POST["name"];
 		$this->action->function=$_POST["function"];

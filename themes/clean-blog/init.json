@@ -1,0 +1,30 @@
+<?php
+	//{"template":[{path:"nombre"},{views:["html","html"]}],"fields":[{text:"Imagen header",type:"file",count:"1"},{text:"Redes Sociales",type:"text",count:"5"},{text:"Contacto",type:"select",options:["0","1"],count:"1"}],"plugins":[{sql:"INSERT INTO tservice (name) VALUES ('Contacto');",view:"html",controller:"php",model:"php"},{sql:"chao"}]}
+	$arr = [];
+	$arr["template"] = [];
+	$arr["template"]["path"] = "hola";
+	$arr["template"]["ftp"]["host"] = "localhost";
+	$arr["template"]["ftp"]["port"] = "21";
+	$arr["template"]["ftp"]["user"] = "root";
+	$arr["template"]["ftp"]["password"] = "1234";
+	$arr["fields"] = [];
+	$arr["fields"][0]["text"] = "Imagen header";
+	$arr["fields"][0]["type"] = "file";
+	$arr["fields"][0]["count"] = "1";
+	$arr["fields"][1]["text"] = "Redes sociales";
+	$arr["fields"][1]["type"] = "text";
+	$arr["fields"][1]["count"] = "5";
+	$arr["fields"][2]["text"] = "Contacto";
+	$arr["fields"][2]["type"] = "select";
+	$arr["fields"][2]["options"] = [];
+	$arr["fields"][2]["options"][0] = "0";
+	$arr["fields"][2]["options"][1] = "1";
+	$arr["fields"][2]["count"] = "1";
+	$arr["plugins"] = [];
+	$arr["plugins"][0]["sql"] = "INSERT INTO tservice (name) VALUES ('Contacto');";
+	$arr["plugins"][0]["ftp"]["host"] = "localhost";
+	$arr["plugins"][0]["ftp"]["port"] = "21";
+	$arr["plugins"][0]["ftp"]["user"] = "root";
+	$arr["plugins"][0]["ftp"]["password"] = "1234";
+	echo json_encode($arr);
+?>

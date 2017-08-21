@@ -1,0 +1,21 @@
+models/permissionModel.php Va el publico, no va el que tiene editar datos
+models/noticeModel.php
+controllers/permissionController.php
+controllers/noticeController.php
+views/permission.php
+views/notice.php
+.gitignore
+tablas que no van en la bd: 
+	tnotice
+	ttheme_origin
+
+registros que no van en la bd:
+	tservice
+		(7, 1, 'Permisos', 'permission', 8, '', '1')
+	tdservice_action
+		(136, 7, 2),
+		(137, 7, 3),
+	tdcharge_service_action
+		(5362, 1, 7, 2),
+		(5363, 1, 7, 3),
+

@@ -10,24 +10,16 @@ class actionModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT * FROM taction WHERE idaction LIKE '%$search%' OR name LIKE '%$search%' ORDER BY idaction DESC LIMIT $start,$length ");
-		$a1 = $this->db->execute();
-		while($b = $a1->fetchAll()){ $c = $b; }
-		$d["data"]="";
-		foreach ($c as $key => $val) {
+		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."taction) as countx FROM ".PREFIX."taction WHERE idaction LIKE '%$search%' OR name LIKE '%$search%' ORDER BY idaction DESC LIMIT $start,$length ");
+		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idaction"] = $val["idaction"];
 			$d["data"][$key]["name"] = $val["name"];
 			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idaction"],$val["status"]);
+			$d["recordsFiltered"]++;
+			$d["recordsTotal"] = $val["countx"];
 		}
-		$this->db->prepare("SELECT count(*) FROM taction");
-		$a2 = $this->db->execute();
-		while($b2 = $a2->fetchAll()){ $c2 = $b2; }
-		$d["draw"] = $draw;
-		$d["recordsTotal"] = $c2[0][0];
-		$this->db->prepare("SELECT count(*) FROM taction WHERE idaction LIKE '%$search%' OR name LIKE '%$search%' LIMIT $start,$length");
-		$a3 = $this->db->execute();
-		while($b3 = $a3->fetchAll()){ $c3 = $b3; }
-		$d["recordsFiltered"] = $c3[0][0];
+		$d["draw"] = $draw;		
 		return $d;
 	}
 	public function dependencies(){
@@ -37,25 +29,25 @@ class actionModel{
 		return $dependencies;
 	}
 	public function add(){
-		$this->db->prepare("INSERT INTO taction (name,function,idicon,status) VALUES (?,?,?,'1');");
+		$this->db->prepare("INSERT INTO ".PREFIX."taction (name,function,idicon,status) VALUES (?,?,?,'1');");
 		return $this->db->execute(array($this->name,$this->function,$this->idicon));
 	}
 	public function query(){
-		$this->db->prepare("SELECT * FROM taction WHERE idaction=? ;");
+		$this->db->prepare("SELECT * FROM ".PREFIX."taction WHERE idaction=? ;");
 		$data=$this->db->execute(array($this->idaction));
 		foreach ($data as $val) { $d=$val; }
 		return $d;
 	}
 	public function edit(){
-		$this->db->prepare("UPDATE taction SET name=?,function=?,idicon=? WHERE idaction=?;");
+		$this->db->prepare("UPDATE ".PREFIX."taction SET name=?,function=?,idicon=? WHERE idaction=?;");
 		return $this->db->execute(array($this->name,$this->function,$this->idicon,$this->idaction));
 	}
 	public function delete(){
-		$this->db->prepare("DELETE FROM taction WHERE idaction=?;");
+		$this->db->prepare("DELETE FROM ".PREFIX."taction WHERE idaction=?;");
 		return $this->db->execute(array($this->idaction));
 	}
 	public function status($num){
-		$this->db->prepare("UPDATE taction SET status=? WHERE idaction=?;");
+		$this->db->prepare("UPDATE ".PREFIX."taction SET status=? WHERE idaction=?;");
 		return $this->db->execute(array($num,$this->idaction));
 	}
 }

@@ -13,7 +13,7 @@ class municipalityController{
 		$data["dependencies"] = $this->municipality->dependencies();
 		view("address.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->municipality->idaddress=$id;
 		$this->municipality->idfather=$_POST["idfather"];
 		$this->municipality->name=$_POST["name"];

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<!--Favicon-->
-	<link rel="shortcut icon" href="<?=url_base?>/logo.png">
+	<link rel="shortcut icon" href="<?=url_base?>img/favicon.png">
 	<!--Jquery-->
 	<script src="<?=url_base?>/third_party/jquery/jquery-3.2.1.min.js"></script>
 	<!--Bootstrap-->
@@ -32,7 +32,7 @@
 	<!--STYLE-->
 	<link rel="stylesheet" type="text/css" href="<?=($_SESSION["environment"])? url_base.'css/style.css': url_base.'css/style.min.css' ?>">
 	<!--INIT-->
-	<script src="<?=($_SESSION["environment"])? url_base.'js/init.js' : url_base.'js/init.min.js'?>"></script>
+	<script id="initjs" src="<?=($_SESSION["environment"])? url_base.'js/init.js?'.url_base : url_base.'js/init.min.js?'.url_base?>"></script>
 	<?php
 	if(isset($_SESSION["msj"]))
 		echo "<script>$(document).ready(function(){ ".$_SESSION["msj"]." });</script>";

@@ -10,11 +10,9 @@ class log_accessModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,DATE_FORMAT(date_created,'%d-%m-%Y %h:%i:%s %p') as date_created FROM tlog_access WHERE idlog_access LIKE '%$search%' OR name LIKE '%$search%' OR message LIKE '%$search%' OR ip LIKE '%$search%' OR browser LIKE '%$search%' OR date_created LIKE '%$search%' OR operative_system LIKE '%$search%' ORDER BY idlog_access DESC LIMIT $start,$length ");
-		$a1 = $this->db->execute();
-		while($b = $a1->fetchAll()){ $c = $b; }
-		$d["data"]="";
-		foreach ($c as $key => $val) {
+		$this->db->prepare("SELECT *,DATE_FORMAT(date_created,'%d-%m-%Y %h:%i:%s %p') as date_created,(SELECT count(*) FROM ".PREFIX."tlog_access) as countx FROM ".PREFIX."tlog_access WHERE idlog_access LIKE '%$search%' OR name LIKE '%$search%' OR message LIKE '%$search%' OR ip LIKE '%$search%' OR browser LIKE '%$search%' OR date_created LIKE '%$search%' OR operative_system LIKE '%$search%' ORDER BY idlog_access DESC LIMIT $start,$length ");
+		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idlog_access"] = $val["idlog_access"];
 			$d["data"][$key]["name"] = $val["name"];
 			$d["data"][$key]["message"] = $val["message"];
@@ -23,25 +21,19 @@ class log_accessModel{
 			$d["data"][$key]["date_created"] = $val["date_created"];
 			$d["data"][$key]["operative_system"] = $val["operative_system"];
 			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idlog_access"],$val["status"],3);
+			$d["recordsFiltered"] = $val["countx"];
+			$d["recordsTotal"]++;
 		}
-		$this->db->prepare("SELECT count(*) FROM tlog_access");
-		$a2 = $this->db->execute();
-		while($b2 = $a2->fetchAll()){ $c2 = $b2; }
 		$d["draw"] = $draw;
-		$d["recordsTotal"] = $c2[0][0];
-		$this->db->prepare("SELECT count(*) FROM tlog_access WHERE idlog_access LIKE '%$search%' OR name LIKE '%$search%' OR message LIKE '%$search%' OR ip LIKE '%$search%' OR browser LIKE '%$search%' OR date_created LIKE '%$search%' OR operative_system LIKE '%$search%' LIMIT $start,$length");
-		$a3 = $this->db->execute();
-		while($b3 = $a3->fetchAll()){ $c3 = $b3; }
-		$d["recordsFiltered"] = $c3[0][0];
 		return $d;
 	}
 	public function add($user,$message){
 		$info = $this->get_info();
-		$this->db->prepare("INSERT INTO tlog_access (name,message,ip,browser,date_created,operative_system) VALUES (?,?,?,?,NOW(),?);");
+		$this->db->prepare("INSERT INTO ".PREFIX."tlog_access (name,message,ip,browser,date_created,operative_system) VALUES (?,?,?,?,NOW(),?);");
 		return $this->db->execute(array($user,$message,$info["ip"],$info["browser"],$info["operative_system"]));
 	}
 	public function pdf(){
-		$this->db->prepare("SELECT *,DATE_FORMAT(date_created,'%d-%m-%Y %h:%i:%s %p') as date_created FROM tlog_access ORDER BY 1 DESC ");
+		$this->db->prepare("SELECT *,DATE_FORMAT(date_created,'%d-%m-%Y %h:%i:%s %p') as date_created FROM ".PREFIX."tlog_access ORDER BY 1 DESC ");
 		$data=$this->db->execute();
 		foreach ($data as $val) { $d[]=$val; }
 		return $d;
@@ -68,7 +60,6 @@ class log_accessModel{
 			$version = preg_replace('/[^0-9,.]/','',$version);
 			if ($s){
 				$info['browser'] = $parent." ".$version;
-				//$info['version'] = $version;
 			}
 		}
 		

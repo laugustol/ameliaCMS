@@ -13,7 +13,7 @@ class serviceController{
 		$data["dependencies"] = $this->service->dependencies();
 		view("service.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->service->idservice=$id;
 		$this->service->idfather=$_POST["idfather"];
 		$this->service->name=$_POST["name"];
@@ -35,7 +35,6 @@ class serviceController{
 				$_SESSION["msj"] = add_success;	
 			}else{
 				$_SESSION["msj"] = add_error;
-				break;
 			}
 			$this->log_movement->add($_SESSION["iduser"],1,4,$_SESSION["msj"],"{".id.":'',".service_father.":'".$_POST["idfather"]."',".service_name.":'".$_POST["name"]."',".service_url.":'".$_POST["url"]."',".service_icon.":'".$_POST["idicon"]."',".service_color.":'".$_POST["color"]."'}");
 			header("location: ".url_base.controller."/add");
@@ -59,8 +58,8 @@ class serviceController{
 			if($this->service->edit()){
 				foreach ($_POST["nodeleteactions"] as $val) { $this->service->idaction[] = $val; }
 				if($this->service->deleteactions()){
-					$this->service->idaction = "";
-					foreach ($_POST["actions"] as $val) { $this->service->idaction[] = $val; }
+					unset($this->service->idaction);
+					foreach ($_POST["actions"] as $val){ $this->service->idaction[] = $val; }
 					$_SESSION["msj"] = ($this->service->addactions())? edit_success : edit_error ;
 				}else{
 					$_SESSION["msj"] = edit_error;
@@ -104,9 +103,14 @@ class serviceController{
 		$services = $this->service->pdf();
 		require 'pdf/servicePdf.php';
 	}
+	public function delete_ordered(){
+		if(isset($_POST["event"])){
+			echo json_encode($this->service->delete_ordered($_SESSION["iduser"]));
+		}
+	}
 	public function ordered(){
 		$this->data($_POST["idservice"]);
-		echo json_encode($this->service->ordered());
+		echo json_encode($this->service->ordered($_SESSION["iduser"]));
 	}
 }
 ?>

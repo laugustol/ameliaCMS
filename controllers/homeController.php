@@ -11,12 +11,14 @@ class homeController{
 	}
 	public function login(){
 		if(isset($_POST["user"]) && isset($_POST["password"])){
+			//RESET Model problem login connect db production != test
+			$_SESSION["environment"] = $_POST["environment"];
+			$this->user = new \Models\userModel;
 			$this->user->name=$_POST["user"];
 			$this->user->password=$_POST["password"];
 			$val=$this->user->login();
 			if($val == '1'){
 				$this->log_access->add($_POST["user"],login_success);
-				$_SESSION["environment"] = $_POST["environment"];
 			}else if($val=='2'){
 				$msj = explode(",", login_error);
 				$msj = explode("'",$msj[0]);

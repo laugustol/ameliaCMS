@@ -13,7 +13,7 @@ class ethnicityController{
 		$data["dependencies"]["add"] = $this->ethnicity->dependencies();
 		view("ethnicity.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->ethnicity->idethnicity=$id;
 		$this->ethnicity->name=$_POST["name"];
 	}

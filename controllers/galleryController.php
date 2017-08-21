@@ -13,7 +13,7 @@ class galleryController{
 		$data["dependencies"] = $this->gallery->dependencies();
 		view("gallery.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->gallery->idgallery=$id;
 		$this->gallery->iduser=$_SESSION["iduser"];
 		$this->gallery->src=$_POST["src"];

@@ -13,7 +13,7 @@ class pageController{
 		$data["dependencies"]["add"] = $this->page->dependencies();
 		view("page.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->page->idpage=$id;
 		$this->page->url=$_POST["url"];
 		$this->page->link=$_POST["link"];

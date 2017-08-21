@@ -13,7 +13,7 @@ if(!isset($_SESSION["iduser"])){
 		$org = $organization->query();
 	?>
 	<!--Favicon-->
-	<link rel="shortcut icon" href="<?=url_base.(($org["idgallery_favicon"]!=0)? $org["src_favicon"] : 'img/icon.png')?>">
+	<link rel="shortcut icon" href="<?=url_base.(($org["idgallery_favicon"]!=0)? $org["src_favicon"] : 'img/favicon.png')?>">
 	<!--Jquery-->
 	<script src="<?=url_base?>third_party/jquery/jquery-3.2.1.min.js"></script>
 	<!--Bootstrap-->
@@ -53,10 +53,23 @@ if(!isset($_SESSION["iduser"])){
 	<script src="<?=url_base?>third_party/tinymce/tinymce.min.js"></script>
 	<!--Jscolor-->
 	<script src="<?=url_base?>third_party/jscolor/jscolor.min.js"></script>
+	<!--Jstree-->
+	<link rel="stylesheet" href="<?=url_base?>third_party/jstree/dist/themes/default/style.min.css">
+	<script src="<?=url_base?>third_party/jstree/dist/jstree.min.js"></script>
+	<!--Codemirror-->
+	<link rel="stylesheet" href="<?=url_base?>third_party/codemirror/codemirror.css">
+	<link rel="stylesheet" href="<?=url_base?>third_party/codemirror/ambiance.css">
+	<script src="<?=url_base?>third_party/codemirror/codemirror.js"></script>
+	<script src="<?=url_base?>third_party/codemirror/mode/javascript/javascript.js"></script>
+	<script src="<?=url_base?>third_party/codemirror/mode/css/css.js"></script>
+	<script src="<?=url_base?>third_party/codemirror/mode/sql/sql.js"></script>
+	<script src="<?=url_base?>third_party/codemirror/mode/php/php.js"></script>
+	<script src="<?=url_base?>third_party/codemirror/mode/htmlembedded/htmlembedded.js"></script>
+	<script src="<?=url_base?>third_party/codemirror/mode/htmlmixed/htmlmixed.js"></script>
 	<!--STYLE-->
 	<link rel="stylesheet" type="text/css" href="<?=($_SESSION["environment"])? url_base.'css/style.css': url_base.'css/style.min.css' ?>">
 	<!--INIT-->
-	<script src="<?=($_SESSION["environment"])? url_base.'js/init.js' : url_base.'js/init.min.js'?>"></script>
+	<script id="initjs" src="<?=($_SESSION["environment"])? url_base.'js/init.js?'.url_base : url_base.'js/init.min.js?'.url_base?>"></script>
 	<title><?=$org["name_one"]?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
@@ -75,7 +88,7 @@ if(!isset($_SESSION["iduser"])){
 			<a href="javascript:void(0);" id="ordered" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_list?>"><i class="glyphicon glyphicon-th-list"></i></a>
 			<a href="void:javascript(0);" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=($_SESSION["environment"]=='1')? login_environment_option_test : login_environment_option_production?>"><i class="glyphicon glyphicon-globe"></i></a>
 			<a  href="javascript:void(0);" id="help-tour" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_commenting?>"><i class="fa fa-commenting"></i></a>
-			<!--<a href="" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_refresh?>"><i class="fa fa-refresh"></i></a>-->
+			<a href="" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_refresh?>"><i class="fa fa-refresh"></i></a>
 			<a href="javascript:void(0);" id="logout" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_logout?>"><i class="fa fa-power-off"></i></a>
 		</div>
 		<?php
@@ -91,7 +104,7 @@ if(!isset($_SESSION["iduser"])){
 						if(!empty($child["secondschildrens"])){
 							$str_main .= "<i class='fa arrow'></i></a><ul>";
 							foreach ($child["secondschildrens"] as $k3 => $secondchild) {
-								$str_main .= "<li><a href='".$secondchild["idservice"]."' id='' style='#color:".$secondchild["color"].";'><i class='".$secondchild["class"]." ".$secondchild["iname"]."'></i> <a href='".$secondchild["url"]."'>".$secondchild["name"]."</a></li>";
+								$str_main .= "<li><a href='".url_base.$secondchild["url"]."' id='' style='#color:".$secondchild["color"].";'><i class='".$secondchild["class"]." ".$secondchild["iname"]."'></i> ".$secondchild["name"]."</a></li>";
 							}
 							$str_main .= "</ul>";
 						}else{

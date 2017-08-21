@@ -17,14 +17,27 @@
 			    </div>";
 			}
 		?>
+		<script>
+			$(document).ready(function(){
+				$("#image").attr("onchange","upload('2','');");	
+			});
+		</script>
+		<style>
+			.gallery>li:hover{
+				border:3px solid #242834;
+			}
+			.gallery_selected{
+				border:3px solid #242834;	
+			}
+		</style>
 		<ul class="gallery">
 		<?php 
 			foreach ($dependencies["images"] as $k1 => $image) {
-				echo "<li><a href='javascript:void(0);' onclick='show(this);' ><img src='".url_base.$image["src"]."' ></a></li>";
+				echo "<li><a href='javascript:void(0);' onclick='show_img(this);' ><img src='".url_base.$image["src"]."' ></a></li>";
 			}
 		?>
 		</ul>
-		<div id="myModal" class="modal fade" role="dialog">
+		<div id="gallery_modal" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -107,48 +120,3 @@
 		</div>	
 	</div>
 </div>
-<script>
-	$("#image").on("change",function(){
-		var formData = new FormData($("#formuploadajax")[0]);
-        var ruta = "<?=url_base?>/gallery/upload";
-        $.ajax({
-            url: ruta,
-            type: "POST",
-            data: formData,
-            contentType: false,
-            processData: false,
-            xhr: function() {
-				var xhr = new window.XMLHttpRequest();
-				xhr.upload.addEventListener("progress", function(evt) {
-				  	if (evt.lengthComputable) {
-					    var percentComplete = evt.loaded / evt.total;
-					    percentComplete = parseInt(percentComplete * 100);
-						$(".progressbar").css("width",percentComplete+"%");
-						$(".progressbar").html(percentComplete+"%");
-					}
-				}, false);
-				return xhr;
-			},
-            success: function(datos){
-                $(".gallery").append("<li><a href='javascript:void(0);' onclick='show(this);'>"+datos+"</a></li>");
-            }
-        });
-	});
-	function show(_this){
-		var src = _this.getElementsByTagName("img")[0].src.replace("<?=url_base?>","");
-		$('#myModal').modal('show');
-		$.post("<?=url_base?>gallery/query/",{src:src},function(datas){
-			var data = $.parseJSON(datas);
-			$("#form_modal").attr("action","<?=url_base.controller?>/edit/"+data["idgallery"]);
-			$("#image_preview").attr("src",data["src"]);
-			$("#image_preview").attr("alt",data["alternative"]);
-			$("#src").val("<?=url_base?>"+data["src"]);
-			$("#title").val(data["title"]);
-			$("#legend").val(data["legend"]);
-			$("#alternative").val(data["alternative"]);
-			$("#description").val(data["description"]);
-			$("#created").html("<b><?=post_created_by?>:</b> "+data["person"]+" "+data["date_created"]);
-			$("#img_delete").attr("href","<?=url_base.controller?>/delete/"+data["idgallery"]);
-		});
-	}
-</script>

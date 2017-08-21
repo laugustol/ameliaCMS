@@ -409,9 +409,35 @@ a.btn1,button.btn1{
 		width: 150px;
 		height: 100px;
 	}
+.gallery>li:hover{
+	border:3px solid #242834;
+}
+	.gallery_selected{
+		border:3px solid #242834;	
+	}
 .modal-dialog{
 	width: 95%;
 }
 .modal-content{
 	border-radius: 0px !important;
+}
+/*Api news*/
+.api_news{
+	max-height: 200px;
+	overflow-y: auto;
+}
+.api_news_title{
+	font-size:16px;
+	font-weight: bold;
+	border-bottom:1px solid #242834;
+	
+}
+.api_news_title a{
+	color: #242834;
+}
+.api_news_title a:hover{
+	color: #596384;
+}
+.api_news_date{
+	font-size: 10px;
 }

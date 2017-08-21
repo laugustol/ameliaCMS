@@ -13,7 +13,7 @@ class iconController{
 		$data["dependencies"] = $this->icon->dependencies();
 		view("icon.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->icon->idicon=$id;
 		$this->icon->class=$_POST["class"];
 		$this->icon->name=$_POST["name"];

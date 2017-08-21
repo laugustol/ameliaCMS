@@ -13,7 +13,7 @@ class stateController{
 		$data["dependencies"] = $this->state->dependencies();
 		view("address.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->state->idaddress=$id;
 		$this->state->idfather=$_POST["idfather"];
 		$this->state->name=$_POST["name"];

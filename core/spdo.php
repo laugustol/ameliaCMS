@@ -3,7 +3,8 @@ namespace core;
 class SPDO extends \PDO{
 	private static $instance = null;
 	public function __construct(){
-		parent::__construct(DRIVER.':host='.HOST.';port='.PORT.';dbname='.DB,USER,PASSWORD);
+		$connect = DRIVER.':host='.HOST.';port='.PORT;
+		parent::__construct($connect,USER,PASSWORD);
 		parent::setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 	}
 	public static function singleton(){

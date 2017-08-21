@@ -1,0 +1,7 @@
+crear campo codigo en los servicios para identificar si es un plugins y asi poder verificar si un plugin ya esta instalado o no
+verifico si los plugins ya existen
+	los que ya existen los pongo en estatus 1
+	si no existen los inserto
+		creo las tablas de los plugins
+		inserto los permisos para cada servicio al cargo del usuario que esta instalando
+paso los archivos de la carpeta plugins a las carpetas models/controllers/views

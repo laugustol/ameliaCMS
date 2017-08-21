@@ -1,6 +1,8 @@
 <?php
 	session_start();
-	require 'core/config.php';
+	if(is_readable('core/config.php')){
+		require 'core/config.php';	
+	}
 	require 'core/views.php';
 	if((isset($_SESSION["environment"]))? $_SESSION["environment"]:0){
 		error_reporting(E_ALL & ~E_NOTICE);
@@ -15,16 +17,20 @@
 	});
 	$u = explode('/',$_GET['url']);
 	if(!empty($u[0])){
-		if(is_readable('controllers/'.$u[0].'Controller.php')){
+		if(is_readable('controllers/'.$u[0].'Controller.php') && defined("DB_TEST") && defined("DB_PRODUCTION")){
 			define('controller',$u[0]);
-			$controllers = 'controllers\\'.$u[0].'Controller'	;
+			$controllers = 'controllers\\'.$u[0].'Controller';
+			$controllers = new $controllers;
+		}else if(!defined("DB_TEST") && defined("DB_PRODUCTION")){
+			define('controller',$u[0]);
+			$controllers = 'install\\'.$u[0].'Controller';
 			$controllers = new $controllers;
 		}else{
 			\controllers\homeController::e404();
 			exit;
 		}
 	}else{
-		$controllers = 'controllers'.'\\'.controller_base;
+		$controllers = (defined("DB_TEST") && defined("DB_PRODUCTION"))? 'controllers\\'.controller_base : 'install\\installController';
 		$controllers = new $controllers;
 	}
 	$action = (!empty($u[1]))? $u[1] :'index';

@@ -12,7 +12,7 @@
 			<div class="form-group">
 				<label class="col-md-2 text-right"><?=organization_header?>:</label>
 				<div class="col-md-9">
-					<img id="header" src="<?=url_base.$d["src_header"]?>" style="border:1px solid #cccccc;width: 100%;height: 100px;" onclick="show_modal(this);" <?=(action=="query")?'disabled':''?> alt="<?=organization_header_title?>" title="<?=organization_header_title?>">
+					<img id="header" src="<?=url_base.$d["src_header"]?>" style="border:1px solid #cccccc;width: 100%;height: 100px;" onclick="show_gallery_modal(0,this);" <?=(action=="query")?'disabled':''?> alt="<?=organization_header_title?>" title="<?=organization_header_title?>">
 					<input type="hidden" name="idgallery_header" id="idgallery_header" value="<?=$d["idgallery_header"]?>">
 				</div>
 			</div>
@@ -44,7 +44,7 @@
 				</div>
 				<label class="col-md-2 text-right"><?=organization_favicon?>:</label>
 				<div class="col-md-1">
-					<img id="favicon" src="<?=url_base.$d["src_favicon"]?>" style="border:1px solid #cccccc;width: 100%;height: 50px;" onclick="show_modal(this);" <?=(action=="query")?'disabled':''?> alt="<?=organization_favicon_title?>" title="<?=organization_favicon_title?>">
+					<img id="favicon" src="<?=url_base.$d["src_favicon"]?>" style="border:1px solid #cccccc;width: 100%;height: 50px;" onclick="show_gallery_modal(0,this);" <?=(action=="query")?'disabled':''?> alt="<?=organization_favicon_title?>" title="<?=organization_favicon_title?>">
 					<input type="hidden" name="idgallery_favicon" id="idgallery_favicon" value="<?=$d["idgallery_favicon"]?>">
 				</div>
 				<div class="col-md-2">
@@ -89,6 +89,89 @@
 					<input type="text" name="phone_three" id="phone_three" value="<?=$d["phone_three"]?>" aajs="number" class="width-full" data-toggle="tooltip" title="<?=organization_phone_three_title?>" placeholder="<?=organization_phone_three_placeholder?>">
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="col-md-2 text-right"><?=configuration_number_question_answer?>:</label>
+				<div class="col-md-3">
+					<input type="text" name="number_question_answer" id="number_question_answer" value="<?=$d["number_question_answer"]?>" aajs="required" class="width-full" data-toggle="tooltip" title="<?=configuration_number_question_answer_title?>" placeholder="<?=configuration_number_question_answer_placeholder?>">
+				</div>
+				<label class="col-md-2 text-right"><?=configuration_login?>:</label>
+				<div class="col-md-3">
+					<select name="login" id="login" class="width-full" data-toggle="tooltip" title="<?=configuration_login_title?>">
+						<option value='1' <?=(($d["login"]=='1')? 'selected' : '')?> ><?=yes?></option>
+						<option value='0' <?=(($d["login"]=='0')? 'selected' : '')?> ><?=no?></option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 text-right"><?=configuration_new_password_sent_email?>:</label>
+				<div class="col-md-3">
+					<select name="new_password_sent_email" id="new_password_sent_email" class="width-full" data-toggle="tooltip" title="<?=configuration_new_password_sent_email_title?>">
+						<option value='1' <?=(($d["new_password_sent_email"]=='1')? 'selected' : '')?> ><?=yes?></option>
+						<option value='0' <?=(($d["new_password_sent_email"]=='0')? 'selected' : '')?> ><?=no?></option>
+					</select>
+				</div>
+				<label class="col-md-2 text-right"><?=configuration_number_days_password_diferrence?>:</label>
+				<div class="col-md-3">
+					<input type="text" name="number_days_password_diferrence" id="number_days_password_diferrence" value="<?=$d["number_days_password_diferrence"]?>" aajs="required" class="width-full" data-toggle="tooltip" title="<?=configuration_number_days_password_diferrence_title?>" placeholder="<?=configuration_number_days_password_diferrence_placeholder?>">					
+				</div>
+			</div>
+			<div id="config_email" <?=($d["new_password_sent_email"]=='0')?"style='display:none;'":''?> >
+				<div class="form-group">
+					<label class="col-md-2 text-right"><?=configuration_email_host?>:</label>
+					<div class="col-md-3">
+						<input type="text" name="email_host" id="email_host" value="<?=$d["email_host"]?>" aajs="required" class="width-full" data-toggle="tooltip" title="<?=configuration_email_host_title?>" placeholder="<?=configuration_email_host_placeholder?>">
+					</div>
+					<label class="col-md-2 text-right"><?=configuration_email_port?>:</label>
+					<div class="col-md-3">
+						<input type="text" name="email_port" id="email_port" value="<?=$d["email_port"]?>" aajs="required" class="width-full" data-toggle="tooltip" title="<?=configuration_email_port_title?>" placeholder="<?=configuration_email_port_placeholder?>">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2 text-right"><?=configuration_email_security_smtp?>:</label>
+					<div class="col-md-3">
+						<select name="email_security_smtp" id="email_security_smtp" class="width-full" data-toggle="tooltip" title="<?=configuration_email_security_smtp_title?>">
+							<option value='1' <?=(($d["email_security_smtp"]=='1')? 'selected' : '')?> ><?=yes?></option>
+							<option value='0' <?=(($d["email_security_smtp"]=='0')? 'selected' : '')?> ><?=no?></option>
+						</select>
+					</div>
+					<label class="col-md-2 text-right"><?=configuration_email_type_security_smtp?>:</label>
+					<div class="col-md-3">
+						<select name="email_type_security_smtp" id="email_type_security_smtp" class="width-full" data-toggle="tooltip" title="<?=configuration_email_type_security_smtp_title?>">
+							<option value='TLS' <?=(($d["email_type_security_smtp"]=='TLS')? 'selected' : '')?> >TLS</option>
+							<option value='SSL' <?=(($d["email_type_security_smtp"]=='SSL')? 'selected' : '')?> >SSL</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2 text-right"><?=configuration_email_user?>:</label>
+					<div class="col-md-3">
+						<input type="text" name="email_user" id="email_user" value="<?=$d["email_user"]?>" aajs="required" class="width-full" data-toggle="tooltip" title="<?=configuration_email_user_title?>" placeholder="<?=configuration_email_user_placeholder?>">
+					</div>
+					<label class="col-md-2 text-right"><?=configuration_email_password?>:</label>
+					<div class="col-md-3">
+						<input type="text" name="email_password" id="email_password" value="<?=$d["email_password"]?>" aajs="required" class="width-full" data-toggle="tooltip" title="<?=configuration_email_password_title?>" placeholder="<?=configuration_email_password_placeholder?>">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2 text-right"><?=configuration_email_subject?>:</label>
+					<div class="col-md-8">
+						<input type="text" name="email_subject" id="email_subject" value="<?=$d["email_subject"]?>" aajs="required" class="width-full" data-toggle="tooltip" title="<?=configuration_email_subject_title?>" placeholder="<?=configuration_email_subject_placeholder?>">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2 text-right"><?=configuration_email_message?>:</label>
+					<div class="col-md-8">
+						<textarea name='email_message' id='email_message' class="width-full" style="height: 80px;resize: none;" data-toggle="tooltip" title="<?=configuration_email_message_title?>" placeholder="<?=configuration_email_message_placeholder?>"><?=$d["email_message"]?></textarea>
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-md-2 text-right"><?=configuration_number_answer_allowed?>:</label>
+				<div class="col-md-3">
+					<input type="text" name="number_answer_allowed" id="number_answer_allowed" value="<?=$d["number_answer_allowed"]?>" aajs="required" class="width-full" data-toggle="tooltip" title="<?=configuration_number_answer_allowed_title?>" placeholder="<?=configuration_number_answer_allowed_placeholder?>">
+				</div>
+			</div>
 			<div class='form-group'>
 				<div class='col-md-2 col-md-offset-5'>
 					<button class='btn1' aajs='send'><?=save?></button>
@@ -97,7 +180,7 @@
 		</form>
 	</div>
 </div>
-<div id="myModal" class="modal fade" role="dialog">
+<div id="gallery_modal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -109,66 +192,10 @@
 			    	<div class="progressbar"></div>
 			    </div>
 			</div>
-			<div class="modal-body">
-			</div>
+			<div class="modal-body"></div>
 			<div class="modal-footer">
 				<button type="button" id="con" class="btn1" data-dismiss="modal"><?=plugin_gallery_tinymce_close?></button>
 			</div>
 		</div>
 	</div>
 </div>
-<script>
-	$("#image").on("change",function(){
-		var formData = new FormData($("#formuploadajax")[0]);
-	    var ruta = "<?=url_base?>/gallery/upload";
-	    $.ajax({
-	        url: ruta,
-	        type: "POST",
-	        data: formData,
-	        contentType: false,
-	        processData: false,
-	        xhr: function() {
-				var xhr = new window.XMLHttpRequest();
-				xhr.upload.addEventListener("progress", function(evt) {
-				  	if (evt.lengthComputable) {
-					    var percentComplete = evt.loaded / evt.total;
-					    percentComplete = parseInt(percentComplete * 100);
-						$(".progressbar").css("width",percentComplete+"%");
-						$(".progressbar").html(percentComplete+"%");
-					}
-				}, false);
-				return xhr;
-			},
-	        success: function(datos){
-	            if(new_img=="1"){
-	            	$(".gallery").append("<li><a onclick='selected(this);'>"+datos+"</a></li>");
-	        	}else if(new_img=="2"){
-	        		$(".gallery").append("<li><a onclick='selected_two(this);'>"+datos+"</a></li>");
-	        	}
-	        }
-	    });
-	});
-	function selected(_this){
-		img = _this.getElementsByTagName("img");
-		tinymce.activeEditor.execCommand('mceInsertContent', false, "<img src='"+img[0].src+"'>");
-	}
-	function selected_two(_this,id){
-		img = _this.getElementsByTagName("img");
-		document.getElementById(id).src = img[0].src;
-		document.getElementById("idgallery_"+id).value = img[0].id;
-	}
-	function show_modal(_this){
-		console.log(_this);
-		new_img="2";
-		$.post("<?=url_base?>gallery/show_ajax",{event:"ajax"},function(data){
-			d = JSON.parse(data);
-			img = "<ul class='gallery'>";
-			for(var i=0;i<d.length;i++){
-				img += "<li><a onclick='selected_two(this,\""+_this.id+"\");'><img id='"+d[i]["idgallery"]+"' src='<?=url_base?>"+d[i]["src"]+"' title='"+d[i]["name"]+"'></a></li>";
-			}
-			img += "</ul>";
-			$("#myModal .modal-body").html(img);
-		});
-		$("#myModal").modal('show');
-	}
-</script>

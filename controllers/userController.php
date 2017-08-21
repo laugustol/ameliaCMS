@@ -14,7 +14,7 @@ class userController{
 		$data["dependencies"] = $this->user->dependencies();
 		view("user.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->user->iduser=$id;
 		$this->user->idperson= $_POST["idperson"];
 		$this->user->idcharge=$_POST["idcharge"];

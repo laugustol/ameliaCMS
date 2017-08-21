@@ -13,7 +13,7 @@ class postController{
 		$data["dependencies"]["add"] = $this->post->dependencies();
 		view("post.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->post->idpost=$id;
 		$this->post->url=$_POST["url"];
 		$this->post->name=$_POST["name"];

@@ -82,7 +82,7 @@
 		<?php } ?>
 	</div>
 </div>
-<div id="myModal" class="modal fade" role="dialog">
+<div id="gallery_modal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -94,86 +94,10 @@
 			    	<div class="progressbar"></div>
 			    </div>
 			</div>
-			<div class="modal-body">
-			</div>
+			<div class="modal-body"></div>
 			<div class="modal-footer">
 				<button type="button" id="con" class="btn1" data-dismiss="modal"><?=plugin_gallery_tinymce_close?></button>
 			</div>
 		</div>
 	</div>
 </div>
-<script>
-	new_img="";
-	tinymce.init({ 
-		selector:'.tinymce',
-		plugins: [
-			'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-			'searchreplace wordcount visualblocks visualchars code fullscreen',
-			'insertdatetime media nonbreaking save table contextmenu directionality',
-			'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
-		],
-		language: "es",
-		toolbar1: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ',
-  		toolbar2: 'print preview media | forecolor backcolor emoticons | imageplus code',
-		height : "350", 
-		
-		toolbar_items_size: 'small',
-		file_browser_callback: function(field_name, url, type, win){
-			win.document.getElementById(field_name).value = 'my browser value';
-		}, 
-		relative_urls : false,
-		convert_urls : true,
-		setup: function(editor) {
-	        editor.addButton('imageplus', {
-	            type: 'button',
-	            title: 'Insert image',
-	            icon: 'image',
-	            id: 'imageplus', 
-				onclick: function() {
-	            	editor.focus();
-	            	//new_img="1";
-	            	$.post("<?=url_base?>gallery/show_ajax",{event:"ajax"},function(data){
-	            		d = JSON.parse(data);
-	            		img = "<ul class='gallery'>";
-	            		for(var i=0;i<d.length;i++){
-	            			img += "<li><a onclick='selected(this);'><img src='<?=url_base?>"+d[i]["src"]+"' title='"+d[i]["name"]+"'></a></li>";
-	            		}
-	            		img += "</ul>";
-	            		$("#myModal .modal-body").html(img);
-	            	});
-	            	$("#myModal").modal('show');
-		        }
-		    });
-		}
-	});
-	$("#image").on("change",function(){
-		var formData = new FormData($("#formuploadajax")[0]);
-        var ruta = "<?=url_base?>/gallery/upload";
-        $.ajax({
-            url: ruta,
-            type: "POST",
-            data: formData,
-            contentType: false,
-            processData: false,
-            xhr: function() {
-				var xhr = new window.XMLHttpRequest();
-				xhr.upload.addEventListener("progress", function(evt) {
-				  	if (evt.lengthComputable) {
-					    var percentComplete = evt.loaded / evt.total;
-					    percentComplete = parseInt(percentComplete * 100);
-						$(".progressbar").css("width",percentComplete+"%");
-						$(".progressbar").html(percentComplete+"%");
-					}
-				}, false);
-				return xhr;
-			},
-            success: function(datos){
-                $(".gallery").append("<li><a onclick='selected(this);'>"+datos+"</a></li>");
-            }
-        });
-	});
-	function selected(_this){
-		img = _this.getElementsByTagName("img");
-		tinymce.activeEditor.execCommand('mceInsertContent', false, "<img src='"+img[0].src+"'>");
-	}
-</script>

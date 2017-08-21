@@ -13,7 +13,7 @@ class parishController{
 		$data["dependencies"] = $this->parish->dependencies();
 		view("address.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->parish->idaddress=$id;
 		$this->parish->idfather=$_POST["idfather"];
 		$this->parish->name=$_POST["name"];

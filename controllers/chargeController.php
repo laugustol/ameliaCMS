@@ -13,7 +13,7 @@ class chargeController{
 		$data["dependencies"]["add"] = $this->charge->dependencies();
 		view("charge.php",1,$data);
 	}
-	public function data($id){
+	public function data($id=""){
 		$this->charge->idcharge=$id;
 		$this->charge->name=$_POST["name"];
 	}

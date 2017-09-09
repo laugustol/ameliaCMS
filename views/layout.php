@@ -88,7 +88,7 @@ if(!isset($_SESSION["iduser"])){
 			<a href="javascript:void(0);" id="ordered" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_list?>"><i class="glyphicon glyphicon-th-list"></i></a>
 			<a href="void:javascript(0);" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=($_SESSION["environment"]=='1')? login_environment_option_test : login_environment_option_production?>"><i class="glyphicon glyphicon-globe"></i></a>
 			<a  href="javascript:void(0);" id="help-tour" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_commenting?>"><i class="fa fa-commenting"></i></a>
-			<a href="" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_refresh?>"><i class="fa fa-refresh"></i></a>
+			<!--<a href="" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_refresh?>"><i class="fa fa-refresh"></i></a>-->
 			<a href="javascript:void(0);" id="logout" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_logout?>"><i class="fa fa-power-off"></i></a>
 		</div>
 		<?php
@@ -100,11 +100,11 @@ if(!isset($_SESSION["iduser"])){
 				if(!empty($father["childrens"])){
 					$str_main .= "<i class='fa arrow'></i></a><ul>";
 					foreach ($father["childrens"] as $k2 => $child) {
-						$str_main .= "<li><a href='".url_base.$child["url"]."' id='".$child["idservice"]."' style='color:#".$child["color"].";'><i class='".$child["class"]." ".$child["iname"]."'></i> ".$child["name"]."";
+						$str_main .= "<li><a href='".((!empty($child["url"]))? url_base.$child["url"] : 'javascript:void(0);')."' id='".$child["idservice"]."' style='color:#".$child["color"].";'><i class='".$child["class"]." ".$child["iname"]."'></i> ".$child["name"]."";
 						if(!empty($child["secondschildrens"])){
 							$str_main .= "<i class='fa arrow'></i></a><ul>";
 							foreach ($child["secondschildrens"] as $k3 => $secondchild) {
-								$str_main .= "<li><a href='".url_base.$secondchild["url"]."' id='' style='#color:".$secondchild["color"].";'><i class='".$secondchild["class"]." ".$secondchild["iname"]."'></i> ".$secondchild["name"]."</a></li>";
+								$str_main .= "<li><a href='".url_base.$secondchild["url"]."' id='".$secondchild["idservice"]."' style='#color:".$secondchild["color"].";'><i class='".$secondchild["class"]." ".$secondchild["iname"]."'></i> ".$secondchild["name"]."</a></li>";
 							}
 							$str_main .= "</ul>";
 						}else{

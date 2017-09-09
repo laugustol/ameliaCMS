@@ -3293,7 +3293,8 @@ COMMIT;
 		return $this->db->exec_native($sql);
 	}
 	public function postgresql(){
-		$this->db->exec_native($sql);
+    $sql = "";
+   $this->db->exec_native($sql);
 	}
 }
 ?>

@@ -11,7 +11,7 @@ class serviceModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT s1.idservice,s1.name,CASE s1.idfather WHEN 0 THEN '".service_father_opt."' ELSE s2.name END AS father,s1.status,(SELECT  count(*) FROM ".PREFIX."tservice) as countx FROM ".PREFIX."tservice s1 LEFT JOIN ".PREFIX."tservice s2 ON s1.idfather=s2.idservice WHERE s1.idservice LIKE '%$search%' OR s1.name LIKE '%$search%' OR s2.name LIKE '%$search%' ORDER BY s1.idservice DESC LIMIT $start,$length ;");		
+		$this->db->prepare("SELECT s1.idservice,s1.name,CASE s1.idfather WHEN 0 THEN '".service_father_opt."' ELSE s2.name END AS father,s1.status,(SELECT  count(*) FROM ".PREFIX."tservice) as countx FROM ".PREFIX."tservice s1 LEFT JOIN ".PREFIX."tservice s2 ON s1.idfather=s2.idservice WHERE CAST(s1.idservice as CHAR) LIKE '%$search%' OR s1.name LIKE '%$search%' OR s2.name LIKE '%$search%' ORDER BY s1.idservice DESC LIMIT $length OFFSET $start ;");		
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
 		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idservice"] = $val["idservice"];
@@ -50,7 +50,7 @@ class serviceModel{
 	public function add(){
 		$this->db->prepare("INSERT INTO ".PREFIX."tservice (idfather,name,url,idicon,color,status) VALUES (?,?,?,?,?,'1');");
 		$this->db->execute(array($this->idfather,$this->name,$this->url,$this->idicon,$this->color));
-		$this->db->prepare("SELECT idservice FROM ".PREFIX."tservice ORDER BY idservice DESC LIMIT 0,1;");
+		$this->db->prepare("SELECT idservice FROM ".PREFIX."tservice ORDER BY idservice DESC LIMIT 1 OFFSET 0;");
 		foreach ($this->db->execute() as $val){ $this->idservice = $val["idservice"]; }
 	}
 	public function addactions(){
@@ -93,11 +93,11 @@ class serviceModel{
 		return $d;
 	}
 	public function delete_ordered($iduser){
-		$this->db->prepare("DELETE FROM tduser_service_ordered WHERE iduser=?");
+		$this->db->prepare("DELETE FROM ".PREFIX."tduser_service_ordered WHERE iduser=?");
 		return $this->db->execute(array($iduser));
 	}
 	public function ordered($iduser){
-		$this->db->prepare("INSERT INTO tduser_service_ordered (iduser,idservice,ordered) VALUES (?,?,?);");
+		$this->db->prepare("INSERT INTO ".PREFIX."tduser_service_ordered (iduser,idservice,ordered) VALUES (?,?,?);");
 		return $this->db->execute(array($iduser,$this->idservice,$this->ordered));
 	}
 }

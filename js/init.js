@@ -4,12 +4,10 @@ $(document).ready(function(){
 		toggle: false
 	});
 	$("#side-bar li>a").each(function(id,element){
-		length = element.href.length;
-		if(window.location.href.substr(0,length) == element.href ){
-			ul = $(element.parentNode.parentNode.parentNode).children();
-			ul[0].setAttribute("aria-expanded","true");
-			li = $(element.parentNode.parentNode.parentNode);
-			li[0].className = "active";
+		if( window.location.href.substr(0,element.href.length) == element.href ){
+			ulcero = $(element.parentNode.parentNode.parentNode.parentNode);
+			ulcero[0].setAttribute("aria-expanded","true");
+			element.parentNode.parentNode.parentNode.parentNode.className = "collapse in";
 			element.parentNode.parentNode.className = "collapse in";
 			element.parentNode.parentNode.setAttribute("aria-expanded","true");
 		}
@@ -31,13 +29,11 @@ $(document).ready(function(){
 		        opacity: 0.6, 
 		        cursor: 'move',
 		        update: function() {
-		            li = this.getElementsByTagName("li");
-		            a = li[0].childNodes;
-		            $.post(url_base+"service/delete_ordered",{event:''});
-		            for(i=0;i<li.length;i++){
-		            	a = li[i].childNodes;
-		            	$.post(url_base+"service/ordered",{idservice:a[0].id,ordered:(i+1)});
-		            }
+		        	$.post(url_base+"service/delete_ordered",{event:''});
+		        	$("#side-bar ul > li").each(function(id,element){
+						console.log(element.childNodes[0].id+" "+id);
+						$.post(url_base+"service/ordered",{idservice:element.childNodes[0].id,ordered:(id+1)});
+					});
 		        }
 		    });
 			x=1;

@@ -54,8 +54,12 @@
 				</div>
 				<div class="form-group">
 					<label class="col-md-2 text-right"><?=page_url?>:</label>
-					<div class="col-md-9">
+					<div class="col-md-6">
 						<input type="text" name="url" id="url" value="<?=$d["url"]?>" aajs="required" class="width-full" <?=(action=="query")?'disabled':''?> data-toggle="tooltip" title="<?=page_url_title?>" placeholder="<?=page_url_placeholder?>">
+					</div>
+					<label for="view_main" class="col-md-2 text-right"><?=page_view_main?>:</label>
+					<div class='col-md-2'>
+						<input type="checkbox" name="view_main" id="view_main" value="1" <?=(($d["view_main"]=='1')? 'checked' : '')?> title='<?=page_view_main?>'>
 					</div>
 				</div>
 				<div class="form-group">

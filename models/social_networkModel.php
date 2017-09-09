@@ -10,7 +10,7 @@ class social_networkModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT s.idsocial_network,s.name,i.class,i.name as iname,s.status,(SELECT count(*) FROM ".PREFIX."tsocial_network) as countx FROM ".PREFIX."tsocial_network s INNER JOIN ".PREFIX."ticon i ON s.idicon=i.idicon WHERE s.idsocial_network LIKE '%$search%' OR s.name LIKE '%$search%' ORDER BY s.idsocial_network DESC LIMIT $start,$length ;");
+		$this->db->prepare("SELECT s.idsocial_network,s.name,i.class,i.name as iname,s.status,(SELECT count(*) FROM ".PREFIX."tsocial_network) as countx FROM ".PREFIX."tsocial_network s INNER JOIN ".PREFIX."ticon i ON s.idicon=i.idicon WHERE CAST(s.idsocial_network as CHAR) LIKE '%$search%' OR s.name LIKE '%$search%' ORDER BY s.idsocial_network DESC LIMIT $length OFFSET $start ;");
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
 		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idsocial_network"] = $val["idsocial_network"];

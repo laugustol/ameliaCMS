@@ -10,7 +10,7 @@ class postModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT p.idpost,p.name,g.src,CONCAT(u.name,' - ',pe.name_one,' ',pe.last_name_one) as person,p.status,(SELECT count(*) FROM ".PREFIX."tpost) as countx FROM ".PREFIX."tpost p LEFT JOIN ".PREFIX."tgallery g ON p.idgallery=g.idgallery INNER JOIN ".PREFIX."tuser u ON p.iduser=u.iduser INNER JOIN ".PREFIX."tperson pe ON u.idperson=pe.idperson WHERE p.idpost LIKE '%$search%' OR p.name LIKE '%$search%' ORDER BY p.idpost DESC LIMIT $start,$length ");
+		$this->db->prepare("SELECT p.idpost,p.name,g.src,CONCAT(u.name,' - ',pe.name_one,' ',pe.last_name_one) as person,p.status,(SELECT count(*) FROM ".PREFIX."tpost) as countx FROM ".PREFIX."tpost p LEFT JOIN ".PREFIX."tgallery g ON p.idgallery=g.idgallery INNER JOIN ".PREFIX."tuser u ON p.iduser=u.iduser INNER JOIN ".PREFIX."tperson pe ON u.idperson=pe.idperson WHERE CAST(p.idpost as CHAR) LIKE '%$search%' OR p.name LIKE '%$search%' ORDER BY p.idpost DESC LIMIT $length OFFSET $start ");
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
 		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idpost"] = $val["idpost"];

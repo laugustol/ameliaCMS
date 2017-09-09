@@ -20,6 +20,7 @@ class pageController{
 		$this->page->name=$_POST["name"];
 		$this->page->img=$_POST["img"];
 		$this->page->content=$_POST["content"];
+		$this->page->view_main=$_POST["view_main"];
 	}
 	public function listt(){
 		echo json_encode($this->page->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));

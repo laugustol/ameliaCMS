@@ -1,10 +1,10 @@
-<?php $_SESSION["title"] = charge ?>
+<?php $_SESSION["title"] = theme_codeeditor ?>
 <div class="row">
 	<div class="col-md-9">
 		<div class="box">
 			<div class="box-tools">
 				<div class="box-tool-left">
-					<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=charge?></a> <?=(action!="index")? "<i class='fa fa-angle-right'></i> ".((action=="add")? add : ((action=="edit")? edit : query ) ) : ''?>
+					<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=theme_codeeditor_editor?></a> <?=(action!="index")? "<i class='fa fa-angle-right'></i> ".((action=="add")? add : ((action=="edit")? edit : query ) ) : ''?>
 				</div>
 				<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 			</div>
@@ -25,7 +25,7 @@
 		<div class="box">
 			<div class="box-tools">
 				<div class="box-tool-left">
-					<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=charge?></a> <?=(action!="index")? "<i class='fa fa-angle-right'></i> ".((action=="add")? add : ((action=="edit")? edit : query ) ) : ''?>
+					<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=theme_codeeditor_files?></a> <?=(action!="index")? "<i class='fa fa-angle-right'></i> ".((action=="add")? add : ((action=="edit")? edit : query ) ) : ''?>
 				</div>
 				<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 			</div>

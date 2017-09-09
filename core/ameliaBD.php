@@ -4,12 +4,12 @@ require_once("spdo.php");
 class ameliaBD{
 	private $db,$resource;
 	public function __construct(){
-		$this->db = spdo::singleton();
 		if($_SESSION["environment"]=="1"){
-			$this->db->exec("USE ".DB_TEST);
+			$_SESSION["DATABASE"] = DB_TEST;
 		}else{
-			$this->db->exec("USE ".DB_PRODUCTION);
+			$_SESSION["DATABASE"] = DB_PRODUCTION;
 		}
+		$this->db = spdo::singleton();
 	}
 	public function prepare($sql){
 		$sql = $this->string($sql);
@@ -37,7 +37,7 @@ class ameliaBD{
 	public function query($sql){
 		$sql = $this->string($sql);
 		try{
-			return $this->db->query($sql);	
+			return $this->db->query($sql);
 		}catch(PDOException $e){
 			echo $e->getCode();
 		}
@@ -51,7 +51,7 @@ class ameliaBD{
 	}
 	public function exec_native($sql){
 		try{
-			return $this->db->exec($sql);	
+			return $this->db->exec($sql);
 		}catch(PDOException $e){
 			echo $e->getCode();
 		}
@@ -70,19 +70,28 @@ class ameliaBD{
 			$sql = str_replace("SS", "%s", $sql);
 			$sql = str_replace("AM", "%p", $sql);*/
 		}else if(DRIVER == "pgsql"){
-			$str3 = $sql;
+			$sql = str_replace("DATE_FORMAT", "TO_CHAR", $sql);
+			$sql = str_replace("%d", "DD", $sql);
+			$sql = str_replace("%m", "MM", $sql);
+			$sql = str_replace("%Y", "YYYY", $sql);
+			$sql = str_replace("%H", "HH24", $sql);
+			$sql = str_replace("%h", "HH12", $sql);
+			$sql = str_replace("%i", "MI", $sql);//substr($sql,0,strpos($sql,"LIMIT"))).substr($sql, strpos($sql,"LIMIT"));
+			$sql = str_replace("%s", "SS", $sql);
+			$sql = str_replace("%p", "AM", $sql);
+			/*$str3 = $sql;
 			$str3 = str_replace(",' ',", "||' '||", $str3);
 			$str3 = str_replace(",'-',", "||'-'||", $str3);
 			$str3 = str_replace(",'/',", "||'/'||", $str3);
 			$str3 = str_replace(",'+',", "||'+'||", $str3);
 			$str3 = str_replace(",'.',", "||'.'||", $str3);
 			$str4 = explode("FROM", $str3);
-			$str5 = substr($str4[0], 6);				
+			$str5 = substr($str4[0], 6);
 			$str6 = explode(",", $str5);
 			$count_str = count($str6);
 			for($a=0;$a<$count_str;$a++){
 				if( ($str6[$a][0]=="C" && $str6[$a][1]=="O") || ($str6[$a][1]=="C" && $str6[$a][2]=="O") ){ //CONCAT
-					$str6[$a] = str_replace("CONCAT" , "" , $str6[$a]);						
+					$str6[$a] = str_replace("CONCAT" , "" , $str6[$a]);
 				}else if($str6[$a][0]=="D" || $str6[$a][1]=="D"){ //DATE_FORMAT
 					$str6[$a] = str_replace("DATE_FORMAT", "TO_CHAR", $str6[$a]);
 					$a++;
@@ -97,12 +106,12 @@ class ameliaBD{
 				}
 			}
 			$str6 = implode(",",$str6);
-			$str = "SELECT ".$str6." FROM ".$str4[1];
+			$str = "SELECT ".$str6." FROM ".$str4[1];*/
 		}
 		return $sql;
 	}
 	private function errores($num,$error){
-		//MYSQL	
+		//MYSQL
 		if($num == "42S22"){
 			preg_match("/'.*'/", $error, $a);
 			echo "ERROR, COLUMNA DESCONOCIDAD: ".$a[0];
@@ -115,7 +124,7 @@ class ameliaBD{
 		}else if($num == "23000"){
 			preg_match("/'.*'/", $error, $a);
 			echo "ERROR, EL CAMPO: ".$a[0]." YA CONTIENE ESTE REGISTRO";
-		//POSTGRES			
+		//POSTGRES
 		}else if($num=="42P01"){
 			preg_match("/\".*\"/", $error, $a);
 			echo "ERROR DE RELACION DE TABLAS: ".$a[0];

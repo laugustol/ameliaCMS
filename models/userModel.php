@@ -49,12 +49,9 @@ class userModel{
 		}
 	}
 	public function forgot_password(){
-		$this->db->prepare("SELECT number_answer_allowed,new_password_sent_email,email_host,email_port,email_security_smtp,email_type_security_smtp,email_user,email_password,email_subject,email_message FROM ".PREFIX."torganization ;");
+		$this->db->prepare("SELECT name_one,number_answer_allowed,new_password_sent_email,email_host,email_port,email_security_smtp,email_type_security_smtp,email_user,email_password,email_subject,email_message FROM ".PREFIX."torganization ;");
 		$this->db->execute();
 		$cfg = $this->db->fetchAll()[0];
-		$this->db->prepare("SELECT name_one FROM ".PREFIX."torganization ;");
-		$this->db->execute();
-		$org = $this->db->fetchAll()[0];
 		$this->db->prepare("SELECT u.iduser,p.identification_card,dqa.answer,p.email FROM ".PREFIX."tuser u LEFT JOIN ".PREFIX."tdquestion_answer dqa ON u.iduser=dqa.iduser INNER JOIN ".PREFIX."tperson p ON u.idperson=p.idperson WHERE u.name=? OR p.email=? ;");
 		$this->db->execute(array($this->name,$this->name));
 		$d=$this->db->fetchAll();
@@ -79,7 +76,7 @@ class userModel{
 				$this->mailer->Username = $cfg["email_user"];
 				$this->mailer->Password = $cfg["email_password"];
 				$this->mailer->from = $cfg["email_user"];
-				$this->mailer->FromName = $org["name_one"];
+				$this->mailer->FromName = $cfg["name_one"];
 				//$this->mailer->SMTPDebug = 2;
 				$this->mailer->AddAddress($d[0]["email"]);
 				$this->mailer->Subject = $cfg["email_subject"];
@@ -122,7 +119,7 @@ class userModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT u.iduser,u.name,CONCAT(n.name_one,'-',p.identification_card,' ',p.name_one,' ',p.last_name_one) as person,u.status,(SELECT count(*) FROM ".PREFIX."tuser) as countx FROM ".PREFIX."tuser u INNER JOIN ".PREFIX."tperson p ON u.idperson=p.idperson INNER JOIN ".PREFIX."tnationality n ON p.idnationality=n.idnationality WHERE iduser LIKE '%$search%' OR name LIKE '%$search%' ORDER BY iduser DESC LIMIT $start,$length ");
+		$this->db->prepare("SELECT u.iduser,u.name,CONCAT(n.name_one,'-',p.identification_card,' ',p.name_one,' ',p.last_name_one) as person,u.status,(SELECT count(*) FROM ".PREFIX."tuser) as countx FROM ".PREFIX."tuser u INNER JOIN ".PREFIX."tperson p ON u.idperson=p.idperson INNER JOIN ".PREFIX."tnationality n ON p.idnationality=n.idnationality WHERE CAST(iduser as CHAR) LIKE '%$search%' OR name LIKE '%$search%' ORDER BY iduser DESC LIMIT $length OFFSET $start ");
 		$a1 = $this->db->execute();
 		while($b = $a1->fetchAll()){ $c = $b; }
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;

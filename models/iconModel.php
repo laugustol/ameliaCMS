@@ -10,7 +10,7 @@ class iconModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."ticon) as countx FROM ".PREFIX."ticon WHERE idicon LIKE '%$search%' OR name LIKE '%$search%' ORDER BY idicon DESC LIMIT $start,$length ");
+		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."ticon) as countx FROM ".PREFIX."ticon WHERE CAST(idicon as CHAR) LIKE '%$search%' OR name LIKE '%$search%' ORDER BY idicon DESC LIMIT $start,$length ");
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
 		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idicon"] = $val["idicon"];

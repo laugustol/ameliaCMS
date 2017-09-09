@@ -88,10 +88,9 @@
 				<div class="form-group">
 					<label class="col-md-2 text-right"><?=post_img?>:</label>
 					<div class="col-md-9">
-						<img id="image_two" src="<?=url_base.$d["src"]?>" style="border:1px solid #cccccc;width: 100%;height: 200px;" onclick="show_gallery_modal(0,this);" <?=(action=="query")?'disabled':''?>>
-						<input type="hidden" name="idgallery" id="idgallery" value="<?=$d["idgallery"]?>">
+						<img id="image_two" src="<?=url_base.$d["src"]?>" style="border:1px solid #cccccc;width: 100%;height: 200px;"  <?=(action!="query")? 'onclick="show_gallery_modal(0,this);"':''?> >
+						<input type="hidden" name="idgallery" id="idgallery_image_two" value="<?=$d["idgallery"]?>">
 					</div>
-					
 				</div>
 				<div class="form-group">
 					<div class="col-md-2 col-md-offset-2">

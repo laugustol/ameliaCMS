@@ -90,6 +90,22 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-md-2 text-right"><?=organization_skip_homepage?>:</label>
+				<div class="col-md-3">
+					<select name="skip_homepage" id="skip_homepage" class="width-full" data-toggle="tooltip" title="<?=organization_skip_homepage_title?>">
+						<option value='1' <?=(($d["skip_homepage"]=='1')? 'selected' : '')?> ><?=yes?></option>
+						<option value='0' <?=(($d["skip_homepage"]=='0')? 'selected' : '')?> ><?=no?></option>
+					</select>
+				</div>
+				<label class="col-md-2 text-right"><?=organization_type_web?>:</label>
+				<div class="col-md-3">
+					<select name="type_web" id="type_web" class="width-full" data-toggle="tooltip" title="<?=organization_type_web_title?>">
+						<option value='1' <?=(($d["type_web"]=='1')? 'selected' : '')?> ><?=organization_type_web_option_one?></option>
+						<option value='0' <?=(($d["type_web"]=='0')? 'selected' : '')?> ><?=organization_type_web_option_two?></option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
 				<label class="col-md-2 text-right"><?=configuration_number_question_answer?>:</label>
 				<div class="col-md-3">
 					<input type="text" name="number_question_answer" id="number_question_answer" value="<?=$d["number_question_answer"]?>" aajs="required" class="width-full" data-toggle="tooltip" title="<?=configuration_number_question_answer_title?>" placeholder="<?=configuration_number_question_answer_placeholder?>">
@@ -115,6 +131,11 @@
 					<input type="text" name="number_days_password_diferrence" id="number_days_password_diferrence" value="<?=$d["number_days_password_diferrence"]?>" aajs="required" class="width-full" data-toggle="tooltip" title="<?=configuration_number_days_password_diferrence_title?>" placeholder="<?=configuration_number_days_password_diferrence_placeholder?>">					
 				</div>
 			</div>
+			<script>
+				$("#new_password_sent_email").on("change",function(){
+					$("#config_email").toggle();
+				});
+			</script>
 			<div id="config_email" <?=($d["new_password_sent_email"]=='0')?"style='display:none;'":''?> >
 				<div class="form-group">
 					<label class="col-md-2 text-right"><?=configuration_email_host?>:</label>

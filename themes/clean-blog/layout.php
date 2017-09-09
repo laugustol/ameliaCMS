@@ -2,6 +2,9 @@
 require 'language.php';
 $organization = new \models\organizationModel;
 $org = $organization->query();
+if($org["skip_homepage"]){
+    header("location: ".url_base."home/login");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -10,7 +10,7 @@ class log_reportModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT lr.idlog_report,u.name,lr.report,lr.code,DATE_FORMAT(lr.date_created,'%d-%m-%Y %h:%i:%s %p') as date_created,(SELECT count(*) FROM ".PREFIX."tlog_report) as countx FROM ".PREFIX."tlog_report lr INNER JOIN tuser u ON lr.iduser=u.iduser WHERE lr.idlog_report LIKE '%$search%' OR u.name LIKE '%$search%' OR lr.report OR lr.code LIKE '%$search%' ORDER BY lr.idlog_report DESC LIMIT $start,$length ");
+		$this->db->prepare("SELECT lr.idlog_report,u.name,lr.report,lr.code,DATE_FORMAT(lr.date_created,'%d-%m-%Y %h:%i:%s %p') as date_created,(SELECT count(*) FROM ".PREFIX."tlog_report) as countx FROM ".PREFIX."tlog_report lr INNER JOIN tuser u ON lr.iduser=u.iduser WHERE CAST(lr.idlog_report as CHAR) LIKE '%$search%' OR u.name LIKE '%$search%' OR lr.report OR lr.code LIKE '%$search%' ORDER BY lr.idlog_report DESC LIMIT $length OFFSET $start ");
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
 		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idlog_report"] = $val["idlog_report"];

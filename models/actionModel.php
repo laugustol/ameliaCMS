@@ -10,7 +10,7 @@ class actionModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."taction) as countx FROM ".PREFIX."taction WHERE idaction LIKE '%$search%' OR name LIKE '%$search%' ORDER BY idaction DESC LIMIT $start,$length ");
+		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."taction) as countx FROM ".PREFIX."taction WHERE CAST(idaction as CHAR) LIKE '%$search%' OR name LIKE '%$search%' ORDER BY idaction DESC LIMIT $length OFFSET $start ");
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
 		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idaction"] = $val["idaction"];
@@ -23,7 +23,7 @@ class actionModel{
 		return $d;
 	}
 	public function dependencies(){
-		$this->db->prepare("SELECT * FROM ticon WHERE status='1';");
+		$this->db->prepare("SELECT * FROM ".PREFIX."ticon WHERE status='1';");
 		$dependencies["icons"] = $this->db->execute();
 		$dependencies["add"] = $this->permission->getpermissionadd();
 		return $dependencies;

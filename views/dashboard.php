@@ -57,9 +57,7 @@
 				</div>
 				<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 			</div>
-			<div class="box-container">
-				reporte de movimientos
-			</div>
+			<div class="box-container"></div>
 		</div>
 	</div>
 </div>
@@ -72,9 +70,7 @@
 				</div>
 				<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 			</div>
-			<div class="box-container">
-				reporte de acceso
-			</div>
+			<div class="box-container"></div>
 		</div>
 	</div>
 	<div class="col-md-6">
@@ -85,9 +81,7 @@
 				</div>
 				<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 			</div>
-			<div class="box-container">
-				reporte de repotes
-			</div>
+			<div class="box-container"></div>
 		</div>
 	</div>
 </div>

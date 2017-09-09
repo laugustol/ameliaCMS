@@ -10,7 +10,7 @@ class log_accessModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,DATE_FORMAT(date_created,'%d-%m-%Y %h:%i:%s %p') as date_created,(SELECT count(*) FROM ".PREFIX."tlog_access) as countx FROM ".PREFIX."tlog_access WHERE idlog_access LIKE '%$search%' OR name LIKE '%$search%' OR message LIKE '%$search%' OR ip LIKE '%$search%' OR browser LIKE '%$search%' OR date_created LIKE '%$search%' OR operative_system LIKE '%$search%' ORDER BY idlog_access DESC LIMIT $start,$length ");
+		$this->db->prepare("SELECT *,DATE_FORMAT(date_created,'%d-%m-%Y %h:%i:%s %p') as date_created,(SELECT count(*) FROM ".PREFIX."tlog_access) as countx FROM ".PREFIX."tlog_access WHERE CAST(idlog_access as CHAR) LIKE '%$search%' OR name LIKE '%$search%' OR message LIKE '%$search%' OR ip LIKE '%$search%' OR browser LIKE '%$search%' OR date_created LIKE '%$search%' OR operative_system LIKE '%$search%' ORDER BY idlog_access DESC LIMIT $length OFFSET $start ");
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
 		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idlog_access"] = $val["idlog_access"];

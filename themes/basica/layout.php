@@ -2,6 +2,9 @@
 require 'language.php';
 $organization = new \models\organizationModel;
 $org = $organization->query();
+if($org["skip_homepage"]){
+    header("location: ".url_base."home/login");
+}
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -35,6 +38,19 @@ $org = $organization->query();
     <![endif]-->
     <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
         <div class="container">
+            <?php
+                if(isset($_SESSION["iduser"])){
+                    echo "<style>
+                        .rotate-left{
+                            position: fixed;
+                            z-index: 1000;
+                        }
+                    </style>
+                    <div class='rotate-left'>
+                        <a href='".url_base."home/dashboard' class='btn btn-default' title='".theme_btn_rotate_left."'><i class='glyphicon glyphicon-repeat'></i></a>
+                    </div>";
+                }
+            ?>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -49,39 +65,17 @@ $org = $organization->query();
                 	<li><a href="<?=url_base?>"><?=theme_home?></a></li>
                     <?php
                         $page = new \models\pageModel();
-                        $pages = $page->query_all();
+                        $pages = $page->query_all_view_main();
                         foreach ($pages as $p) {
-                            echo "<li><a href='".(($p["link"]=="0")? url_base."page/show/".$p["url"] : $p["url"])."'>".$p["name"]."</a></li>";
+                            echo "<li><a href='".url_base."page/show/".$p["url"]."'>".$p["name"]."</a></li>";
                         }
                     ?>
                     <?=($org["login"]=="1")? "<li><a href='".url_base."home/login'>".theme_login."</a></li>" : ''?>
-                    <!--<li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="about-us.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="full-width.html">Full Width Page</a></li>
-                            <li><a href="#">Dropdown Menu 1</a></li>
-                            <li><a href="#">Dropdown Menu 2</a></li>
-                            <li><a href="#">Dropdown Menu 3</a></li>
-                            <li><a href="#">Dropdown Menu 4</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Use</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="blog.html">Blog</a></li> 
-                    <li><a href="contact-us.html">Contact</a></li>-->
                 </ul>
             </div>
         </div>
-    </header><!--/header-->
-		<!--container-->
+    </header>
         <?php require "themes/basica/".$view; ?>
-		<!--/container-->
-	    <!-- Footer -->
 	    <div class="footer">
 	    	<div class="container">
 		    	<div class="row">
@@ -115,16 +109,6 @@ $org = $organization->query();
 		                    echo "</div>";
                     	}
                     ?>
-		    		<!--<div class="col-footer col-md-4 col-xs-6">
-		    			<h3><?=theme_our_social_networks?></h3>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
-		    			<div>
-		    				<img src="<?=url_base?>themes/basica/img/icons/facebook.png" width="32" alt="Facebook">
-		    				<img src="<?=url_base?>themes/basica/img/icons/twitter.png" width="32" alt="Twitter">
-		    				<img src="<?=url_base?>themes/basica/img/icons/linkedin.png" width="32" alt="LinkedIn">
-							<img src="<?=url_base?>themes/basica/img/icons/rss.png" width="32" alt="RSS Feed">
-						</div>
-		    		</div>-->
 		    		<div class="col-footer col-md-4 col-xs-6">
 		    			<h3><?=theme_about_our_Company?></h3>
 		    				<p><?=$org["description"]?></p>

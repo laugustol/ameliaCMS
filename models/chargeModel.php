@@ -10,7 +10,7 @@ class chargeModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."tcharge) as countx FROM ".PREFIX."tcharge WHERE idcharge LIKE '%$search%' OR name LIKE '%$search%' ORDER BY idcharge DESC LIMIT $start,$length ");
+		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."tcharge) as countx FROM ".PREFIX."tcharge WHERE CAST(idcharge as CHAR) LIKE '%$search%' OR name LIKE '%$search%' ORDER BY idcharge DESC LIMIT $length OFFSET $start ");
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
 		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idcharge"] = $val["idcharge"];

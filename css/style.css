@@ -60,7 +60,8 @@ a:link{
 				color:#F5F5F5;
 			}
 			.side-bar ul li a:hover{
-				color:#CCCCCC;
+				/*color:#CCCCCC;*/
+				opacity: .50;
 			}
 		.side-bar li{
 			list-style-type: none;

@@ -15,7 +15,7 @@ class serviceController{
 	}
 	public function data($id=""){
 		$this->service->idservice=$id;
-		$this->service->idfather=$_POST["idfather"];
+		$this->service->idfather=(!empty($_POST["idfather"]))? $_POST["idfather"] : 0;
 		$this->service->name=$_POST["name"];
 		$this->service->url=$_POST["url"];
 		$this->service->idicon=$_POST["idicon"];

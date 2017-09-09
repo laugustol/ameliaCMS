@@ -10,7 +10,7 @@ class personModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT p.idperson,CONCAT(n.name_one,'-',p.identification_card) as nationality_identification_card,CONCAT(p.name_one,' ',p.name_two) as name_complete,CONCAT(p.last_name_one,' ',p.last_name_two) as last_name_complete,p.status,(SELECT count(*) FROM ".PREFIX."tperson) as countx FROM ".PREFIX."tperson p INNER JOIN ".PREFIX."tnationality n ON p.idnationality=n.idnationality WHERE p.idperson LIKE '%$search%' OR n.name_one LIKE '%$search%' OR p.identification_card LIKE '%$search%' OR p.name_one LIKE '%$search%' OR p.name_two LIKE '%$search%' OR p.last_name_one LIKE '%$search%' OR p.last_name_two LIKE '%$search%' ORDER BY idperson DESC LIMIT $start,$length ");
+		$this->db->prepare("SELECT p.idperson,CONCAT(n.name_one,'-',p.identification_card) as nationality_identification_card,CONCAT(p.name_one,' ',p.name_two) as name_complete,CONCAT(p.last_name_one,' ',p.last_name_two) as last_name_complete,p.status,(SELECT count(*) FROM ".PREFIX."tperson) as countx FROM ".PREFIX."tperson p INNER JOIN ".PREFIX."tnationality n ON p.idnationality=n.idnationality WHERE CAST(p.idperson as CHAR) LIKE '%$search%' OR n.name_one LIKE '%$search%' OR p.identification_card LIKE '%$search%' OR p.name_one LIKE '%$search%' OR p.name_two LIKE '%$search%' OR p.last_name_one LIKE '%$search%' OR p.last_name_two LIKE '%$search%' ORDER BY idperson DESC LIMIT $length OFFSET $start ");
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
 		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idperson"] = $val["idperson"];

@@ -81,6 +81,7 @@ class homeController{
 		unset($_SESSION["pelast_name_one"]);
 		unset($_SESSION["title"]);
 		unset($_SESSION["environment"]);
+		unset($_SESSION["DATABASE"]);
 		header("location: ".url_base);
 	}
 }

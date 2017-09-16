@@ -1,9 +1,6 @@
 # ameliaCMS
 Simple CMS escalable con arquitectura MVC
-<br>Sistema de instalacion automatizado,
-Solo debes crear 2 base de datos (Pruebas/Produccion),
-Soporte para base de datos (PostgreSQL/MySQL),
-Integra ameliaBD (Manejador de string sql para compatibilidad tanto PostgreSQL como MySQL) y aaJS (Libreria propia),
+<br>Sistema de instalacion automatizado,Solo debes crear 2 base de datos (Pruebas/Produccion),Soporte para base de datos (PostgreSQL/MySQL),Integra ameliaBD (Manejador de string sql para compatibilidad tanto PostgreSQL como MySQL) y aaJS (Libreria propia),
 Envio de clave al correo si se recupera (Opcional),
 Respuesta a mensajeas de contacto,
 Galeria de imagenes,

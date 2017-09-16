@@ -4033,8 +4033,7 @@ INSERT INTO ".$this->prefix."tdservice_action VALUES (132, 5, 4);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (133, 5, 5);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (134, 5, 6);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (135, 5, 7);
-INSERT INTO ".$this->prefix."tdservice_action VALUES (136, 7, 2);
-INSERT INTO ".$this->prefix."tdservice_action VALUES (137, 7, 3);
+
 INSERT INTO ".$this->prefix."tdservice_action VALUES (138, 8, 1);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (139, 8, 2);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (140, 8, 3);
@@ -4190,7 +4189,7 @@ INSERT INTO ".$this->prefix."tservice VALUES (3, 1, 'Acciones', 'action', 108, '
 INSERT INTO ".$this->prefix."tservice VALUES (4, 1, 'Servicios', 'service', 26, '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (5, 1, 'Etnias', 'ethnicity', 964, '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (6, 1, 'Nacionalidades', 'nationality', 179, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (7, 1, 'Permisos', 'permission', 8, '       ', '1');
+
 INSERT INTO ".$this->prefix."tservice VALUES (8, 1, 'Iconos', 'icon', 8, '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (9, 0, 'Localidades', '', 438, '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (10, 9, 'Parroquias', 'parish', 327, '       ', '1');
@@ -5987,9 +5986,6 @@ INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6724, 1, 2, 4);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6725, 1, 2, 5);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6726, 1, 2, 6);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6727, 1, 2, 7);
-INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6728, 1, 7, 2);
-INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6729, 1, 7, 3);
-
 
 SELECT pg_catalog.setval('".$this->prefix."tdcharge_service_action_idcharge_service_action_seq', 1, false);
 
@@ -5997,9 +5993,7 @@ INSERT INTO ".$this->prefix."tdpassword VALUES (1, 1, '".$this->encrypter($this-
 
 SELECT pg_catalog.setval('".$this->prefix."tdpassword_idpassword_seq', 1, false);
 
-
 SELECT pg_catalog.setval('".$this->prefix."tdquestion_answer_idquestion_answer_seq', 1, false);
-
 
 INSERT INTO ".$this->prefix."ticon VALUES (1, 'glyphicon', 'glyphicon-asterisk', '1');
 INSERT INTO ".$this->prefix."ticon VALUES (2, 'glyphicon', 'glyphicon-plus', '1');

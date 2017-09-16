@@ -46,9 +46,9 @@ class installController{
 		}
 		
 		unset($_SESSION["environment"]);
-		//unlink("installModel.php");
-		//unlink("installController.php");
-		//unlink("install.php");
+		unlink("installModel.php");
+		unlink("installController.php");
+		unlink("install.php");
 		header("location: ".url_base);
 	}
 		

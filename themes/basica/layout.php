@@ -83,8 +83,8 @@ if($org["skip_homepage"]){
 		    			<h3><?=theme_concact?></h3>
 		    			<p class="contact-us-details">
 	        				<b><?=theme_concact_address?>:</b> <?=$org["address"]?><br/>
-	        				<b><?=theme_concact_phone_one?>:</b> <?=$org["phone_one"]?><br/>
-	        				<b><?=theme_concact_phone_two?>:</b> <?=$org["phone_two"]?><br/>
+	        				<b><?=theme_concact_phone_one?>:</b> <?=$org["phone_one"]." / ".$org["phone_two"]?><br/>
+	        				<?= (!empty($org["phone_three"]))? '<b>'.theme_concact_phone_two.':</b>'.$org["phone_three"].'<br/>' : '' ?>
 	        				<b><?=theme_concact_email?>:</b> <a href="mailto:<?=$org["email"]?>"><?=$org["email"]?></a>
 	        			</p>
 		    		</div>

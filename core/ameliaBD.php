@@ -11,6 +11,9 @@ class ameliaBD{
 		}
 		$this->db = spdo::singleton();
 	}
+	public function __destruct(){
+		$this->db->__destruct();
+	}
 	public function prepare($sql){
 		$sql = $this->string($sql);
 		try{

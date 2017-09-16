@@ -23,7 +23,6 @@ class themeController{
 			$zip->extractTo("themes/");
 			$zip->close();
 			$model = '\themes\\'.$path.'\installthemeModel';
-			echo $model;
 			$this->installtheme = new $model;
 			if($this->installtheme->add()){
 				unlink("themes/".$path."/installthemeModel.php");

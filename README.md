@@ -33,4 +33,4 @@ Simple CMS escalable con arquitectura MVC
 * PHPMAiler
 * TinyMCE
 * Toastr
-<br>Si desea los archivos de permisologia completa pongase en contacto al siguiente correo augustoalvarez05@gmail.com
+<br>Si desea los archivos de permisologia completa contactanos: augustoalvarez05@gmail.com

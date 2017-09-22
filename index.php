@@ -15,6 +15,19 @@
 		$ruta = str_replace("\\", "/", $class).'.php';
 		require_once $ruta;
 	});
+	/*
+		class routes{
+			public function get($url,$callback){
+				$callback();
+			}
+			public function post($url,$callback){
+				$callback();
+			}
+			public function error404($url){
+	
+			}
+		}
+	*/
 	$u = explode('/',$_GET['url']);
 	if(!empty($u[0])){
 		if(is_readable('controllers/'.$u[0].'Controller.php') && defined("DB_TEST") && defined("DB_PRODUCTION")){

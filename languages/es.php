@@ -198,8 +198,8 @@ define("ethnicity_name_placeholder","Ingrese el nombre de la etnia");
 define("pdf_ethnicity_list","LISTADO DE ETNIAS");
 //Permissions
 define("permission","Permisos");
-define("permission_charge","Chargo");
-define("permission_charge_title","Nombre del Chargo");
+define("permission_charge","Cargo");
+define("permission_charge_title","Nombre del Cargo");
 define("permission_others_charges","Pasar plantilla a otro cargo");
 define("permission_others_charges_option","Ninguno");
 define("permission_checked_full","Marcar todos");

@@ -5,8 +5,8 @@ $(document).ready(function(){
 	});
 	$("#side-bar li>a").each(function(id,element){
 		if( window.location.href.substr(0,element.href.length) == element.href ){
-			ulcero = $(element.parentNode.parentNode.parentNode.parentNode);
-			ulcero[0].setAttribute("aria-expanded","true");
+			ulcero = $(element.parentNode.parentNode.parentNode);
+			ulcero[0].className="active";
 			element.parentNode.parentNode.parentNode.parentNode.className = "collapse in";
 			element.parentNode.parentNode.className = "collapse in";
 			element.parentNode.parentNode.setAttribute("aria-expanded","true");

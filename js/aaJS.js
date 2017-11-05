@@ -24,6 +24,7 @@ class aaJSClass{
 					div.id = tags_into[a].id+"_aajs_alerts";
 					div.className="aajs_alerts";
 					var request = new Array();
+					var global_required = false;
 					if(/required/.test(tags_into[a].getAttribute("aajs"))){
 						if(tags_into[a].type == "select-one"){
 							change += "vEmpty(this);";
@@ -37,6 +38,7 @@ class aaJSClass{
 							if(tags_into[a].value != ""){ p0.className = "del"; }
 							div.append(p0);
 						}
+						global_required = true;
 					}
 					if(/number/.test(tags_into[a].getAttribute("aajs"))){
 						keypress+="return vNumbers(event,this);";
@@ -59,7 +61,7 @@ class aaJSClass{
 						}
 					}
 					if(/email/.test(tags_into[a].getAttribute("aajs"))){
-						blur += "vEmail(this);";
+						blur += "vEmail(this,"+((global_required)? true : false)+");";
 						if(tags_into[a].type != "hidden"){
 							var p4 = document.createElement("span");
 							p4.id = tags_into[a].id+"_email";
@@ -301,15 +303,23 @@ function vLetter(e,_this){
     	return true;
     }
 }
-function vEmail(_this){
+function vEmail(_this, global_required){
 	var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-   	if (!expr.test(_this.value)){
-       	aajs_language.email_alert();
-       	document.getElementById(_this.id+"_email").className = "";
-       	return false;
+	if(_this.value != null && _this.value.length > 0){
+	   	if (!expr.test(_this.value)){
+	       	aajs_language.email_alert();
+	       	document.getElementById(_this.id+"_email").className = "";
+	       	return false;
+	   	}else{
+	   		document.getElementById(_this.id+"_email").className = "del";
+	   		return true;
+	   	}
    	}else{
-   		document.getElementById(_this.id+"_email").className = "del";
-   		return true;
+   		if(global_required){
+   			return false;
+   		}else{
+   			return true;
+   		}
    	}
 }
 function ajax(url,settings,callback){

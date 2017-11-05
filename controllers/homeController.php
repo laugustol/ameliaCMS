@@ -30,12 +30,12 @@ class homeController{
 				$this->log_access->add($_POST["user"],$msj[1]);
 				$_SESSION["msj"] = login_locked;
 			}
-			header("location: ".url_base."home/login");
+			header("location: ".url_base."login");
 		}else if(isset($_SESSION["uname"])){
 			if($_SESSION["initiated"]=="1"){
-				header("location: ".url_base."home/dashboard");
+				header("location: ".url_base."dashboard");
 			}else{
-				header("location: ".url_base."user/profile");
+				header("location: ".url_base."profile");
 			}
 		}else{
 			view("login.php",3);
@@ -57,7 +57,7 @@ class homeController{
 			}else{
 				$_SESSION["msj"] = forgot_password_alert_password_error;
 			}
-			header("location: ".url_base."home/forgot_password");
+			header("location: ".url_base."forgot-password");
 			exit;
 		}else{
 			view("forgot_password.php",3);

@@ -3,6 +3,7 @@ namespace controllers;
 class themeController{
 	private $theme,$installtheme,$permission,$log_movement;
 	public function __construct(){
+		define("controller","theme");
 		$this->theme = new \Models\themeModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

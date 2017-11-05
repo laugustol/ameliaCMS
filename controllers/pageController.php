@@ -3,6 +3,7 @@ namespace controllers;
 class pageController{
 	private $page,$permission,$log_movement;
 	public function __construct(){
+		define("controller","page");
 		$this->page = new \Models\pageModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

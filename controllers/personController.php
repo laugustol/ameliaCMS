@@ -3,6 +3,7 @@ namespace controllers;
 class personController{
 	private $person,$permission,$log_movement;
 	public function __construct(){
+		define("controller","person");
 		$this->person = new \Models\personModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

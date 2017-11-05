@@ -2,7 +2,7 @@
 <div class="box">
 	<div class="box-tools">
 		<div class="box-tool-left">
-			<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=person?></a> <?=(action!="index")? "<i class='fa fa-angle-right'></i> ".((action=="add")? add : ((action=="edit")? edit : query ) ) : ''?>
+			<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.routerCtrl?>"><?=person?></a> <?=(action!="index")? "<i class='fa fa-angle-right'></i> ".((action=="add")? add : ((action=="edit")? edit : query ) ) : ''?>
 		</div>
 		<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 	</div>
@@ -23,7 +23,7 @@
 	                        "processing": true,
 	                        "serverSide": true,
 	                        "ordering": false,
-	                        "ajax": { url : "<?=url_base.controller?>/listt", type : "POST" },
+	                        "ajax": { url : "<?=url_base.routerCtrl?>/listt", type : "POST" },
 	                        "columns": [
 	                            { "data": "idperson" },
 	                            { "data": "nationality_identification_card" },
@@ -37,7 +37,7 @@
 	            });
 	        </script>
 		<?php }else{ ?>
-			<?=(action!="query")? "<form name='hola' action='".url_base.controller."/".action."/".$d["idperson"]."' method='POST' class='form-horizontal' enctype='multipart/form-data'>" : "<div class='form-horizontal'>" ?>
+			<?=(action!="query")? "<form name='hola' action='".url_base.routerCtrl."/".action."/".$d["idperson"]."' method='POST' class='form-horizontal' enctype='multipart/form-data'>" : "<div class='form-horizontal'>" ?>
 				<input type="hidden" name="event" id="event">
 				<div class="form-group">
 					<?php

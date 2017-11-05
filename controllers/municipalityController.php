@@ -3,6 +3,7 @@ namespace controllers;
 class municipalityController{
 	private $municipality,$permission,$log_movement;
 	public function __construct(){
+		define("controller","municipality");
 		$this->municipality = new \Models\addressModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="box-container">
-			<form action="<?=url_base.controller?>/login" method="POST" class="form-horizontal">
+			<form action="<?=url_base?>login" method="POST" class="form-horizontal">
 				<div class="form-group">
 					<label class="col-md-3 text-right"><?=login_environment?>:</label>
 					<div class="col-md-8">
@@ -40,7 +40,7 @@
 				<div class="form-group">
 					<div class="col-md-8 col-md-offset-3">
 						<!--<a href=""><?=login_signup?></a>-->
-						<a href="<?=url_base?>home/forgot_password"><?=login_forgot_password?></a>
+						<a href="<?=url_base?>forgot-password"><?=login_forgot_password?></a>
 					</div>
 				</div>
 			</form>

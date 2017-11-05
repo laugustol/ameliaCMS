@@ -3,6 +3,7 @@ namespace controllers;
 class galleryController{
 	private $gallery,$permission;
 	public function __construct(){
+		define("controller","gallery");
 		$this->gallery = new \Models\galleryModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;
@@ -76,7 +77,7 @@ class galleryController{
 		$data["d"] = $this->gallery->query();
 		view("gallery.php",2,$data);
 	}
-	public function show_ajax($url){
+	public function show_ajax(){
 		if($_POST["event"] == "ajax"){
 			echo json_encode($this->gallery->query_all());
 		}

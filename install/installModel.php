@@ -3305,66 +3305,31 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 CREATE TABLE ".$this->prefix."taction (
-    idaction integer NOT NULL,
+    idaction serial NOT NULL,
     name character varying(15),
     function integer,
     idicon integer,
     status character(1)
 );
 
-CREATE SEQUENCE ".$this->prefix."taction_idaction_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
-ALTER SEQUENCE ".$this->prefix."taction_idaction_seq OWNED BY ".$this->prefix."taction.idaction;
 
 CREATE TABLE ".$this->prefix."taddress (
-    idaddress integer NOT NULL,
+    idaddress serial NOT NULL,
     idfather integer,
     name character varying(50),
     status character varying(255)
 );
 
 
-
-CREATE SEQUENCE ".$this->prefix."taddress_idaddress_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."taddress_idaddress_seq OWNED BY ".$this->prefix."taddress.idaddress;
-
 CREATE TABLE ".$this->prefix."tcharge (
-    idcharge integer NOT NULL,
+    idcharge serial NOT NULL,
     name character varying(60),
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tcharge_idcharge_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tcharge_idcharge_seq OWNED BY ".$this->prefix."tcharge.idcharge;
-
 CREATE TABLE ".$this->prefix."tcontact (
-    idcontact integer NOT NULL,
+    idcontact serial NOT NULL,
     name character varying(25),
     email character varying(60),
     phone character varying(20),
@@ -3374,156 +3339,49 @@ CREATE TABLE ".$this->prefix."tcontact (
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tcontact_idcontact_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tcontact_idcontact_seq OWNED BY ".$this->prefix."tcontact.idcontact;
-
 CREATE TABLE ".$this->prefix."tdcharge_service_action (
-    idcharge_service_action integer NOT NULL,
+    idcharge_service_action serial NOT NULL,
     idcharge integer,
     idservice integer,
     idaction integer
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tdcharge_service_action_idcharge_service_action_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tdcharge_service_action_idcharge_service_action_seq OWNED BY ".$this->prefix."tdcharge_service_action.idcharge_service_action;
-
 CREATE TABLE ".$this->prefix."tdpassword (
-    idpassword integer NOT NULL,
+    idpassword serial NOT NULL,
     iduser integer,
     password text,
     creation_date timestamp without time zone,
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tdpassword_idpassword_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tdpassword_idpassword_seq OWNED BY ".$this->prefix."tdpassword.idpassword;
-
 CREATE TABLE ".$this->prefix."tdquestion_answer (
-    idquestion_answer integer NOT NULL,
+    idquestion_answer serial NOT NULL,
     iduser integer,
     question text,
     answer text
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tdquestion_answer_idquestion_answer_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tdquestion_answer_idquestion_answer_seq OWNED BY ".$this->prefix."tdquestion_answer.idquestion_answer;
-
 CREATE TABLE ".$this->prefix."tdservice_action (
-    idservice_action integer NOT NULL,
+    idservice_action serial NOT NULL,
     idservice integer,
     idaction integer
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tdservice_action_idservice_action_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tdservice_action_idservice_action_seq OWNED BY ".$this->prefix."tdservice_action.idservice_action;
-
-
-
 CREATE TABLE ".$this->prefix."tduser_service_ordered (
-    iduser_service_ordered integer NOT NULL,
+    iduser_service_ordered serial NOT NULL,
     iduser integer,
     idservice integer,
     ordered integer
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tduser_service_ordered_iduser_service_ordered_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tduser_service_ordered_iduser_service_ordered_seq OWNED BY ".$this->prefix."tduser_service_ordered.iduser_service_ordered;
-
 CREATE TABLE ".$this->prefix."tethnicity (
-    idethnicity integer NOT NULL,
+    idethnicity serial NOT NULL,
     name character varying(45),
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tethnicity_idethnicity_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tethnicity_idethnicity_seq OWNED BY ".$this->prefix."tethnicity.idethnicity;
-
 CREATE TABLE ".$this->prefix."tgallery (
-    idgallery integer NOT NULL,
+    idgallery serial NOT NULL,
     iduser integer,
     src text,
     title text,
@@ -3533,45 +3391,15 @@ CREATE TABLE ".$this->prefix."tgallery (
     date_created date
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tgallery_idgallery_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tgallery_idgallery_seq OWNED BY ".$this->prefix."tgallery.idgallery;
-
 CREATE TABLE ".$this->prefix."ticon (
-    idicon integer NOT NULL,
+    idicon serial NOT NULL,
     class character varying(60),
     name character varying(60),
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."ticon_idicon_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."ticon_idicon_seq OWNED BY ".$this->prefix."ticon.idicon;
-
 CREATE TABLE ".$this->prefix."tlog_access (
-    idlog_access integer NOT NULL,
+    idlog_access serial NOT NULL,
     name character varying(20),
     message text,
     ip character varying(16),
@@ -3580,23 +3408,8 @@ CREATE TABLE ".$this->prefix."tlog_access (
     operative_system character varying(30)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tlog_access_idlog_access_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tlog_access_idlog_access_seq OWNED BY ".$this->prefix."tlog_access.idlog_access;
-
 CREATE TABLE ".$this->prefix."tlog_movement (
-    idlog_movement integer NOT NULL,
+    idlog_movement serial NOT NULL,
     iduser integer,
     idaction integer,
     idservice character varying(255),
@@ -3605,89 +3418,29 @@ CREATE TABLE ".$this->prefix."tlog_movement (
     date_created timestamp without time zone
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tlog_movement_idlog_movement_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tlog_movement_idlog_movement_seq OWNED BY ".$this->prefix."tlog_movement.idlog_movement;
-
 CREATE TABLE ".$this->prefix."tlog_report (
-    idlog_report integer NOT NULL,
+    idlog_report serial NOT NULL,
     iduser integer,
     report text,
     code text,
     date_created timestamp without time zone
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tlog_report_idlog_report_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tlog_report_idlog_report_seq OWNED BY ".$this->prefix."tlog_report.idlog_report;
-
 CREATE TABLE ".$this->prefix."tnationality (
-    idnationality integer NOT NULL,
+    idnationality serial NOT NULL,
     name_one character varying(3),
     name_two character varying(25),
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tnationality_idnationality_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tnationality_idnationality_seq OWNED BY ".$this->prefix."tnationality.idnationality;
-
 CREATE TABLE ".$this->prefix."tnotice (
-    idnotice integer NOT NULL,
+    idnotice serial NOT NULL,
     title character varying(160),
     content text,
     url text,
     date_created date,
     status character(1)
 );
-
-
-
-
-CREATE SEQUENCE ".$this->prefix."tnotice_idnotice_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tnotice_idnotice_seq OWNED BY ".$this->prefix."tnotice.idnotice;
 
 CREATE TABLE ".$this->prefix."torganization (
     name_one character varying(50),
@@ -3718,11 +3471,8 @@ CREATE TABLE ".$this->prefix."torganization (
     type_web character(1)
 );
 
-
-
-
 CREATE TABLE ".$this->prefix."tpage (
-    idpage integer NOT NULL,
+    idpage serial NOT NULL,
     url text,
     link text,
     name text,
@@ -3733,23 +3483,8 @@ CREATE TABLE ".$this->prefix."tpage (
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tpage_idpage_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tpage_idpage_seq OWNED BY ".$this->prefix."tpage.idpage;
-
 CREATE TABLE ".$this->prefix."tperson (
-    idperson integer NOT NULL,
+    idperson serial NOT NULL,
     idnationality integer,
     idethnicity integer,
     idcharge integer,
@@ -3770,24 +3505,8 @@ CREATE TABLE ".$this->prefix."tperson (
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tperson_idperson_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tperson_idperson_seq OWNED BY ".$this->prefix."tperson.idperson;
-
-
 CREATE TABLE ".$this->prefix."tpost (
-    idpost integer NOT NULL,
+    idpost serial NOT NULL,
     url character varying(70),
     name text,
     color character(7),
@@ -3798,23 +3517,8 @@ CREATE TABLE ".$this->prefix."tpost (
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tpost_idpost_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tpost_idpost_seq OWNED BY ".$this->prefix."tpost.idpost;
-
 CREATE TABLE ".$this->prefix."tservice (
-    idservice integer NOT NULL,
+    idservice serial NOT NULL,
     idfather integer,
     name character varying(30),
     url character varying(30),
@@ -3823,46 +3527,16 @@ CREATE TABLE ".$this->prefix."tservice (
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tservice_idservice_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tservice_idservice_seq OWNED BY ".$this->prefix."tservice.idservice;
-
 CREATE TABLE ".$this->prefix."tsocial_network (
-    idsocial_network integer NOT NULL,
+    idsocial_network serial NOT NULL,
     name character varying(30),
     url text,
     idicon integer,
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."tsocial_network_idsocial_network_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tsocial_network_idsocial_network_seq OWNED BY ".$this->prefix."tsocial_network.idsocial_network;
-
 CREATE TABLE ".$this->prefix."ttheme (
-    idtheme integer NOT NULL,
+    idtheme serial NOT NULL,
     name text,
     description text,
     src text,
@@ -3870,23 +3544,8 @@ CREATE TABLE ".$this->prefix."ttheme (
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."ttheme_idtheme_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."ttheme_idtheme_seq OWNED BY ".$this->prefix."ttheme.idtheme;
-
 CREATE TABLE ".$this->prefix."ttheme_origin (
-    idtheme_origin integer NOT NULL,
+    idtheme_origin serial NOT NULL,
     name text,
     description text,
     img text,
@@ -3895,23 +3554,8 @@ CREATE TABLE ".$this->prefix."ttheme_origin (
     status character(1)
 );
 
-
-
-
-CREATE SEQUENCE ".$this->prefix."ttheme_origin_idtheme_origin_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."ttheme_origin_idtheme_origin_seq OWNED BY ".$this->prefix."ttheme_origin.idtheme_origin;
-
 CREATE TABLE ".$this->prefix."tuser (
-    iduser integer NOT NULL,
+    iduser serial NOT NULL,
     idperson integer,
     name character varying(20),
     failed_attempts integer,
@@ -3919,77 +3563,6 @@ CREATE TABLE ".$this->prefix."tuser (
     note text,
     status character(1)
 );
-
-
-
-
-CREATE SEQUENCE ".$this->prefix."tuser_iduser_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-
-
-ALTER SEQUENCE ".$this->prefix."tuser_iduser_seq OWNED BY ".$this->prefix."tuser.iduser;
-
-ALTER TABLE ONLY ".$this->prefix."taction ALTER COLUMN idaction SET DEFAULT nextval('".$this->prefix."taction_idaction_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."taddress ALTER COLUMN idaddress SET DEFAULT nextval('".$this->prefix."taddress_idaddress_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tcharge ALTER COLUMN idcharge SET DEFAULT nextval('".$this->prefix."tcharge_idcharge_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tcontact ALTER COLUMN idcontact SET DEFAULT nextval('".$this->prefix."tcontact_idcontact_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tdcharge_service_action ALTER COLUMN idcharge_service_action SET DEFAULT nextval('".$this->prefix."tdcharge_service_action_idcharge_service_action_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tdpassword ALTER COLUMN idpassword SET DEFAULT nextval('".$this->prefix."tdpassword_idpassword_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tdquestion_answer ALTER COLUMN idquestion_answer SET DEFAULT nextval('".$this->prefix."tdquestion_answer_idquestion_answer_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tdservice_action ALTER COLUMN idservice_action SET DEFAULT nextval('".$this->prefix."tdservice_action_idservice_action_seq'::regclass);
-
-
-
-ALTER TABLE ONLY ".$this->prefix."tduser_service_ordered ALTER COLUMN iduser_service_ordered SET DEFAULT nextval('".$this->prefix."tduser_service_ordered_iduser_service_ordered_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tethnicity ALTER COLUMN idethnicity SET DEFAULT nextval('".$this->prefix."tethnicity_idethnicity_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tgallery ALTER COLUMN idgallery SET DEFAULT nextval('".$this->prefix."tgallery_idgallery_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."ticon ALTER COLUMN idicon SET DEFAULT nextval('".$this->prefix."ticon_idicon_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tlog_access ALTER COLUMN idlog_access SET DEFAULT nextval('".$this->prefix."tlog_access_idlog_access_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tlog_movement ALTER COLUMN idlog_movement SET DEFAULT nextval('".$this->prefix."tlog_movement_idlog_movement_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tlog_report ALTER COLUMN idlog_report SET DEFAULT nextval('".$this->prefix."tlog_report_idlog_report_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tnationality ALTER COLUMN idnationality SET DEFAULT nextval('".$this->prefix."tnationality_idnationality_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tnotice ALTER COLUMN idnotice SET DEFAULT nextval('".$this->prefix."tnotice_idnotice_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tpage ALTER COLUMN idpage SET DEFAULT nextval('".$this->prefix."tpage_idpage_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tperson ALTER COLUMN idperson SET DEFAULT nextval('".$this->prefix."tperson_idperson_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tpost ALTER COLUMN idpost SET DEFAULT nextval('".$this->prefix."tpost_idpost_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tservice ALTER COLUMN idservice SET DEFAULT nextval('".$this->prefix."tservice_idservice_seq'::regclass);
-
-
-
-
-
-ALTER TABLE ONLY ".$this->prefix."tsocial_network ALTER COLUMN idsocial_network SET DEFAULT nextval('".$this->prefix."tsocial_network_idsocial_network_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."ttheme ALTER COLUMN idtheme SET DEFAULT nextval('".$this->prefix."ttheme_idtheme_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."ttheme_origin ALTER COLUMN idtheme_origin SET DEFAULT nextval('".$this->prefix."ttheme_origin_idtheme_origin_seq'::regclass);
-
-ALTER TABLE ONLY ".$this->prefix."tuser ALTER COLUMN iduser SET DEFAULT nextval('".$this->prefix."tuser_iduser_seq'::regclass);
 
 INSERT INTO ".$this->prefix."taction VALUES (1, 'Agregar', 1, 2, '1');
 INSERT INTO ".$this->prefix."taction VALUES (2, 'Editar', 2, 71, '1');
@@ -4122,11 +3695,6 @@ INSERT INTO ".$this->prefix."tdservice_action VALUES (239, 31, 2);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (240, 31, 3);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (241, 28, 4);
 
-SELECT pg_catalog.setval('".$this->prefix."tdservice_action_idservice_action_seq', 256, false);
-
-
-SELECT pg_catalog.setval('".$this->prefix."tduser_service_ordered_iduser_service_ordered_seq', 1, false);
-
 INSERT INTO ".$this->prefix."tethnicity VALUES (1, 'NINGUNO', '1');
 INSERT INTO ".$this->prefix."tethnicity VALUES (2, 'ACAHUAYO', '1');
 INSERT INTO ".$this->prefix."tethnicity VALUES (3, 'ARAHUAC DEL DELTA AMACURO', '1');
@@ -4150,38 +3718,19 @@ INSERT INTO ".$this->prefix."tethnicity VALUES (20, 'YUCPA', '1');
 INSERT INTO ".$this->prefix."tethnicity VALUES (21, 'VOCABLOS DE ORIGEN INDIGENA', '1');
 INSERT INTO ".$this->prefix."tethnicity VALUES (22, 'CARI', '1');
 
-SELECT pg_catalog.setval('".$this->prefix."tethnicity_idethnicity_seq', 22, false);
-
 INSERT INTO ".$this->prefix."tgallery VALUES (1, 1, 'uploads/gallery/2017082320382016923927_1348435195230600_1816631906_n.jpg', '', '', '', '', '2017-08-23');
 INSERT INTO ".$this->prefix."tgallery VALUES (2, 1, 'uploads/gallery/2017082320392316933488_1348432158564237_1757376988_n.jpg', '', '', '', '', '2017-08-23');
-INSERT INTO ".$this->prefix."tgallery VALUES (3, 1, 'uploads/gallery/20170826063617LogoMC.png', NULL, NULL, NULL, NULL, '2017-08-26');
-
-SELECT pg_catalog.setval('".$this->prefix."tgallery_idgallery_seq', 3, true);";
+INSERT INTO ".$this->prefix."tgallery VALUES (3, 1, 'uploads/gallery/20170826063617LogoMC.png', NULL, NULL, NULL, NULL, '2017-08-26');";
 $sql.="
-SELECT pg_catalog.setval('".$this->prefix."ticon_idicon_seq', 989, false);
-
-SELECT pg_catalog.setval('".$this->prefix."tlog_report_idlog_report_seq', 1, false);
-
 INSERT INTO ".$this->prefix."tnationality VALUES (1, 'V', 'Venezolano', '1');
-SELECT pg_catalog.setval('".$this->prefix."tnationality_idnationality_seq', 1, false);
-SELECT pg_catalog.setval('".$this->prefix."tnotice_idnotice_seq', 1, false);
 
 INSERT INTO ".$this->prefix."torganization VALUES ('AmeliaCMS', 'AmeliaCMS ', 'augustoalvarez05@gmail.com', 'Version Beta', 0, 3, 'av 36 entre 22 y 23', 'Todos los derechos reservados 2017', '04245370954', '', '', 2, 0, 0, 'lcoalhost', '23', '1', 'TLS', 'root', '1234', 'asda', '', 3, 2, NULL, NULL);
 
 INSERT INTO ".$this->prefix."tpage VALUES (1, 'mkasda', '0', 'asdasd', '', 1, '<p>nkasdka</p>', '1', '1');
 
-SELECT pg_catalog.setval('".$this->prefix."tpage_idpage_seq', 1, false);
-
 INSERT INTO ".$this->prefix."tperson VALUES (1, 1, 1, 1, '', '00000000', 'Administrador', '', 'Root', '', 'F', '".$this->email."', NOW(), 'asad', 1036, '', '', '', '1');
 
-SELECT pg_catalog.setval('".$this->prefix."tperson_idperson_seq', 1, false);
-
-
-
-
 INSERT INTO ".$this->prefix."tpost VALUES (1, 'ameliacms', 'AmeliaCMS', '151559 ', 4, '<p style=\"text-align: justify;\"><span style=\"color: #000000;\">Es una plataforma dise&ntilde;ada para crear aplicaciones web, posee caracter&iacute;sticas relevantes y f&aacute;ciles de utilizar.</span><br /><span style=\"color: #000000;\">Con solo importar la base de datos el usuario esta listo para hacer uso de ella. Adem&aacute;s, posee una curva de aprendizaje alta y permite la escalabilidad ya que esta basado bajo la arquitectura MVC.</span></p>', 1, '2017-08-03', '1');
-
-SELECT pg_catalog.setval('".$this->prefix."tpost_idpost_seq', 1, false);
 
 INSERT INTO ".$this->prefix."tservice VALUES (1, 0, 'Seguridad y config.', '', 139, '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (2, 1, 'Cargos', 'charge', 591, '       ', '1');
@@ -4189,7 +3738,6 @@ INSERT INTO ".$this->prefix."tservice VALUES (3, 1, 'Acciones', 'action', 108, '
 INSERT INTO ".$this->prefix."tservice VALUES (4, 1, 'Servicios', 'service', 26, '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (5, 1, 'Etnias', 'ethnicity', 964, '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (6, 1, 'Nacionalidades', 'nationality', 179, '       ', '1');
-
 INSERT INTO ".$this->prefix."tservice VALUES (8, 1, 'Iconos', 'icon', 8, '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (9, 0, 'Localidades', '', 438, '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (10, 9, 'Parroquias', 'parish', 327, '       ', '1');
@@ -4213,28 +3761,10 @@ INSERT INTO ".$this->prefix."tservice VALUES (28, 21, 'Temas', 'theme', 710, 'F5
 INSERT INTO ".$this->prefix."tservice VALUES (31, 1, 'Editor de codigo', 'codeeditor', 550, 'F5F5F5 ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (21, 0, 'Blog', '', 50, '       ', '0');
 
-SELECT pg_catalog.setval('".$this->prefix."tservice_idservice_seq', 1, false);
-
-
-
-
-
-
-
-
-SELECT pg_catalog.setval('".$this->prefix."tsocial_network_idsocial_network_seq', 1, false);
-
 INSERT INTO ".$this->prefix."ttheme VALUES (1, 'Clean Blog', 'blog1', 'clean-blog/', 'img', ' ');
 INSERT INTO ".$this->prefix."ttheme VALUES (2, 'Basica', 'Simple tema', 'basica/', 'img', '1');
 
-SELECT pg_catalog.setval('".$this->prefix."ttheme_idtheme_seq', 2, true);
-
-
-SELECT pg_catalog.setval('".$this->prefix."ttheme_origin_idtheme_origin_seq', 1, false);
-
 INSERT INTO ".$this->prefix."tuser VALUES (1, 1, '".$this->user."', 0, 0, '', '1');
-
-SELECT pg_catalog.setval('".$this->prefix."tuser_iduser_seq', 1, true);
 
 ALTER TABLE ONLY ".$this->prefix."taction
     ADD CONSTRAINT ".$this->prefix."taction_pkey PRIMARY KEY (idaction);
@@ -4259,8 +3789,6 @@ ALTER TABLE ONLY ".$this->prefix."tdquestion_answer
 
 ALTER TABLE ONLY ".$this->prefix."tdservice_action
     ADD CONSTRAINT ".$this->prefix."tdservice_action_pkey PRIMARY KEY (idservice_action);
-
-
 
 ALTER TABLE ONLY ".$this->prefix."tduser_service_ordered
     ADD CONSTRAINT ".$this->prefix."tduser_service_ordered_pkey PRIMARY KEY (iduser_service_ordered);
@@ -4301,12 +3829,6 @@ ALTER TABLE ONLY ".$this->prefix."tpost
 ALTER TABLE ONLY ".$this->prefix."tservice
     ADD CONSTRAINT ".$this->prefix."tservice_pkey PRIMARY KEY (idservice);
 
-
-
-
-
-
-
 ALTER TABLE ONLY ".$this->prefix."tsocial_network
     ADD CONSTRAINT ".$this->prefix."tsocial_network_pkey PRIMARY KEY (idsocial_network);
 
@@ -4323,14 +3845,8 @@ ALTER TABLE ONLY ".$this->prefix."tdcharge_service_action
     ADD CONSTRAINT ".$this->prefix."tdcharge_service_action_idcharge_fkey FOREIGN KEY (idcharge) REFERENCES ".$this->prefix."tservice(idservice) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE ONLY ".$this->prefix."tdservice_action
-    ADD CONSTRAINT ".$this->prefix."tdservice_action_idservice_fkey FOREIGN KEY (idservice) REFERENCES ".$this->prefix."tservice(idservice) ON UPDATE CASCADE ON DELETE CASCADE;
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;";
-$sql.="SELECT pg_catalog.setval('".$this->prefix."taction_idaction_seq', 7, false);
-
+    ADD CONSTRAINT ".$this->prefix."tdservice_action_idservice_fkey FOREIGN KEY (idservice) REFERENCES ".$this->prefix."tservice(idservice) ON UPDATE CASCADE ON DELETE CASCADE;";
+$sql.="
 INSERT INTO ".$this->prefix."taddress VALUES (1, 0, 'VENEZUELA', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (2, 1, 'DTTO. CAPITAL', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (3, 1, 'ANZOATEGUI', '1');
@@ -4789,7 +4305,8 @@ INSERT INTO ".$this->prefix."taddress VALUES (455, 51, 'CODAZZI', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (456, 51, 'CUNAVICHE', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (457, 52, 'ELORZA', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (458, 52, 'LA TRINIDAD', '1');
-INSERT INTO ".$this->prefix."taddress VALUES (459, 53, 'SAN FERNANDO', '1');INSERT INTO ".$this->prefix."taddress VALUES (460, 53, 'PEÃ‘ALVER', '1');
+INSERT INTO ".$this->prefix."taddress VALUES (459, 53, 'SAN FERNANDO', '1');
+INSERT INTO ".$this->prefix."taddress VALUES (460, 53, 'PEÃ‘ALVER', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (461, 53, 'EL RECREO', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (462, 53, 'SN RAFAEL DE ATAMAICA', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (463, 54, 'BIRUACA', '1');
@@ -5433,7 +4950,6 @@ INSERT INTO ".$this->prefix."taddress VALUES (1099, 251, 'GUARAUNOS', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1100, 251, 'TUNAPUICITO', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1101, 251, 'UNION', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1102, 251, 'GRAL FCO. A VASQUEZ', '1');
-
 INSERT INTO ".$this->prefix."taddress VALUES (1103, 252, 'SANTA CATALINA', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1104, 252, 'SANTA ROSA', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1105, 252, 'SANTA TERESA', '1');
@@ -5526,7 +5042,6 @@ INSERT INTO ".$this->prefix."taddress VALUES (1191, 279, 'LA PALMITA', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1192, 280, 'CM. UREÃ‘A', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1193, 280, 'NUEVA ARCADIA', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1194, 281, 'CM. QUENIQUEA', '1');
-
 INSERT INTO ".$this->prefix."taddress VALUES (1195, 281, 'SAN PABLO', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1196, 281, 'ELEAZAR LOPEZ CONTRERA', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1197, 281, 'CM. CORDERO', '1');
@@ -5836,15 +5351,8 @@ INSERT INTO ".$this->prefix."taddress VALUES (1500, 0, 'URUGUAY', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1501, 0, 'PERU', '1');
 INSERT INTO ".$this->prefix."taddress VALUES (1502, 1501, 'LIMA', '1');
 
-SELECT pg_catalog.setval('".$this->prefix."taddress_idaddress_seq', 1502, false);
-
 INSERT INTO ".$this->prefix."tcharge VALUES (1, 'Administrador', '1');
 INSERT INTO ".$this->prefix."tcharge VALUES (2, 'gerente', '1');
-
-SELECT pg_catalog.setval('".$this->prefix."tcharge_idcharge_seq', 2, true);
-
-
-SELECT pg_catalog.setval('".$this->prefix."tcontact_idcontact_seq', 6729, false);
 
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6588, 1, 28, 2);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6589, 1, 28, 3);
@@ -5987,13 +5495,7 @@ INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6725, 1, 2, 5);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6726, 1, 2, 6);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6727, 1, 2, 7);
 
-SELECT pg_catalog.setval('".$this->prefix."tdcharge_service_action_idcharge_service_action_seq', 1, false);
-
 INSERT INTO ".$this->prefix."tdpassword VALUES (1, 1, '".$this->encrypter($this->password)."', NOW(), '1');
-
-SELECT pg_catalog.setval('".$this->prefix."tdpassword_idpassword_seq', 1, false);
-
-SELECT pg_catalog.setval('".$this->prefix."tdquestion_answer_idquestion_answer_seq', 1, false);
 
 INSERT INTO ".$this->prefix."ticon VALUES (1, 'glyphicon', 'glyphicon-asterisk', '1');
 INSERT INTO ".$this->prefix."ticon VALUES (2, 'glyphicon', 'glyphicon-plus', '1');

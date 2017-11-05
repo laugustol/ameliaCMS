@@ -2,12 +2,12 @@
 <div class="box">
 	<div class="box-tools">
 		<div class="box-tool-left">
-			<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=list_report?></a>
+			<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.routerCtrl?>"><?=list_report?></a>
 		</div>
 		<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 	</div>
 	<div class="box-container">
-		<form action='<?=url_base.controller?>/pdf' method='POST' class='form-horizontal' target='_blank'>
+		<form action='<?=url_base.routerCtrl?>/pdf' method='POST' class='form-horizontal' target='_blank'>
 			<input type="hidden" name="event" id="event">
 			<div class="form-group">
 				<label class="col-md-2 text-right"><?=list_report_list?>:</label>

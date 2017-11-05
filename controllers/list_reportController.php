@@ -3,6 +3,7 @@ namespace controllers;
 class list_reportController{
 	private $list_report,$permission,$log_movement;
 	public function __construct(){
+		define("controller","log_report");
 		$this->list_report = new \Models\list_reportModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

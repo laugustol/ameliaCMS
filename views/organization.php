@@ -2,12 +2,12 @@
 <div class="box">
 	<div class="box-tools">
 		<div class="box-tool-left">
-			<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=organization?></a> <i class='fa fa-angle-right'></i> <?=edit?>
+			<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.routerCtrl?>"><?=organization?></a> <i class='fa fa-angle-right'></i> <?=edit?>
 		</div>
 		<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 	</div>
 	<div class="box-container">
-		<form action='<?=url_base.controller?>/edit' method='POST' class='form-horizontal'>
+		<form action='<?=url_base.routerCtrl?>/edit' method='POST' class='form-horizontal'>
 			<input type="hidden" name="event" id="event">
 			<div class="form-group">
 				<label class="col-md-2 text-right"><?=organization_header?>:</label>

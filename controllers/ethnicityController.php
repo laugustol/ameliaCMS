@@ -3,6 +3,7 @@ namespace controllers;
 class ethnicityController{
 	private $ethnicity,$permission,$log_movement;
 	public function __construct(){
+		define("controller","ethnicity");
 		$this->ethnicity = new \Models\ethnicityModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

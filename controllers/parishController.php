@@ -3,6 +3,7 @@ namespace controllers;
 class parishController{
 	private $parish,$permission,$log_movement;
 	public function __construct(){
+		define("controller","parish");
 		$this->parish = new \Models\addressModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

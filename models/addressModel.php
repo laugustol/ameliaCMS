@@ -93,25 +93,25 @@ class addressModel{
 		return $d;
 	}
 	public function search($value){
-		$this->db->prepare("SELECT p.idaddress,CONCAT(p.name,' - ',m.name,' - ',s.name,' - ',c.name) FROM ".PREFIX."taddress p INNER JOIN ".PREFIX."taddress m ON p.idfather=m.idaddress INNER JOIN ".PREFIX."taddress s ON m.idfather=s.idaddress INNER JOIN ".PREFIX."taddress c ON s.idfather=c.idaddress WHERE (p.name LIKE '%$value%' OR m.name LIKE '%$value%') AND p.status='1' AND m.status='1' AND s.status='1' AND c.status='1' ;");
+		$this->db->prepare("SELECT p.idaddress,CONCAT(p.name,' - ',m.name,' - ',s.name,' - ',c.name) FROM ".PREFIX."taddress p INNER JOIN ".PREFIX."taddress m ON p.idfather=m.idaddress INNER JOIN ".PREFIX."taddress s ON m.idfather=s.idaddress INNER JOIN ".PREFIX."taddress c ON s.idfather=c.idaddress WHERE (lower(p.name) LIKE lower('%$value%') OR lower(m.name) LIKE lower('%$value%')) AND p.status='1' AND m.status='1' AND s.status='1' AND c.status='1' ;");
 		$data=$this->db->execute();
 		foreach ($data as $val) { $d[]=$val; }
 		return $d;
 	}
 	public function search_c($value){
-		$this->db->prepare("SELECT c.idaddress,c.name FROM ".PREFIX."taddress p INNER JOIN ".PREFIX."taddress m ON p.idfather=m.idaddress INNER JOIN ".PREFIX."taddress s ON m.idfather=s.idaddress INNER JOIN ".PREFIX."taddress c ON s.idfather=c.idaddress WHERE c.name LIKE '%$value%' AND c.status='1' ;");
+		$this->db->prepare("SELECT c.idaddress,c.name FROM ".PREFIX."taddress p INNER JOIN ".PREFIX."taddress m ON p.idfather=m.idaddress INNER JOIN ".PREFIX."taddress s ON m.idfather=s.idaddress INNER JOIN ".PREFIX."taddress c ON s.idfather=c.idaddress WHERE lower(c.name) LIKE lower('%$value%') AND c.status='1' ;");
 		$data=$this->db->execute();
 		foreach ($data as $val) { $d[]=$val; }
 		return $d;
 	}
 	public function search_s($value){
-		$this->db->prepare("SELECT s.idaddress,CONCAT(s.name,' - ',c.name) FROM ".PREFIX."taddress p INNER JOIN ".PREFIX."taddress m ON p.idfather=m.idaddress INNER JOIN ".PREFIX."taddress s ON m.idfather=s.idaddress INNER JOIN ".PREFIX."taddress c ON s.idfather=c.idaddress WHERE s.name LIKE '%$value%' AND s.status='1' AND c.status='1' ;");
+		$this->db->prepare("SELECT s.idaddress,CONCAT(s.name,' - ',c.name) FROM ".PREFIX."taddress p INNER JOIN ".PREFIX."taddress m ON p.idfather=m.idaddress INNER JOIN ".PREFIX."taddress s ON m.idfather=s.idaddress INNER JOIN ".PREFIX."taddress c ON s.idfather=c.idaddress WHERE lower(s.name) LIKE lower('%$value%') AND s.status='1' AND c.status='1' ;");
 		$data=$this->db->execute();
 		foreach ($data as $val) { $d[]=$val; }
 		return $d;
 	}
 	public function search_m($value){
-		$this->db->prepare("SELECT m.idaddress,CONCAT(m.name,' - ',s.name,' - ',c.name) FROM ".PREFIX."taddress p INNER JOIN ".PREFIX."taddress m ON p.idfather=m.idaddress INNER JOIN ".PREFIX."taddress s ON m.idfather=s.idaddress INNER JOIN ".PREFIX."taddress c ON s.idfather=c.idaddress WHERE m.name LIKE '%$value%' AND m.status='1' AND s.status='1' AND c.status='1' ;");
+		$this->db->prepare("SELECT m.idaddress,CONCAT(m.name,' - ',s.name,' - ',c.name) FROM ".PREFIX."taddress p INNER JOIN ".PREFIX."taddress m ON p.idfather=m.idaddress INNER JOIN ".PREFIX."taddress s ON m.idfather=s.idaddress INNER JOIN ".PREFIX."taddress c ON s.idfather=c.idaddress WHERE lower(m.name) LIKE lower('%$value%') AND m.status='1' AND s.status='1' AND c.status='1' ;");
 		$data=$this->db->execute();
 		foreach ($data as $val) { $d[]=$val; }
 		return $d;

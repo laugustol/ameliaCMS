@@ -3,6 +3,7 @@ namespace controllers;
 class codeeditorController{
 	private $codeeditor,$permission,$log_movement;
 	public function __construct(){
+		define("controller","codeeditor");
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;
 	}

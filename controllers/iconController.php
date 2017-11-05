@@ -3,6 +3,7 @@ namespace controllers;
 class iconController{
 	private $icon,$permission,$log_movement;
 	public function __construct(){
+		define("controller","icon");
 		$this->icon = new \Models\iconModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

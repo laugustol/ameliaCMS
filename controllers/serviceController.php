@@ -3,6 +3,7 @@ namespace controllers;
 class serviceController{
 	private $service,$permission,$log_movement;
 	public function __construct(){
+		define("controller","service");
 		$this->service = new \Models\serviceModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

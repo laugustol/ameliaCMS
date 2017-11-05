@@ -54,7 +54,7 @@ class ethnicityModel{
 		return $d;
 	}
 	public function search($value){
-		$this->db->prepare("SELECT idethnicity,name FROM ".PREFIX."tethnicity WHERE name LIKE '%$value%' AND status='1';");
+		$this->db->prepare("SELECT idethnicity,name FROM ".PREFIX."tethnicity WHERE lower(name) LIKE lower('%$value%') AND status='1';");
 		$data=$this->db->execute();
 		foreach ($data as $val) { $d[]=$val; }
 		return $d;

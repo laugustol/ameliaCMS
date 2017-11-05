@@ -3,6 +3,7 @@ namespace controllers;
 class social_networkController{
 	private $social_network,$permission,$log_movement;
 	public function __construct(){
+		define("controller","social_network");
 		$this->social_network = new \Models\social_networkModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

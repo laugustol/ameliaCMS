@@ -3,14 +3,14 @@
 	<div class="box">
 		<div class="box-tools">
 			<div class="box-tool-left">
-				<a href="<?=url_base?>home/login"><?=login?></a> <i class="fa fa-angle-right"></i> <b><?=forgot_password?></b>
+				<a href="<?=url_base?>login"><?=login?></a> <i class="fa fa-angle-right"></i> <b><?=forgot_password?></b>
 			</div>
 			<div class="box-tool-right">
 				
 			</div>
 		</div>
 		<div class="box-container">
-			<form action="<?=url_base?>home/forgot_password" method="POST" class="form-horizontal">
+			<form action="<?=url_base?>forgot-password" method="POST" class="form-horizontal">
 				<div class="form-group">
 					<label class="col-md-2 text-right"><?=forgot_password_user_email?>:</label>
 					<div class="col-md-7">
@@ -29,7 +29,7 @@
 </div>
 <script>
 	function search_questions_answers(){
-		$.post("<?=url_base?>user/query_questions_answers",{name:$("#user").val()},function(datas){
+		$.post("<?=url_base?>user/query-questions-answers",{name:$("#user").val()},function(datas){
 			var data = $.parseJSON(datas);
 			var content = "";
 			var a=1;

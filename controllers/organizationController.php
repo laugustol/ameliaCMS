@@ -3,6 +3,7 @@ namespace controllers;
 class organizationController{
 	private $organization,$permission,$log_movement;
 	public function __construct(){
+		define("controller","organization");
 		$this->organization = new \Models\organizationModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

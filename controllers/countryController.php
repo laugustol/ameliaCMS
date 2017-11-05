@@ -3,6 +3,7 @@ namespace controllers;
 class countryController{
 	private $country,$permission,$log_movement;
 	public function __construct(){
+		define("controller","country");
 		$this->country = new \Models\addressModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;
@@ -15,6 +16,7 @@ class countryController{
 	}
 	public function data($id=""){
 		$this->country->idaddress=$id;
+		$this->country->idfather=(isset($_POST["idfather"]))? $_POST["idfather"] : 0;
 		$this->country->name=$_POST["name"];
 	}
 	public function listt(){

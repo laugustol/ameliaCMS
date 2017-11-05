@@ -3,19 +3,20 @@ namespace controllers;
 class chargeController{
 	private $charge,$permission,$log_movement;
 	public function __construct(){
+		define("controller","charge");
 		$this->charge = new \Models\chargeModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,2,log_movement_message_list);
-		$this->permission->getpermission_action(array(1,2,3,4,5,7));
+		echo $this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"]["add"] = $this->charge->dependencies();
 		view("charge.php",1,$data);
 	}
 	public function data($id=""){
 		$this->charge->idcharge=$id;
-		$this->charge->name=$_POST["name"];
+		$this->charge->name=ucwords($_POST["name"]);
 	}
 	public function listt(){
 		echo json_encode($this->charge->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
@@ -29,7 +30,7 @@ class chargeController{
 			header("location: ".url_base.controller."/add");
 			exit;
 		}
-		view("charge.php",1);	
+		view("charge.php",1);
 	}
 	public function query($id){
 		$this->permission->getpermission_action(array(2,3));

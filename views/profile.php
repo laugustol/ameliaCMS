@@ -3,12 +3,12 @@
 <div class="box col-md-6" style="margin-right: 50px;">
 	<div class="box-tools">
 		<div class="box-tool-left">
-			<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=user?></a> <i class='fa fa-angle-right'></i> <?=profile?>
+			<a href="<?=url_base?>dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=user?></a> <i class='fa fa-angle-right'></i> <?=profile?>
 		</div>
 		<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 	</div>
 	<div class="box-container">
-		<form action='<?=url_base.controller."/".action?>' method='POST' class='form-horizontal' enctype='multipart/form-data'>
+		<form action='<?=url_base.routerCtrl?>' method='POST' class='form-horizontal' enctype='multipart/form-data'>
 				<input type="hidden" name="event" id="event">
 				<div class='form-group'>
 					<label class='col-md-2 text-right'><?=user_name_two?>:</label>
@@ -137,12 +137,12 @@
 		<div class="box">
 			<div class="box-tools">
 				<div class="box-tool-left">
-					<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=user?></a> <i class='fa fa-angle-right'></i> <?=profile_password?>
+					<a href="<?=url_base?>dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=user?></a> <i class='fa fa-angle-right'></i> <?=profile_password?>
 				</div>
 				<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 			</div>
 			<div class="box-container">
-				<form action='<?=url_base.controller?>/new_password' method='POST' class='form-horizontal'>
+				<form action='<?=url_base.routerCtrl?>/new-password' method='POST' class='form-horizontal'>
 					<input type="hidden" name="event" id="event">
 					<div class="form-group">
 						<label class="col-md-2 text-right"><?=profile_new_password?>:</label>
@@ -167,12 +167,12 @@
 		<div class="box">
 			<div class="box-tools">
 				<div class="box-tool-left">
-					<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=user?></a> <i class='fa fa-angle-right'></i> <?=profile_question_answer_secrets?>
+					<a href="<?=url_base?>dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=user?></a> <i class='fa fa-angle-right'></i> <?=profile_question_answer_secrets?>
 				</div>
 				<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 			</div>
 			<div class="box-container">
-				<form action='<?=url_base.controller?>/question_answer' method='POST' class='form-horizontal'>
+				<form action='<?=url_base.routerCtrl?>/question-answer' method='POST' class='form-horizontal'>
 					<input type="hidden" name="event" id="event">
 					<?php
 						for($a=0;$a<$dependencies["organization"][0]["number_question_answer"];$a++){
@@ -202,12 +202,12 @@
 <div class="box">
 	<div class="box-tools">
 		<div class="box-tool-left">
-			<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=user?></a> <i class='fa fa-angle-right'></i> <?=profile_password?>
+			<a href="<?=url_base?>dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.controller?>"><?=user?></a> <i class='fa fa-angle-right'></i> <?=profile_password?>
 		</div>
 		<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 	</div>
 	<div class="box-container">
-		<form action='<?=url_base.controller?>/initiated' method='POST' class='form-horizontal'>
+		<form action='<?=url_base.routerCtrl?>/initiated' method='POST' class='form-horizontal'>
 			<input type="hidden" name="event" id="event">
 			<div class="form-group">
 				<label class="col-md-2 text-right"><?=profile_new_password?>:</label>
@@ -282,7 +282,7 @@
 					enviar: {
 						text: "<?=profile_send?>",
 						action: function(){
-							$.post("<?=url_base?>/user/required_password",{password:$("#required_password_text").val()},function(data){
+							$.post("<?=url_base?>user/required-password",{password:$("#required_password_text").val()},function(data){
 								if(data == '1'){
 									$(".required_password").parent().parent().parent()[num].submit();
 								}else{

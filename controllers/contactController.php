@@ -3,6 +3,7 @@ namespace controllers;
 class contactController{
 	private $contact,$permission,$log_movement;
 	public function __construct(){
+		define("controller","contact");
 		$this->contact = new \Models\contactModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

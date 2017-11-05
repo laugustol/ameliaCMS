@@ -3,6 +3,7 @@ namespace controllers;
 class userController{
 	private $user,$person,$permission,$log_movement;
 	public function __construct(){
+		define("controller","user");
 		$this->user = new \Models\userModel;
 		$this->person = new \Models\personModel;
 		$this->permission = new \Models\permissionModel;
@@ -143,7 +144,7 @@ class userController{
 		if(isset($_POST["event"])){
 			$this->data($_SESSION["iduser"]);
 			$_SESSION["msj"] = ($this->person->edit())? edit_success : edit_error;
-			header("location: ".url_base.controller."/profile");
+			header("location: ".url_base."profile");
 			exit;
 		}
 		$this->user->iduser=$_SESSION["iduser"];
@@ -191,7 +192,7 @@ class userController{
 				}
 			}
 		}
-		header("location: ".url_base.controller."/profile");
+		header("location: ".url_base."profile");
 		exit;
 	}
 	public function query_questions_answers(){
@@ -239,7 +240,7 @@ class userController{
 				}
 			}
 		}
-		header("location: ".url_base.controller."/profile");
+		header("location: ".url_base."profile");
 		exit;
 	}
 }

@@ -82,8 +82,8 @@ if(!isset($_SESSION["iduser"])){
 			<div><?=$_SESSION["pename_one"].' '.$_SESSION["pelast_name_one"]?><br><?=$_SESSION["cname"]?></div>
 		</div>
 		<div class="btns">
-			<a href="<?=url_base?>home/dashboard" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_home?>"><i class="fa fa-home"></i></a>
-			<a href="<?=url_base?>user/profile" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_user?>"><i class="fa fa-user"></i></a>
+			<a href="<?=url_base?>dashboard" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_home?>"><i class="fa fa-home"></i></a>
+			<a href="<?=url_base?>profile" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_user?>"><i class="fa fa-user"></i></a>
 			<a href="<?=url_base?>" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_rotate_left?>"><i class="fa fa-rotate-left"></i></a>
 			<a href="javascript:void(0);" id="ordered" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=btn_list?>"><i class="glyphicon glyphicon-th-list"></i></a>
 			<a href="void:javascript(0);" class="btn btn-default btn-xs" data-toggle="tooltip" title="<?=($_SESSION["environment"]=='1')? login_environment_option_test : login_environment_option_production?>"><i class="glyphicon glyphicon-globe"></i></a>
@@ -229,7 +229,7 @@ if(!isset($_SESSION["iduser"])){
 			            keys: ['enter', 'shift'],
 			            action: function(){
 			            	$.dialog({title:'',content:'<?=btn_logout_alert?>'});
-			            	setTimeout(function(){ window.location="<?=url_base?>home/logout"; }, 1000);
+			            	setTimeout(function(){ window.location="<?=url_base?>logout"; }, 1000);
 			            	    
 			            }
 			        },

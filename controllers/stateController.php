@@ -3,6 +3,7 @@ namespace controllers;
 class stateController{
 	private $state,$permission,$log_movement;
 	public function __construct(){
+		define("controller","state");
 		$this->state = new \Models\addressModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

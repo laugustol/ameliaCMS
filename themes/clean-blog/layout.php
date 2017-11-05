@@ -3,7 +3,7 @@ require 'language.php';
 $organization = new \models\organizationModel;
 $org = $organization->query();
 if($org["skip_homepage"]){
-    header("location: ".url_base."home/login");
+    header("location: ".url_base."login");
 }
 ?>
 <!DOCTYPE html>
@@ -46,7 +46,7 @@ if($org["skip_homepage"]){
                 }
             </style>
             <div class='rotate-left'>
-                <a href='".url_base."home/dashboard' class='btn btn-default' title='".template_btn_rotate_left."'><i class='fa fa-rotate-left'></i></a>
+                <a href='".url_base."dashboard' class='btn btn-default' title='".template_btn_rotate_left."'><i class='fa fa-rotate-left'></i></a>
             </div>";
         }
     ?>
@@ -69,7 +69,7 @@ if($org["skip_homepage"]){
                             echo "<li><a href='".(($p["link"]=="0")? url_base."page/show/".$p["url"] : $p["url"])."'>".$p["name"]."</a></li>";
                         }
                     ?>
-                    <?=($org["login"]=="1")? "<li><a href='".url_base."home/login'>".template_login."</a></li>" : ''?>
+                    <?=($org["login"]=="1")? "<li><a href='".url_base."login'>".template_login."</a></li>" : ''?>
                 </ul>
             </div>
         </div>

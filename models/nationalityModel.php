@@ -55,7 +55,7 @@ class nationalityModel{
 		return $d;
 	}
 	public function search($value){
-		$this->db->prepare("SELECT idnationality,CONCAT(name_one,' ',name_two) FROM ".PREFIX."tnationality WHERE name_one LIKE '%$value%' OR name_two LIKE '%$value%' AND status='1';");
+		$this->db->prepare("SELECT idnationality,CONCAT(name_one,' ',name_two) FROM ".PREFIX."tnationality WHERE lower(name_one) LIKE lower('%$value%') OR lower(name_two) LIKE lower('%$value%') AND status='1';");
 		$data=$this->db->execute();
 		foreach ($data as $val) { $d[]=$val; }
 		return $d;

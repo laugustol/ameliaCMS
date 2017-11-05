@@ -3,6 +3,7 @@ namespace controllers;
 class postController{
 	private $post,$permission,$log_movement;
 	public function __construct(){
+		define("controller","postr");
 		$this->post = new \Models\postModel;
 		$this->permission = new \Models\permissionModel;
 		$this->log_movement = new \Models\log_movementModel;

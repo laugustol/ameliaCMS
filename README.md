@@ -1,5 +1,6 @@
 # ameliaCMS
 Simple CMS escalable con arquitectura MVC
+* Componente para manejo de permisologia completa liberado
 * Nuevo componente para manejo de rutas
 * Sistema de instalacion automatizado
 * Solo debes crear 2 base de datos (Pruebas/Produccion)
@@ -34,4 +35,3 @@ Simple CMS escalable con arquitectura MVC
 * PHPMAiler
 * TinyMCE
 * Toastr
-<br>Si desea los archivos de permisologia completa contactanos: augustoalvarez05@gmail.com

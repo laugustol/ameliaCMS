@@ -4,8 +4,8 @@ class log_movementController{
 	private $log_movement,$permission;
 	public function __construct(){
 		define("controller","log_movement");
-		$this->log_movement = new \Models\log_movementModel;
-		$this->permission = new \Models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
+		$this->permission = new \models\permissionModel;
 	}
 	public function index(){
 		$this->permission->getpermission_action(array(3,7));
@@ -21,7 +21,7 @@ class log_movementController{
 		header("location: ".url_base.controller);
 	}
 	public function pdf(){
-		$log_report = new \Models\log_reportModel;
+		$log_report = new \models\log_reportModel;
 		$randon = str_shuffle("012345678900abcdefghijklmnopqrstuvwxyz");
 		$log_report->add($_SESSION["iduser"],log_movement,$randon);
 		$organization = new \models\organizationModel;

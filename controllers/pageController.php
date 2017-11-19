@@ -4,9 +4,9 @@ class pageController{
 	private $page,$permission,$log_movement;
 	public function __construct(){
 		define("controller","page");
-		$this->page = new \Models\pageModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->page = new \models\pageModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,23,log_movement_message_list);

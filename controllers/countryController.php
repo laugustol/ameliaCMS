@@ -4,9 +4,9 @@ class countryController{
 	private $country,$permission,$log_movement;
 	public function __construct(){
 		define("controller","country");
-		$this->country = new \Models\addressModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->country = new \models\addressModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,13,log_movement_message_list);
@@ -75,7 +75,7 @@ class countryController{
 		header("location: ".url_base.controller);
 	}
 	public function pdf(){
-		$log_report = new \Models\log_reportModel;
+		$log_report = new \models\log_reportModel;
 		$randon = str_shuffle("012345678900abcdefghijklmnopqrstuvwxyz");
 		$log_report->add($_SESSION["iduser"],country,$randon);
 		$organization = new \models\organizationModel;

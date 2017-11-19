@@ -4,9 +4,9 @@ class chargeController{
 	private $charge,$permission,$log_movement;
 	public function __construct(){
 		define("controller","charge");
-		$this->charge = new \Models\chargeModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->charge = new \models\chargeModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,2,log_movement_message_list);
@@ -72,7 +72,7 @@ class chargeController{
 		header("location: ".url_base.controller);
 	}
 	public function pdf(){
-		$log_report = new \Models\log_reportModel;
+		$log_report = new \models\log_reportModel;
 		$randon = str_shuffle("012345678900abcdefghijklmnopqrstuvwxyz");
 		$log_report->add($_SESSION["iduser"],charge,$randon);
 		$organization = new \models\organizationModel;

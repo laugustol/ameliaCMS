@@ -111,7 +111,7 @@ class permissionModel{
 							INNER JOIN ".PREFIX."tservice s ON dcsa.idservice=s.idservice
 							INNER JOIN ".PREFIX."taction a ON dcsa.idaction=a.idaction
 							INNER JOIN ".PREFIX."ticon i ON a.idicon=i.idicon
-							WHERE dcsa.idcharge='".$_SESSION['idcharge']."' AND s.url='".controller."'
+							WHERE CAST(dcsa.idcharge as CHAR) ='".$_SESSION['idcharge']."' AND s.url='".controller."'
 							AND a.function=1 ORDER BY a.idaction DESC;");
 		$q1 = $this->db->execute();
 		$a = $q1->fetchAll();
@@ -130,7 +130,7 @@ class permissionModel{
 							INNER JOIN ".PREFIX."tservice s ON dcsa.idservice=s.idservice
 							INNER JOIN ".PREFIX."taction a ON dcsa.idaction=a.idaction
 							INNER JOIN ".PREFIX."ticon i ON a.idicon=i.idicon
-							WHERE dcsa.idcharge='".$_SESSION['idcharge']."' AND s.url='".controller."'
+							WHERE CAST(dcsa.idcharge as CHAR) = '".$_SESSION['idcharge']."' AND s.url='".controller."'
 							AND (a.function=2 OR a.function=3 OR a.function=4 OR a.function=5 OR a.function=7) ".$aux." ORDER BY a.idaction ASC;");
 		$q1 = $this->db->execute();
 		$a = $q1->fetchAll();
@@ -166,7 +166,7 @@ class permissionModel{
 							INNER JOIN ".PREFIX."tservice s ON dcsa.idservice=s.idservice
 							INNER JOIN ".PREFIX."taction a ON dcsa.idaction=a.idaction
 							INNER JOIN ".PREFIX."ticon i ON a.idicon=i.idicon
-							WHERE dcsa.idcharge='".$_SESSION['idcharge']."' AND s.url='".controller."'
+							WHERE CAST(dcsa.idcharge as CHAR) = '".$_SESSION['idcharge']."' AND s.url='".controller."'
 							AND (a.function='2' OR a.function='3' OR a.function='4' OR a.function='5' OR a.function='7') ".$aux." ORDER BY a.idaction ASC;");
 		$this->db->execute();
 		$a = $this->db->fetchAll();
@@ -195,11 +195,11 @@ class permissionModel{
 			if($_SESSION["initiated"]=='1'){
 				header('location: '.url_base.'home/dashboard');
 			}else{
-				header('location: '.url_base.'user/profile');
+				header('location: '.url_base.'profile');
 			}
 			exit;
 		}else if($_SESSION["initiated"]=='0'){
-			header('location: '.url_base.'user/profile');
+			header('location: '.url_base.'profile');
 		}
 	}
 }

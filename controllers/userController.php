@@ -4,10 +4,10 @@ class userController{
 	private $user,$person,$permission,$log_movement;
 	public function __construct(){
 		define("controller","user");
-		$this->user = new \Models\userModel;
-		$this->person = new \Models\personModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->user = new \models\userModel;
+		$this->person = new \models\personModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,15,log_movement_message_list);
@@ -65,7 +65,7 @@ class userController{
 	public function note(){
 		$this->data($_SESSION["iduser"]);
 		$this->user->note();
-		header("location: ".url_base."home/dashboard");
+		header("location: ".url_base."dashboard");
 		exit;
 	}
 	public function add(){
@@ -132,7 +132,7 @@ class userController{
 		header("location: ".url_base.controller);
 	}
 	public function pdf(){
-		$log_report = new \Models\log_reportModel;
+		$log_report = new \models\log_reportModel;
 		$randon = str_shuffle("012345678900abcdefghijklmnopqrstuvwxyz");
 		$log_report->add($_SESSION["iduser"],user,$randon);
 		$organization = new \models\organizationModel;

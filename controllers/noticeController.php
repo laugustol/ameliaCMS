@@ -4,9 +4,9 @@ class noticeController{
 	private $notice,$permission,$log_movement;
 	public function __construct(){
 		define("controller","notice");
-		$this->notice = new \Models\noticeModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->notice = new \models\noticeModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,2,log_movement_message_list);

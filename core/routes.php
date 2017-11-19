@@ -55,7 +55,7 @@ $router->get('action/add',function(){
   $ctrl = new controllers\actionController;
   $ctrl->add();
 });
-$router->post('action/add',function(){
+$router->post('action/add/',function(){
   define('routerCtrl','action');
   define('action','add');
   $ctrl = new controllers\actionController;
@@ -114,7 +114,7 @@ $router->get('charge/add',function(){
   $ctrl = new controllers\chargeController;
   $ctrl->add();
 });
-$router->post('charge/add',function(){
+$router->post('charge/add/',function(){
   define('routerCtrl','charge');
   define('action','add');
   $ctrl = new controllers\chargeController;
@@ -194,7 +194,7 @@ $router->get('person/add',function(){
   $ctrl = new controllers\personController;
   $ctrl->add();
 });
-$router->post('person/add',function(){
+$router->post('person/add/',function(){
   define('routerCtrl','person');
   define('action','add');
   $ctrl = new controllers\personController;
@@ -257,7 +257,7 @@ $router->get('ethnicity/add',function(){
   $ctrl = new controllers\ethnicityController;
   $ctrl->add();
 });
-$router->post('ethnicity/add',function(){
+$router->post('ethnicity/add/',function(){
   define('routerCtrl','ethnicity');
   define('action','add');
   $ctrl = new controllers\ethnicityController;
@@ -324,7 +324,7 @@ $router->get('icon/add',function(){
   $ctrl = new controllers\iconController;
   $ctrl->add();
 });
-$router->post('icon/add',function(){
+$router->post('icon/add/',function(){
   define('routerCtrl','icon');
   define('action','add');
   $ctrl = new controllers\iconController;
@@ -387,7 +387,7 @@ $router->get('service/add',function(){
   $ctrl = new controllers\serviceController;
   $ctrl->add();
 });
-$router->post('service/add',function(){
+$router->post('service/add/',function(){
   define('routerCtrl','service');
   define('action','add');
   $ctrl = new controllers\serviceController;
@@ -458,7 +458,7 @@ $router->get('social-network/add',function(){
   $ctrl = new controllers\social_networkController;
   $ctrl->add();
 });
-$router->post('social-network/add',function(){
+$router->post('social-network/add/',function(){
   define('routerCtrl','social-network');
   define('action','add');
   $ctrl = new controllers\social_networkController;
@@ -517,7 +517,7 @@ $router->get('nationality/add',function(){
   $ctrl = new controllers\nationalityController;
   $ctrl->add();
 });
-$router->post('nationality/add',function(){
+$router->post('nationality/add/',function(){
   define('routerCtrl','nationality');
   define('action','add');
   $ctrl = new controllers\nationalityController;
@@ -647,7 +647,7 @@ $router->get('state/add',function(){
   $ctrl = new controllers\stateController;
   $ctrl->add();
 });
-$router->post('state/add',function(){
+$router->post('state/add/',function(){
   define('routerCtrl','state');
   define('action','add');
   $ctrl = new controllers\stateController;
@@ -714,7 +714,7 @@ $router->get('municipality/add',function(){
   $ctrl = new controllers\municipalityController;
   $ctrl->add();
 });
-$router->post('municipality/add',function(){
+$router->post('municipality/add/',function(){
   define('routerCtrl','municipality');
   define('action','add');
   $ctrl = new controllers\municipalityController;
@@ -781,7 +781,7 @@ $router->get('parish/add',function(){
   $ctrl = new controllers\parishController;
   $ctrl->add();
 });
-$router->post('parish/add',function(){
+$router->post('parish/add/',function(){
   define('routerCtrl','parish');
   define('action','add');
   $ctrl = new controllers\parishController;
@@ -852,7 +852,7 @@ $router->get('service-home/add',function(){
   $ctrl = new controllers\service_homeController;
   $ctrl->add();
 });
-$router->post('service-home/add',function(){
+$router->post('service-home/add/',function(){
   define('routerCtrl','service-home');
   define('action','add');
   $ctrl = new controllers\service_homeController;
@@ -895,76 +895,76 @@ $router->get('service-home/deactivate/:id',function($id){
   $ctrl->deactivate($id);
 });
 //--list_report
-$router->get('list-report',function(){
-  define('routerCtrl','list-report');
+$router->get('list_report',function(){
+  define('routerCtrl','list_report');
   define('action','index');
   $ctrl = new controllers\list_reportController;
   $ctrl->index();
 });
-$router->get('list-report/query/:id',function($id){
-  define('routerCtrl','list-report');
+$router->get('list_report/query/:id',function($id){
+  define('routerCtrl','list_report');
   define('action','query');
   $ctrl = new controllers\list_reportController;
   $ctrl->query($id);
 });
-$router->get('list-report/pdf',function(){
+$router->get('list_report/pdf',function(){
   $ctrl = new controllers\list_reportController;
   $ctrl->pdf();
 });
 //--log_access
-$router->get('log-access',function(){
-  define('routerCtrl','log-access');
+$router->get('log_access',function(){
+  define('routerCtrl','log_access');
   define('action','index');
   $ctrl = new controllers\log_accessController;
   $ctrl->index();
 });
-$router->post('log-access/listt',function(){
+$router->post('log_access/listt',function(){
   $ctrl = new controllers\log_accessController;
   $ctrl->listt();
 });
-$router->get('log-access/delete/:id',function($id){
-  define('routerCtrl','log-access');
+$router->get('log_access/delete/:id',function($id){
+  define('routerCtrl','log_access');
   define('action','query');
   $ctrl = new controllers\log_accessController;
   $ctrl->delete($id);
 });
-$router->get('log-access/pdf',function(){
+$router->get('log_access/pdf',function(){
   $ctrl = new controllers\log_accessController;
   $ctrl->pdf();
 });
 //--log_movement
-$router->get('log-movement',function(){
-  define('routerCtrl','log-movement');
+$router->get('log_movement',function(){
+  define('routerCtrl','log_movement');
   define('action','index');
   $ctrl = new controllers\log_movementController;
   $ctrl->index();
 });
-$router->post('log-movement/listt',function(){
+$router->post('log_movement/listt',function(){
   $ctrl = new controllers\log_movementController;
   $ctrl->listt();
 });
-$router->get('log-movement/delete/:id',function($id){
-  define('routerCtrl','log-movement');
+$router->get('log_movement/delete/:id',function($id){
+  define('routerCtrl','log_movement');
   define('action','query');
   $ctrl = new controllers\log_movementController;
   $ctrl->delete($id);
 });
-$router->get('log-movement/pdf',function(){
+$router->get('log_movement/pdf',function(){
   $ctrl = new controllers\log_movementController;
   $ctrl->pdf();
 });
 //--log_report
-$router->get('log-report',function(){
-  define('routerCtrl','log-report');
+$router->get('log_report',function(){
+  define('routerCtrl','log_report');
   define('action','index');
   $ctrl = new controllers\log_reportController;
   $ctrl->index();
 });
-$router->post('log-report/listt',function(){
+$router->post('log_report/listt',function(){
   $ctrl = new controllers\log_reportController;
   $ctrl->listt();
 });
-$router->get('log-report/pdf',function(){
+$router->get('log_report/pdf',function(){
   $ctrl = new controllers\log_reportController;
   $ctrl->pdf();
 });
@@ -975,17 +975,11 @@ $router->get('organization',function(){
   $ctrl = new controllers\organizationController;
   $ctrl->index();
 });
-$router->get('organization/edit/:id',function($id){
+$router->post('organization/edit',function(){
   define('routerCtrl','organization');
   define('action','edit');
   $ctrl = new controllers\organizationController;
-  $ctrl->edit($id);
-});
-$router->post('organization/edit/:id',function($id){
-  define('routerCtrl','organization');
-  define('action','edit');
-  $ctrl = new controllers\organizationController;
-  $ctrl->edit($id);
+  $ctrl->edit();
 });
 //--slider
 $router->get('slider',function(){
@@ -1004,7 +998,7 @@ $router->get('slider/add',function(){
   $ctrl = new controllers\sliderController;
   $ctrl->add();
 });
-$router->post('slider/add',function(){
+$router->post('slider/add/',function(){
   define('routerCtrl','slider');
   define('action','add');
   $ctrl = new controllers\sliderController;
@@ -1053,7 +1047,7 @@ $router->get('theme',function(){
   $ctrl = new controllers\themeController;
   $ctrl->index();
 });
-$router->post('theme/add',function(){
+$router->post('theme/add/',function(){
   define('routerCtrl','theme');
   define('action','add');
   $ctrl = new controllers\themeController;
@@ -1100,7 +1094,7 @@ $router->post('gallery/edit/:id',function($id){
   $ctrl = new controllers\galleryController;
   $ctrl->edit($id);
 });
-$router->post('gallery/query/:id',function($id){
+$router->post('gallery/query',function($id){
   define('routerCtrl','gallery');
   define('action','query');
   $ctrl = new controllers\galleryController;
@@ -1120,13 +1114,11 @@ $router->post('gallery/upload',function(){
 });
 $router->get('gallery/show/:id',function($id){
   define('routerCtrl','gallery');
-  //define('action','query');
   $ctrl = new controllers\galleryController;
   $ctrl->show($id);
 });
-$router->get('gallery/show_ajax',function(){
+$router->post('gallery/show_ajax',function(){
   define('routerCtrl','gallery');
-  //define('action','query');
   $ctrl = new controllers\galleryController;
   $ctrl->show_ajax();
 });
@@ -1147,7 +1139,7 @@ $router->get('notice/add',function(){
   $ctrl = new controllers\noticeController;
   $ctrl->add();
 });
-$router->post('notice/add',function(){
+$router->post('notice/add/',function(){
   define('routerCtrl','notice');
   define('action','add');
   $ctrl = new controllers\noticeController;
@@ -1265,7 +1257,7 @@ $router->get('page/add',function(){
   $ctrl = new controllers\pageController;
   $ctrl->add();
 });
-$router->post('page/add',function(){
+$router->post('page/add/',function(){
   define('routerCtrl','page');
   define('action','add');
   $ctrl = new controllers\pageController;
@@ -1330,7 +1322,7 @@ $router->get('portfolio/add',function(){
   $ctrl = new controllers\portfolioController;
   $ctrl->add();
 });
-$router->post('portfolio/add',function(){
+$router->post('portfolio/add/',function(){
   define('routerCtrl','portfolio');
   define('action','add');
   $ctrl = new controllers\portfolioController;
@@ -1418,7 +1410,7 @@ $router->get('post/add',function(){
   $ctrl = new controllers\postController;
   $ctrl->add();
 });
-$router->post('post/add',function(){
+$router->post('post/add/',function(){
   define('routerCtrl','post');
   define('action','add');
   $ctrl = new controllers\postController;
@@ -1485,7 +1477,7 @@ $router->get('user/add',function(){
   $ctrl = new controllers\userController;
   $ctrl->add();
 });
-$router->post('user/add',function(){
+$router->post('user/add/',function(){
   define('routerCtrl','user');
   define('action','add');
   $ctrl = new controllers\userController;
@@ -1531,6 +1523,9 @@ $router->get('user/pdf',function(){
   $ctrl = new controllers\userController;
   $ctrl->pdf();
 });
+$router->post('user/note',function(){
+  $ctrl = new controllers\userController;
+  $ctrl->note();
 //
 $router->get('profile',function(){
   define('routerCtrl','profile');

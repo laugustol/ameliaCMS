@@ -4,9 +4,9 @@ class log_reportController{
 	private $log_report,$permission,$log_movement;
 	public function __construct(){
 		define("controller","log_report");
-		$this->log_report = new \Models\log_reportModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->log_report = new \models\log_reportModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,19,log_movement_message_list);
@@ -17,7 +17,7 @@ class log_reportController{
 		echo json_encode($this->log_report->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function pdf(){
-		$log_report = new \Models\log_reportModel;
+		$log_report = new \models\log_reportModel;
 		$randon = str_shuffle("012345678900abcdefghijklmnopqrstuvwxyz");
 		$log_report->add($_SESSION["iduser"],log_report,$randon);
 		$organization = new \models\organizationModel;

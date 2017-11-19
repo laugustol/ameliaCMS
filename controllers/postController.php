@@ -4,9 +4,9 @@ class postController{
 	private $post,$permission,$log_movement;
 	public function __construct(){
 		define("controller","postr");
-		$this->post = new \Models\postModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->post = new \models\postModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,22,log_movement_message_list);
@@ -76,7 +76,7 @@ class postController{
 		header("location: ".url_base.controller);
 	}
 	public function pdf(){
-		$log_report = new \Models\log_reportModel;
+		$log_report = new \models\log_reportModel;
 		$randon = str_shuffle("012345678900abcdefghijklmnopqrstuvwxyz");
 		$log_report->add($_SESSION["iduser"],post,$randon);
 		$organization = new \models\organizationModel;

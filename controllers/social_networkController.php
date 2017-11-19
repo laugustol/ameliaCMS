@@ -4,9 +4,9 @@ class social_networkController{
 	private $social_network,$permission,$log_movement;
 	public function __construct(){
 		define("controller","social_network");
-		$this->social_network = new \Models\social_networkModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->social_network = new \models\social_networkModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,24,log_movement_message_list);

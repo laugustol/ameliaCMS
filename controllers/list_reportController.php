@@ -4,9 +4,9 @@ class list_reportController{
 	private $list_report,$permission,$log_movement;
 	public function __construct(){
 		define("controller","log_report");
-		$this->list_report = new \Models\list_reportModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->list_report = new \models\list_reportModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,25,log_movement_message_list);

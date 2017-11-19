@@ -152,7 +152,7 @@ function selected_two(_this,id){
 function show_img(_this){
 	var src = _this.getElementsByTagName("img")[0].src.replace(url_base,"");
 	$('#gallery_modal').modal('show');
-	$.post(url_base+"gallery/query/",{src:src},function(datas){
+	$.post(url_base+"gallery/query",{src:src},function(datas){
 		var data = $.parseJSON(datas);
 		$("#form_modal").attr("action",url_base+"gallery/edit/"+data["idgallery"]);
 		$("#image_preview").attr("src",data["src"]);

@@ -23,7 +23,7 @@
 	                        "processing": true,
 	                        "serverSide": true,
 	                        "ordering": false,
-	                        "ajax": { url : "<?=url_base.routerCtrl?>/listt", type : "page" },
+	                        "ajax": { url : "<?=url_base.routerCtrl?>/listt", type : "POST" },
 	                        "columns": [
 	                            { "data": "idpage" },
 	                            { "data": "name" },

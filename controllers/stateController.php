@@ -4,9 +4,9 @@ class stateController{
 	private $state,$permission,$log_movement;
 	public function __construct(){
 		define("controller","state");
-		$this->state = new \Models\addressModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->state = new \models\addressModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,12,log_movement_message_list);
@@ -75,7 +75,7 @@ class stateController{
 		header("location: ".url_base.controller);
 	}
 	public function pdf(){
-		$log_report = new \Models\log_reportModel;
+		$log_report = new \models\log_reportModel;
 		$randon = str_shuffle("012345678900abcdefghijklmnopqrstuvwxyz");
 		$log_report->add($_SESSION["iduser"],state,$randon);
 		$organization = new \models\organizationModel;

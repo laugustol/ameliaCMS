@@ -1,7 +1,7 @@
 <?php
 if(!isset($_SESSION["iduser"])){
 	$_SESSION["msj"] = login_no_session_alert;
-	header("location: ".url_base."home/login");
+	header("location: ".url_base."login");
 	exit;
 }
 ?>

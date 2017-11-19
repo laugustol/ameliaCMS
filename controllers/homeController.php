@@ -3,8 +3,8 @@ namespace controllers;
 class homeController{
 	private $user,$log_access,$mailer;
 	public function __construct(){
-		$this->user = new \Models\userModel;
-		$this->log_access = new \Models\log_accessModel;
+		$this->user = new \models\userModel;
+		$this->log_access = new \models\log_accessModel;
 	}
 	public function index(){
 		view("index.php",2);
@@ -13,7 +13,7 @@ class homeController{
 		if(isset($_POST["user"]) && isset($_POST["password"])){
 			//RESET Model problem login connect db production != test
 			$_SESSION["environment"] = $_POST["environment"];
-			$this->user = new \Models\userModel;
+			$this->user = new \models\userModel;
 			$this->user->name=$_POST["user"];
 			$this->user->password=$_POST["password"];
 			$val=$this->user->login();

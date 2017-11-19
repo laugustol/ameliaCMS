@@ -4,9 +4,9 @@ class contactController{
 	private $contact,$permission,$log_movement;
 	public function __construct(){
 		define("controller","contact");
-		$this->contact = new \Models\contactModel;
-		$this->permission = new \Models\permissionModel;
-		$this->log_movement = new \Models\log_movementModel;
+		$this->contact = new \models\contactModel;
+		$this->permission = new \models\permissionModel;
+		$this->log_movement = new \models\log_movementModel;
 	}
 	public function contactme(){
 		view("contact.php",2);

@@ -1526,7 +1526,7 @@ $router->get('user/pdf',function(){
 $router->post('user/note',function(){
   $ctrl = new controllers\userController;
   $ctrl->note();
-//
+});
 $router->get('profile',function(){
   define('routerCtrl','profile');
   define('action','edit');

@@ -23,18 +23,18 @@ CREATE TABLE ".$this->prefix."taction (
   idaction int(11) NOT NULL,
   name varchar(15) NOT NULL,
   function int(11) NOT NULL,
-  idicon int(11) NOT NULL,
+  idicon text NOT NULL,
   status char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO ".$this->prefix."taction (idaction, name, function, idicon, status) VALUES
-(1, 'Agregar', 1, 2, '1'),
-(2, 'Editar', 2, 71, '1'),
-(3, 'Consultar', 3, 11, '1'),
-(4, 'Activar', 4, 20, '1'),
-(5, 'Desactivar', 5, 21, '1'),
-(6, 'Generar', 6, 1, '1'),
-(7, 'Eliminar', 7, 27, '1');
+(1, 'Agregar', 1, 'glyphicon glyphicon-plus', '1'),
+(2, 'Editar', 2, 'glyphicon glyphicon-edit', '1'),
+(3, 'Consultar', 'glyphicon glyphicon-search', 11, '1'),
+(4, 'Activar', 4, 'glyphicon glyphicon-ok', '1'),
+(5, 'Desactivar', 'glyphicon glyphicon-remove', 21, '1'),
+(6, 'Generar', 6, 'glyphicon glyphicon-asterisk', '1'),
+(7, 'Eliminar', 7, 'glyphicon glyphicon-trash', '1');
 
 CREATE TABLE ".$this->prefix."tcontact (
   idcontact int(11) NOT NULL,
@@ -1692,7 +1692,37 @@ INSERT INTO ".$this->prefix."tdcharge_service_action (idcharge_service_action, i
 (5397, 1, 11, 6),
 (5398, 1, 11, 7),
 (5399, 1, 29, 2),
-(5400, 1, 29, 3);
+(5400, 1, 29, 3),
+(5428, 1, 29, 1),
+(5429, 1, 29, 2),
+(5430, 1, 29, 3),
+(5431, 1, 29, 4),
+(5432, 1, 29, 5),
+(5433, 1, 29, 7),
+(5434, 1, 31, 1),
+(5435, 1, 31, 2),
+(5436, 1, 31, 3),
+(5437, 1, 31, 4),
+(5438, 1, 31, 5),
+(5439, 1, 31, 7),
+(5440, 1, 32, 1),
+(5441, 1, 32, 2),
+(5442, 1, 32, 3),
+(5443, 1, 32, 4),
+(5444, 1, 32, 5),
+(5445, 1, 32, 7),
+(5446, 1, 33, 1),
+(5447, 1, 33, 2),
+(5448, 1, 33, 3),
+(5449, 1, 33, 4),
+(5450, 1, 33, 5),
+(5451, 1, 33, 7),
+(5452, 1, 34, 1),
+(5453, 1, 34, 2),
+(5454, 1, 34, 3),
+(5455, 1, 34, 4),
+(5456, 1, 34, 5),
+(5457, 1, 34, 7);
 
 CREATE TABLE ".$this->prefix."tdpassword (
   idpassword int(11) NOT NULL,
@@ -1836,7 +1866,33 @@ INSERT INTO ".$this->prefix."tdservice_action (idservice_action, idservice, idac
 (229, 28, 2),
 (230, 28, 3),
 (231, 29, 2),
-(232, 29, 3);
+(232, 29, 3),
+(233, 29, 1),
+(234, 29, 2),
+(235, 29, 3),
+(236, 29, 4),
+(237, 29, 5),
+(238, 29, 7),
+(239, 31, 2),
+(240, 31, 3),
+(254, 32, 1),
+(255, 32, 2),
+(256, 32, 3),
+(257, 32, 4),
+(258, 32, 5),
+(259, 32, 7),
+(260, 33, 1),
+(261, 33, 2),
+(262, 33, 3),
+(263, 33, 4),
+(264, 33, 5),
+(265, 33, 7),
+(266, 34, 1),
+(267, 34, 2),
+(268, 34, 3),
+(269, 34, 4),
+(270, 34, 5),
+(271, 34, 7);
 
 CREATE TABLE ".$this->prefix."tduser_service_ordered (
   iduser_service_ordered int(11) NOT NULL,
@@ -1886,1004 +1942,6 @@ CREATE TABLE ".$this->prefix."tgallery (
   description text NOT NULL,
   date_created date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
-CREATE TABLE ".$this->prefix."ticon (
-  idicon int(11) NOT NULL,
-  class varchar(60) NOT NULL,
-  name varchar(60) DEFAULT NULL,
-  status char(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO ".$this->prefix."ticon (idicon, class, name, status) VALUES
-(1, 'glyphicon', 'glyphicon-asterisk', '1'),
-(2, 'glyphicon', 'glyphicon-plus', '1'),
-(3, 'glyphicon', 'glyphicon-euro', '1'),
-(4, 'glyphicon', 'glyphicon-eur', '1'),
-(5, 'glyphicon', 'glyphicon-minus', '1'),
-(6, 'glyphicon', 'glyphicon-cloud', '1'),
-(7, 'glyphicon', 'glyphicon-envelope', '1'),
-(8, 'glyphicon', 'glyphicon-pencil', '1'),
-(9, 'glyphicon', 'glyphicon-glass', '1'),
-(10, 'glyphicon', 'glyphicon-music', '1'),
-(11, 'glyphicon', 'glyphicon-search', '1'),
-(12, 'glyphicon', 'glyphicon-heart', '1'),
-(13, 'glyphicon', 'glyphicon-star', '1'),
-(14, 'glyphicon', 'glyphicon-star-empty', '1'),
-(15, 'glyphicon', 'glyphicon-user', '1'),
-(16, 'glyphicon', 'glyphicon-film', '1'),
-(17, 'glyphicon', 'glyphicon-th-large', '1'),
-(18, 'glyphicon', 'glyphicon-th', '1'),
-(19, 'glyphicon', 'glyphicon-th-list', '1'),
-(20, 'glyphicon', 'glyphicon-ok', '1'),
-(21, 'glyphicon', 'glyphicon-remove', '1'),
-(22, 'glyphicon', 'glyphicon-zoom-in', '1'),
-(23, 'glyphicon', 'glyphicon-zoom-out', '1'),
-(24, 'glyphicon', 'glyphicon-off', '1'),
-(25, 'glyphicon', 'glyphicon-signal', '1'),
-(26, 'glyphicon', 'glyphicon-cog', '1'),
-(27, 'glyphicon', 'glyphicon-trash', '1'),
-(28, 'glyphicon', 'glyphicon-home', '1'),
-(29, 'glyphicon', 'glyphicon-file', '1'),
-(30, 'glyphicon', 'glyphicon-time', '1'),
-(31, 'glyphicon', 'glyphicon-road', '1'),
-(32, 'glyphicon', 'glyphicon-download-alt', '1'),
-(33, 'glyphicon', 'glyphicon-download', '1'),
-(34, 'glyphicon', 'glyphicon-upload', '1'),
-(35, 'glyphicon', 'glyphicon-inbox', '1'),
-(36, 'glyphicon', 'glyphicon-play-circle', '1'),
-(37, 'glyphicon', 'glyphicon-repeat', '1'),
-(38, 'glyphicon', 'glyphicon-refresh', '1'),
-(39, 'glyphicon', 'glyphicon-list-alt', '1'),
-(40, 'glyphicon', 'glyphicon-lock', '1'),
-(41, 'glyphicon', 'glyphicon-flag', '1'),
-(42, 'glyphicon', 'glyphicon-headphones', '1'),
-(43, 'glyphicon', 'glyphicon-volume-off', '1'),
-(44, 'glyphicon', 'glyphicon-volume-down', '1'),
-(45, 'glyphicon', 'glyphicon-volume-up', '1'),
-(46, 'glyphicon', 'glyphicon-qrcode', '1'),
-(47, 'glyphicon', 'glyphicon-barcode', '1'),
-(48, 'glyphicon', 'glyphicon-tag', '1'),
-(49, 'glyphicon', 'glyphicon-tags', '1'),
-(50, 'glyphicon', 'glyphicon-book', '1'),
-(51, 'glyphicon', 'glyphicon-bookmark', '1'),
-(52, 'glyphicon', 'glyphicon-print', '1'),
-(53, 'glyphicon', 'glyphicon-camera', '1'),
-(54, 'glyphicon', 'glyphicon-font', '1'),
-(55, 'glyphicon', 'glyphicon-bold', '1'),
-(56, 'glyphicon', 'glyphicon-italic', '1'),
-(57, 'glyphicon', 'glyphicon-text-height', '1'),
-(58, 'glyphicon', 'glyphicon-text-width', '1'),
-(59, 'glyphicon', 'glyphicon-align-left', '1'),
-(60, 'glyphicon', 'glyphicon-align-center', '1'),
-(61, 'glyphicon', 'glyphicon-align-right', '1'),
-(62, 'glyphicon', 'glyphicon-align-justify', '1'),
-(63, 'glyphicon', 'glyphicon-list', '1'),
-(64, 'glyphicon', 'glyphicon-indent-left', '1'),
-(65, 'glyphicon', 'glyphicon-indent-right', '1'),
-(66, 'glyphicon', 'glyphicon-facetime-video', '1'),
-(67, 'glyphicon', 'glyphicon-picture', '1'),
-(68, 'glyphicon', 'glyphicon-map-marker', '1'),
-(69, 'glyphicon', 'glyphicon-adjust', '1'),
-(70, 'glyphicon', 'glyphicon-tint', '1'),
-(71, 'glyphicon', 'glyphicon-edit', '1'),
-(72, 'glyphicon', 'glyphicon-share', '1'),
-(73, 'glyphicon', 'glyphicon-check', '1'),
-(74, 'glyphicon', 'glyphicon-move', '1'),
-(75, 'glyphicon', 'glyphicon-step-backward', '1'),
-(76, 'glyphicon', 'glyphicon-fast-backward', '1'),
-(77, 'glyphicon', 'glyphicon-backward', '1'),
-(78, 'glyphicon', 'glyphicon-play', '1'),
-(79, 'glyphicon', 'glyphicon-pause', '1'),
-(80, 'glyphicon', 'glyphicon-stop', '1'),
-(81, 'glyphicon', 'glyphicon-forward', '1'),
-(82, 'glyphicon', 'glyphicon-fast-forward', '1'),
-(83, 'glyphicon', 'glyphicon-step-forward', '1'),
-(84, 'glyphicon', 'glyphicon-eject', '1'),
-(85, 'glyphicon', 'glyphicon-chevron-left', '1'),
-(86, 'glyphicon', 'glyphicon-chevron-right', '1'),
-(87, 'glyphicon', 'glyphicon-plus-sign', '1'),
-(88, 'glyphicon', 'glyphicon-minus-sign', '1'),
-(89, 'glyphicon', 'glyphicon-remove-sign', '1'),
-(90, 'glyphicon', 'glyphicon-ok-sign', '1'),
-(91, 'glyphicon', 'glyphicon-question-sign', '1'),
-(92, 'glyphicon', 'glyphicon-info-sign', '1'),
-(93, 'glyphicon', 'glyphicon-screenshot', '1'),
-(94, 'glyphicon', 'glyphicon-remove-circle', '1'),
-(95, 'glyphicon', 'glyphicon-ok-circle', '1'),
-(96, 'glyphicon', 'glyphicon-ban-circle', '1'),
-(97, 'glyphicon', 'glyphicon-arrow-left', '1'),
-(98, 'glyphicon', 'glyphicon-arrow-right', '1'),
-(99, 'glyphicon', 'glyphicon-arrow-up', '1'),
-(100, 'glyphicon', 'glyphicon-arrow-down', '1'),
-(101, 'glyphicon', 'glyphicon-share-alt', '1'),
-(102, 'glyphicon', 'glyphicon-resize-full', '1'),
-(103, 'glyphicon', 'glyphicon-resize-small', '1'),
-(104, 'glyphicon', 'glyphicon-exclamation-sign', '1'),
-(105, 'glyphicon', 'glyphicon-gift', '1'),
-(106, 'glyphicon', 'glyphicon-leaf', '1'),
-(107, 'glyphicon', 'glyphicon-fire', '1'),
-(108, 'glyphicon', 'glyphicon-eye-open', '1'),
-(109, 'glyphicon', 'glyphicon-eye-close', '1'),
-(110, 'glyphicon', 'glyphicon-warning-sign', '1'),
-(111, 'glyphicon', 'glyphicon-plane', '1'),
-(112, 'glyphicon', 'glyphicon-calendar', '1'),
-(113, 'glyphicon', 'glyphicon-random', '1'),
-(114, 'glyphicon', 'glyphicon-comment', '1'),
-(115, 'glyphicon', 'glyphicon-magnet', '1'),
-(116, 'glyphicon', 'glyphicon-chevron-up', '1'),
-(117, 'glyphicon', 'glyphicon-chevron-down', '1'),
-(118, 'glyphicon', 'glyphicon-retweet', '1'),
-(119, 'glyphicon', 'glyphicon-shopping-cart', '1'),
-(120, 'glyphicon', 'glyphicon-folder-close', '1'),
-(121, 'glyphicon', 'glyphicon-folder-open', '1'),
-(122, 'glyphicon', 'glyphicon-resize-vertical', '1'),
-(123, 'glyphicon', 'glyphicon-resize-horizontal', '1'),
-(124, 'glyphicon', 'glyphicon-hdd', '1'),
-(125, 'glyphicon', 'glyphicon-bullhorn', '1'),
-(126, 'glyphicon', 'glyphicon-bell', '1'),
-(127, 'glyphicon', 'glyphicon-certificate', '1'),
-(128, 'glyphicon', 'glyphicon-thumbs-up', '1'),
-(129, 'glyphicon', 'glyphicon-thumbs-down', '1'),
-(130, 'glyphicon', 'glyphicon-hand-right', '1'),
-(131, 'glyphicon', 'glyphicon-hand-left', '1'),
-(132, 'glyphicon', 'glyphicon-hand-up', '1'),
-(133, 'glyphicon', 'glyphicon-hand-down', '1'),
-(134, 'glyphicon', 'glyphicon-circle-arrow-right', '1'),
-(135, 'glyphicon', 'glyphicon-circle-arrow-left', '1'),
-(136, 'glyphicon', 'glyphicon-circle-arrow-up', '1'),
-(137, 'glyphicon', 'glyphicon-circle-arrow-down', '1'),
-(138, 'glyphicon', 'glyphicon-globe', '1'),
-(139, 'glyphicon', 'glyphicon-wrench', '1'),
-(140, 'glyphicon', 'glyphicon-tasks', '1'),
-(141, 'glyphicon', 'glyphicon-filter', '1'),
-(142, 'glyphicon', 'glyphicon-briefcase', '1'),
-(143, 'glyphicon', 'glyphicon-fullscreen', '1'),
-(144, 'glyphicon', 'glyphicon-dashboard', '1'),
-(145, 'glyphicon', 'glyphicon-paperclip', '1'),
-(146, 'glyphicon', 'glyphicon-heart-empty', '1'),
-(147, 'glyphicon', 'glyphicon-link', '1'),
-(148, 'glyphicon', 'glyphicon-phone', '1'),
-(149, 'glyphicon', 'glyphicon-pushpin', '1'),
-(150, 'glyphicon', 'glyphicon-usd', '1'),
-(151, 'glyphicon', 'glyphicon-gbp', '1'),
-(152, 'glyphicon', 'glyphicon-sort', '1'),
-(153, 'glyphicon', 'glyphicon-sort-by-alphabet', '1'),
-(154, 'glyphicon', 'glyphicon-sort-by-alphabet-alt', '1'),
-(155, 'glyphicon', 'glyphicon-sort-by-order', '1'),
-(156, 'glyphicon', 'glyphicon-sort-by-order-alt', '1'),
-(157, 'glyphicon', 'glyphicon-sort-by-attributes', '1'),
-(158, 'glyphicon', 'glyphicon-sort-by-attributes-alt', '1'),
-(159, 'glyphicon', 'glyphicon-unchecked', '1'),
-(160, 'glyphicon', 'glyphicon-expand', '1'),
-(161, 'glyphicon', 'glyphicon-collapse-down', '1'),
-(162, 'glyphicon', 'glyphicon-collapse-up', '1'),
-(163, 'glyphicon', 'glyphicon-log-in', '1'),
-(164, 'glyphicon', 'glyphicon-flash', '1'),
-(165, 'glyphicon', 'glyphicon-log-out', '1'),
-(166, 'glyphicon', 'glyphicon-new-window', '1'),
-(167, 'glyphicon', 'glyphicon-record', '1'),
-(168, 'glyphicon', 'glyphicon-save', '1'),
-(169, 'glyphicon', 'glyphicon-open', '1'),
-(170, 'glyphicon', 'glyphicon-saved', '1'),
-(171, 'glyphicon', 'glyphicon-import', '1'),
-(172, 'glyphicon', 'glyphicon-export', '1'),
-(173, 'glyphicon', 'glyphicon-send', '1'),
-(174, 'glyphicon', 'glyphicon-floppy-disk', '1'),
-(175, 'glyphicon', 'glyphicon-floppy-saved', '1'),
-(176, 'glyphicon', 'glyphicon-floppy-remove', '1'),
-(177, 'glyphicon', 'glyphicon-floppy-save', '1'),
-(178, 'glyphicon', 'glyphicon-floppy-open', '1'),
-(179, 'glyphicon', 'glyphicon-credit-card', '1'),
-(180, 'glyphicon', 'glyphicon-transfer', '1'),
-(181, 'glyphicon', 'glyphicon-cutlery', '1'),
-(182, 'glyphicon', 'glyphicon-header', '1'),
-(183, 'glyphicon', 'glyphicon-compressed', '1'),
-(184, 'glyphicon', 'glyphicon-earphone', '1'),
-(185, 'glyphicon', 'glyphicon-phone-alt', '1'),
-(186, 'glyphicon', 'glyphicon-tower', '1'),
-(187, 'glyphicon', 'glyphicon-stats', '1'),
-(188, 'glyphicon', 'glyphicon-sd-video', '1'),
-(189, 'glyphicon', 'glyphicon-hd-video', '1'),
-(190, 'glyphicon', 'glyphicon-subtitles', '1'),
-(191, 'glyphicon', 'glyphicon-sound-stereo', '1'),
-(192, 'glyphicon', 'glyphicon-sound-dolby', '1'),
-(193, 'glyphicon', 'glyphicon-sound-5-1', '1'),
-(194, 'glyphicon', 'glyphicon-sound-6-1', '1'),
-(195, 'glyphicon', 'glyphicon-sound-7-1', '1'),
-(196, 'glyphicon', 'glyphicon-copyright-mark', '1'),
-(197, 'glyphicon', 'glyphicon-registration-mark', '1'),
-(198, 'glyphicon', 'glyphicon-cloud-download', '1'),
-(199, 'glyphicon', 'glyphicon-cloud-upload', '1'),
-(200, 'glyphicon', 'glyphicon-tree-conifer', '1'),
-(201, 'glyphicon', 'glyphicon-tree-deciduous', '1'),
-(202, 'glyphicon', 'glyphicon-cd', '1'),
-(203, 'glyphicon', 'glyphicon-save-file', '1'),
-(204, 'glyphicon', 'glyphicon-open-file', '1'),
-(205, 'glyphicon', 'glyphicon-level-up', '1'),
-(206, 'glyphicon', 'glyphicon-copy', '1'),
-(207, 'glyphicon', 'glyphicon-paste', '1'),
-(208, 'glyphicon', 'glyphicon-alert', '1'),
-(209, 'glyphicon', 'glyphicon-equalizer', '1'),
-(210, 'glyphicon', 'glyphicon-king', '1'),
-(211, 'glyphicon', 'glyphicon-queen', '1'),
-(212, 'glyphicon', 'glyphicon-pawn', '1'),
-(213, 'glyphicon', 'glyphicon-bishop', '1'),
-(214, 'glyphicon', 'glyphicon-knight', '1'),
-(215, 'glyphicon', 'glyphicon-baby-formula', '1'),
-(216, 'glyphicon', 'glyphicon-tent', '1'),
-(217, 'glyphicon', 'glyphicon-blackboard', '1'),
-(218, 'glyphicon', 'glyphicon-bed', '1'),
-(219, 'glyphicon', 'glyphicon-apple', '1'),
-(220, 'glyphicon', 'glyphicon-erase', '1'),
-(221, 'glyphicon', 'glyphicon-hourglass', '1'),
-(222, 'glyphicon', 'glyphicon-lamp', '1'),
-(223, 'glyphicon', 'glyphicon-duplicate', '1'),
-(224, 'glyphicon', 'glyphicon-piggy-bank', '1'),
-(225, 'glyphicon', 'glyphicon-scissors', '1'),
-(226, 'glyphicon', 'glyphicon-bitcoin', '1'),
-(227, 'glyphicon', 'glyphicon-yen', '1'),
-(228, 'glyphicon', 'glyphicon-ruble', '1'),
-(229, 'glyphicon', 'glyphicon-scale', '1'),
-(230, 'glyphicon', 'glyphicon-ice-lolly', '1'),
-(231, 'glyphicon', 'glyphicon-ice-lolly-tasted', '1'),
-(232, 'glyphicon', 'glyphicon-education', '1'),
-(233, 'glyphicon', 'glyphicon-option-horizontal', '1'),
-(234, 'glyphicon', 'glyphicon-option-vertical', '1'),
-(235, 'glyphicon', 'glyphicon-menu-hamburger', '1'),
-(236, 'glyphicon', 'glyphicon-modal-window', '1'),
-(237, 'glyphicon', 'glyphicon-oil', '1'),
-(238, 'glyphicon', 'glyphicon-grain', '1'),
-(239, 'glyphicon', 'glyphicon-sunglasses', '1'),
-(240, 'glyphicon', 'glyphicon-text-size', '1'),
-(241, 'glyphicon', 'glyphicon-text-color', '1'),
-(242, 'glyphicon', 'glyphicon-text-background', '1'),
-(243, 'glyphicon', 'glyphicon-object-align-top', '1'),
-(244, 'glyphicon', 'glyphicon-object-align-bottom', '1'),
-(245, 'glyphicon', 'glyphicon-object-align-horizontal', '1'),
-(246, 'glyphicon', 'glyphicon-object-align-left', '1'),
-(247, 'glyphicon', 'glyphicon-object-align-vertical', '1'),
-(248, 'glyphicon', 'glyphicon-object-align-right', '1'),
-(249, 'glyphicon', 'glyphicon-triangle-right', '1'),
-(250, 'glyphicon', 'glyphicon-triangle-left', '1'),
-(251, 'glyphicon', 'glyphicon-triangle-bottom', '1'),
-(252, 'glyphicon', 'glyphicon-triangle-top', '1'),
-(253, 'glyphicon', 'glyphicon-console', '1'),
-(254, 'glyphicon', 'glyphicon-superscript', '1'),
-(255, 'glyphicon', 'glyphicon-subscript', '1'),
-(256, 'glyphicon', 'glyphicon-menu-left', '1'),
-(257, 'glyphicon', 'glyphicon-menu-right', '1'),
-(258, 'glyphicon', 'glyphicon-menu-down', '1'),
-(259, 'glyphicon', 'glyphicon-menu-up', '1'),
-(260, 'fa', 'fa-american-sign-language-interpreting', '1'),
-(261, 'fa', 'fa-assistive-listening-systems', '1'),
-(262, 'fa', 'fa-glass', '1'),
-(263, 'fa', 'fa-music', '1'),
-(264, 'fa', 'fa-search', '1'),
-(265, 'fa', 'fa-envelope-o', '1'),
-(266, 'fa', 'fa-heart', '1'),
-(267, 'fa', 'fa-star', '1'),
-(268, 'fa', 'fa-star-o', '1'),
-(269, 'fa', 'fa-user', '1'),
-(270, 'fa', 'fa-film', '1'),
-(271, 'fa', 'fa-th-large', '1'),
-(272, 'fa', 'fa-th', '1'),
-(273, 'fa', 'fa-th-list', '1'),
-(274, 'fa', 'fa-check', '1'),
-(275, 'fa', 'fa-remove', '1'),
-(276, 'fa', 'fa-close', '1'),
-(277, 'fa', 'fa-times', '1'),
-(278, 'fa', 'fa-search-plus', '1'),
-(279, 'fa', 'fa-search-minus', '1'),
-(280, 'fa', 'fa-power-off', '1'),
-(281, 'fa', 'fa-signal', '1'),
-(282, 'fa', 'fa-gear', '1'),
-(283, 'fa', 'fa-cog', '1'),
-(284, 'fa', 'fa-trash-o', '1'),
-(285, 'fa', 'fa-home', '1'),
-(286, 'fa', 'fa-file-o', '1'),
-(287, 'fa', 'fa-clock-o', '1'),
-(288, 'fa', 'fa-road', '1'),
-(289, 'fa', 'fa-download', '1'),
-(290, 'fa', 'fa-arrow-circle-o-down', '1'),
-(291, 'fa', 'fa-arrow-circle-o-up', '1'),
-(292, 'fa', 'fa-inbox', '1'),
-(293, 'fa', 'fa-play-circle-o', '1'),
-(294, 'fa', 'fa-rotate-right', '1'),
-(295, 'fa', 'fa-repeat', '1'),
-(296, 'fa', 'fa-refresh', '1'),
-(297, 'fa', 'fa-list-alt', '1'),
-(298, 'fa', 'fa-lock', '1'),
-(299, 'fa', 'fa-flag', '1'),
-(300, 'fa', 'fa-headphones', '1'),
-(301, 'fa', 'fa-volume-off', '1'),
-(302, 'fa', 'fa-volume-down', '1'),
-(303, 'fa', 'fa-volume-up', '1'),
-(304, 'fa', 'fa-qrcode', '1'),
-(305, 'fa', 'fa-barcode', '1'),
-(306, 'fa', 'fa-tag', '1'),
-(307, 'fa', 'fa-tags', '1'),
-(308, 'fa', 'fa-book', '1'),
-(309, 'fa', 'fa-bookmark', '1'),
-(310, 'fa', 'fa-print', '1'),
-(311, 'fa', 'fa-camera', '1'),
-(312, 'fa', 'fa-font', '1'),
-(313, 'fa', 'fa-bold', '1'),
-(314, 'fa', 'fa-italic', '1'),
-(315, 'fa', 'fa-text-height', '1'),
-(316, 'fa', 'fa-text-width', '1'),
-(317, 'fa', 'fa-align-left', '1'),
-(318, 'fa', 'fa-align-center', '1'),
-(319, 'fa', 'fa-align-right', '1'),
-(320, 'fa', 'fa-align-justify', '1'),
-(321, 'fa', 'fa-list', '1'),
-(322, 'fa', 'fa-dedent', '1'),
-(323, 'fa', 'fa-outdent', '1'),
-(324, 'fa', 'fa-indent', '1'),
-(325, 'fa', 'fa-video-camera', '1'),
-(326, 'fa', 'fa-photo', '1'),
-(327, 'fa', 'fa-image', '1'),
-(328, 'fa', 'fa-picture-o', '1'),
-(329, 'fa', 'fa-pencil', '1'),
-(330, 'fa', 'fa-map-marker', '1'),
-(331, 'fa', 'fa-adjust', '1'),
-(332, 'fa', 'fa-tint', '1'),
-(333, 'fa', 'fa-edit', '1'),
-(334, 'fa', 'fa-pencil-square-o', '1'),
-(335, 'fa', 'fa-share-square-o', '1'),
-(336, 'fa', 'fa-check-square-o', '1'),
-(337, 'fa', 'fa-arrows', '1'),
-(338, 'fa', 'fa-step-backward', '1'),
-(339, 'fa', 'fa-fast-backward', '1'),
-(340, 'fa', 'fa-backward', '1'),
-(341, 'fa', 'fa-play', '1'),
-(342, 'fa', 'fa-pause', '1'),
-(343, 'fa', 'fa-stop', '1'),
-(344, 'fa', 'fa-forward', '1'),
-(345, 'fa', 'fa-fast-forward', '1'),
-(346, 'fa', 'fa-step-forward', '1'),
-(347, 'fa', 'fa-eject', '1'),
-(348, 'fa', 'fa-chevron-left', '1'),
-(349, 'fa', 'fa-chevron-right', '1'),
-(350, 'fa', 'fa-plus-circle', '1'),
-(351, 'fa', 'fa-minus-circle', '1'),
-(352, 'fa', 'fa-times-circle', '1'),
-(353, 'fa', 'fa-check-circle', '1'),
-(354, 'fa', 'fa-question-circle', '1'),
-(355, 'fa', 'fa-info-circle', '1'),
-(356, 'fa', 'fa-crosshairs', '1'),
-(357, 'fa', 'fa-times-circle-o', '1'),
-(358, 'fa', 'fa-check-circle-o', '1'),
-(359, 'fa', 'fa-ban', '1'),
-(360, 'fa', 'fa-arrow-left', '1'),
-(361, 'fa', 'fa-arrow-right', '1'),
-(362, 'fa', 'fa-arrow-up', '1'),
-(363, 'fa', 'fa-arrow-down', '1'),
-(364, 'fa', 'fa-mail-forward', '1'),
-(365, 'fa', 'fa-share', '1'),
-(366, 'fa', 'fa-expand', '1'),
-(367, 'fa', 'fa-compress', '1'),
-(368, 'fa', 'fa-plus', '1'),
-(369, 'fa', 'fa-minus', '1'),
-(370, 'fa', 'fa-asterisk', '1'),
-(371, 'fa', 'fa-exclamation-circle', '1'),
-(372, 'fa', 'fa-gift', '1'),
-(373, 'fa', 'fa-leaf', '1'),
-(374, 'fa', 'fa-fire', '1'),
-(375, 'fa', 'fa-eye', '1'),
-(376, 'fa', 'fa-eye-slash', '1'),
-(377, 'fa', 'fa-warning', '1'),
-(378, 'fa', 'fa-exclamation-triangle', '1'),
-(379, 'fa', 'fa-plane', '1'),
-(380, 'fa', 'fa-calendar', '1'),
-(381, 'fa', 'fa-random', '1'),
-(382, 'fa', 'fa-comment', '1'),
-(383, 'fa', 'fa-magnet', '1'),
-(384, 'fa', 'fa-chevron-up', '1'),
-(385, 'fa', 'fa-chevron-down', '1'),
-(386, 'fa', 'fa-retweet', '1'),
-(387, 'fa', 'fa-shopping-cart', '1'),
-(388, 'fa', 'fa-folder', '1'),
-(389, 'fa', 'fa-folder-open', '1'),
-(390, 'fa', 'fa-arrows-v', '1'),
-(391, 'fa', 'fa-arrows-h', '1'),
-(392, 'fa', 'fa-bar-chart-o', '1'),
-(393, 'fa', 'fa-bar-chart', '1'),
-(394, 'fa', 'fa-twitter-square', '1'),
-(395, 'fa', 'fa-facebook-square', '1'),
-(396, 'fa', 'fa-camera-retro', '1'),
-(397, 'fa', 'fa-key', '1'),
-(398, 'fa', 'fa-gears', '1'),
-(399, 'fa', 'fa-cogs', '1'),
-(400, 'fa', 'fa-comments', '1'),
-(401, 'fa', 'fa-thumbs-o-up', '1'),
-(402, 'fa', 'fa-thumbs-o-down', '1'),
-(403, 'fa', 'fa-star-half', '1'),
-(404, 'fa', 'fa-heart-o', '1'),
-(405, 'fa', 'fa-sign-out', '1'),
-(406, 'fa', 'fa-linkedin-square', '1'),
-(407, 'fa', 'fa-thumb-tack', '1'),
-(408, 'fa', 'fa-external-link', '1'),
-(409, 'fa', 'fa-sign-in', '1'),
-(410, 'fa', 'fa-trophy', '1'),
-(411, 'fa', 'fa-github-square', '1'),
-(412, 'fa', 'fa-upload', '1'),
-(413, 'fa', 'fa-lemon-o', '1'),
-(414, 'fa', 'fa-phone', '1'),
-(415, 'fa', 'fa-square-o', '1'),
-(416, 'fa', 'fa-bookmark-o', '1'),
-(417, 'fa', 'fa-phone-square', '1'),
-(418, 'fa', 'fa-twitter', '1'),
-(419, 'fa', 'fa-facebook-f', '1'),
-(420, 'fa', 'fa-facebook', '1'),
-(421, 'fa', 'fa-github', '1'),
-(422, 'fa', 'fa-unlock', '1'),
-(423, 'fa', 'fa-credit-card', '1'),
-(424, 'fa', 'fa-feed', '1'),
-(425, 'fa', 'fa-rss', '1'),
-(426, 'fa', 'fa-hdd-o', '1'),
-(427, 'fa', 'fa-bullhorn', '1'),
-(428, 'fa', 'fa-bell', '1'),
-(429, 'fa', 'fa-certificate', '1'),
-(430, 'fa', 'fa-hand-o-right', '1'),
-(431, 'fa', 'fa-hand-o-left', '1'),
-(432, 'fa', 'fa-hand-o-up', '1'),
-(433, 'fa', 'fa-hand-o-down', '1'),
-(434, 'fa', 'fa-arrow-circle-left', '1'),
-(435, 'fa', 'fa-arrow-circle-right', '1'),
-(436, 'fa', 'fa-arrow-circle-up', '1'),
-(437, 'fa', 'fa-arrow-circle-down', '1'),
-(438, 'fa', 'fa-globe', '1'),
-(439, 'fa', 'fa-wrench', '1'),
-(440, 'fa', 'fa-tasks', '1'),
-(441, 'fa', 'fa-filter', '1'),
-(442, 'fa', 'fa-briefcase', '1'),
-(443, 'fa', 'fa-arrows-alt', '1'),
-(444, 'fa', 'fa-group', '1'),
-(445, 'fa', 'fa-users', '1'),
-(446, 'fa', 'fa-chain', '1'),
-(447, 'fa', 'fa-link', '1'),
-(448, 'fa', 'fa-cloud', '1'),
-(449, 'fa', 'fa-flask', '1'),
-(450, 'fa', 'fa-cut', '1'),
-(451, 'fa', 'fa-scissors', '1'),
-(452, 'fa', 'fa-copy', '1'),
-(453, 'fa', 'fa-files-o', '1'),
-(454, 'fa', 'fa-paperclip', '1'),
-(455, 'fa', 'fa-save', '1'),
-(456, 'fa', 'fa-floppy-o', '1'),
-(457, 'fa', 'fa-square', '1'),
-(458, 'fa', 'fa-navicon', '1'),
-(459, 'fa', 'fa-reorder', '1'),
-(460, 'fa', 'fa-bars', '1'),
-(461, 'fa', 'fa-list-ul', '1'),
-(462, 'fa', 'fa-list-ol', '1'),
-(463, 'fa', 'fa-strikethrough', '1'),
-(464, 'fa', 'fa-underline', '1'),
-(465, 'fa', 'fa-table', '1'),
-(466, 'fa', 'fa-magic', '1'),
-(467, 'fa', 'fa-truck', '1'),
-(468, 'fa', 'fa-pinterest', '1'),
-(469, 'fa', 'fa-pinterest-square', '1'),
-(470, 'fa', 'fa-google-plus-square', '1'),
-(471, 'fa', 'fa-google-plus', '1'),
-(472, 'fa', 'fa-money', '1'),
-(473, 'fa', 'fa-caret-down', '1'),
-(474, 'fa', 'fa-caret-up', '1'),
-(475, 'fa', 'fa-caret-left', '1'),
-(476, 'fa', 'fa-caret-right', '1'),
-(477, 'fa', 'fa-columns', '1'),
-(478, 'fa', 'fa-unsorted', '1'),
-(479, 'fa', 'fa-sort', '1'),
-(480, 'fa', 'fa-sort-down', '1'),
-(481, 'fa', 'fa-sort-desc', '1'),
-(482, 'fa', 'fa-sort-up', '1'),
-(483, 'fa', 'fa-sort-asc', '1'),
-(484, 'fa', 'fa-envelope', '1'),
-(485, 'fa', 'fa-linkedin', '1'),
-(486, 'fa', 'fa-rotate-left', '1'),
-(487, 'fa', 'fa-undo', '1'),
-(488, 'fa', 'fa-legal', '1'),
-(489, 'fa', 'fa-gavel', '1'),
-(490, 'fa', 'fa-dashboard', '1'),
-(491, 'fa', 'fa-tachometer', '1'),
-(492, 'fa', 'fa-comment-o', '1'),
-(493, 'fa', 'fa-comments-o', '1'),
-(494, 'fa', 'fa-flash', '1'),
-(495, 'fa', 'fa-bolt', '1'),
-(496, 'fa', 'fa-sitemap', '1'),
-(497, 'fa', 'fa-umbrella', '1'),
-(498, 'fa', 'fa-paste', '1'),
-(499, 'fa', 'fa-clipboard', '1'),
-(500, 'fa', 'fa-lightbulb-o', '1'),
-(501, 'fa', 'fa-exchange', '1'),
-(502, 'fa', 'fa-cloud-download', '1'),
-(503, 'fa', 'fa-cloud-upload', '1'),
-(504, 'fa', 'fa-user-md', '1'),
-(505, 'fa', 'fa-stethoscope', '1'),
-(506, 'fa', 'fa-suitcase', '1'),
-(507, 'fa', 'fa-bell-o', '1'),
-(508, 'fa', 'fa-coffee', '1'),
-(509, 'fa', 'fa-cutlery', '1'),
-(510, 'fa', 'fa-file-text-o', '1'),
-(511, 'fa', 'fa-building-o', '1'),
-(512, 'fa', 'fa-hospital-o', '1'),
-(513, 'fa', 'fa-ambulance', '1'),
-(514, 'fa', 'fa-medkit', '1'),
-(515, 'fa', 'fa-fighter-jet', '1'),
-(516, 'fa', 'fa-beer', '1'),
-(517, 'fa', 'fa-h-square', '1'),
-(518, 'fa', 'fa-plus-square', '1'),
-(519, 'fa', 'fa-angle-double-left', '1'),
-(520, 'fa', 'fa-angle-double-right', '1'),
-(521, 'fa', 'fa-angle-double-up', '1'),
-(522, 'fa', 'fa-angle-double-down', '1'),
-(523, 'fa', 'fa-angle-left', '1'),
-(524, 'fa', 'fa-angle-right', '1'),
-(525, 'fa', 'fa-angle-up', '1'),
-(526, 'fa', 'fa-angle-down', '1'),
-(527, 'fa', 'fa-desktop', '1'),
-(528, 'fa', 'fa-laptop', '1'),
-(529, 'fa', 'fa-tablet', '1'),
-(530, 'fa', 'fa-mobile-phone', '1'),
-(531, 'fa', 'fa-mobile', '1'),
-(532, 'fa', 'fa-circle-o', '1'),
-(533, 'fa', 'fa-quote-left', '1'),
-(534, 'fa', 'fa-quote-right', '1'),
-(535, 'fa', 'fa-spinner', '1'),
-(536, 'fa', 'fa-circle', '1'),
-(537, 'fa', 'fa-mail-reply', '1'),
-(538, 'fa', 'fa-reply', '1'),
-(539, 'fa', 'fa-github-alt', '1'),
-(540, 'fa', 'fa-folder-o', '1'),
-(541, 'fa', 'fa-folder-open-o', '1'),
-(542, 'fa', 'fa-smile-o', '1'),
-(543, 'fa', 'fa-frown-o', '1'),
-(544, 'fa', 'fa-meh-o', '1'),
-(545, 'fa', 'fa-gamepad', '1'),
-(546, 'fa', 'fa-keyboard-o', '1'),
-(547, 'fa', 'fa-flag-o', '1'),
-(548, 'fa', 'fa-flag-checkered', '1'),
-(549, 'fa', 'fa-terminal', '1'),
-(550, 'fa', 'fa-code', '1'),
-(551, 'fa', 'fa-mail-reply-all', '1'),
-(552, 'fa', 'fa-reply-all', '1'),
-(553, 'fa', 'fa-star-half-empty', '1'),
-(554, 'fa', 'fa-star-half-full', '1'),
-(555, 'fa', 'fa-star-half-o', '1'),
-(556, 'fa', 'fa-location-arrow', '1'),
-(557, 'fa', 'fa-crop', '1'),
-(558, 'fa', 'fa-code-fork', '1'),
-(559, 'fa', 'fa-unlink', '1'),
-(560, 'fa', 'fa-chain-broken', '1'),
-(561, 'fa', 'fa-question', '1'),
-(562, 'fa', 'fa-info', '1'),
-(563, 'fa', 'fa-exclamation', '1'),
-(564, 'fa', 'fa-superscript', '1'),
-(565, 'fa', 'fa-subscript', '1'),
-(566, 'fa', 'fa-eraser', '1'),
-(567, 'fa', 'fa-puzzle-piece', '1'),
-(568, 'fa', 'fa-microphone', '1'),
-(569, 'fa', 'fa-microphone-slash', '1'),
-(570, 'fa', 'fa-shield', '1'),
-(571, 'fa', 'fa-calendar-o', '1'),
-(572, 'fa', 'fa-fire-extinguisher', '1'),
-(573, 'fa', 'fa-rocket', '1'),
-(574, 'fa', 'fa-maxcdn', '1'),
-(575, 'fa', 'fa-chevron-circle-left', '1'),
-(576, 'fa', 'fa-chevron-circle-right', '1'),
-(577, 'fa', 'fa-chevron-circle-up', '1'),
-(578, 'fa', 'fa-chevron-circle-down', '1'),
-(579, 'fa', 'fa-html5', '1'),
-(580, 'fa', 'fa-css3', '1'),
-(581, 'fa', 'fa-anchor', '1'),
-(582, 'fa', 'fa-unlock-alt', '1'),
-(583, 'fa', 'fa-bullseye', '1'),
-(584, 'fa', 'fa-ellipsis-h', '1'),
-(585, 'fa', 'fa-ellipsis-v', '1'),
-(586, 'fa', 'fa-rss-square', '1'),
-(587, 'fa', 'fa-play-circle', '1'),
-(588, 'fa', 'fa-ticket', '1'),
-(589, 'fa', 'fa-minus-square', '1'),
-(590, 'fa', 'fa-minus-square-o', '1'),
-(591, 'fa', 'fa-level-up', '1'),
-(592, 'fa', 'fa-level-down', '1'),
-(593, 'fa', 'fa-check-square', '1'),
-(594, 'fa', 'fa-pencil-square', '1'),
-(595, 'fa', 'fa-external-link-square', '1'),
-(596, 'fa', 'fa-share-square', '1'),
-(597, 'fa', 'fa-compass', '1'),
-(598, 'fa', 'fa-toggle-down', '1'),
-(599, 'fa', 'fa-caret-square-o-down', '1'),
-(600, 'fa', 'fa-toggle-up', '1'),
-(601, 'fa', 'fa-caret-square-o-up', '1'),
-(602, 'fa', 'fa-toggle-right', '1'),
-(603, 'fa', 'fa-caret-square-o-right', '1'),
-(604, 'fa', 'fa-euro', '1'),
-(605, 'fa', 'fa-eur', '1'),
-(606, 'fa', 'fa-gbp', '1'),
-(607, 'fa', 'fa-dollar', '1'),
-(608, 'fa', 'fa-usd', '1'),
-(609, 'fa', 'fa-rupee', '1'),
-(610, 'fa', 'fa-inr', '1'),
-(611, 'fa', 'fa-cny', '1'),
-(612, 'fa', 'fa-rmb', '1'),
-(613, 'fa', 'fa-yen', '1'),
-(614, 'fa', 'fa-jpy', '1'),
-(615, 'fa', 'fa-ruble', '1'),
-(616, 'fa', 'fa-rouble', '1'),
-(617, 'fa', 'fa-rub', '1'),
-(618, 'fa', 'fa-won', '1'),
-(619, 'fa', 'fa-krw', '1'),
-(620, 'fa', 'fa-bitcoin', '1'),
-(621, 'fa', 'fa-btc', '1'),
-(622, 'fa', 'fa-file', '1'),
-(623, 'fa', 'fa-file-text', '1'),
-(624, 'fa', 'fa-sort-alpha-asc', '1'),
-(625, 'fa', 'fa-sort-alpha-desc', '1'),
-(626, 'fa', 'fa-sort-amount-asc', '1'),
-(627, 'fa', 'fa-sort-amount-desc', '1'),
-(628, 'fa', 'fa-sort-numeric-asc', '1'),
-(629, 'fa', 'fa-sort-numeric-desc', '1'),
-(630, 'fa', 'fa-thumbs-up', '1'),
-(631, 'fa', 'fa-thumbs-down', '1'),
-(632, 'fa', 'fa-youtube-square', '1'),
-(633, 'fa', 'fa-youtube', '1'),
-(634, 'fa', 'fa-xing', '1'),
-(635, 'fa', 'fa-xing-square', '1'),
-(636, 'fa', 'fa-youtube-play', '1'),
-(637, 'fa', 'fa-dropbox', '1'),
-(638, 'fa', 'fa-stack-overflow', '1'),
-(639, 'fa', 'fa-instagram', '1'),
-(640, 'fa', 'fa-flickr', '1'),
-(641, 'fa', 'fa-adn', '1'),
-(642, 'fa', 'fa-bitbucket', '1'),
-(643, 'fa', 'fa-bitbucket-square', '1'),
-(644, 'fa', 'fa-tumblr', '1'),
-(645, 'fa', 'fa-tumblr-square', '1'),
-(646, 'fa', 'fa-long-arrow-down', '1'),
-(647, 'fa', 'fa-long-arrow-up', '1'),
-(648, 'fa', 'fa-long-arrow-left', '1'),
-(649, 'fa', 'fa-long-arrow-right', '1'),
-(650, 'fa', 'fa-apple', '1'),
-(651, 'fa', 'fa-windows', '1'),
-(652, 'fa', 'fa-android', '1'),
-(653, 'fa', 'fa-linux', '1'),
-(654, 'fa', 'fa-dribbble', '1'),
-(655, 'fa', 'fa-skype', '1'),
-(656, 'fa', 'fa-foursquare', '1'),
-(657, 'fa', 'fa-trello', '1'),
-(658, 'fa', 'fa-female', '1'),
-(659, 'fa', 'fa-male', '1'),
-(660, 'fa', 'fa-gittip', '1'),
-(661, 'fa', 'fa-gratipay', '1'),
-(662, 'fa', 'fa-sun-o', '1'),
-(663, 'fa', 'fa-moon-o', '1'),
-(664, 'fa', 'fa-archive', '1'),
-(665, 'fa', 'fa-bug', '1'),
-(666, 'fa', 'fa-vk', '1'),
-(667, 'fa', 'fa-weibo', '1'),
-(668, 'fa', 'fa-renren', '1'),
-(669, 'fa', 'fa-pagelines', '1'),
-(670, 'fa', 'fa-stack-exchange', '1'),
-(671, 'fa', 'fa-arrow-circle-o-right', '1'),
-(672, 'fa', 'fa-arrow-circle-o-left', '1'),
-(673, 'fa', 'fa-toggle-left', '1'),
-(674, 'fa', 'fa-caret-square-o-left', '1'),
-(675, 'fa', 'fa-dot-circle-o', '1'),
-(676, 'fa', 'fa-wheelchair', '1'),
-(677, 'fa', 'fa-vimeo-square', '1'),
-(678, 'fa', 'fa-turkish-lira', '1'),
-(679, 'fa', 'fa-try', '1'),
-(680, 'fa', 'fa-plus-square-o', '1'),
-(681, 'fa', 'fa-space-shuttle', '1'),
-(682, 'fa', 'fa-slack', '1'),
-(683, 'fa', 'fa-envelope-square', '1'),
-(684, 'fa', 'fa-wordpress', '1'),
-(685, 'fa', 'fa-openid', '1'),
-(686, 'fa', 'fa-institution', '1'),
-(687, 'fa', 'fa-bank', '1'),
-(688, 'fa', 'fa-university', '1'),
-(689, 'fa', 'fa-mortar-board', '1'),
-(690, 'fa', 'fa-graduation-cap', '1'),
-(691, 'fa', 'fa-yahoo', '1'),
-(692, 'fa', 'fa-google', '1'),
-(693, 'fa', 'fa-reddit', '1'),
-(694, 'fa', 'fa-reddit-square', '1'),
-(695, 'fa', 'fa-stumbleupon-circle', '1'),
-(696, 'fa', 'fa-stumbleupon', '1'),
-(697, 'fa', 'fa-delicious', '1'),
-(698, 'fa', 'fa-digg', '1'),
-(699, 'fa', 'fa-pied-piper-pp', '1'),
-(700, 'fa', 'fa-pied-piper-alt', '1'),
-(701, 'fa', 'fa-drupal', '1'),
-(702, 'fa', 'fa-joomla', '1'),
-(703, 'fa', 'fa-language', '1'),
-(704, 'fa', 'fa-fax', '1'),
-(705, 'fa', 'fa-building', '1'),
-(706, 'fa', 'fa-child', '1'),
-(707, 'fa', 'fa-paw', '1'),
-(708, 'fa', 'fa-spoon', '1'),
-(709, 'fa', 'fa-cube', '1'),
-(710, 'fa', 'fa-cubes', '1'),
-(711, 'fa', 'fa-behance', '1'),
-(712, 'fa', 'fa-behance-square', '1'),
-(713, 'fa', 'fa-steam', '1'),
-(714, 'fa', 'fa-steam-square', '1'),
-(715, 'fa', 'fa-recycle', '1'),
-(716, 'fa', 'fa-automobile', '1'),
-(717, 'fa', 'fa-car', '1'),
-(718, 'fa', 'fa-cab', '1'),
-(719, 'fa', 'fa-taxi', '1'),
-(720, 'fa', 'fa-tree', '1'),
-(721, 'fa', 'fa-spotify', '1'),
-(722, 'fa', 'fa-deviantart', '1'),
-(723, 'fa', 'fa-soundcloud', '1'),
-(724, 'fa', 'fa-database', '1'),
-(725, 'fa', 'fa-file-pdf-o', '1'),
-(726, 'fa', 'fa-file-word-o', '1'),
-(727, 'fa', 'fa-file-excel-o', '1'),
-(728, 'fa', 'fa-file-powerpoint-o', '1'),
-(729, 'fa', 'fa-file-photo-o', '1'),
-(730, 'fa', 'fa-file-picture-o', '1'),
-(731, 'fa', 'fa-file-image-o', '1'),
-(732, 'fa', 'fa-file-zip-o', '1'),
-(733, 'fa', 'fa-file-archive-o', '1'),
-(734, 'fa', 'fa-file-sound-o', '1'),
-(735, 'fa', 'fa-file-audio-o', '1'),
-(736, 'fa', 'fa-file-movie-o', '1'),
-(737, 'fa', 'fa-file-video-o', '1'),
-(738, 'fa', 'fa-file-code-o', '1'),
-(739, 'fa', 'fa-vine', '1'),
-(740, 'fa', 'fa-codepen', '1'),
-(741, 'fa', 'fa-jsfiddle', '1'),
-(742, 'fa', 'fa-life-bouy', '1'),
-(743, 'fa', 'fa-life-buoy', '1'),
-(744, 'fa', 'fa-life-saver', '1'),
-(745, 'fa', 'fa-support', '1'),
-(746, 'fa', 'fa-life-ring', '1'),
-(747, 'fa', 'fa-circle-o-notch', '1'),
-(748, 'fa', 'fa-ra', '1'),
-(749, 'fa', 'fa-resistance', '1'),
-(750, 'fa', 'fa-rebel', '1'),
-(751, 'fa', 'fa-ge', '1'),
-(752, 'fa', 'fa-empire', '1'),
-(753, 'fa', 'fa-git-square', '1'),
-(754, 'fa', 'fa-git', '1'),
-(755, 'fa', 'fa-y-combinator-square', '1'),
-(756, 'fa', 'fa-yc-square', '1'),
-(757, 'fa', 'fa-hacker-news', '1'),
-(758, 'fa', 'fa-tencent-weibo', '1'),
-(759, 'fa', 'fa-qq', '1'),
-(760, 'fa', 'fa-wechat', '1'),
-(761, 'fa', 'fa-weixin', '1'),
-(762, 'fa', 'fa-send', '1'),
-(763, 'fa', 'fa-paper-plane', '1'),
-(764, 'fa', 'fa-send-o', '1'),
-(765, 'fa', 'fa-paper-plane-o', '1'),
-(766, 'fa', 'fa-history', '1'),
-(767, 'fa', 'fa-circle-thin', '1'),
-(768, 'fa', 'fa-header', '1'),
-(769, 'fa', 'fa-paragraph', '1'),
-(770, 'fa', 'fa-sliders', '1'),
-(771, 'fa', 'fa-share-alt', '1'),
-(772, 'fa', 'fa-share-alt-square', '1'),
-(773, 'fa', 'fa-bomb', '1'),
-(774, 'fa', 'fa-soccer-ball-o', '1'),
-(775, 'fa', 'fa-futbol-o', '1'),
-(776, 'fa', 'fa-tty', '1'),
-(777, 'fa', 'fa-binoculars', '1'),
-(778, 'fa', 'fa-plug', '1'),
-(779, 'fa', 'fa-slideshare', '1'),
-(780, 'fa', 'fa-twitch', '1'),
-(781, 'fa', 'fa-yelp', '1'),
-(782, 'fa', 'fa-newspaper-o', '1'),
-(783, 'fa', 'fa-wifi', '1'),
-(784, 'fa', 'fa-calculator', '1'),
-(785, 'fa', 'fa-paypal', '1'),
-(786, 'fa', 'fa-google-wallet', '1'),
-(787, 'fa', 'fa-cc-visa', '1'),
-(788, 'fa', 'fa-cc-mastercard', '1'),
-(789, 'fa', 'fa-cc-discover', '1'),
-(790, 'fa', 'fa-cc-amex', '1'),
-(791, 'fa', 'fa-cc-paypal', '1'),
-(792, 'fa', 'fa-cc-stripe', '1'),
-(793, 'fa', 'fa-bell-slash', '1'),
-(794, 'fa', 'fa-bell-slash-o', '1'),
-(795, 'fa', 'fa-trash', '1'),
-(796, 'fa', 'fa-copyright', '1'),
-(797, 'fa', 'fa-at', '1'),
-(798, 'fa', 'fa-eyedropper', '1'),
-(799, 'fa', 'fa-paint-brush', '1'),
-(800, 'fa', 'fa-birthday-cake', '1'),
-(801, 'fa', 'fa-area-chart', '1'),
-(802, 'fa', 'fa-pie-chart', '1'),
-(803, 'fa', 'fa-line-chart', '1'),
-(804, 'fa', 'fa-lastfm', '1'),
-(805, 'fa', 'fa-lastfm-square', '1'),
-(806, 'fa', 'fa-toggle-off', '1'),
-(807, 'fa', 'fa-toggle-on', '1'),
-(808, 'fa', 'fa-bicycle', '1'),
-(809, 'fa', 'fa-bus', '1'),
-(810, 'fa', 'fa-ioxhost', '1'),
-(811, 'fa', 'fa-angellist', '1'),
-(812, 'fa', 'fa-cc', '1'),
-(813, 'fa', 'fa-shekel', '1'),
-(814, 'fa', 'fa-sheqel', '1'),
-(815, 'fa', 'fa-ils', '1'),
-(816, 'fa', 'fa-meanpath', '1'),
-(817, 'fa', 'fa-buysellads', '1'),
-(818, 'fa', 'fa-connectdevelop', '1'),
-(819, 'fa', 'fa-dashcube', '1'),
-(820, 'fa', 'fa-forumbee', '1'),
-(821, 'fa', 'fa-leanpub', '1'),
-(822, 'fa', 'fa-sellsy', '1'),
-(823, 'fa', 'fa-shirtsinbulk', '1'),
-(824, 'fa', 'fa-simplybuilt', '1'),
-(825, 'fa', 'fa-skyatlas', '1'),
-(826, 'fa', 'fa-cart-plus', '1'),
-(827, 'fa', 'fa-cart-arrow-down', '1'),
-(828, 'fa', 'fa-diamond', '1'),
-(829, 'fa', 'fa-ship', '1'),
-(830, 'fa', 'fa-user-secret', '1'),
-(831, 'fa', 'fa-motorcycle', '1'),
-(832, 'fa', 'fa-street-view', '1'),
-(833, 'fa', 'fa-heartbeat', '1'),
-(834, 'fa', 'fa-venus', '1'),
-(835, 'fa', 'fa-mars', '1'),
-(836, 'fa', 'fa-mercury', '1'),
-(837, 'fa', 'fa-intersex', '1'),
-(838, 'fa', 'fa-transgender', '1'),
-(839, 'fa', 'fa-transgender-alt', '1'),
-(840, 'fa', 'fa-venus-double', '1'),
-(841, 'fa', 'fa-mars-double', '1'),
-(842, 'fa', 'fa-venus-mars', '1'),
-(843, 'fa', 'fa-mars-stroke', '1'),
-(844, 'fa', 'fa-mars-stroke-v', '1'),
-(845, 'fa', 'fa-mars-stroke-h', '1'),
-(846, 'fa', 'fa-neuter', '1'),
-(847, 'fa', 'fa-genderless', '1'),
-(848, 'fa', 'fa-facebook-official', '1'),
-(849, 'fa', 'fa-pinterest-p', '1'),
-(850, 'fa', 'fa-whatsapp', '1'),
-(851, 'fa', 'fa-server', '1'),
-(852, 'fa', 'fa-user-plus', '1'),
-(853, 'fa', 'fa-user-times', '1'),
-(854, 'fa', 'fa-hotel', '1'),
-(855, 'fa', 'fa-bed', '1'),
-(856, 'fa', 'fa-viacoin', '1'),
-(857, 'fa', 'fa-train', '1'),
-(858, 'fa', 'fa-subway', '1'),
-(859, 'fa', 'fa-medium', '1'),
-(860, 'fa', 'fa-yc', '1'),
-(861, 'fa', 'fa-y-combinator', '1'),
-(862, 'fa', 'fa-optin-monster', '1'),
-(863, 'fa', 'fa-opencart', '1'),
-(864, 'fa', 'fa-expeditedssl', '1'),
-(865, 'fa', 'fa-battery-4', '1'),
-(866, 'fa', 'fa-battery-full', '1'),
-(867, 'fa', 'fa-battery-3', '1'),
-(868, 'fa', 'fa-battery-three-quarters', '1'),
-(869, 'fa', 'fa-battery-2', '1'),
-(870, 'fa', 'fa-battery-half', '1'),
-(871, 'fa', 'fa-battery-1', '1'),
-(872, 'fa', 'fa-battery-quarter', '1'),
-(873, 'fa', 'fa-battery-0', '1'),
-(874, 'fa', 'fa-battery-empty', '1'),
-(875, 'fa', 'fa-mouse-pointer', '1'),
-(876, 'fa', 'fa-i-cursor', '1'),
-(877, 'fa', 'fa-object-group', '1'),
-(878, 'fa', 'fa-object-ungroup', '1'),
-(879, 'fa', 'fa-sticky-note', '1'),
-(880, 'fa', 'fa-sticky-note-o', '1'),
-(881, 'fa', 'fa-cc-jcb', '1'),
-(882, 'fa', 'fa-cc-diners-club', '1'),
-(883, 'fa', 'fa-clone', '1'),
-(884, 'fa', 'fa-balance-scale', '1'),
-(885, 'fa', 'fa-hourglass-o', '1'),
-(886, 'fa', 'fa-hourglass-1', '1'),
-(887, 'fa', 'fa-hourglass-start', '1'),
-(888, 'fa', 'fa-hourglass-2', '1'),
-(889, 'fa', 'fa-hourglass-half', '1'),
-(890, 'fa', 'fa-hourglass-3', '1'),
-(891, 'fa', 'fa-hourglass-end', '1'),
-(892, 'fa', 'fa-hourglass', '1'),
-(893, 'fa', 'fa-hand-grab-o', '1'),
-(894, 'fa', 'fa-hand-rock-o', '1'),
-(895, 'fa', 'fa-hand-stop-o', '1'),
-(896, 'fa', 'fa-hand-paper-o', '1'),
-(897, 'fa', 'fa-hand-scissors-o', '1'),
-(898, 'fa', 'fa-hand-lizard-o', '1'),
-(899, 'fa', 'fa-hand-spock-o', '1'),
-(900, 'fa', 'fa-hand-pointer-o', '1'),
-(901, 'fa', 'fa-hand-peace-o', '1'),
-(902, 'fa', 'fa-trademark', '1'),
-(903, 'fa', 'fa-registered', '1'),
-(904, 'fa', 'fa-creative-commons', '1'),
-(905, 'fa', 'fa-gg', '1'),
-(906, 'fa', 'fa-gg-circle', '1'),
-(907, 'fa', 'fa-tripadvisor', '1'),
-(908, 'fa', 'fa-odnoklassniki', '1'),
-(909, 'fa', 'fa-odnoklassniki-square', '1'),
-(910, 'fa', 'fa-get-pocket', '1'),
-(911, 'fa', 'fa-wikipedia-w', '1'),
-(912, 'fa', 'fa-safari', '1'),
-(913, 'fa', 'fa-chrome', '1'),
-(914, 'fa', 'fa-firefox', '1'),
-(915, 'fa', 'fa-opera', '1'),
-(916, 'fa', 'fa-internet-explorer', '1'),
-(917, 'fa', 'fa-tv', '1'),
-(918, 'fa', 'fa-television', '1'),
-(919, 'fa', 'fa-contao', '1'),
-(920, 'fa', 'fa-500px', '1'),
-(921, 'fa', 'fa-amazon', '1'),
-(922, 'fa', 'fa-calendar-plus-o', '1'),
-(923, 'fa', 'fa-calendar-minus-o', '1'),
-(924, 'fa', 'fa-calendar-times-o', '1'),
-(925, 'fa', 'fa-calendar-check-o', '1'),
-(926, 'fa', 'fa-industry', '1'),
-(927, 'fa', 'fa-map-pin', '1'),
-(928, 'fa', 'fa-map-signs', '1'),
-(929, 'fa', 'fa-map-o', '1'),
-(930, 'fa', 'fa-map', '1'),
-(931, 'fa', 'fa-commenting', '1'),
-(932, 'fa', 'fa-commenting-o', '1'),
-(933, 'fa', 'fa-houzz', '1'),
-(934, 'fa', 'fa-vimeo', '1'),
-(935, 'fa', 'fa-black-tie', '1'),
-(936, 'fa', 'fa-fonticons', '1'),
-(937, 'fa', 'fa-reddit-alien', '1'),
-(938, 'fa', 'fa-edge', '1'),
-(939, 'fa', 'fa-credit-card-alt', '1'),
-(940, 'fa', 'fa-codiepie', '1'),
-(941, 'fa', 'fa-modx', '1'),
-(942, 'fa', 'fa-fort-awesome', '1'),
-(943, 'fa', 'fa-usb', '1'),
-(944, 'fa', 'fa-product-hunt', '1'),
-(945, 'fa', 'fa-mixcloud', '1'),
-(946, 'fa', 'fa-scribd', '1'),
-(947, 'fa', 'fa-pause-circle', '1'),
-(948, 'fa', 'fa-pause-circle-o', '1'),
-(949, 'fa', 'fa-stop-circle', '1'),
-(950, 'fa', 'fa-stop-circle-o', '1'),
-(951, 'fa', 'fa-shopping-bag', '1'),
-(952, 'fa', 'fa-shopping-basket', '1'),
-(953, 'fa', 'fa-hashtag', '1'),
-(954, 'fa', 'fa-bluetooth', '1'),
-(955, 'fa', 'fa-bluetooth-b', '1'),
-(956, 'fa', 'fa-percent', '1'),
-(957, 'fa', 'fa-gitlab', '1'),
-(958, 'fa', 'fa-wpbeginner', '1'),
-(959, 'fa', 'fa-wpforms', '1'),
-(960, 'fa', 'fa-envira', '1'),
-(961, 'fa', 'fa-universal-access', '1'),
-(962, 'fa', 'fa-wheelchair-alt', '1'),
-(963, 'fa', 'fa-question-circle-o', '1'),
-(964, 'fa', 'fa-blind', '1'),
-(965, 'fa', 'fa-audio-description', '1'),
-(966, 'fa', 'fa-volume-control-phone', '1'),
-(967, 'fa', 'fa-braille', '1'),
-(968, 'fa', 'fa-asl-interpreting', '1'),
-(969, 'fa', 'fa-deafness', '1'),
-(970, 'fa', 'fa-hard-of-hearing', '1'),
-(971, 'fa', 'fa-deaf', '1'),
-(972, 'fa', 'fa-glide', '1'),
-(973, 'fa', 'fa-glide-g', '1'),
-(974, 'fa', 'fa-signing', '1'),
-(975, 'fa', 'fa-sign-language', '1'),
-(976, 'fa', 'fa-low-vision', '1'),
-(977, 'fa', 'fa-viadeo', '1'),
-(978, 'fa', 'fa-viadeo-square', '1'),
-(979, 'fa', 'fa-snapchat', '1'),
-(980, 'fa', 'fa-snapchat-ghost', '1'),
-(981, 'fa', 'fa-snapchat-square', '1'),
-(982, 'fa', 'fa-pied-piper', '1'),
-(983, 'fa', 'fa-first-order', '1'),
-(984, 'fa', 'fa-yoast', '1'),
-(985, 'fa', 'fa-themeisle', '1'),
-(986, 'fa', 'fa-google-plus-circle', '1'),
-(987, 'fa', 'fa-google-plus-official', '1'),
-(988, 'fa', 'fa-fa', '1'),
-(989, 'fa', 'fa-font-awesome', '1');
 
 CREATE TABLE ".$this->prefix."tlog_access (
   idlog_access int(11) NOT NULL,
@@ -2947,11 +2005,13 @@ CREATE TABLE ".$this->prefix."torganization (
   email_subject text,
   email_message text,
   number_days_password_diferrence int(11) DEFAULT NULL,
-  number_answer_allowed int(11) DEFAULT NULL
+  number_answer_allowed int(11) DEFAULT NULL,
+  skip_homepage char(1),
+  type_web char(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO ".$this->prefix."torganization (name_one, name_two, email, description, idgallery_header, idgallery_favicon, address, rights, phone_one, phone_two, phone_three, number_question_answer, login, new_password_sent_email, email_host, email_port, email_security_smtp, email_type_security_smtp, email_user, email_password, email_subject, email_message, number_days_password_diferrence, number_answer_allowed) VALUES
-('AmeliaCMS', 'AmeliaCMS ', 'augustoalvarez05@gmail.com', 'Version Beta', 0, 0, 'av 36 entre 22 y 23', 'Todos los derechos reservados 2017', '04245370954', '', '', 2, 1, 0, 'lcoalhost', '23', '1', 'TLS', 'root', '1234', 'asda', '', 3, 2);
+INSERT INTO ".$this->prefix."torganization (name_one, name_two, email, description, idgallery_header, idgallery_favicon, address, rights, phone_one, phone_two, phone_three, number_question_answer, login, new_password_sent_email, email_host, email_port, email_security_smtp, email_type_security_smtp, email_user, email_password, email_subject, email_message, number_days_password_diferrence, number_answer_allowed,skip_homepage,type_web) VALUES
+('AmeliaCMS', 'AmeliaCMS ', 'augustoalvarez05@gmail.com', 'Version Beta', 0, 0, 'av 36 entre 22 y 23', 'Todos los derechos reservados 2017', '04245370954', '', '', 2, 1, 0, 'lcoalhost', '23', '1', 'TLS', 'root', '1234', 'asda', '', 3, 2,'','');
 
 CREATE TABLE ".$this->prefix."tpage (
   idpage int(11) NOT NULL,
@@ -2959,7 +2019,7 @@ CREATE TABLE ".$this->prefix."tpage (
   link text NOT NULL,
   name text NOT NULL,
   img text NOT NULL,
-  idicon int(11) DEFAULT NULL,
+  idicon text DEFAULT NULL,
   content text NOT NULL,
   status char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -3009,52 +2069,48 @@ CREATE TABLE ".$this->prefix."tservice (
   idfather int(11) NOT NULL,
   name varchar(30) NOT NULL,
   url varchar(30) NOT NULL,
-  idicon int(11) DEFAULT NULL,
+  idicon text DEFAULT NULL,
   color char(7) NOT NULL,
   status char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO ".$this->prefix."tservice (idservice, idfather, name, url, idicon, color, status) VALUES
-(1, 0, 'Seguridad y config.', '', 139, '', '1'),
-(2, 1, 'Cargos', 'charge', 591, '', '1'),
-(3, 1, 'Acciones', 'action', 108, 'F5F5F5', '1'),
-(4, 1, 'Servicios', 'service', 26, '', '1'),
-(5, 1, 'Etnias', 'ethnicity', 964, '', '1'),
-(6, 1, 'Nacionalidades', 'nationality', 179, '', '1'),
-(8, 1, 'Iconos', 'icon', 8, '', '1'),
-(9, 0, 'Localidades', '', 438, '', '1'),
-(10, 9, 'Parroquias', 'parish', 327, '', '1'),
-(11, 9, 'Municipios', 'municipality', 328, '', '1'),
-(12, 9, 'Estados', 'state', 328, '', '1'),
-(13, 9, 'Paises', 'country', 328, '', '1'),
-(14, 1, 'Personas', 'person', 445, '', '1'),
-(15, 1, 'Usuarios', 'user', 445, '', '1'),
-(16, 0, 'Reportes', '', 392, '', '1'),
-(17, 16, 'Bitacora de acceso', 'log_access', 801, 'F5F5F5', '1'),
-(18, 16, 'Bitacora de movimientos', 'log_movement', 803, 'F5F5F5', '1'),
-(19, 16, 'Bitacora de reportes', 'log_report', 802, 'F5F5F5', '1'),
-(20, 1, 'Organizacion', 'organization', 28, '', '1'),
-(21, 0, 'Blog', '', 50, '', '1'),
-(22, 21, 'Publicaciones', 'post', 782, '', '1'),
-(23, 21, 'Paginas', 'page', 29, 'F5F5F5', '1'),
-(24, 21, 'Redes sociales', 'social_network', 848, 'F5F5F5', '1'),
-(25, 16, 'Listados', 'list_report', 321, 'F5F5F5', '1'),
-(27, 21, 'Galeria', 'gallery', 327, 'F5F5F5', '1'),
-(28, 21, 'Temas', 'themes', 710, 'F5F5F5', '1'),
-(29, 21, 'Contacto', 'contact', 7, 'F5F5F5', '1');
+(1, 0, 'Seguridad y config.', '', 'glyphicon glyphicon-wrench', '', '1'),
+(2, 1, 'Cargos', 'charge', 'fa fa-level-up', '', '1'),
+(3, 1, 'Acciones', 'action', 'glyphicon glyphicon-eye-open', 'F5F5F5', '1'),
+(4, 1, 'Servicios', 'service', 'glyphicon glyphicon-cog', '', '1'),
+(5, 1, 'Etnias', 'ethnicity', 'fa fa-blind', '', '1'),
+(6, 1, 'Nacionalidades', 'nationality', 'glyphicon glyphicon-credit-card', '', '1'),
+(9, 0, 'Localidades', '', 'fa fa-globe', '', '1'),
+(10, 9, 'Parroquias', 'parish', 'fa fa-image', '', '1'),
+(11, 9, 'Municipios', 'municipality', 'fa fa-image', '', '1'),
+(12, 9, 'Estados', 'state', 'fa fa-image', '', '1'),
+(13, 9, 'Paises', 'country', 'fa fa-image', '', '1'),
+(14, 1, 'Personas', 'person', 'fa fa-users', '', '1'),
+(15, 1, 'Usuarios', 'user', 'fa fa-users', '', '1'),
+(16, 0, 'Reportes', '', 'fa fa-bar-chart-o', '', '1'),
+(17, 16, 'Bitacora de acceso', 'log_access', 'fa fa-area-chart', 'F5F5F5', '1'),
+(18, 16, 'Bitacora de movimientos', 'log_movement', 'fa fa-line-chart', 'F5F5F5', '1'),
+(19, 16, 'Bitacora de reportes', 'log_report', 'fa fa-pie-chart', 'F5F5F5', '1'),
+(20, 1, 'Organizacion', 'organization', 'glyphicon glyphicon-home', '', '1'),
+(21, 0, 'Blog', '', 'glyphicon glyphicon-book', '', '1'),
+(22, 21, 'Publicaciones', 'post', 'fa fa-newspaper-o', '', '1'),
+(23, 21, 'Paginas', 'page', 'glyphicon glyphicon-file', 'F5F5F5', '1'),
+(24, 21, 'Redes sociales', 'social_network', 'fa fa-facebook-official', 'F5F5F5', '1'),
+(25, 16, 'Listados', 'list_report', 'fa fa-list', 'F5F5F5', '1'),
+(27, 21, 'Galeria', 'gallery', 'fa fa-image', 'F5F5F5', '1'),
+(28, 21, 'Temas', 'themes', 'fa fa-cubes', 'F5F5F5', '1'),
+(29, 21, 'Contacto', 'contact', 'glyphicon glyphicon-envelope', 'F5F5F5', '1'),
+(31, 1, 'Editor de codigo', 'codeeditor', 'fa fa-code', 'F5F5F5 ', '1'),
+(32, 21, 'Servicios', 'servicehome', 'fa fa-home', 'F5F5F5 ', '1'),
+(33, 21, 'Slider', 'slider', 'fa fa-image', 'F5F5F5 ', '1'),
+(34, 21, 'Portafolios', 'portfolio', 'fa fa-folder-open', 'F5F5F5 ', '1');
 
 CREATE TABLE ".$this->prefix."tsocial_network (
   idsocial_network int(11) NOT NULL,
   name varchar(30) NOT NULL,
   url text NOT NULL,
-  idicon int(11) DEFAULT NULL,
-  status char(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
-CREATE TABLE ".$this->prefix."ttemplate (
-  idtemplate int(11) NOT NULL,
-  fields text NOT NULL,
-  data text NOT NULL,
+  idicon text DEFAULT NULL,
   status char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -3070,6 +2126,61 @@ CREATE TABLE ".$this->prefix."tuser (
 
 INSERT INTO ".$this->prefix."tuser (iduser, idperson, name, failed_attempts, initiated, note, status) VALUES
 (1, 1, '".$this->user."', 0, 0, '', '1');
+
+CREATE TABLE ".$this->prefix."tslider (
+  idslider int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name varchar(60) NOT NULL,
+  status char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE ".$this->prefix."tdslider (
+  iddslider int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  idslider int(11) NOT NULL,
+  idgallery int(11) NOT NULL,
+  idpage int(11) NOT NULL,
+  title varchar(50) NOT NULL,
+  description text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE ".$this->prefix."tservicehome (
+  idservicehome int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  idgallery int(11) NOT NULL,
+  idpage int(11) NOT NULL,
+  title varchar(50) NOT NULL,
+  description varchar(100) NOT NULL,
+  status char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE ".$this->prefix."tportfolio (
+  idportfolio int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  idgallery int(11) NOT NULL,
+  idpage int(11) NOT NULL,
+  title varchar(50) NOT NULL,
+  description text NOT NULL,
+  status char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE ".$this->prefix."ttheme (
+    idtheme int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name text,
+    description text,
+    src text,
+    img text,
+    status char(1)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE ".$this->prefix."ttheme_origin (
+    idtheme_origin int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name text,
+    description text,
+    img text,
+    src text,
+    date_created date,
+    status char(1)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO ".$this->prefix."ttheme (idtheme,name,description,src,img,status) VALUES (1, 'Clean Blog', 'blog1', 'clean-blog/', 'img', '1');
+INSERT INTO ".$this->prefix."ttheme (idtheme,name,description,src,img,status) VALUES (2, 'Basica', 'Simple tema', 'basica/', 'img', ' ');
 
 ALTER TABLE ".$this->prefix."taction
   ADD PRIMARY KEY (idaction);
@@ -3114,9 +2225,6 @@ ALTER TABLE ".$this->prefix."tgallery
   ADD PRIMARY KEY (idgallery),
   ADD KEY iduser (iduser);
 
-ALTER TABLE ".$this->prefix."ticon
-  ADD PRIMARY KEY (idicon);
-
 ALTER TABLE ".$this->prefix."tlog_access
   ADD PRIMARY KEY (idlog_access);
 
@@ -3134,8 +2242,7 @@ ALTER TABLE ".$this->prefix."tnationality
   ADD PRIMARY KEY (idnationality);
 
 ALTER TABLE ".$this->prefix."tpage
-  ADD PRIMARY KEY (idpage),
-  ADD KEY idicon (idicon);
+  ADD PRIMARY KEY (idpage);
 
 ALTER TABLE ".$this->prefix."tperson
   ADD PRIMARY KEY (idperson),
@@ -3149,15 +2256,12 @@ ALTER TABLE ".$this->prefix."tpost
   ADD KEY iduser (iduser);
 
 ALTER TABLE ".$this->prefix."tservice
-  ADD PRIMARY KEY (idservice),
-  ADD KEY idicon (idicon);
+  ADD PRIMARY KEY (idservice);
 
 ALTER TABLE ".$this->prefix."tsocial_network
-  ADD PRIMARY KEY (idsocial_network),
-  ADD KEY idicon (idicon);
+  ADD PRIMARY KEY (idsocial_network);
 
-ALTER TABLE ".$this->prefix."ttemplate
-  ADD PRIMARY KEY (idtemplate);
+
 
 ALTER TABLE ".$this->prefix."tuser
   ADD PRIMARY KEY (iduser),
@@ -3196,9 +2300,6 @@ ALTER TABLE ".$this->prefix."tethnicity
 ALTER TABLE ".$this->prefix."tgallery
   MODIFY idgallery int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
-ALTER TABLE ".$this->prefix."ticon
-  MODIFY idicon int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=990;
-
 ALTER TABLE ".$this->prefix."tlog_access
   MODIFY idlog_access int(11) NOT NULL AUTO_INCREMENT;
 
@@ -3226,8 +2327,8 @@ ALTER TABLE ".$this->prefix."tservice
 ALTER TABLE ".$this->prefix."tsocial_network
   MODIFY idsocial_network int(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE ".$this->prefix."ttemplate
-  MODIFY idtemplate int(11) NOT NULL AUTO_INCREMENT;
+
+
 
 ALTER TABLE ".$this->prefix."tuser
   MODIFY iduser int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
@@ -3265,9 +2366,6 @@ ALTER TABLE ".$this->prefix."tlog_movement
 ALTER TABLE ".$this->prefix."tlog_report
   ADD CONSTRAINT ".$this->prefix."tlog_report_ibfk_1 FOREIGN KEY (iduser) REFERENCES ".$this->prefix."tuser (iduser) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-ALTER TABLE ".$this->prefix."tpage
-  ADD CONSTRAINT ".$this->prefix."tpage_ibfk_1 FOREIGN KEY (idicon) REFERENCES ".$this->prefix."ticon (idicon) ON DELETE SET NULL ON UPDATE SET NULL;
-
 ALTER TABLE ".$this->prefix."tperson
   ADD CONSTRAINT ".$this->prefix."tperson_ibfk_1 FOREIGN KEY (idnationality) REFERENCES ".$this->prefix."tnationality (idnationality),
   ADD CONSTRAINT ".$this->prefix."tperson_ibfk_2 FOREIGN KEY (idethnicity) REFERENCES ".$this->prefix."tethnicity (idethnicity),
@@ -3277,11 +2375,6 @@ ALTER TABLE ".$this->prefix."tperson
 ALTER TABLE ".$this->prefix."tpost
   ADD CONSTRAINT ".$this->prefix."tpost_ibfk_1 FOREIGN KEY (iduser) REFERENCES ".$this->prefix."tuser (iduser);
 
-ALTER TABLE ".$this->prefix."tservice
-  ADD CONSTRAINT ".$this->prefix."tservice_ibfk_1 FOREIGN KEY (idicon) REFERENCES ".$this->prefix."ticon (idicon) ON DELETE SET NULL ON UPDATE SET NULL;
-
-ALTER TABLE ".$this->prefix."tsocial_network
-  ADD CONSTRAINT ".$this->prefix."tsocial_network_ibfk_1 FOREIGN KEY (idicon) REFERENCES ".$this->prefix."ticon (idicon) ON DELETE SET NULL ON UPDATE SET NULL;
 
 ALTER TABLE ".$this->prefix."tuser
   ADD CONSTRAINT ".$this->prefix."tuser_ibfk_1 FOREIGN KEY (idperson) REFERENCES ".$this->prefix."tperson (idperson) ON DELETE CASCADE ON UPDATE CASCADE;
@@ -3308,7 +2401,7 @@ CREATE TABLE ".$this->prefix."taction (
     idaction serial NOT NULL,
     name character varying(15),
     function integer,
-    idicon integer,
+    idicon text,
     status character(1)
 );
 
@@ -3391,13 +2484,6 @@ CREATE TABLE ".$this->prefix."tgallery (
     date_created date
 );
 
-CREATE TABLE ".$this->prefix."ticon (
-    idicon serial NOT NULL,
-    class character varying(60),
-    name character varying(60),
-    status character(1)
-);
-
 CREATE TABLE ".$this->prefix."tlog_access (
     idlog_access serial NOT NULL,
     name character varying(20),
@@ -3477,7 +2563,7 @@ CREATE TABLE ".$this->prefix."tpage (
     link text,
     name text,
     img text,
-    idicon integer,
+    idicon text,
     content text,
     view_main character(1),
     status character(1)
@@ -3522,7 +2608,7 @@ CREATE TABLE ".$this->prefix."tservice (
     idfather integer,
     name character varying(30),
     url character varying(30),
-    idicon integer,
+    idicon text,
     color character(7),
     status character(1)
 );
@@ -3531,7 +2617,7 @@ CREATE TABLE ".$this->prefix."tsocial_network (
     idsocial_network serial NOT NULL,
     name character varying(30),
     url text,
-    idicon integer,
+    idicon text,
     status character(1)
 );
 
@@ -3564,13 +2650,46 @@ CREATE TABLE ".$this->prefix."tuser (
     status character(1)
 );
 
-INSERT INTO ".$this->prefix."taction VALUES (1, 'Agregar', 1, 2, '1');
-INSERT INTO ".$this->prefix."taction VALUES (2, 'Editar', 2, 71, '1');
-INSERT INTO ".$this->prefix."taction VALUES (3, 'Consultar', 3, 11, '1');
-INSERT INTO ".$this->prefix."taction VALUES (4, 'Activar', 4, 20, '1');
-INSERT INTO ".$this->prefix."taction VALUES (5, 'Desactivar', 5, 21, '1');
-INSERT INTO ".$this->prefix."taction VALUES (6, 'Generar', 6, 1, '1');
-INSERT INTO ".$this->prefix."taction VALUES (7, 'Eliminar', 7, 27, '1');";
+CREATE TABLE ".$this->prefix."tslider (
+  idslider serial NOT NULL,
+  name character varying(60),
+  status character(1)
+);
+
+CREATE TABLE ".$this->prefix."tdslider (
+  iddslider serial NOT NULL,
+  idslider integer,
+  idgallery integer,
+  idpage integer,
+  title character varying(50),
+  description text  
+);
+
+CREATE TABLE ".$this->prefix."tservicehome (
+  idservicehome serial NOT NULL,
+  idgallery integer,
+  idpage integer,
+  title character varying(50),
+  description character varying(100),
+  status character(1)
+);
+
+CREATE TABLE ".$this->prefix."tportfolio (
+  idservicehome serial NOT NULL,
+  idgallery integer,
+  idpage integer,
+  title character varying(50),
+  description character text,
+  status character(1)
+);
+
+INSERT INTO ".$this->prefix."taction VALUES (1, 'Agregar', 1, 'glyphicon glyphicon-plus', '1');
+INSERT INTO ".$this->prefix."taction VALUES (2, 'Editar', 2, 'glyphicon glyphicon-edit', '1');
+INSERT INTO ".$this->prefix."taction VALUES (3, 'Consultar', 3, 'glyphicon glyphicon-search', '1');
+INSERT INTO ".$this->prefix."taction VALUES (4, 'Activar', 4, 'glyphicon glyphicon-ok', '1');
+INSERT INTO ".$this->prefix."taction VALUES (5, 'Desactivar', 5, 'glyphicon glyphicon-remove', '1');
+INSERT INTO ".$this->prefix."taction VALUES (6, 'Generar', 6, 'glyphicon glyphicon-asterisk', '1');
+INSERT INTO ".$this->prefix."taction VALUES (7, 'Eliminar', 7, 'glyphicon glyphicon-trash', '1');";
 $sql.="
 INSERT INTO ".$this->prefix."tdservice_action VALUES (1, 2, 1);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (2, 2, 2);
@@ -3691,9 +2810,33 @@ INSERT INTO ".$this->prefix."tdservice_action VALUES (227, 18, 6);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (228, 17, 6);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (229, 28, 2);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (230, 28, 3);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (241, 28, 4);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (242, 29, 1);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (243, 29, 2);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (244, 29, 3);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (245, 29, 4);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (246, 29, 5);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (247, 29, 7);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (239, 31, 2);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (240, 31, 3);
-INSERT INTO ".$this->prefix."tdservice_action VALUES (241, 28, 4);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (254, 32, 1);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (255, 32, 2);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (256, 32, 3);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (257, 32, 4);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (258, 32, 5);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (259, 32, 7);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (260, 33, 1);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (261, 33, 2);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (262, 33, 3);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (263, 33, 4);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (264, 33, 5);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (265, 33, 7);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (266, 34, 1);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (267, 34, 2);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (268, 34, 3);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (269, 34, 4);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (270, 34, 5);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (271, 34, 7);
 
 INSERT INTO ".$this->prefix."tethnicity VALUES (1, 'NINGUNO', '1');
 INSERT INTO ".$this->prefix."tethnicity VALUES (2, 'ACAHUAYO', '1');
@@ -3732,37 +2875,39 @@ INSERT INTO ".$this->prefix."tperson VALUES (1, 1, 1, 1, '', '00000000', 'Admini
 
 INSERT INTO ".$this->prefix."tpost VALUES (1, 'ameliacms', 'AmeliaCMS', '151559 ', 4, '<p style=\"text-align: justify;\"><span style=\"color: #000000;\">Es una plataforma dise&ntilde;ada para crear aplicaciones web, posee caracter&iacute;sticas relevantes y f&aacute;ciles de utilizar.</span><br /><span style=\"color: #000000;\">Con solo importar la base de datos el usuario esta listo para hacer uso de ella. Adem&aacute;s, posee una curva de aprendizaje alta y permite la escalabilidad ya que esta basado bajo la arquitectura MVC.</span></p>', 1, '2017-08-03', '1');
 
-INSERT INTO ".$this->prefix."tservice VALUES (1, 0, 'Seguridad y config.', '', 139, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (2, 1, 'Cargos', 'charge', 591, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (3, 1, 'Acciones', 'action', 108, 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (4, 1, 'Servicios', 'service', 26, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (5, 1, 'Etnias', 'ethnicity', 964, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (6, 1, 'Nacionalidades', 'nationality', 179, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (8, 1, 'Iconos', 'icon', 8, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (9, 0, 'Localidades', '', 438, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (10, 9, 'Parroquias', 'parish', 327, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (11, 9, 'Municipios', 'municipality', 328, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (12, 9, 'Estados', 'state', 328, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (13, 9, 'Paises', 'country', 328, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (14, 1, 'Personas', 'person', 445, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (15, 1, 'Usuarios', 'user', 445, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (16, 0, 'Reportes', '', 392, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (17, 16, 'Bitacora de acceso', 'log_access', 801, 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (18, 16, 'Bitacora de movimientos', 'log_movement', 803, 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (19, 16, 'Bitacora de reportes', 'log_report', 802, 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (20, 1, 'Organizacion', 'organization', 28, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (22, 21, 'Publicaciones', 'post', 782, '       ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (23, 21, 'Paginas', 'page', 29, 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (24, 32, 'Redes sociales', 'social_network', 848, 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (25, 16, 'Listados', 'list_report', 321, 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (26, 1, 'Configuracion', 'configuration', 124, 'F5F5F5 ', '0');
-INSERT INTO ".$this->prefix."tservice VALUES (27, 21, 'Galeria', 'gallery', 327, 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (28, 21, 'Temas', 'theme', 710, 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (31, 1, 'Editor de codigo', 'codeeditor', 550, 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (21, 0, 'Blog', '', 50, '       ', '0');
+INSERT INTO ".$this->prefix."tservice VALUES (1, 0, 'Seguridad y config.', '', 'glyphicon glyphicon-wrench', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (2, 1, 'Cargos', 'charge', 'fa fa-level-up', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (3, 1, 'Acciones', 'action', 'glyphicon glyphicon-eye-open', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (4, 1, 'Servicios', 'service', 'glyphicon glyphicon-cog', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (5, 1, 'Etnias', 'ethnicity', 'fa fa-blind', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (6, 1, 'Nacionalidades', 'nationality', 'glyphicon glyphicon-credit-card', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (9, 0, 'Localidades', '', 'fa fa-globe', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (10, 9, 'Parroquias', 'parish', 'fa fa-image', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (11, 9, 'Municipios', 'municipality', 'fa fa-image', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (12, 9, 'Estados', 'state', 'fa fa-image', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (13, 9, 'Paises', 'country', 'fa fa-image', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (14, 1, 'Personas', 'person', 'fa fa-users', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (15, 1, 'Usuarios', 'user', 'fa fa-users', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (16, 0, 'Reportes', '', 'fa fa-bar-chart-o', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (17, 16, 'Bitacora de acceso', 'log_access', 'fa fa-area-chart', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (18, 16, 'Bitacora de movimientos', 'log_movement', 'fa fa-line-chart', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (19, 16, 'Bitacora de reportes', 'log_report', 'fa fa-pie-chart', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (20, 1, 'Organizacion', 'organization', 'glyphicon glyphicon-home', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (21, 0, 'Blog', '', 'glyphicon glyphicon-book', '       ', '0');
+INSERT INTO ".$this->prefix."tservice VALUES (22, 21, 'Publicaciones', 'post', 'fa fa-newspaper-o', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (23, 21, 'Paginas', 'page', 'glyphicon glyphicon-file', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (24, 32, 'Redes sociales', 'social_network', 'fa fa-facebook-official', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (25, 16, 'Listados', 'list_report', 'fa fa-list', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (27, 21, 'Galeria', 'gallery', 'fa fa-image', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (28, 21, 'Temas', 'theme', 'fa fa-cubes', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (29, 21, 'Contacto', 'contact', 'glyphicon glyphicon-envelope', 'F5F5F5', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (31, 1, 'Editor de codigo', 'codeeditor', 'fa fa-code', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (32, 21, 'Servicios', 'servicehome', 'fa fa-home', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (33, 21, 'Slider', 'slider', 'fa fa-image', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (34, 21, 'Portafolios', 'portfolio', 'fa fa-folder-open', 'F5F5F5 ', '1');
 
-INSERT INTO ".$this->prefix."ttheme VALUES (1, 'Clean Blog', 'blog1', 'clean-blog/', 'img', ' ');
-INSERT INTO ".$this->prefix."ttheme VALUES (2, 'Basica', 'Simple tema', 'basica/', 'img', '1');
+INSERT INTO ".$this->prefix."ttheme VALUES (1, 'Clean Blog', 'blog1', 'clean-blog/', 'img', '1');
+INSERT INTO ".$this->prefix."ttheme VALUES (2, 'Basica', 'Simple tema', 'basica/', 'img', ' ');
 
 INSERT INTO ".$this->prefix."tuser VALUES (1, 1, '".$this->user."', 0, 0, '', '1');
 
@@ -3799,8 +2944,6 @@ ALTER TABLE ONLY ".$this->prefix."tethnicity
 ALTER TABLE ONLY ".$this->prefix."tgallery
     ADD CONSTRAINT ".$this->prefix."tgallery_pkey PRIMARY KEY (idgallery);
 
-ALTER TABLE ONLY ".$this->prefix."ticon
-    ADD CONSTRAINT ".$this->prefix."ticon_pkey PRIMARY KEY (idicon);
 
 ALTER TABLE ONLY ".$this->prefix."tlog_access
     ADD CONSTRAINT ".$this->prefix."tlog_access_pkey PRIMARY KEY (idlog_access);
@@ -5494,999 +4637,36 @@ INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6724, 1, 2, 4);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6725, 1, 2, 5);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6726, 1, 2, 6);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6727, 1, 2, 7);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6728, 1, 29, 1);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6729, 1, 29, 2);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6730, 1, 29, 3);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6731, 1, 29, 4);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6732, 1, 29, 5);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6733, 1, 29, 7);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6735, 1, 31, 2);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6736, 1, 31, 3);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6740, 1, 32, 1);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6741, 1, 32, 2);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6742, 1, 32, 3);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6743, 1, 32, 4);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6744, 1, 32, 5);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6745, 1, 32, 7);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6746, 1, 33, 1);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6747, 1, 33, 2);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6748, 1, 33, 3);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6749, 1, 33, 4);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6750, 1, 33, 5);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6751, 1, 33, 7);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6752, 1, 34, 1);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6753, 1, 34, 2);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6754, 1, 34, 3);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6755, 1, 34, 4);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6756, 1, 34, 5);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6757, 1, 34, 7);
 
 INSERT INTO ".$this->prefix."tdpassword VALUES (1, 1, '".$this->encrypter($this->password)."', NOW(), '1');
 
-INSERT INTO ".$this->prefix."ticon VALUES (1, 'glyphicon', 'glyphicon-asterisk', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (2, 'glyphicon', 'glyphicon-plus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (3, 'glyphicon', 'glyphicon-euro', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (4, 'glyphicon', 'glyphicon-eur', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (5, 'glyphicon', 'glyphicon-minus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (6, 'glyphicon', 'glyphicon-cloud', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (7, 'glyphicon', 'glyphicon-envelope', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (8, 'glyphicon', 'glyphicon-pencil', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (9, 'glyphicon', 'glyphicon-glass', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (10, 'glyphicon', 'glyphicon-music', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (11, 'glyphicon', 'glyphicon-search', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (12, 'glyphicon', 'glyphicon-heart', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (13, 'glyphicon', 'glyphicon-star', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (14, 'glyphicon', 'glyphicon-star-empty', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (15, 'glyphicon', 'glyphicon-user', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (16, 'glyphicon', 'glyphicon-film', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (17, 'glyphicon', 'glyphicon-th-large', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (18, 'glyphicon', 'glyphicon-th', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (19, 'glyphicon', 'glyphicon-th-list', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (20, 'glyphicon', 'glyphicon-ok', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (21, 'glyphicon', 'glyphicon-remove', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (22, 'glyphicon', 'glyphicon-zoom-in', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (23, 'glyphicon', 'glyphicon-zoom-out', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (24, 'glyphicon', 'glyphicon-off', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (25, 'glyphicon', 'glyphicon-signal', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (26, 'glyphicon', 'glyphicon-cog', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (27, 'glyphicon', 'glyphicon-trash', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (28, 'glyphicon', 'glyphicon-home', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (29, 'glyphicon', 'glyphicon-file', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (30, 'glyphicon', 'glyphicon-time', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (31, 'glyphicon', 'glyphicon-road', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (32, 'glyphicon', 'glyphicon-download-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (33, 'glyphicon', 'glyphicon-download', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (34, 'glyphicon', 'glyphicon-upload', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (35, 'glyphicon', 'glyphicon-inbox', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (36, 'glyphicon', 'glyphicon-play-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (37, 'glyphicon', 'glyphicon-repeat', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (38, 'glyphicon', 'glyphicon-refresh', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (39, 'glyphicon', 'glyphicon-list-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (40, 'glyphicon', 'glyphicon-lock', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (41, 'glyphicon', 'glyphicon-flag', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (42, 'glyphicon', 'glyphicon-headphones', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (43, 'glyphicon', 'glyphicon-volume-off', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (44, 'glyphicon', 'glyphicon-volume-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (45, 'glyphicon', 'glyphicon-volume-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (46, 'glyphicon', 'glyphicon-qrcode', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (47, 'glyphicon', 'glyphicon-barcode', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (48, 'glyphicon', 'glyphicon-tag', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (49, 'glyphicon', 'glyphicon-tags', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (50, 'glyphicon', 'glyphicon-book', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (51, 'glyphicon', 'glyphicon-bookmark', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (52, 'glyphicon', 'glyphicon-print', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (53, 'glyphicon', 'glyphicon-camera', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (54, 'glyphicon', 'glyphicon-font', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (55, 'glyphicon', 'glyphicon-bold', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (56, 'glyphicon', 'glyphicon-italic', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (57, 'glyphicon', 'glyphicon-text-height', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (58, 'glyphicon', 'glyphicon-text-width', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (59, 'glyphicon', 'glyphicon-align-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (60, 'glyphicon', 'glyphicon-align-center', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (61, 'glyphicon', 'glyphicon-align-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (62, 'glyphicon', 'glyphicon-align-justify', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (63, 'glyphicon', 'glyphicon-list', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (64, 'glyphicon', 'glyphicon-indent-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (65, 'glyphicon', 'glyphicon-indent-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (66, 'glyphicon', 'glyphicon-facetime-video', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (67, 'glyphicon', 'glyphicon-picture', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (68, 'glyphicon', 'glyphicon-map-marker', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (69, 'glyphicon', 'glyphicon-adjust', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (70, 'glyphicon', 'glyphicon-tint', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (71, 'glyphicon', 'glyphicon-edit', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (72, 'glyphicon', 'glyphicon-share', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (73, 'glyphicon', 'glyphicon-check', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (74, 'glyphicon', 'glyphicon-move', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (75, 'glyphicon', 'glyphicon-step-backward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (76, 'glyphicon', 'glyphicon-fast-backward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (77, 'glyphicon', 'glyphicon-backward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (78, 'glyphicon', 'glyphicon-play', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (79, 'glyphicon', 'glyphicon-pause', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (80, 'glyphicon', 'glyphicon-stop', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (81, 'glyphicon', 'glyphicon-forward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (82, 'glyphicon', 'glyphicon-fast-forward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (83, 'glyphicon', 'glyphicon-step-forward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (84, 'glyphicon', 'glyphicon-eject', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (85, 'glyphicon', 'glyphicon-chevron-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (86, 'glyphicon', 'glyphicon-chevron-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (87, 'glyphicon', 'glyphicon-plus-sign', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (88, 'glyphicon', 'glyphicon-minus-sign', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (89, 'glyphicon', 'glyphicon-remove-sign', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (90, 'glyphicon', 'glyphicon-ok-sign', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (91, 'glyphicon', 'glyphicon-question-sign', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (92, 'glyphicon', 'glyphicon-info-sign', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (93, 'glyphicon', 'glyphicon-screenshot', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (94, 'glyphicon', 'glyphicon-remove-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (95, 'glyphicon', 'glyphicon-ok-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (96, 'glyphicon', 'glyphicon-ban-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (97, 'glyphicon', 'glyphicon-arrow-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (98, 'glyphicon', 'glyphicon-arrow-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (99, 'glyphicon', 'glyphicon-arrow-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (100, 'glyphicon', 'glyphicon-arrow-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (101, 'glyphicon', 'glyphicon-share-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (102, 'glyphicon', 'glyphicon-resize-full', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (103, 'glyphicon', 'glyphicon-resize-small', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (104, 'glyphicon', 'glyphicon-exclamation-sign', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (105, 'glyphicon', 'glyphicon-gift', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (106, 'glyphicon', 'glyphicon-leaf', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (107, 'glyphicon', 'glyphicon-fire', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (108, 'glyphicon', 'glyphicon-eye-open', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (109, 'glyphicon', 'glyphicon-eye-close', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (110, 'glyphicon', 'glyphicon-warning-sign', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (111, 'glyphicon', 'glyphicon-plane', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (112, 'glyphicon', 'glyphicon-calendar', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (113, 'glyphicon', 'glyphicon-random', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (114, 'glyphicon', 'glyphicon-comment', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (115, 'glyphicon', 'glyphicon-magnet', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (116, 'glyphicon', 'glyphicon-chevron-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (117, 'glyphicon', 'glyphicon-chevron-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (118, 'glyphicon', 'glyphicon-retweet', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (119, 'glyphicon', 'glyphicon-shopping-cart', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (120, 'glyphicon', 'glyphicon-folder-close', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (121, 'glyphicon', 'glyphicon-folder-open', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (122, 'glyphicon', 'glyphicon-resize-vertical', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (123, 'glyphicon', 'glyphicon-resize-horizontal', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (124, 'glyphicon', 'glyphicon-hdd', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (125, 'glyphicon', 'glyphicon-bullhorn', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (126, 'glyphicon', 'glyphicon-bell', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (127, 'glyphicon', 'glyphicon-certificate', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (128, 'glyphicon', 'glyphicon-thumbs-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (129, 'glyphicon', 'glyphicon-thumbs-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (130, 'glyphicon', 'glyphicon-hand-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (131, 'glyphicon', 'glyphicon-hand-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (132, 'glyphicon', 'glyphicon-hand-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (133, 'glyphicon', 'glyphicon-hand-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (134, 'glyphicon', 'glyphicon-circle-arrow-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (135, 'glyphicon', 'glyphicon-circle-arrow-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (136, 'glyphicon', 'glyphicon-circle-arrow-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (137, 'glyphicon', 'glyphicon-circle-arrow-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (138, 'glyphicon', 'glyphicon-globe', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (139, 'glyphicon', 'glyphicon-wrench', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (140, 'glyphicon', 'glyphicon-tasks', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (141, 'glyphicon', 'glyphicon-filter', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (142, 'glyphicon', 'glyphicon-briefcase', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (143, 'glyphicon', 'glyphicon-fullscreen', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (144, 'glyphicon', 'glyphicon-dashboard', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (145, 'glyphicon', 'glyphicon-paperclip', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (146, 'glyphicon', 'glyphicon-heart-empty', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (147, 'glyphicon', 'glyphicon-link', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (148, 'glyphicon', 'glyphicon-phone', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (149, 'glyphicon', 'glyphicon-pushpin', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (150, 'glyphicon', 'glyphicon-usd', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (151, 'glyphicon', 'glyphicon-gbp', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (152, 'glyphicon', 'glyphicon-sort', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (153, 'glyphicon', 'glyphicon-sort-by-alphabet', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (154, 'glyphicon', 'glyphicon-sort-by-alphabet-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (155, 'glyphicon', 'glyphicon-sort-by-order', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (156, 'glyphicon', 'glyphicon-sort-by-order-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (157, 'glyphicon', 'glyphicon-sort-by-attributes', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (158, 'glyphicon', 'glyphicon-sort-by-attributes-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (159, 'glyphicon', 'glyphicon-unchecked', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (160, 'glyphicon', 'glyphicon-expand', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (161, 'glyphicon', 'glyphicon-collapse-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (162, 'glyphicon', 'glyphicon-collapse-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (163, 'glyphicon', 'glyphicon-log-in', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (164, 'glyphicon', 'glyphicon-flash', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (165, 'glyphicon', 'glyphicon-log-out', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (166, 'glyphicon', 'glyphicon-new-window', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (167, 'glyphicon', 'glyphicon-record', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (168, 'glyphicon', 'glyphicon-save', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (169, 'glyphicon', 'glyphicon-open', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (170, 'glyphicon', 'glyphicon-saved', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (171, 'glyphicon', 'glyphicon-import', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (172, 'glyphicon', 'glyphicon-export', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (173, 'glyphicon', 'glyphicon-send', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (174, 'glyphicon', 'glyphicon-floppy-disk', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (175, 'glyphicon', 'glyphicon-floppy-saved', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (176, 'glyphicon', 'glyphicon-floppy-remove', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (177, 'glyphicon', 'glyphicon-floppy-save', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (178, 'glyphicon', 'glyphicon-floppy-open', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (179, 'glyphicon', 'glyphicon-credit-card', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (180, 'glyphicon', 'glyphicon-transfer', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (181, 'glyphicon', 'glyphicon-cutlery', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (182, 'glyphicon', 'glyphicon-header', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (183, 'glyphicon', 'glyphicon-compressed', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (184, 'glyphicon', 'glyphicon-earphone', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (185, 'glyphicon', 'glyphicon-phone-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (186, 'glyphicon', 'glyphicon-tower', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (187, 'glyphicon', 'glyphicon-stats', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (188, 'glyphicon', 'glyphicon-sd-video', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (189, 'glyphicon', 'glyphicon-hd-video', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (190, 'glyphicon', 'glyphicon-subtitles', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (191, 'glyphicon', 'glyphicon-sound-stereo', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (192, 'glyphicon', 'glyphicon-sound-dolby', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (193, 'glyphicon', 'glyphicon-sound-5-1', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (194, 'glyphicon', 'glyphicon-sound-6-1', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (195, 'glyphicon', 'glyphicon-sound-7-1', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (196, 'glyphicon', 'glyphicon-copyright-mark', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (197, 'glyphicon', 'glyphicon-registration-mark', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (198, 'glyphicon', 'glyphicon-cloud-download', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (199, 'glyphicon', 'glyphicon-cloud-upload', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (200, 'glyphicon', 'glyphicon-tree-conifer', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (201, 'glyphicon', 'glyphicon-tree-deciduous', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (202, 'glyphicon', 'glyphicon-cd', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (203, 'glyphicon', 'glyphicon-save-file', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (204, 'glyphicon', 'glyphicon-open-file', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (205, 'glyphicon', 'glyphicon-level-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (206, 'glyphicon', 'glyphicon-copy', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (207, 'glyphicon', 'glyphicon-paste', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (208, 'glyphicon', 'glyphicon-alert', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (209, 'glyphicon', 'glyphicon-equalizer', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (210, 'glyphicon', 'glyphicon-king', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (211, 'glyphicon', 'glyphicon-queen', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (212, 'glyphicon', 'glyphicon-pawn', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (213, 'glyphicon', 'glyphicon-bishop', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (214, 'glyphicon', 'glyphicon-knight', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (215, 'glyphicon', 'glyphicon-baby-formula', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (216, 'glyphicon', 'glyphicon-tent', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (217, 'glyphicon', 'glyphicon-blackboard', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (218, 'glyphicon', 'glyphicon-bed', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (219, 'glyphicon', 'glyphicon-apple', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (220, 'glyphicon', 'glyphicon-erase', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (221, 'glyphicon', 'glyphicon-hourglass', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (222, 'glyphicon', 'glyphicon-lamp', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (223, 'glyphicon', 'glyphicon-duplicate', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (224, 'glyphicon', 'glyphicon-piggy-bank', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (225, 'glyphicon', 'glyphicon-scissors', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (226, 'glyphicon', 'glyphicon-bitcoin', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (227, 'glyphicon', 'glyphicon-yen', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (228, 'glyphicon', 'glyphicon-ruble', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (229, 'glyphicon', 'glyphicon-scale', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (230, 'glyphicon', 'glyphicon-ice-lolly', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (231, 'glyphicon', 'glyphicon-ice-lolly-tasted', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (232, 'glyphicon', 'glyphicon-education', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (233, 'glyphicon', 'glyphicon-option-horizontal', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (234, 'glyphicon', 'glyphicon-option-vertical', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (235, 'glyphicon', 'glyphicon-menu-hamburger', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (236, 'glyphicon', 'glyphicon-modal-window', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (237, 'glyphicon', 'glyphicon-oil', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (238, 'glyphicon', 'glyphicon-grain', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (239, 'glyphicon', 'glyphicon-sunglasses', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (240, 'glyphicon', 'glyphicon-text-size', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (241, 'glyphicon', 'glyphicon-text-color', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (242, 'glyphicon', 'glyphicon-text-background', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (243, 'glyphicon', 'glyphicon-object-align-top', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (244, 'glyphicon', 'glyphicon-object-align-bottom', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (245, 'glyphicon', 'glyphicon-object-align-horizontal', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (246, 'glyphicon', 'glyphicon-object-align-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (247, 'glyphicon', 'glyphicon-object-align-vertical', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (248, 'glyphicon', 'glyphicon-object-align-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (249, 'glyphicon', 'glyphicon-triangle-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (250, 'glyphicon', 'glyphicon-triangle-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (251, 'glyphicon', 'glyphicon-triangle-bottom', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (252, 'glyphicon', 'glyphicon-triangle-top', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (253, 'glyphicon', 'glyphicon-console', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (254, 'glyphicon', 'glyphicon-superscript', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (255, 'glyphicon', 'glyphicon-subscript', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (256, 'glyphicon', 'glyphicon-menu-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (257, 'glyphicon', 'glyphicon-menu-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (258, 'glyphicon', 'glyphicon-menu-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (259, 'glyphicon', 'glyphicon-menu-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (260, 'fa', 'fa-american-sign-language-interpreting', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (261, 'fa', 'fa-assistive-listening-systems', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (262, 'fa', 'fa-glass', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (263, 'fa', 'fa-music', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (264, 'fa', 'fa-search', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (265, 'fa', 'fa-envelope-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (266, 'fa', 'fa-heart', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (267, 'fa', 'fa-star', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (268, 'fa', 'fa-star-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (269, 'fa', 'fa-user', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (270, 'fa', 'fa-film', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (271, 'fa', 'fa-th-large', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (272, 'fa', 'fa-th', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (273, 'fa', 'fa-th-list', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (274, 'fa', 'fa-check', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (275, 'fa', 'fa-remove', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (276, 'fa', 'fa-close', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (277, 'fa', 'fa-times', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (278, 'fa', 'fa-search-plus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (279, 'fa', 'fa-search-minus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (280, 'fa', 'fa-power-off', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (281, 'fa', 'fa-signal', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (282, 'fa', 'fa-gear', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (283, 'fa', 'fa-cog', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (284, 'fa', 'fa-trash-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (285, 'fa', 'fa-home', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (286, 'fa', 'fa-file-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (287, 'fa', 'fa-clock-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (288, 'fa', 'fa-road', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (289, 'fa', 'fa-download', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (290, 'fa', 'fa-arrow-circle-o-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (291, 'fa', 'fa-arrow-circle-o-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (292, 'fa', 'fa-inbox', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (293, 'fa', 'fa-play-circle-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (294, 'fa', 'fa-rotate-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (295, 'fa', 'fa-repeat', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (296, 'fa', 'fa-refresh', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (297, 'fa', 'fa-list-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (298, 'fa', 'fa-lock', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (299, 'fa', 'fa-flag', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (300, 'fa', 'fa-headphones', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (301, 'fa', 'fa-volume-off', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (302, 'fa', 'fa-volume-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (303, 'fa', 'fa-volume-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (304, 'fa', 'fa-qrcode', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (305, 'fa', 'fa-barcode', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (306, 'fa', 'fa-tag', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (307, 'fa', 'fa-tags', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (308, 'fa', 'fa-book', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (309, 'fa', 'fa-bookmark', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (310, 'fa', 'fa-print', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (311, 'fa', 'fa-camera', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (312, 'fa', 'fa-font', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (313, 'fa', 'fa-bold', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (314, 'fa', 'fa-italic', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (315, 'fa', 'fa-text-height', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (316, 'fa', 'fa-text-width', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (317, 'fa', 'fa-align-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (318, 'fa', 'fa-align-center', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (319, 'fa', 'fa-align-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (320, 'fa', 'fa-align-justify', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (321, 'fa', 'fa-list', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (322, 'fa', 'fa-dedent', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (323, 'fa', 'fa-outdent', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (324, 'fa', 'fa-indent', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (325, 'fa', 'fa-video-camera', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (326, 'fa', 'fa-photo', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (327, 'fa', 'fa-image', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (328, 'fa', 'fa-picture-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (329, 'fa', 'fa-pencil', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (330, 'fa', 'fa-map-marker', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (331, 'fa', 'fa-adjust', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (332, 'fa', 'fa-tint', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (333, 'fa', 'fa-edit', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (334, 'fa', 'fa-pencil-square-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (335, 'fa', 'fa-share-square-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (336, 'fa', 'fa-check-square-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (337, 'fa', 'fa-arrows', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (338, 'fa', 'fa-step-backward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (339, 'fa', 'fa-fast-backward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (340, 'fa', 'fa-backward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (341, 'fa', 'fa-play', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (342, 'fa', 'fa-pause', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (343, 'fa', 'fa-stop', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (344, 'fa', 'fa-forward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (345, 'fa', 'fa-fast-forward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (346, 'fa', 'fa-step-forward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (347, 'fa', 'fa-eject', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (348, 'fa', 'fa-chevron-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (349, 'fa', 'fa-chevron-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (350, 'fa', 'fa-plus-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (351, 'fa', 'fa-minus-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (352, 'fa', 'fa-times-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (353, 'fa', 'fa-check-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (354, 'fa', 'fa-question-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (355, 'fa', 'fa-info-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (356, 'fa', 'fa-crosshairs', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (357, 'fa', 'fa-times-circle-o', '1');
 ";
-$sql.="INSERT INTO ".$this->prefix."ticon VALUES (358, 'fa', 'fa-check-circle-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (359, 'fa', 'fa-ban', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (360, 'fa', 'fa-arrow-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (361, 'fa', 'fa-arrow-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (362, 'fa', 'fa-arrow-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (363, 'fa', 'fa-arrow-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (364, 'fa', 'fa-mail-forward', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (365, 'fa', 'fa-share', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (366, 'fa', 'fa-expand', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (367, 'fa', 'fa-compress', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (368, 'fa', 'fa-plus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (369, 'fa', 'fa-minus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (370, 'fa', 'fa-asterisk', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (371, 'fa', 'fa-exclamation-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (372, 'fa', 'fa-gift', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (373, 'fa', 'fa-leaf', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (374, 'fa', 'fa-fire', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (375, 'fa', 'fa-eye', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (376, 'fa', 'fa-eye-slash', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (377, 'fa', 'fa-warning', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (378, 'fa', 'fa-exclamation-triangle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (379, 'fa', 'fa-plane', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (380, 'fa', 'fa-calendar', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (381, 'fa', 'fa-random', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (382, 'fa', 'fa-comment', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (383, 'fa', 'fa-magnet', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (384, 'fa', 'fa-chevron-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (385, 'fa', 'fa-chevron-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (386, 'fa', 'fa-retweet', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (387, 'fa', 'fa-shopping-cart', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (388, 'fa', 'fa-folder', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (389, 'fa', 'fa-folder-open', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (390, 'fa', 'fa-arrows-v', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (391, 'fa', 'fa-arrows-h', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (392, 'fa', 'fa-bar-chart-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (393, 'fa', 'fa-bar-chart', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (394, 'fa', 'fa-twitter-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (395, 'fa', 'fa-facebook-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (396, 'fa', 'fa-camera-retro', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (397, 'fa', 'fa-key', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (398, 'fa', 'fa-gears', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (399, 'fa', 'fa-cogs', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (400, 'fa', 'fa-comments', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (401, 'fa', 'fa-thumbs-o-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (402, 'fa', 'fa-thumbs-o-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (403, 'fa', 'fa-star-half', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (404, 'fa', 'fa-heart-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (405, 'fa', 'fa-sign-out', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (406, 'fa', 'fa-linkedin-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (407, 'fa', 'fa-thumb-tack', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (408, 'fa', 'fa-external-link', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (409, 'fa', 'fa-sign-in', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (410, 'fa', 'fa-trophy', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (411, 'fa', 'fa-github-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (412, 'fa', 'fa-upload', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (413, 'fa', 'fa-lemon-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (414, 'fa', 'fa-phone', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (415, 'fa', 'fa-square-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (416, 'fa', 'fa-bookmark-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (417, 'fa', 'fa-phone-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (418, 'fa', 'fa-twitter', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (419, 'fa', 'fa-facebook-f', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (420, 'fa', 'fa-facebook', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (421, 'fa', 'fa-github', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (422, 'fa', 'fa-unlock', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (423, 'fa', 'fa-credit-card', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (424, 'fa', 'fa-feed', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (425, 'fa', 'fa-rss', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (426, 'fa', 'fa-hdd-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (427, 'fa', 'fa-bullhorn', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (428, 'fa', 'fa-bell', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (429, 'fa', 'fa-certificate', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (430, 'fa', 'fa-hand-o-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (431, 'fa', 'fa-hand-o-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (432, 'fa', 'fa-hand-o-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (433, 'fa', 'fa-hand-o-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (434, 'fa', 'fa-arrow-circle-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (435, 'fa', 'fa-arrow-circle-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (436, 'fa', 'fa-arrow-circle-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (437, 'fa', 'fa-arrow-circle-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (438, 'fa', 'fa-globe', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (439, 'fa', 'fa-wrench', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (440, 'fa', 'fa-tasks', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (441, 'fa', 'fa-filter', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (442, 'fa', 'fa-briefcase', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (443, 'fa', 'fa-arrows-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (444, 'fa', 'fa-group', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (445, 'fa', 'fa-users', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (446, 'fa', 'fa-chain', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (447, 'fa', 'fa-link', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (448, 'fa', 'fa-cloud', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (449, 'fa', 'fa-flask', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (450, 'fa', 'fa-cut', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (451, 'fa', 'fa-scissors', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (452, 'fa', 'fa-copy', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (453, 'fa', 'fa-files-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (454, 'fa', 'fa-paperclip', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (455, 'fa', 'fa-save', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (456, 'fa', 'fa-floppy-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (457, 'fa', 'fa-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (458, 'fa', 'fa-navicon', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (459, 'fa', 'fa-reorder', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (460, 'fa', 'fa-bars', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (461, 'fa', 'fa-list-ul', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (462, 'fa', 'fa-list-ol', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (463, 'fa', 'fa-strikethrough', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (464, 'fa', 'fa-underline', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (465, 'fa', 'fa-table', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (466, 'fa', 'fa-magic', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (467, 'fa', 'fa-truck', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (468, 'fa', 'fa-pinterest', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (469, 'fa', 'fa-pinterest-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (470, 'fa', 'fa-google-plus-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (471, 'fa', 'fa-google-plus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (472, 'fa', 'fa-money', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (473, 'fa', 'fa-caret-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (474, 'fa', 'fa-caret-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (475, 'fa', 'fa-caret-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (476, 'fa', 'fa-caret-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (477, 'fa', 'fa-columns', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (478, 'fa', 'fa-unsorted', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (479, 'fa', 'fa-sort', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (480, 'fa', 'fa-sort-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (481, 'fa', 'fa-sort-desc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (482, 'fa', 'fa-sort-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (483, 'fa', 'fa-sort-asc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (484, 'fa', 'fa-envelope', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (485, 'fa', 'fa-linkedin', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (486, 'fa', 'fa-rotate-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (487, 'fa', 'fa-undo', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (488, 'fa', 'fa-legal', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (489, 'fa', 'fa-gavel', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (490, 'fa', 'fa-dashboard', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (491, 'fa', 'fa-tachometer', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (492, 'fa', 'fa-comment-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (493, 'fa', 'fa-comments-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (494, 'fa', 'fa-flash', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (495, 'fa', 'fa-bolt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (496, 'fa', 'fa-sitemap', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (497, 'fa', 'fa-umbrella', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (498, 'fa', 'fa-paste', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (499, 'fa', 'fa-clipboard', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (500, 'fa', 'fa-lightbulb-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (501, 'fa', 'fa-exchange', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (502, 'fa', 'fa-cloud-download', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (503, 'fa', 'fa-cloud-upload', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (504, 'fa', 'fa-user-md', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (505, 'fa', 'fa-stethoscope', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (506, 'fa', 'fa-suitcase', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (507, 'fa', 'fa-bell-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (508, 'fa', 'fa-coffee', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (509, 'fa', 'fa-cutlery', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (510, 'fa', 'fa-file-text-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (511, 'fa', 'fa-building-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (512, 'fa', 'fa-hospital-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (513, 'fa', 'fa-ambulance', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (514, 'fa', 'fa-medkit', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (515, 'fa', 'fa-fighter-jet', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (516, 'fa', 'fa-beer', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (517, 'fa', 'fa-h-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (518, 'fa', 'fa-plus-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (519, 'fa', 'fa-angle-double-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (520, 'fa', 'fa-angle-double-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (521, 'fa', 'fa-angle-double-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (522, 'fa', 'fa-angle-double-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (523, 'fa', 'fa-angle-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (524, 'fa', 'fa-angle-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (525, 'fa', 'fa-angle-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (526, 'fa', 'fa-angle-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (527, 'fa', 'fa-desktop', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (528, 'fa', 'fa-laptop', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (529, 'fa', 'fa-tablet', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (530, 'fa', 'fa-mobile-phone', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (531, 'fa', 'fa-mobile', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (532, 'fa', 'fa-circle-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (533, 'fa', 'fa-quote-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (534, 'fa', 'fa-quote-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (535, 'fa', 'fa-spinner', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (536, 'fa', 'fa-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (537, 'fa', 'fa-mail-reply', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (538, 'fa', 'fa-reply', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (539, 'fa', 'fa-github-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (540, 'fa', 'fa-folder-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (541, 'fa', 'fa-folder-open-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (542, 'fa', 'fa-smile-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (543, 'fa', 'fa-frown-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (544, 'fa', 'fa-meh-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (545, 'fa', 'fa-gamepad', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (546, 'fa', 'fa-keyboard-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (547, 'fa', 'fa-flag-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (548, 'fa', 'fa-flag-checkered', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (549, 'fa', 'fa-terminal', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (550, 'fa', 'fa-code', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (551, 'fa', 'fa-mail-reply-all', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (552, 'fa', 'fa-reply-all', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (553, 'fa', 'fa-star-half-empty', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (554, 'fa', 'fa-star-half-full', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (555, 'fa', 'fa-star-half-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (556, 'fa', 'fa-location-arrow', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (557, 'fa', 'fa-crop', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (558, 'fa', 'fa-code-fork', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (559, 'fa', 'fa-unlink', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (560, 'fa', 'fa-chain-broken', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (561, 'fa', 'fa-question', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (562, 'fa', 'fa-info', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (563, 'fa', 'fa-exclamation', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (564, 'fa', 'fa-superscript', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (565, 'fa', 'fa-subscript', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (566, 'fa', 'fa-eraser', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (567, 'fa', 'fa-puzzle-piece', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (568, 'fa', 'fa-microphone', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (569, 'fa', 'fa-microphone-slash', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (570, 'fa', 'fa-shield', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (571, 'fa', 'fa-calendar-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (572, 'fa', 'fa-fire-extinguisher', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (573, 'fa', 'fa-rocket', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (574, 'fa', 'fa-maxcdn', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (575, 'fa', 'fa-chevron-circle-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (576, 'fa', 'fa-chevron-circle-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (577, 'fa', 'fa-chevron-circle-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (578, 'fa', 'fa-chevron-circle-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (579, 'fa', 'fa-html5', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (580, 'fa', 'fa-css3', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (581, 'fa', 'fa-anchor', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (582, 'fa', 'fa-unlock-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (583, 'fa', 'fa-bullseye', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (584, 'fa', 'fa-ellipsis-h', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (585, 'fa', 'fa-ellipsis-v', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (586, 'fa', 'fa-rss-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (587, 'fa', 'fa-play-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (588, 'fa', 'fa-ticket', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (589, 'fa', 'fa-minus-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (590, 'fa', 'fa-minus-square-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (591, 'fa', 'fa-level-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (592, 'fa', 'fa-level-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (593, 'fa', 'fa-check-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (594, 'fa', 'fa-pencil-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (595, 'fa', 'fa-external-link-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (596, 'fa', 'fa-share-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (597, 'fa', 'fa-compass', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (598, 'fa', 'fa-toggle-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (599, 'fa', 'fa-caret-square-o-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (600, 'fa', 'fa-toggle-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (601, 'fa', 'fa-caret-square-o-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (602, 'fa', 'fa-toggle-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (603, 'fa', 'fa-caret-square-o-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (604, 'fa', 'fa-euro', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (605, 'fa', 'fa-eur', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (606, 'fa', 'fa-gbp', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (607, 'fa', 'fa-dollar', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (608, 'fa', 'fa-usd', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (609, 'fa', 'fa-rupee', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (610, 'fa', 'fa-inr', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (611, 'fa', 'fa-cny', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (612, 'fa', 'fa-rmb', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (613, 'fa', 'fa-yen', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (614, 'fa', 'fa-jpy', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (615, 'fa', 'fa-ruble', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (616, 'fa', 'fa-rouble', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (617, 'fa', 'fa-rub', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (618, 'fa', 'fa-won', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (619, 'fa', 'fa-krw', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (620, 'fa', 'fa-bitcoin', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (621, 'fa', 'fa-btc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (622, 'fa', 'fa-file', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (623, 'fa', 'fa-file-text', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (624, 'fa', 'fa-sort-alpha-asc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (625, 'fa', 'fa-sort-alpha-desc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (626, 'fa', 'fa-sort-amount-asc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (627, 'fa', 'fa-sort-amount-desc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (628, 'fa', 'fa-sort-numeric-asc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (629, 'fa', 'fa-sort-numeric-desc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (630, 'fa', 'fa-thumbs-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (631, 'fa', 'fa-thumbs-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (632, 'fa', 'fa-youtube-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (633, 'fa', 'fa-youtube', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (634, 'fa', 'fa-xing', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (635, 'fa', 'fa-xing-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (636, 'fa', 'fa-youtube-play', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (637, 'fa', 'fa-dropbox', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (638, 'fa', 'fa-stack-overflow', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (639, 'fa', 'fa-instagram', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (640, 'fa', 'fa-flickr', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (641, 'fa', 'fa-adn', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (642, 'fa', 'fa-bitbucket', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (643, 'fa', 'fa-bitbucket-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (644, 'fa', 'fa-tumblr', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (645, 'fa', 'fa-tumblr-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (646, 'fa', 'fa-long-arrow-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (647, 'fa', 'fa-long-arrow-up', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (648, 'fa', 'fa-long-arrow-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (649, 'fa', 'fa-long-arrow-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (650, 'fa', 'fa-apple', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (651, 'fa', 'fa-windows', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (652, 'fa', 'fa-android', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (653, 'fa', 'fa-linux', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (654, 'fa', 'fa-dribbble', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (655, 'fa', 'fa-skype', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (656, 'fa', 'fa-foursquare', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (657, 'fa', 'fa-trello', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (658, 'fa', 'fa-female', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (659, 'fa', 'fa-male', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (660, 'fa', 'fa-gittip', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (661, 'fa', 'fa-gratipay', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (662, 'fa', 'fa-sun-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (663, 'fa', 'fa-moon-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (664, 'fa', 'fa-archive', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (665, 'fa', 'fa-bug', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (666, 'fa', 'fa-vk', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (667, 'fa', 'fa-weibo', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (668, 'fa', 'fa-renren', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (669, 'fa', 'fa-pagelines', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (670, 'fa', 'fa-stack-exchange', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (671, 'fa', 'fa-arrow-circle-o-right', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (672, 'fa', 'fa-arrow-circle-o-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (673, 'fa', 'fa-toggle-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (674, 'fa', 'fa-caret-square-o-left', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (675, 'fa', 'fa-dot-circle-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (676, 'fa', 'fa-wheelchair', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (677, 'fa', 'fa-vimeo-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (678, 'fa', 'fa-turkish-lira', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (679, 'fa', 'fa-try', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (680, 'fa', 'fa-plus-square-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (681, 'fa', 'fa-space-shuttle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (682, 'fa', 'fa-slack', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (683, 'fa', 'fa-envelope-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (684, 'fa', 'fa-wordpress', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (685, 'fa', 'fa-openid', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (686, 'fa', 'fa-institution', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (687, 'fa', 'fa-bank', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (688, 'fa', 'fa-university', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (689, 'fa', 'fa-mortar-board', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (690, 'fa', 'fa-graduation-cap', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (691, 'fa', 'fa-yahoo', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (692, 'fa', 'fa-google', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (693, 'fa', 'fa-reddit', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (694, 'fa', 'fa-reddit-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (695, 'fa', 'fa-stumbleupon-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (696, 'fa', 'fa-stumbleupon', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (697, 'fa', 'fa-delicious', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (698, 'fa', 'fa-digg', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (699, 'fa', 'fa-pied-piper-pp', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (700, 'fa', 'fa-pied-piper-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (701, 'fa', 'fa-drupal', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (702, 'fa', 'fa-joomla', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (703, 'fa', 'fa-language', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (704, 'fa', 'fa-fax', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (705, 'fa', 'fa-building', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (706, 'fa', 'fa-child', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (707, 'fa', 'fa-paw', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (708, 'fa', 'fa-spoon', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (709, 'fa', 'fa-cube', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (710, 'fa', 'fa-cubes', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (711, 'fa', 'fa-behance', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (712, 'fa', 'fa-behance-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (713, 'fa', 'fa-steam', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (714, 'fa', 'fa-steam-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (715, 'fa', 'fa-recycle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (716, 'fa', 'fa-automobile', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (717, 'fa', 'fa-car', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (718, 'fa', 'fa-cab', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (719, 'fa', 'fa-taxi', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (720, 'fa', 'fa-tree', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (721, 'fa', 'fa-spotify', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (722, 'fa', 'fa-deviantart', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (723, 'fa', 'fa-soundcloud', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (724, 'fa', 'fa-database', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (725, 'fa', 'fa-file-pdf-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (726, 'fa', 'fa-file-word-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (727, 'fa', 'fa-file-excel-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (728, 'fa', 'fa-file-powerpoint-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (729, 'fa', 'fa-file-photo-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (730, 'fa', 'fa-file-picture-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (731, 'fa', 'fa-file-image-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (732, 'fa', 'fa-file-zip-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (733, 'fa', 'fa-file-archive-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (734, 'fa', 'fa-file-sound-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (735, 'fa', 'fa-file-audio-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (736, 'fa', 'fa-file-movie-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (737, 'fa', 'fa-file-video-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (738, 'fa', 'fa-file-code-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (739, 'fa', 'fa-vine', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (740, 'fa', 'fa-codepen', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (741, 'fa', 'fa-jsfiddle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (742, 'fa', 'fa-life-bouy', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (743, 'fa', 'fa-life-buoy', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (744, 'fa', 'fa-life-saver', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (745, 'fa', 'fa-support', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (746, 'fa', 'fa-life-ring', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (747, 'fa', 'fa-circle-o-notch', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (748, 'fa', 'fa-ra', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (749, 'fa', 'fa-resistance', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (750, 'fa', 'fa-rebel', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (751, 'fa', 'fa-ge', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (752, 'fa', 'fa-empire', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (753, 'fa', 'fa-git-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (754, 'fa', 'fa-git', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (755, 'fa', 'fa-y-combinator-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (756, 'fa', 'fa-yc-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (757, 'fa', 'fa-hacker-news', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (758, 'fa', 'fa-tencent-weibo', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (759, 'fa', 'fa-qq', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (760, 'fa', 'fa-wechat', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (761, 'fa', 'fa-weixin', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (762, 'fa', 'fa-send', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (763, 'fa', 'fa-paper-plane', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (764, 'fa', 'fa-send-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (765, 'fa', 'fa-paper-plane-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (766, 'fa', 'fa-history', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (767, 'fa', 'fa-circle-thin', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (768, 'fa', 'fa-header', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (769, 'fa', 'fa-paragraph', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (770, 'fa', 'fa-sliders', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (771, 'fa', 'fa-share-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (772, 'fa', 'fa-share-alt-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (773, 'fa', 'fa-bomb', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (774, 'fa', 'fa-soccer-ball-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (775, 'fa', 'fa-futbol-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (776, 'fa', 'fa-tty', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (777, 'fa', 'fa-binoculars', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (778, 'fa', 'fa-plug', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (779, 'fa', 'fa-slideshare', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (780, 'fa', 'fa-twitch', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (781, 'fa', 'fa-yelp', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (782, 'fa', 'fa-newspaper-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (783, 'fa', 'fa-wifi', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (784, 'fa', 'fa-calculator', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (785, 'fa', 'fa-paypal', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (786, 'fa', 'fa-google-wallet', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (787, 'fa', 'fa-cc-visa', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (788, 'fa', 'fa-cc-mastercard', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (789, 'fa', 'fa-cc-discover', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (790, 'fa', 'fa-cc-amex', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (791, 'fa', 'fa-cc-paypal', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (792, 'fa', 'fa-cc-stripe', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (793, 'fa', 'fa-bell-slash', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (794, 'fa', 'fa-bell-slash-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (795, 'fa', 'fa-trash', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (796, 'fa', 'fa-copyright', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (797, 'fa', 'fa-at', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (798, 'fa', 'fa-eyedropper', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (799, 'fa', 'fa-paint-brush', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (800, 'fa', 'fa-birthday-cake', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (801, 'fa', 'fa-area-chart', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (802, 'fa', 'fa-pie-chart', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (803, 'fa', 'fa-line-chart', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (804, 'fa', 'fa-lastfm', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (805, 'fa', 'fa-lastfm-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (806, 'fa', 'fa-toggle-off', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (807, 'fa', 'fa-toggle-on', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (808, 'fa', 'fa-bicycle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (809, 'fa', 'fa-bus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (810, 'fa', 'fa-ioxhost', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (811, 'fa', 'fa-angellist', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (812, 'fa', 'fa-cc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (813, 'fa', 'fa-shekel', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (814, 'fa', 'fa-sheqel', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (815, 'fa', 'fa-ils', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (816, 'fa', 'fa-meanpath', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (817, 'fa', 'fa-buysellads', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (818, 'fa', 'fa-connectdevelop', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (819, 'fa', 'fa-dashcube', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (820, 'fa', 'fa-forumbee', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (821, 'fa', 'fa-leanpub', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (822, 'fa', 'fa-sellsy', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (823, 'fa', 'fa-shirtsinbulk', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (824, 'fa', 'fa-simplybuilt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (825, 'fa', 'fa-skyatlas', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (826, 'fa', 'fa-cart-plus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (827, 'fa', 'fa-cart-arrow-down', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (828, 'fa', 'fa-diamond', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (829, 'fa', 'fa-ship', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (830, 'fa', 'fa-user-secret', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (831, 'fa', 'fa-motorcycle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (832, 'fa', 'fa-street-view', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (833, 'fa', 'fa-heartbeat', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (834, 'fa', 'fa-venus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (835, 'fa', 'fa-mars', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (836, 'fa', 'fa-mercury', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (837, 'fa', 'fa-intersex', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (838, 'fa', 'fa-transgender', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (839, 'fa', 'fa-transgender-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (840, 'fa', 'fa-venus-double', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (841, 'fa', 'fa-mars-double', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (842, 'fa', 'fa-venus-mars', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (843, 'fa', 'fa-mars-stroke', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (844, 'fa', 'fa-mars-stroke-v', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (845, 'fa', 'fa-mars-stroke-h', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (846, 'fa', 'fa-neuter', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (847, 'fa', 'fa-genderless', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (848, 'fa', 'fa-facebook-official', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (849, 'fa', 'fa-pinterest-p', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (850, 'fa', 'fa-whatsapp', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (851, 'fa', 'fa-server', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (852, 'fa', 'fa-user-plus', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (853, 'fa', 'fa-user-times', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (854, 'fa', 'fa-hotel', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (855, 'fa', 'fa-bed', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (856, 'fa', 'fa-viacoin', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (857, 'fa', 'fa-train', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (858, 'fa', 'fa-subway', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (859, 'fa', 'fa-medium', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (860, 'fa', 'fa-yc', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (861, 'fa', 'fa-y-combinator', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (862, 'fa', 'fa-optin-monster', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (863, 'fa', 'fa-opencart', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (864, 'fa', 'fa-expeditedssl', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (865, 'fa', 'fa-battery-4', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (866, 'fa', 'fa-battery-full', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (867, 'fa', 'fa-battery-3', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (868, 'fa', 'fa-battery-three-quarters', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (869, 'fa', 'fa-battery-2', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (870, 'fa', 'fa-battery-half', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (871, 'fa', 'fa-battery-1', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (872, 'fa', 'fa-battery-quarter', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (873, 'fa', 'fa-battery-0', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (874, 'fa', 'fa-battery-empty', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (875, 'fa', 'fa-mouse-pointer', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (876, 'fa', 'fa-i-cursor', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (877, 'fa', 'fa-object-group', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (878, 'fa', 'fa-object-ungroup', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (879, 'fa', 'fa-sticky-note', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (880, 'fa', 'fa-sticky-note-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (881, 'fa', 'fa-cc-jcb', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (882, 'fa', 'fa-cc-diners-club', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (883, 'fa', 'fa-clone', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (884, 'fa', 'fa-balance-scale', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (885, 'fa', 'fa-hourglass-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (886, 'fa', 'fa-hourglass-1', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (887, 'fa', 'fa-hourglass-start', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (888, 'fa', 'fa-hourglass-2', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (889, 'fa', 'fa-hourglass-half', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (890, 'fa', 'fa-hourglass-3', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (891, 'fa', 'fa-hourglass-end', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (892, 'fa', 'fa-hourglass', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (893, 'fa', 'fa-hand-grab-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (894, 'fa', 'fa-hand-rock-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (895, 'fa', 'fa-hand-stop-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (896, 'fa', 'fa-hand-paper-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (897, 'fa', 'fa-hand-scissors-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (898, 'fa', 'fa-hand-lizard-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (899, 'fa', 'fa-hand-spock-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (900, 'fa', 'fa-hand-pointer-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (901, 'fa', 'fa-hand-peace-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (902, 'fa', 'fa-trademark', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (903, 'fa', 'fa-registered', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (904, 'fa', 'fa-creative-commons', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (905, 'fa', 'fa-gg', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (906, 'fa', 'fa-gg-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (907, 'fa', 'fa-tripadvisor', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (908, 'fa', 'fa-odnoklassniki', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (909, 'fa', 'fa-odnoklassniki-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (910, 'fa', 'fa-get-pocket', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (911, 'fa', 'fa-wikipedia-w', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (912, 'fa', 'fa-safari', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (913, 'fa', 'fa-chrome', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (914, 'fa', 'fa-firefox', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (915, 'fa', 'fa-opera', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (916, 'fa', 'fa-internet-explorer', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (917, 'fa', 'fa-tv', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (918, 'fa', 'fa-television', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (919, 'fa', 'fa-contao', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (920, 'fa', 'fa-500px', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (921, 'fa', 'fa-amazon', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (922, 'fa', 'fa-calendar-plus-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (923, 'fa', 'fa-calendar-minus-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (924, 'fa', 'fa-calendar-times-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (925, 'fa', 'fa-calendar-check-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (926, 'fa', 'fa-industry', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (927, 'fa', 'fa-map-pin', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (928, 'fa', 'fa-map-signs', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (929, 'fa', 'fa-map-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (930, 'fa', 'fa-map', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (931, 'fa', 'fa-commenting', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (932, 'fa', 'fa-commenting-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (933, 'fa', 'fa-houzz', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (934, 'fa', 'fa-vimeo', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (935, 'fa', 'fa-black-tie', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (936, 'fa', 'fa-fonticons', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (937, 'fa', 'fa-reddit-alien', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (938, 'fa', 'fa-edge', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (939, 'fa', 'fa-credit-card-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (940, 'fa', 'fa-codiepie', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (941, 'fa', 'fa-modx', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (942, 'fa', 'fa-fort-awesome', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (943, 'fa', 'fa-usb', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (944, 'fa', 'fa-product-hunt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (945, 'fa', 'fa-mixcloud', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (946, 'fa', 'fa-scribd', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (947, 'fa', 'fa-pause-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (948, 'fa', 'fa-pause-circle-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (949, 'fa', 'fa-stop-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (950, 'fa', 'fa-stop-circle-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (951, 'fa', 'fa-shopping-bag', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (952, 'fa', 'fa-shopping-basket', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (953, 'fa', 'fa-hashtag', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (954, 'fa', 'fa-bluetooth', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (955, 'fa', 'fa-bluetooth-b', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (956, 'fa', 'fa-percent', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (957, 'fa', 'fa-gitlab', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (958, 'fa', 'fa-wpbeginner', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (959, 'fa', 'fa-wpforms', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (960, 'fa', 'fa-envira', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (961, 'fa', 'fa-universal-access', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (962, 'fa', 'fa-wheelchair-alt', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (963, 'fa', 'fa-question-circle-o', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (964, 'fa', 'fa-blind', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (965, 'fa', 'fa-audio-description', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (966, 'fa', 'fa-volume-control-phone', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (967, 'fa', 'fa-braille', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (968, 'fa', 'fa-asl-interpreting', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (969, 'fa', 'fa-deafness', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (970, 'fa', 'fa-hard-of-hearing', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (971, 'fa', 'fa-deaf', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (972, 'fa', 'fa-glide', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (973, 'fa', 'fa-glide-g', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (974, 'fa', 'fa-signing', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (975, 'fa', 'fa-sign-language', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (976, 'fa', 'fa-low-vision', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (977, 'fa', 'fa-viadeo', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (978, 'fa', 'fa-viadeo-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (979, 'fa', 'fa-snapchat', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (980, 'fa', 'fa-snapchat-ghost', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (981, 'fa', 'fa-snapchat-square', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (982, 'fa', 'fa-pied-piper', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (983, 'fa', 'fa-first-order', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (984, 'fa', 'fa-yoast', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (985, 'fa', 'fa-themeisle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (986, 'fa', 'fa-google-plus-circle', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (987, 'fa', 'fa-google-plus-official', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (988, 'fa', 'fa-fa', '1');
-INSERT INTO ".$this->prefix."ticon VALUES (989, 'fa', 'fa-font-awesome', '1');";
    $this->db->exec_native($sql);
    $_SESSION["environment"]=1;
    $this->db->__destruct();

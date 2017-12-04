@@ -55,7 +55,7 @@
 			<div class="box">
 				<div class="box-tools">
 					<div class="box-tool-left">
-						<a href="ome/dashboard"><?=install_installation?></a> 
+						<?=install_installation?>
 					</div>
 					<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 				</div>
@@ -73,7 +73,7 @@
 					  <li id="li_db"><a href="#db" data-toggle="tab"><?=install_tab_two?></a></li>
 					  <li id="li_user"><a href="#user" data-toggle="tab"><?=install_tab_three?></a></li>
 					</ul>
-					<form name="frm" action="install/installation" method="POST" class='form-horizontal'>
+					<form name="frm" action="<?=((isset($_SERVER["HTTPS"]))? 'https://' : 'http://').$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]?>installation" method="POST" class='form-horizontal'>
 						<input type="hidden" name="event" id="event">
 						<div class="tab-content">
 							<div id="init" class="tab-pane fade in active">

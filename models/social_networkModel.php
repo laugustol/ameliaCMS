@@ -10,12 +10,12 @@ class social_networkModel{
 	public function listt($draw,$search,$start,$length){
 		$start = (empty($start))? 0 : $start;
 		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT s.idsocial_network,s.name,i.class,i.name as iname,s.status,(SELECT count(*) FROM ".PREFIX."tsocial_network) as countx FROM ".PREFIX."tsocial_network s INNER JOIN ".PREFIX."ticon i ON s.idicon=i.idicon WHERE CAST(s.idsocial_network as CHAR) LIKE '%$search%' OR s.name LIKE '%$search%' ORDER BY s.idsocial_network DESC LIMIT $length OFFSET $start ;");
+		$this->db->prepare("SELECT s.idsocial_network,s.name,s.idicon as iname,s.status,(SELECT count(*) FROM ".PREFIX."tsocial_network) as countx FROM ".PREFIX."tsocial_network s WHERE CAST(s.idsocial_network as CHAR) LIKE '%$search%' OR s.name LIKE '%$search%' ORDER BY s.idsocial_network DESC LIMIT $length OFFSET $start ;");
 		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
 		foreach ($this->db->execute() as $key => $val) {
 			$d["data"][$key]["idsocial_network"] = $val["idsocial_network"];
 			$d["data"][$key]["name"] = $val["name"];
-			$d["data"][$key]["iname"] = "<i class='".$val["class"]." ".$val["iname"]."'></i>";
+			$d["data"][$key]["iname"] = "<i class='".$val["iname"]."'></i>";
 			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idsocial_network"],$val["status"]);
 			$d["recordsFiltered"] = $val["countx"];
 			$d["recordsTotal"]++;
@@ -24,8 +24,6 @@ class social_networkModel{
 		return $d;
 	}
 	public function dependencies(){
-		$this->db->prepare("SELECT * FROM ".PREFIX."ticon WHERE status='1';");
-		$dependencies["icons"] = $this->db->execute();
 		$dependencies["add"] = $this->permission->getpermissionadd();
 		return $dependencies;
 	}
@@ -39,7 +37,7 @@ class social_networkModel{
 		return $d;
 	}
 	public function query_all(){
-		$this->db->prepare("SELECT s.name,s.url,i.class,i.name as iname FROM ".PREFIX."tsocial_network s INNER JOIN ".PREFIX."ticon i ON s.idicon=i.idicon WHERE s.status='1';");
+		$this->db->prepare("SELECT s.name,s.url,s.idicon as iname FROM ".PREFIX."tsocial_network s WHERE s.status='1';");
 		foreach ($this->db->execute() as $val) { $d[]=$val; }
 		return $d;
 	}

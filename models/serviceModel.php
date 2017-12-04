@@ -42,8 +42,6 @@ class serviceModel{
 			$dependencies["actions"][$k]["idaction"] = $val["idaction"];
 			$dependencies["actions"][$k]["name"] = $val["name"];
 		}
-		$this->db->prepare("SELECT * FROM ".PREFIX."ticon WHERE status='1';");
-		$dependencies["icons"] = $this->db->execute();
 		$dependencies["add"] = $this->permission->getpermissionadd();
 		return $dependencies;
 	}

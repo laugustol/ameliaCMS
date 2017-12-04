@@ -7,7 +7,7 @@
 	define('HOST','localhost');
 	define('PORT','3306');
 	define('USER','root');
-	define('PASSWORD','');
+	define('PASSWORD','1234');
 	/*define('DRIVER','pgsql');
 	define('HOST','localhost');
 	define('PORT','5432');
@@ -15,8 +15,8 @@
 	define('PASSWORD','1234');*/
 
 	define('PREFIX','acms_');
-	define('DB_TEST','ameliacms_test');
-	define('DB_PRODUCTION','ameliacms_production');
+	define('DB_TEST','acms_test');
+	define('DB_PRODUCTION','acms_production');
 
 	ini_set('max_execution_time','60');
 	require_once 'languages/es.php';

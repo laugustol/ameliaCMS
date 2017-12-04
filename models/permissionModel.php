@@ -76,30 +76,27 @@ class permissionModel{
 		return $this->db->execute(array($this->idcharge));
 	}
 	public function generate_main(){
-		$this->db->prepare("SELECT DISTINCT s.idservice,s.name,s.url,s.color,i.class,i.name as iname,uso.ordered FROM ".PREFIX."tservice s INNER JOIN ".PREFIX."ticon i ON s.idicon=i.idicon INNER JOIN ".PREFIX."tservice s2 ON s.idservice=s2.idfather INNER JOIN ".PREFIX."tdcharge_service_action csa ON s2.idservice=csa.idservice LEFT JOIN ".PREFIX."tduser_service_ordered uso ON s.idservice=uso.idservice AND uso.iduser='".$_SESSION["iduser"]."' WHERE s.idfather=0 AND csa.idcharge='".$_SESSION["idcharge"]."' AND s.status='1' ORDER BY uso.ordered ASC;");
+		$this->db->prepare("SELECT DISTINCT s.idservice,s.name,s.url,s.color,s.idicon as iname,uso.ordered FROM ".PREFIX."tservice s INNER JOIN ".PREFIX."tservice s2 ON s.idservice=s2.idfather INNER JOIN ".PREFIX."tdcharge_service_action csa ON s2.idservice=csa.idservice LEFT JOIN ".PREFIX."tduser_service_ordered uso ON s.idservice=uso.idservice AND uso.iduser='".$_SESSION["iduser"]."' WHERE s.idfather=0 AND csa.idcharge='".$_SESSION["idcharge"]."' AND s.status='1' ORDER BY uso.ordered ASC;");
 		foreach ($this->db->execute() as $k => $father){
 			$main[$k]["idservice"] = $father["idservice"];
 			$main[$k]["name"] = $father["name"];
 			$main[$k]["url"] = $father["url"];
 			$main[$k]["color"] = $father["color"];
-			$main[$k]["class"] = $father["class"];
 			$main[$k]["iname"] = $father["iname"];
-			$this->db->prepare("SELECT DISTINCT s.idservice,s.name,s.url,s.color,i.class,i.name as iname,uso.ordered FROM ".PREFIX."tservice s LEFT JOIN ".PREFIX."tdcharge_service_action csa ON s.idservice=csa.idservice INNER JOIN ".PREFIX."taction a ON csa.idaction=a.idaction INNER JOIN ".PREFIX."ticon i ON s.idicon=i.idicon LEFT JOIN ".PREFIX."tduser_service_ordered uso ON s.idservice=uso.idservice AND uso.iduser='".$_SESSION["iduser"]."' WHERE s.idfather='".$father["idservice"]."' AND csa.idcharge='".$_SESSION["idcharge"]."' AND s.status='1' AND a.function<>'6' ORDER BY uso.ordered ASC;");
+			$this->db->prepare("SELECT DISTINCT s.idservice,s.name,s.url,s.color,s.idicon as iname,uso.ordered FROM ".PREFIX."tservice s LEFT JOIN ".PREFIX."tdcharge_service_action csa ON s.idservice=csa.idservice INNER JOIN ".PREFIX."taction a ON csa.idaction=a.idaction LEFT JOIN ".PREFIX."tduser_service_ordered uso ON s.idservice=uso.idservice AND uso.iduser='".$_SESSION["iduser"]."' WHERE s.idfather='".$father["idservice"]."' AND csa.idcharge='".$_SESSION["idcharge"]."' AND s.status='1' AND a.function<>'6' ORDER BY uso.ordered ASC;");
 			foreach ($this->db->execute() as $k2 => $child){
 				$main[$k]["childrens"][$k2]["idservice"] = $child["idservice"];
 				$main[$k]["childrens"][$k2]["name"] = $child["name"];
 				$main[$k]["childrens"][$k2]["url"] = $child["url"];
 				$main[$k]["childrens"][$k2]["color"] = $child["color"];
-				$main[$k]["childrens"][$k2]["class"] = $child["class"];
 				$main[$k]["childrens"][$k2]["iname"] = $child["iname"];
-				$this->db->prepare("SELECT s.idservice,s.name,s.url,s.color,i.class,i.name as iname FROM ".PREFIX."tservice s INNER JOIN ".PREFIX."ticon i ON s.idicon=i.idicon WHERE s.idfather='".$child["idservice"]."' AND s.status='1';");
+				$this->db->prepare("SELECT s.idservice,s.name,s.url,s.color,s.idicon as iname FROM ".PREFIX."tservice s WHERE s.idfather='".$child["idservice"]."' AND s.status='1';");
 				$secondschildrens = $this->db->execute();
 				foreach ($secondschildrens as $k3 => $secondchild) {
 					$main[$k]["childrens"][$k2]["secondschildrens"][$k3]["idservice"] = $secondchild["idservice"];
 					$main[$k]["childrens"][$k2]["secondschildrens"][$k3]["name"] = $secondchild["name"];
 					$main[$k]["childrens"][$k2]["secondschildrens"][$k3]["url"] = $secondchild["url"];
 					$main[$k]["childrens"][$k2]["secondschildrens"][$k3]["color"] = $secondchild["color"];
-					$main[$k]["childrens"][$k2]["secondschildrens"][$k3]["class"] = $secondchild["class"];
 					$main[$k]["childrens"][$k2]["secondschildrens"][$k3]["iname"] = $secondchild["iname"];
 				}
 			}
@@ -107,17 +104,16 @@ class permissionModel{
 		return $main;
 	}
 	public function getpermissionadd(){
-		$this->db->prepare("SELECT a.name,a.function,i.class,i.name AS iname FROM ".PREFIX."tdcharge_service_action dcsa 
+		$this->db->prepare("SELECT a.name,a.function,a.idicon AS iname FROM ".PREFIX."tdcharge_service_action dcsa 
 							INNER JOIN ".PREFIX."tservice s ON dcsa.idservice=s.idservice
 							INNER JOIN ".PREFIX."taction a ON dcsa.idaction=a.idaction
-							INNER JOIN ".PREFIX."ticon i ON a.idicon=i.idicon
 							WHERE CAST(dcsa.idcharge as CHAR) ='".$_SESSION['idcharge']."' AND s.url='".controller."'
 							AND a.function=1 ORDER BY a.idaction DESC;");
 		$q1 = $this->db->execute();
 		$a = $q1->fetchAll();
 		foreach ($a as $b){
 			if( $b['function'] == '1' ){
-				$btnadd ="<div class='row'><div class='col-md-3 col-md-offset-4'><a href='".url_base.controller."/add' class='btn1' data-toggle='tooltip' title='".permission_getpermissionadd_title1.$b['name'].permission_getpermissionadd_title2."'><i class='".$b['class']." ".$b['iname']."'></i> ".$b['name']."</a></div></div>";
+				$btnadd ="<div class='row'><div class='col-md-3 col-md-offset-4'><a href='".url_base.controller."/add' class='btn1' data-toggle='tooltip' title='".permission_getpermissionadd_title1.$b['name'].permission_getpermissionadd_title2."'><i class='".$b['iname']."'></i> ".$b['name']."</a></div></div>";
 			}
 		}
 		return $btnadd;
@@ -126,10 +122,9 @@ class permissionModel{
 		if(!empty($not_function)){
 			$aux = " AND a.function<>'".$not_function."' ";
 		}
-		$this->db->prepare("SELECT a.name,a.function,i.class,i.name AS iname FROM ".PREFIX."tdcharge_service_action dcsa 
+		$this->db->prepare("SELECT a.name,a.function,a.idicon AS iname FROM ".PREFIX."tdcharge_service_action dcsa 
 							INNER JOIN ".PREFIX."tservice s ON dcsa.idservice=s.idservice
 							INNER JOIN ".PREFIX."taction a ON dcsa.idaction=a.idaction
-							INNER JOIN ".PREFIX."ticon i ON a.idicon=i.idicon
 							WHERE CAST(dcsa.idcharge as CHAR) = '".$_SESSION['idcharge']."' AND s.url='".controller."'
 							AND (a.function=2 OR a.function=3 OR a.function=4 OR a.function=5 OR a.function=7) ".$aux." ORDER BY a.idaction ASC;");
 		$q1 = $this->db->execute();
@@ -137,9 +132,9 @@ class permissionModel{
 		$cell="<td>";
 		foreach ($a as $b){
 			if( $b['function'] == '4' && $status == '1' ){
-				@$cell='<a href="'.url_base.controller.'/deactivate/'.$id.'" class="text-muted" data-toggle="tooltip" title="'.permission_getpermission_status_title.'"><i class="'.$b['class'].' '.$b['iname'].' text-success"></i><b>ACTIVO</b></a> ';
+				@$cell='<a href="'.url_base.controller.'/deactivate/'.$id.'" class="text-muted" data-toggle="tooltip" title="'.permission_getpermission_status_title.'"><i class="'.$b['iname'].' text-success"></i><b>ACTIVO</b></a> ';
 			}else if( $b['function'] == '5' && $status == '0' ){
-				@$cell='<a href="'.url_base.controller.'/activate/'.$id.'" class="text-muted" data-toggle="tooltip" title="'.permission_getpermission_status_title.'"><i class="'.$b['class'].' '.$b['iname'].' text-danger"></i><b>INACTIVO</b></a> ';
+				@$cell='<a href="'.url_base.controller.'/activate/'.$id.'" class="text-muted" data-toggle="tooltip" title="'.permission_getpermission_status_title.'"><i class="'.$b['iname'].' text-danger"></i><b>INACTIVO</b></a> ';
 			}else if( empty($cell) && $status != '2'){
 				$val = ($status)? 'ACTIVO' : 'INACTIVO';
 				@$cell='<b>'.$val.' </b>';
@@ -147,11 +142,11 @@ class permissionModel{
 		}		
 		foreach ($a as $b) {
 			if( $b['function'] == '2' ){
-				@$cell.='<a href="'.url_base.controller.'/edit/'.$id.'" class="text-muted" data-toggle="tooltip" title="'.permission_getpermissionadd_title1.$b['name'].permission_getpermissionadd_title2.'"><i class="'.$b['class'].' '.$b['iname'].'"></i></a> ';
+				@$cell.='<a href="'.url_base.controller.'/edit/'.$id.'" class="text-muted" data-toggle="tooltip" title="'.permission_getpermissionadd_title1.$b['name'].permission_getpermissionadd_title2.'"><i class="'.$b['iname'].'"></i></a> ';
 			}else if( $b['function'] == '3' ){
-				@$cell.='<a href="'.url_base.controller.'/query/'.$id.'" class="text-muted" data-toggle="tooltip" title="'.permission_getpermissionadd_title1.$b['name'].permission_getpermissionadd_title2.'"><i class="'.$b['class'].' '.$b['iname'].'"></i></a> ';
+				@$cell.='<a href="'.url_base.controller.'/query/'.$id.'" class="text-muted" data-toggle="tooltip" title="'.permission_getpermissionadd_title1.$b['name'].permission_getpermissionadd_title2.'"><i class="'.$b['iname'].'"></i></a> ';
 			}else if( $b['function'] == '7'){
-				@$cell.='<a href="'.url_base.controller.'/delete/'.$id.'" class="text-muted" data-toggle="tooltip" title="'.permission_getpermissionadd_title1.$b['name'].permission_getpermissionadd_title2.'" onclick="return confirm(\'Estas seguro que deseas eliminar este registro?\')"><i class="'.$b['class'].' '.$b['iname'].'"></i></a> ';
+				@$cell.='<a href="'.url_base.controller.'/delete/'.$id.'" class="text-muted" data-toggle="tooltip" title="'.permission_getpermissionadd_title1.$b['name'].permission_getpermissionadd_title2.'" onclick="return confirm(\'Estas seguro que deseas eliminar este registro?\')"><i class="'.$b['iname'].'"></i></a> ';
 			}
 		}
 		$cell = ($cell != "<td>")? $cell : permission_getpermission_no_actions;
@@ -162,10 +157,9 @@ class permissionModel{
 		if(!empty($not_function)){
 			$aux = " AND a.function<>'".$not_function."' ";
 		}
-		$this->db->prepare("SELECT a.name,a.function,i.class,i.name AS iname FROM ".PREFIX."tdcharge_service_action dcsa 
+		$this->db->prepare("SELECT a.name,a.function,a.idcon AS iname FROM ".PREFIX."tdcharge_service_action dcsa 
 							INNER JOIN ".PREFIX."tservice s ON dcsa.idservice=s.idservice
-							INNER JOIN ".PREFIX."taction a ON dcsa.idaction=a.idaction
-							INNER JOIN ".PREFIX."ticon i ON a.idicon=i.idicon
+							INNER JOIN ".PREFIX."taction a ON dcsa.idaction=a.idaction				
 							WHERE CAST(dcsa.idcharge as CHAR) = '".$_SESSION['idcharge']."' AND s.url='".controller."'
 							AND (a.function='2' OR a.function='3' OR a.function='4' OR a.function='5' OR a.function='7') ".$aux." ORDER BY a.idaction ASC;");
 		$this->db->execute();

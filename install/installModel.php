@@ -1722,7 +1722,9 @@ INSERT INTO ".$this->prefix."tdcharge_service_action (idcharge_service_action, i
 (5454, 1, 34, 3),
 (5455, 1, 34, 4),
 (5456, 1, 34, 5),
-(5457, 1, 34, 7);
+(5457, 1, 34, 7),
+(5458, 1, 7, 2),
+(5459, 1, 7, 3);
 
 CREATE TABLE ".$this->prefix."tdpassword (
   idpassword int(11) NOT NULL,
@@ -1783,6 +1785,8 @@ INSERT INTO ".$this->prefix."tdservice_action (idservice_action, idservice, idac
 (133, 5, 5),
 (134, 5, 6),
 (135, 5, 7),
+(136, 7, 2),
+(137, 7, 3),
 (138, 8, 1),
 (139, 8, 2),
 (140, 8, 3),
@@ -2081,6 +2085,7 @@ INSERT INTO ".$this->prefix."tservice (idservice, idfather, name, url, idicon, c
 (4, 1, 'Servicios', 'service', 'glyphicon glyphicon-cog', '', '1'),
 (5, 1, 'Etnias', 'ethnicity', 'fa fa-blind', '', '1'),
 (6, 1, 'Nacionalidades', 'nationality', 'glyphicon glyphicon-credit-card', '', '1'),
+(7, 1, 'Permisos', 'permission', 'glyphicon glyphicon-pencil', '', '1'),
 (9, 0, 'Localidades', '', 'fa fa-globe', '', '1'),
 (10, 9, 'Parroquias', 'parish', 'fa fa-image', '', '1'),
 (11, 9, 'Municipios', 'municipality', 'fa fa-image', '', '1'),
@@ -2725,7 +2730,8 @@ INSERT INTO ".$this->prefix."tdservice_action VALUES (132, 5, 4);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (133, 5, 5);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (134, 5, 6);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (135, 5, 7);
-
+INSERT INTO ".$this->prefix."tdservice_action VALUES (136, 7, 2);
+INSERT INTO ".$this->prefix."tdservice_action VALUES (137, 7, 3);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (138, 8, 1);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (139, 8, 2);
 INSERT INTO ".$this->prefix."tdservice_action VALUES (140, 8, 3);
@@ -2881,6 +2887,7 @@ INSERT INTO ".$this->prefix."tservice VALUES (3, 1, 'Acciones', 'action', 'glyph
 INSERT INTO ".$this->prefix."tservice VALUES (4, 1, 'Servicios', 'service', 'glyphicon glyphicon-cog', '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (5, 1, 'Etnias', 'ethnicity', 'fa fa-blind', '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (6, 1, 'Nacionalidades', 'nationality', 'glyphicon glyphicon-credit-card', '       ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (7, 1, 'Permisos', 'permission', 'glyphicon glyphicon-pencil', '', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (9, 0, 'Localidades', '', 'fa fa-globe', '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (10, 9, 'Parroquias', 'parish', 'fa fa-image', '       ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (11, 9, 'Municipios', 'municipality', 'fa fa-image', '       ', '1');
@@ -4663,6 +4670,8 @@ INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6754, 1, 34, 3);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6755, 1, 34, 4);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6756, 1, 34, 5);
 INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6757, 1, 34, 7);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6758, 1, 7, 2);
+INSERT INTO ".$this->prefix."tdcharge_service_action VALUES (6759, 1, 7, 3);
 
 INSERT INTO ".$this->prefix."tdpassword VALUES (1, 1, '".$this->encrypter($this->password)."', NOW(), '1');
 

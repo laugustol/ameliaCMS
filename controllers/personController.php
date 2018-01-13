@@ -26,16 +26,18 @@ class personController{
 				$name = 'uploads/people/'.$_POST["idnationality"].$_POST["identification_card"].date("YmdHis").".".$tipo[1];
 				move_uploaded_file($_FILES['image']['tmp_name'], $name);
 				$this->person->image = $name;
-				$_SESSION["image"] = ($name != "")? $name : "img/default.png";
+				if($this->person->idperson==$_SESSION["idperson"]){
+					$_SESSION["image"] = ($name != "")? $name : "img/default.png";
+				}
 			}else{
 				$this->person->image = $_POST["image_url"];
-				if($id==$_SESSION["idperson"]){
+				if($this->person->idperson==$_SESSION["idperson"]){
 					$_SESSION["image"] = $_POST["image_url"];
 				}
 			}
 		}else{
 			$this->person->image = "";
-			if($id==$_SESSION["idsession"]){
+			if($this->person->idperson==$_SESSION["idsession"]){
 				$_SESSION["image"] = "img/default.png";
 			}
 			unlink($_POST["image_url"]);

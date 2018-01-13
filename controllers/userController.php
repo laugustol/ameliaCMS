@@ -34,14 +34,20 @@ class userController{
 				$name = 'uploads/people/'.$_POST["idnationality"].$_POST["identification_card"].date("YmdHis").".".$tipo[1];
 				move_uploaded_file($_FILES['image']['tmp_name'], $name);
 				$this->person->image = $name;
-				$_SESSION["image"] = ($name != "")? $name : "img/default.png";
+				if($this->user->iduser == $_SESSION["iduser"]){
+					$_SESSION["image"] = ($name != "")? $name : "img/default.png";	
+				}
 			}else{
 				$this->person->image = $_POST["image_url"];
-				$_SESSION["image"] = $_POST["image_url"];
+				if($this->user->iduser == $_SESSION["iduser"]){
+					$_SESSION["image"] = $_POST["image_url"];
+				}
 			}
 		}else if(isset($_POST["add_img"])){
 			$this->person->image = "";
-			$_SESSION["image"] = "img/default.png";
+			if($this->user->iduser == $_SESSION["iduser"]){
+				$_SESSION["image"] = "img/default.png";
+			}
 			unlink($_POST["image_url"]);
 		}
 		$this->person->name_one=ucwords($_POST["name_one"]);

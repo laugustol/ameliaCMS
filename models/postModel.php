@@ -31,7 +31,7 @@ class postModel{
 		return $this->permission->getpermissionadd();
 	}
 	public function add(){
-		$this->db->prepare("INSERT INTO ".PREFIX."tpost (url,name,color,idgallery,content,iduser,date_created,status) VALUES (?,?,?,?,?,NOW(),'1');");
+		$this->db->prepare("INSERT INTO ".PREFIX."tpost (url,name,color,idgallery,content,iduser,date_created,status) VALUES (?,?,?,?,?,?,NOW(),'1');");
 		return $this->db->execute(array($this->url,$this->name,$this->color,$this->idgallery,$this->content,$_SESSION["iduser"]));
 	}
 	public function query(){

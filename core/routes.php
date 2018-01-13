@@ -1469,7 +1469,11 @@ if(!is_readable('core/config.php')){
     $ctrl = new controllers\postController;
     $ctrl->pdf();
   });
-  $router->get('post/:id',function(){
+  $router->get('post/show/:id',function(){
+    $ctrl = new controllers\postController;
+    $ctrl->show($id);
+  });
+  $router->get('post/page/:id',function(){
     $ctrl = new controllers\postController;
     $ctrl->show($id);
   });

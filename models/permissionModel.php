@@ -157,7 +157,7 @@ class permissionModel{
 		if(!empty($not_function)){
 			$aux = " AND a.function<>'".$not_function."' ";
 		}
-		$this->db->prepare("SELECT a.name,a.function,a.idcon AS iname FROM ".PREFIX."tdcharge_service_action dcsa 
+		$this->db->prepare("SELECT a.name,a.function,a.idicon AS iname FROM ".PREFIX."tdcharge_service_action dcsa 
 							INNER JOIN ".PREFIX."tservice s ON dcsa.idservice=s.idservice
 							INNER JOIN ".PREFIX."taction a ON dcsa.idaction=a.idaction				
 							WHERE CAST(dcsa.idcharge as CHAR) = '".$_SESSION['idcharge']."' AND s.url='".controller."'

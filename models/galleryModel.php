@@ -14,7 +14,7 @@ class galleryModel{
 		return $dependencies;
 	}
 	public function add(){
-		$this->db->prepare("INSERT INTO ".PREFIX."tgallery (iduser,src,date_created) VALUES (?,?,NOW());");
+		$this->db->prepare("INSERT INTO ".PREFIX."tgallery (iduser,src,date_created,title,legend,alternative,description) VALUES (?,?,NOW(),'','','','');");
 		return $this->db->execute(array($_SESSION["iduser"],$this->src));
 	}
 	public function query(){

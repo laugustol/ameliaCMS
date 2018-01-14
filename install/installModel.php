@@ -2106,7 +2106,7 @@ INSERT INTO ".$this->prefix."tservice (idservice, idfather, name, url, idicon, c
 (27, 21, 'Galeria', 'gallery', 'fa fa-image', 'F5F5F5', '1'),
 (28, 21, 'Temas', 'themes', 'fa fa-cubes', 'F5F5F5', '1'),
 (29, 21, 'Contacto', 'contact', 'glyphicon glyphicon-envelope', 'F5F5F5', '1'),
-(31, 1, 'Editor de codigo', 'codeeditor', 'fa fa-code', 'F5F5F5 ', '1'),
+(31, 1, 'Editor de codigo', 'editor', 'fa fa-code', 'F5F5F5 ', '1'),
 (32, 21, 'Servicios', 'servicehome', 'fa fa-home', 'F5F5F5 ', '1'),
 (33, 21, 'Slider', 'slider', 'fa fa-image', 'F5F5F5 ', '1'),
 (34, 21, 'Portafolios', 'portfolio', 'fa fa-folder-open', 'F5F5F5 ', '1');
@@ -2908,7 +2908,7 @@ INSERT INTO ".$this->prefix."tservice VALUES (25, 16, 'Listados', 'list_report',
 INSERT INTO ".$this->prefix."tservice VALUES (27, 21, 'Galeria', 'gallery', 'fa fa-image', 'F5F5F5 ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (28, 21, 'Temas', 'theme', 'fa fa-cubes', 'F5F5F5 ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (29, 21, 'Contacto', 'contact', 'glyphicon glyphicon-envelope', 'F5F5F5', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (31, 1, 'Editor de codigo', 'codeeditor', 'fa fa-code', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (31, 1, 'Editor de codigo', 'editor', 'fa fa-code', 'F5F5F5 ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (32, 21, 'Servicios', 'servicehome', 'fa fa-home', 'F5F5F5 ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (33, 21, 'Slider', 'slider', 'fa fa-image', 'F5F5F5 ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (34, 21, 'Portafolios', 'portfolio', 'fa fa-folder-open', 'F5F5F5 ', '1');

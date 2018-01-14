@@ -187,7 +187,7 @@ class permissionModel{
 		if(empty($action[0][0])){
 			$_SESSION["msj"] = no_permission;
 			if($_SESSION["initiated"]=='1'){
-				header('location: '.url_base.'home/dashboard');
+				header('location: '.url_base.'dashboard');
 			}else{
 				header('location: '.url_base.'profile');
 			}

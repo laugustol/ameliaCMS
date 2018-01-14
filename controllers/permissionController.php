@@ -46,7 +46,7 @@ class permissionController{
 			}
 			$this->log_movement->add($_SESSION["iduser"],2,7,$_SESSION["msj"]);
 			header("location: ".url_base.controller."/edit/".$id);
-			exit;
+			//exit;
 		}
 		$this->query($id);
 	}

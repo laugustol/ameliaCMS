@@ -70,7 +70,7 @@ class serviceController{
 			}
 			$this->log_movement->add($_SESSION["iduser"],2,4,$_SESSION["msj"],"{".id.":'".$id."',".service_father.":'".$_POST["idfather"]."',".service_name.":'".$_POST["name"]."',".service_url.":'".$_POST["url"]."',".service_icon.":'".$_POST["idicon"]."',".service_color.":'".$_POST["color"]."'}");
 			header("location: ".url_base.controller."/edit/".$id);
-			exit;
+			//exit;
 		}
 		$this->query($id);
 	}

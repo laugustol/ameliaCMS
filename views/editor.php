@@ -1,15 +1,15 @@
-<?php $_SESSION["title"] = theme_codeeditor ?>
+<?php $_SESSION["title"] = theme_editor ?>
 <div class="row">
 	<div class="col-md-9">
 		<div class="box">
 			<div class="box-tools">
 				<div class="box-tool-left">
-					<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.routerCtrl?>"><?=theme_codeeditor_editor?></a> <?=(action!="index")? "<i class='fa fa-angle-right'></i> ".((action=="add")? add : ((action=="edit")? edit : query ) ) : ''?>
+					<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.routerCtrl?>"><?=theme_editor_editor?></a> <?=(action!="index")? "<i class='fa fa-angle-right'></i> ".((action=="add")? add : ((action=="edit")? edit : query ) ) : ''?>
 				</div>
 				<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 			</div>
 			<div class="box-container">
-				<form name="frm" id="frm" action="<?=url_base?>codeeditor/edit" method="POST">
+				<form name="frm" id="frm" action="<?=url_base?>editor/edit" method="POST">
 					<div class="row">
 						<div class='col-md-2 col-md-offset-5'>
 							<button class='btn1' aajs='click{sending();}'><?=save?></button>
@@ -25,7 +25,7 @@
 		<div class="box">
 			<div class="box-tools">
 				<div class="box-tool-left">
-					<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.routerCtrl?>"><?=theme_codeeditor_files?></a> <?=(action!="index")? "<i class='fa fa-angle-right'></i> ".((action=="add")? add : ((action=="edit")? edit : query ) ) : ''?>
+					<a href="<?=url_base?>home/dashboard"><?=dashboard?></a> <i class="fa fa-angle-right"></i> <a href="<?=url_base.routerCtrl?>"><?=theme_editor_files?></a> <?=(action!="index")? "<i class='fa fa-angle-right'></i> ".((action=="add")? add : ((action=="edit")? edit : query ) ) : ''?>
 				</div>
 				<div class="box-tool-right"><i class="glyphicon glyphicon-minus"></i></div>
 			</div>
@@ -123,7 +123,7 @@
 		editor.setSize("auto","490px");
 	});
 	function file(url){
-		$.post("<?=url_base?>codeeditor/search",{url:url},function(data){
+		$.post("<?=url_base?>editor/search",{url:url},function(data){
 			$("#url").val(url);
 			editor.setValue(data);
 		});

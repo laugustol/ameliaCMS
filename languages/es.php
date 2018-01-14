@@ -566,8 +566,8 @@ define("notice_title_placeholder","Ingrese el titulo de la noticia");
 define("notice_content","Contenido");
 define("notice_content_title","Contenido de la noticia");
 define("notice_content_placeholder","Ingrese el contenido de la noticia");
-//CodeEditor
-define("theme_codeeditor","Editor de codigo");
-define("theme_codeeditor_editor","Editor");
-define("theme_codeeditor_files","Archivos");
+//Editor
+define("theme_editor","Editor de codigo");
+define("theme_editor_editor","Editor");
+define("theme_editor_files","Archivos");
 ?>

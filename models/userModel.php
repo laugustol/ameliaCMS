@@ -19,32 +19,31 @@ class userModel{
 			INNER JOIN ".PREFIX."tcharge c ON pe.idcharge=c.idcharge
 			INNER JOIN ".PREFIX."tdpassword p ON u.iduser=p.iduser 
 			WHERE u.name=? AND p.status='1';");
-		$this->db->execute(array($this->name));
-		$user = $this->db->fetchAll();
-		if($user[0] != ""){
-			foreach ($user as $val) {
-				if(crypt($this->password,$val["password"]) == $val["password"]){
-					if($val["status"] == '1'){
-						$_SESSION["iduser"]=$val["iduser"];
-						$_SESSION["idperson"]=$val["idperson"];
-						$_SESSION["idcharge"]=$val["idcharge"];
-						$_SESSION["uname"]=$val["uname"];
-						$_SESSION["cname"]=$val["cname"];
-						$_SESSION["image"]=($val["image"]!="")? $val["image"] : (($val["sex"] == "M")? 'img/male.png' : 'img/female.png');
-						$_SESSION["pename_one"]=$val["pename_one"];
-						$_SESSION["pelast_name_one"]=$val["pelast_name_one"];
-						$_SESSION["initiated"]=$val["initiated"];
-						$this->db->prepare("UPDATE ".PREFIX."tuser SET failed_attempts=0 WHERE name=? ");
-						$this->db->execute(array($this->name));
-					}else{
-						return 3;
-					}
+		$i=0;
+		foreach($this->db->execute(array($this->name)) as $user){
+			$i++;
+			if(crypt($this->password,$user["password"]) == $user["password"]){
+				if($user["status"] == '1'){
+					$_SESSION["iduser"]=$user["iduser"];
+					$_SESSION["idperson"]=$user["idperson"];
+					$_SESSION["idcharge"]=$user["idcharge"];
+					$_SESSION["uname"]=$user["uname"];
+					$_SESSION["cname"]=$user["cname"];
+					$_SESSION["image"]=($user["image"]!="")? $user["image"] : (($user["sex"] == "M")? 'img/male.png' : 'img/female.png');
+					$_SESSION["pename_one"]=$user["pename_one"];
+					$_SESSION["pelast_name_one"]=$user["pelast_name_one"];
+					$_SESSION["initiated"]=$user["initiated"];
+					$this->db->prepare("UPDATE ".PREFIX."tuser SET failed_attempts=0 WHERE name=? ");
+					$this->db->execute(array($this->name));
 				}else{
-					return $this->failed_attempts($user);
+					return 3;
 				}
+			}else{
+				return $this->failed_attempts($user);
 			}
 			return 1;
-		}else{
+		}
+		if($i){
 			return $this->failed_attempts($user);
 		}
 	}

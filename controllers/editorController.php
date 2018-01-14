@@ -1,9 +1,9 @@
 <?php
 namespace controllers;
-class codeeditorController{
-	private $codeeditor,$permission,$log_movement;
+class editorController{
+	private $editor,$permission,$log_movement;
 	public function __construct(){
-		define("controller","codeeditor");
+		define("controller","editor");
 		$this->permission = new \models\permissionModel;
 		$this->log_movement = new \models\log_movementModel;
 	}
@@ -31,7 +31,7 @@ class codeeditorController{
 		listt(".");
 		$data["dependencies"]["folders"] = $GLOBALS["a"];
 		unset($GLOBALS["a"]);
-		view("codeeditor.php",1,$data);
+		view("editor.php",1,$data);
 	}
 	public function search(){
 		$fp = fopen($_POST["url"], "r");
@@ -47,8 +47,8 @@ class codeeditorController{
 		$fp = fopen($_POST["url"], "w");
 		fputs($fp, $_POST["code"]);
 		fclose($fp);
-		//$_SESSION["msj"] = ($this->codeeditor->edit())? edit_success : edit_error;
-		//$this->log_movement->add($_SESSION["iduser"],2,2,$_SESSION["msj"],"{".id.":'".$id."',".codeeditor_name.":'".$_POST["name"]."'}");
+		//$_SESSION["msj"] = ($this->editor->edit())? edit_success : edit_error;
+		//$this->log_movement->add($_SESSION["iduser"],2,2,$_SESSION["msj"],"{".id.":'".$id."',".editor_name.":'".$_POST["name"]."'}");
 		header("location: ".url_base.controller);
 		exit;
 	}

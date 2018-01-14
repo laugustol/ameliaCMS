@@ -40,7 +40,9 @@ class personController{
 			if($this->person->idperson==$_SESSION["idsession"]){
 				$_SESSION["image"] = "img/default.png";
 			}
-			unlink($_POST["image_url"]);
+			if(!empty($_POST["image_url"])){
+				unlink($_POST["image_url"]);	
+			}
 		}
 		$this->person->name_one=ucwords($_POST["name_one"]);
 		$this->person->name_two=ucwords($_POST["name_two"]);

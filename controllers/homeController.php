@@ -3,6 +3,7 @@ namespace controllers;
 class homeController{
 	private $user,$log_access,$mailer;
 	public function __construct(){
+		$_SESSION["environment"] = $_POST["environment"];
 		$this->user = new \models\userModel;
 		$this->log_access = new \models\log_accessModel;
 	}
@@ -11,9 +12,6 @@ class homeController{
 	}
 	public function login(){
 		if(isset($_POST["user"]) && isset($_POST["password"])){
-			//RESET Model problem login connect db production != test
-			$_SESSION["environment"] = $_POST["environment"];
-			$this->user = new \models\userModel;
 			$this->user->name=$_POST["user"];
 			$this->user->password=$_POST["password"];
 			$val=$this->user->login();
@@ -79,6 +77,7 @@ class homeController{
 		unset($_SESSION["image"]);
 		unset($_SESSION["pename_one"]);
 		unset($_SESSION["pelast_name_one"]);
+		unset($_SESSION["initiated"]);
 		unset($_SESSION["title"]);
 		unset($_SESSION["environment"]);
 		unset($_SESSION["DATABASE"]);

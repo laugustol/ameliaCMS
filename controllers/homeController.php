@@ -3,7 +3,7 @@ namespace controllers;
 class homeController{
 	private $user,$log_access,$mailer;
 	public function __construct(){
-		$_SESSION["environment"] = $_POST["environment"];
+		if(isset($_POST["environment"])){ $_SESSION["environment"] = $_POST["environment"]; }
 		$this->user = new \models\userModel;
 		$this->log_access = new \models\log_accessModel;
 	}

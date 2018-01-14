@@ -29,9 +29,8 @@ $(document).ready(function(){
 		        opacity: 0.6, 
 		        cursor: 'move',
 		        update: function() {
-		        	$.post(url_base+"service/delete_ordered",{event:''});
+		        	$.post(url_base+"service/delete-ordered",{event:''});
 		        	$("#side-bar ul > li").each(function(id,element){
-						console.log(element.childNodes[0].id+" "+id);
 						$.post(url_base+"service/ordered",{idservice:element.childNodes[0].id,ordered:(id+1)});
 					});
 		        }

@@ -25,8 +25,6 @@ class servicehomeModel{
 	public function dependencies(){
 		$this->db->prepare("SELECT p.idpage,p.name FROM ".PREFIX."tpage p ;");
 		$dependencies["idpage"] = $this->db->execute();
-		$this->db->prepare("SELECT * FROM ".PREFIX."ticon WHERE status='1';");
-		$dependencies["icons"] = $this->db->execute();
 		$dependencies["add"] = $this->permission->getpermissionadd();
 		return $dependencies;
 	}

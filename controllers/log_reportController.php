@@ -3,7 +3,7 @@ namespace controllers;
 class log_reportController{
 	private $log_report,$permission,$log_movement;
 	public function __construct(){
-		define("controller","log_report");
+		define("controller","log-report");
 		$this->log_report = new \models\log_reportModel;
 		$this->permission = new \models\permissionModel;
 		$this->log_movement = new \models\log_movementModel;

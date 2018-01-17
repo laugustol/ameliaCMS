@@ -77,8 +77,13 @@
 				<div class="form-group">
 					<label class="col-md-2 text-right"><?=person_idnationality?>:</label>
 					<div class="col-md-4">
-						<input type="text" id="nationality" value="<?=$d["nationality"]?>" aajs="searchajax{<?=url_base?>nationality/search,this},required" class="width-full" data-toggle="tooltip" title="<?=person_idnationality_title?>" placeholder="<?=person_idnationality_placeholder?>" autocomplete="off">
-						<input type="hidden" name="idnationality" id="idnationality" value="<?=$d["idnationality"]?>" aajs="required">
+						<select name="idnationality" id="idnationality" aajs="required" class="width-full" data-toggle="tooltip" title="<?=person_idnationality_title?>">
+							<?php
+								foreach($dependencies["nationalitys"] as $n){
+									echo '<option value="'.$n["idnationality"].'" '.(($n["idnationality"]==$d["idnationality"])?'selected':'').'>'.$n['name'].'</option>';
+								}
+							?>
+						</select>
 					</div>
 					<label class="col-md-2 text-right"><?=person_idethnicity?>:</label>
 					<div class="col-md-4">

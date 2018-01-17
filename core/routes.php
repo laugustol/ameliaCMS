@@ -848,136 +848,136 @@ if(!is_readable('core/config.php')){
     $ctrl = new controllers\parishController;
     $ctrl->search_m();
   });
-  //--service_Home
+  //--serviceHome
   $router->get('service-home',function(){
     define('routerCtrl','service-home');
     define('action','index');
-    $ctrl = new controllers\service_homeController;
+    $ctrl = new controllers\servicehomeController;
     $ctrl->index();
   });
   $router->post('service-home/listt',function(){
-    $ctrl = new controllers\service_homeController;
+    $ctrl = new controllers\servicehomeController;
     $ctrl->listt();
   });
   $router->get('service-home/add',function(){
     define('routerCtrl','service-home');
     define('action','add');
-    $ctrl = new controllers\service_homeController;
+    $ctrl = new controllers\servicehomeController;
     $ctrl->add();
   });
   $router->post('service-home/add/',function(){
     define('routerCtrl','service-home');
     define('action','add');
-    $ctrl = new controllers\service_homeController;
+    $ctrl = new controllers\servicehomeController;
     $ctrl->add();
   });
   $router->get('service-home/edit/:id',function($id){
     define('routerCtrl','service-home');
     define('action','edit');
-    $ctrl = new controllers\service_homeController;
+    $ctrl = new controllers\servicehomeController;
     $ctrl->edit($id);
   });
   $router->post('service-home/edit/:id',function($id){
     define('routerCtrl','service-home');
     define('action','edit');
-    $ctrl = new controllers\service_homeController;
+    $ctrl = new controllers\servicehomeController;
     $ctrl->edit($id);
   });
   $router->get('service-home/query/:id',function($id){
     define('routerCtrl','service-home');
     define('action','query');
-    $ctrl = new controllers\service_homeController;
+    $ctrl = new controllers\servicehomeController;
     $ctrl->query($id);
   });
   $router->get('service-home/delete/:id',function($id){
     define('routerCtrl','service-home');
     define('action','query');
-    $ctrl = new controllers\service_homeController;
+    $ctrl = new controllers\servicehomeController;
     $ctrl->delete($id);
   });
   $router->get('service-home/activate/:id',function($id){
     define('routerCtrl','service-home');
     define('action','query');
-    $ctrl = new controllers\service_homeController;
+    $ctrl = new controllers\servicehomeController;
     $ctrl->activate($id);
   });
   $router->get('service-home/deactivate/:id',function($id){
     define('routerCtrl','service-home');
     define('action','query');
-    $ctrl = new controllers\service_homeController;
+    $ctrl = new controllers\servicehomeController;
     $ctrl->deactivate($id);
   });
   //--list_report
-  $router->get('list_report',function(){
-    define('routerCtrl','list_report');
+  $router->get('list-report',function(){
+    define('routerCtrl','list-report');
     define('action','index');
     $ctrl = new controllers\list_reportController;
     $ctrl->index();
   });
-  $router->get('list_report/query/:id',function($id){
-    define('routerCtrl','list_report');
+  $router->get('list-report/query/:id',function($id){
+    define('routerCtrl','list-report');
     define('action','query');
     $ctrl = new controllers\list_reportController;
     $ctrl->query($id);
   });
-  $router->get('list_report/pdf',function(){
+  $router->get('list-report/pdf',function(){
     $ctrl = new controllers\list_reportController;
     $ctrl->pdf();
   });
   //--log_access
-  $router->get('log_access',function(){
-    define('routerCtrl','log_access');
+  $router->get('log-access',function(){
+    define('routerCtrl','log-access');
     define('action','index');
     $ctrl = new controllers\log_accessController;
     $ctrl->index();
   });
-  $router->post('log_access/listt',function(){
+  $router->post('log-access/listt',function(){
     $ctrl = new controllers\log_accessController;
     $ctrl->listt();
   });
-  $router->get('log_access/delete/:id',function($id){
-    define('routerCtrl','log_access');
+  $router->get('log-access/delete/:id',function($id){
+    define('routerCtrl','log-access');
     define('action','query');
     $ctrl = new controllers\log_accessController;
     $ctrl->delete($id);
   });
-  $router->get('log_access/pdf',function(){
+  $router->get('log-access/pdf',function(){
     $ctrl = new controllers\log_accessController;
     $ctrl->pdf();
   });
   //--log_movement
-  $router->get('log_movement',function(){
-    define('routerCtrl','log_movement');
+  $router->get('log-movement',function(){
+    define('routerCtrl','log-movement');
     define('action','index');
     $ctrl = new controllers\log_movementController;
     $ctrl->index();
   });
-  $router->post('log_movement/listt',function(){
+  $router->post('log-movement/listt',function(){
     $ctrl = new controllers\log_movementController;
     $ctrl->listt();
   });
-  $router->get('log_movement/delete/:id',function($id){
-    define('routerCtrl','log_movement');
+  $router->get('log-movement/delete/:id',function($id){
+    define('routerCtrl','log-movement');
     define('action','query');
     $ctrl = new controllers\log_movementController;
     $ctrl->delete($id);
   });
-  $router->get('log_movement/pdf',function(){
+  $router->get('log-movement/pdf',function(){
     $ctrl = new controllers\log_movementController;
     $ctrl->pdf();
   });
   //--log_report
-  $router->get('log_report',function(){
-    define('routerCtrl','log_report');
+  $router->get('log-report',function(){
+    define('routerCtrl','log-report');
     define('action','index');
     $ctrl = new controllers\log_reportController;
     $ctrl->index();
   });
-  $router->post('log_report/listt',function(){
+  $router->post('log-report/listt',function(){
     $ctrl = new controllers\log_reportController;
     $ctrl->listt();
   });
-  $router->get('log_report/pdf',function(){
+  $router->get('log-report/pdf',function(){
     $ctrl = new controllers\log_reportController;
     $ctrl->pdf();
   });

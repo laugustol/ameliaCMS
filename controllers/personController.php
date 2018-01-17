@@ -37,7 +37,7 @@ class personController{
 			}
 		}else{
 			$this->person->image = "";
-			if($this->person->idperson==$_SESSION["idsession"]){
+			if($this->person->idperson==$_SESSION["idperson"]){
 				$_SESSION["image"] = "img/default.png";
 			}
 			if(!empty($_POST["image_url"])){

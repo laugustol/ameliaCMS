@@ -27,6 +27,8 @@ class personModel{
 	public function dependencies(){
 		$this->db->prepare("SELECT idcharge,name FROM ".PREFIX."tcharge WHERE status='1';");
 		$dependencies["charges"] = $this->db->execute();
+		$this->db->prepare("SELECT idnationality,CONCAT(name_one,' - ',name_two) as name  FROM ".PREFIX."tnationality WHERE status='1';");
+		$dependencies["nationalitys"] = $this->db->execute();
 		$dependencies["add"] = $this->permission->getpermissionadd();
 		return $dependencies;
 	}

@@ -81,8 +81,5 @@ class nationalityController{
 		$nationalitys = $this->nationality->pdf();
 		require 'pdf/nationalityPdf.php';
 	}
-	public function search(){
-		echo json_encode($this->nationality->search($_POST["value"]));
-	}
 }
 ?>

@@ -30,7 +30,7 @@ CREATE TABLE ".$this->prefix."taction (
 INSERT INTO ".$this->prefix."taction (idaction, name, function, idicon, status) VALUES
 (1, 'Agregar', 1, 'glyphicon glyphicon-plus', '1'),
 (2, 'Editar', 2, 'glyphicon glyphicon-edit', '1'),
-(3, 'Consultar', 'glyphicon glyphicon-search', 11, '1'),
+(3, 'Consultar', 3, 'glyphicon glyphicon-search', 11, '1'),
 (4, 'Activar', 4, 'glyphicon glyphicon-ok', '1'),
 (5, 'Desactivar', 'glyphicon glyphicon-remove', 21, '1'),
 (6, 'Generar', 6, 'glyphicon glyphicon-asterisk', '1'),
@@ -2094,20 +2094,20 @@ INSERT INTO ".$this->prefix."tservice (idservice, idfather, name, url, idicon, c
 (14, 1, 'Personas', 'person', 'fa fa-users', '', '1'),
 (15, 1, 'Usuarios', 'user', 'fa fa-users', '', '1'),
 (16, 0, 'Reportes', '', 'fa fa-bar-chart-o', '', '1'),
-(17, 16, 'Bitacora de acceso', 'log_access', 'fa fa-area-chart', 'F5F5F5', '1'),
-(18, 16, 'Bitacora de movimientos', 'log_movement', 'fa fa-line-chart', 'F5F5F5', '1'),
-(19, 16, 'Bitacora de reportes', 'log_report', 'fa fa-pie-chart', 'F5F5F5', '1'),
+(17, 16, 'Bitacora de acceso', 'log-access', 'fa fa-area-chart', 'F5F5F5', '1'),
+(18, 16, 'Bitacora de movimientos', 'log-movement', 'fa fa-line-chart', 'F5F5F5', '1'),
+(19, 16, 'Bitacora de reportes', 'log-report', 'fa fa-pie-chart', 'F5F5F5', '1'),
 (20, 1, 'Organizacion', 'organization', 'glyphicon glyphicon-home', '', '1'),
 (21, 0, 'Blog', '', 'glyphicon glyphicon-book', '', '1'),
 (22, 21, 'Publicaciones', 'post', 'fa fa-newspaper-o', '', '1'),
 (23, 21, 'Paginas', 'page', 'glyphicon glyphicon-file', 'F5F5F5', '1'),
 (24, 21, 'Redes sociales', 'social_network', 'fa fa-facebook-official', 'F5F5F5', '1'),
-(25, 16, 'Listados', 'list_report', 'fa fa-list', 'F5F5F5', '1'),
+(25, 16, 'Listados', 'list-report', 'fa fa-list', 'F5F5F5', '1'),
 (27, 21, 'Galeria', 'gallery', 'fa fa-image', 'F5F5F5', '1'),
 (28, 21, 'Temas', 'themes', 'fa fa-cubes', 'F5F5F5', '1'),
 (29, 21, 'Contacto', 'contact', 'glyphicon glyphicon-envelope', 'F5F5F5', '1'),
 (31, 1, 'Editor de codigo', 'editor', 'fa fa-code', 'F5F5F5 ', '1'),
-(32, 21, 'Servicios', 'servicehome', 'fa fa-home', 'F5F5F5 ', '1'),
+(32, 21, 'Servicios', 'service-home', 'fa fa-home', 'F5F5F5 ', '1'),
 (33, 21, 'Slider', 'slider', 'fa fa-image', 'F5F5F5 ', '1'),
 (34, 21, 'Portafolios', 'portfolio', 'fa fa-folder-open', 'F5F5F5 ', '1');
 
@@ -2909,7 +2909,7 @@ INSERT INTO ".$this->prefix."tservice VALUES (27, 21, 'Galeria', 'gallery', 'fa 
 INSERT INTO ".$this->prefix."tservice VALUES (28, 21, 'Temas', 'theme', 'fa fa-cubes', 'F5F5F5 ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (29, 21, 'Contacto', 'contact', 'glyphicon glyphicon-envelope', 'F5F5F5', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (31, 1, 'Editor de codigo', 'editor', 'fa fa-code', 'F5F5F5 ', '1');
-INSERT INTO ".$this->prefix."tservice VALUES (32, 21, 'Servicios', 'servicehome', 'fa fa-home', 'F5F5F5 ', '1');
+INSERT INTO ".$this->prefix."tservice VALUES (32, 21, 'Servicios', 'service-home', 'fa fa-home', 'F5F5F5 ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (33, 21, 'Slider', 'slider', 'fa fa-image', 'F5F5F5 ', '1');
 INSERT INTO ".$this->prefix."tservice VALUES (34, 21, 'Portafolios', 'portfolio', 'fa fa-folder-open', 'F5F5F5 ', '1');
 

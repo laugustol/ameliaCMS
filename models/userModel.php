@@ -32,6 +32,7 @@ class userModel{
 					$_SESSION["image"]=($user["image"]!="")? $user["image"] : (($user["sex"] == "M")? 'img/male.png' : 'img/female.png');
 					$_SESSION["pename_one"]=$user["pename_one"];
 					$_SESSION["pelast_name_one"]=$user["pelast_name_one"];
+					$_SESSION["sex"]=$user["sex"];
 					$_SESSION["initiated"]=$user["initiated"];
 					$this->db->prepare("UPDATE ".PREFIX."tuser SET failed_attempts=0 WHERE name=? ");
 					$this->db->execute(array($this->name));
@@ -143,6 +144,8 @@ class userModel{
 		$this->db->prepare("SELECT * FROM ".PREFIX."torganization ;");
 		$this->db->execute();
 		$dependencies["organization"] = $this->db->fetchAll();
+		$this->db->prepare("SELECT idnationality,CONCAT(name_one,' - ',name_two) as name  FROM ".PREFIX."tnationality WHERE status='1';");
+		$dependencies["nationalitys"] = $this->db->execute();
 		$dependencies["add"] = $this->permission->getpermissionadd();
 		return $dependencies;
 	}

@@ -71,6 +71,7 @@ define("btn_logout_alert","Vuelva pronto");
 define("status","Estado");
 define("next","Siguiente");
 define("previus","Anterior");
+define("about_me","Realizado por I.N.G. Augusto Alvarez, Contacto: Augustoalvarez05@gmail.com");
 //Error 404
 define("error_404","Error 404");
 define("error_404_description","Oh! oh! tu solicitud no ha sido encontrada");

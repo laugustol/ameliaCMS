@@ -27,7 +27,7 @@ class personController{
 				move_uploaded_file($_FILES['image']['tmp_name'], $name);
 				$this->person->image = $name;
 				if($this->person->idperson==$_SESSION["idperson"]){
-					$_SESSION["image"] = ($name != "")? $name : "img/default.png";
+					$_SESSION["image"] = ($name != "")? $name : (($_SESSION['sex']=='M')? "img/male.png" : "img/female.png");
 				}
 			}else{
 				$this->person->image = $_POST["image_url"];
@@ -38,7 +38,7 @@ class personController{
 		}else{
 			$this->person->image = "";
 			if($this->person->idperson==$_SESSION["idperson"]){
-				$_SESSION["image"] = "img/default.png";
+				$_SESSION["image"] = (($_SESSION['sex']=='M')? "img/male.png" : "img/female.png");
 			}
 			if(!empty($_POST["image_url"])){
 				unlink($_POST["image_url"]);	

@@ -136,6 +136,12 @@ if(!isset($_SESSION["iduser"])){
 				?>
 			</div>
 		</div>
+		<br>
+		<div class="row about-me">
+			<div class="col-md-12">
+				<?=about_me?>
+			</div>
+		</div>
 	</div>
 </body>
 <script type="text/javascript">

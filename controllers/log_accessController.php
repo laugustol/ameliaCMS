@@ -32,5 +32,8 @@ class log_accessController{
 		$log_accesss = $this->log_access->pdf();
 		require 'pdf/log_accessPdf.php';
 	}
+	public function graph(){
+		echo json_encode($this->log_access->graph());
+	}
 }
 ?>

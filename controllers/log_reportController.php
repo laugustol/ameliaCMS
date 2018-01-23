@@ -25,5 +25,8 @@ class log_reportController{
 		$log_reports = $this->log_report->pdf();
 		require 'pdf/log_reportPdf.php';
 	}
+	public function graph(){
+		echo json_encode($this->log_report->graph());
+	}
 }
 ?>

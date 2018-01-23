@@ -29,5 +29,8 @@ class log_movementController{
 		$log_movements = $this->log_movement->pdf();
 		require 'pdf/log_movementPdf.php';
 	}
+	public function graph(){
+		echo json_encode($this->log_movement->graph());
+	}
 }
 ?>

@@ -138,10 +138,9 @@ define("install_confirm_password_placeholder","Amelia1CMS?");
 //Dashboard
 define("dashboard","Tablero");
 define("dashboard_note","Nota");
-define("dashboard_notices","Noticias");
-define("dashboard_log_movements","Bitacora de movimientos");
-define("dashboard_log_access","Bitacora de accesos");
-define("dashboard_log_report","Bitacora de reportes");
+define("dashboard_log_movement","Movimientos");
+define("dashboard_log_access","Accesos");
+define("dashboard_log_report","Reportes");
 //Charge
 define("charge","Cargos");
 define("charge_name","Nombre");

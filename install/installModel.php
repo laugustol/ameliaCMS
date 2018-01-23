@@ -1986,6 +1986,7 @@ INSERT INTO ".$this->prefix."tnationality (idnationality, name_one, name_two, st
 (1, 'V', 'Venezolano', '1');
 
 CREATE TABLE ".$this->prefix."torganization (
+  idorganization int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name_one varchar(50) NOT NULL,
   name_two varchar(50) NOT NULL,
   email varchar(50) NOT NULL,
@@ -2011,11 +2012,12 @@ CREATE TABLE ".$this->prefix."torganization (
   number_days_password_diferrence int(11) DEFAULT NULL,
   number_answer_allowed int(11) DEFAULT NULL,
   skip_homepage char(1),
-  type_web char(1)
+  type_web char(1),
+  status char(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO ".$this->prefix."torganization (name_one, name_two, email, description, idgallery_header, idgallery_favicon, address, rights, phone_one, phone_two, phone_three, number_question_answer, login, new_password_sent_email, email_host, email_port, email_security_smtp, email_type_security_smtp, email_user, email_password, email_subject, email_message, number_days_password_diferrence, number_answer_allowed,skip_homepage,type_web) VALUES
-('AmeliaCMS', 'AmeliaCMS ', 'augustoalvarez05@gmail.com', 'Version Beta', 0, 0, 'av 36 entre 22 y 23', 'Todos los derechos reservados 2017', '04245370954', '', '', 2, 1, 0, 'lcoalhost', '23', '1', 'TLS', 'root', '1234', 'asda', '', 3, 2,'','');
+('AmeliaCMS', 'AmeliaCMS ', 'augustoalvarez05@gmail.com', 'Version Beta', 0, 0, 'av 36 entre 22 y 23', 'Todos los derechos reservados 2017', '04245370954', '', '', 2, 1, 0, 'lcoalhost', '23', '1', 'TLS', 'root', '1234', 'asda', '', 3, 2,'','','1');
 
 CREATE TABLE ".$this->prefix."tpage (
   idpage int(11) NOT NULL,
@@ -2534,6 +2536,7 @@ CREATE TABLE ".$this->prefix."tnotice (
 );
 
 CREATE TABLE ".$this->prefix."torganization (
+    idorganization serial,
     name_one character varying(50),
     name_two character varying(50),
     email character varying(50),
@@ -2559,7 +2562,8 @@ CREATE TABLE ".$this->prefix."torganization (
     number_days_password_diferrence integer,
     number_answer_allowed integer,
     skip_homepage character(1),
-    type_web character(1)
+    type_web character(1),
+    status character(1)
 );
 
 CREATE TABLE ".$this->prefix."tpage (
@@ -2873,7 +2877,7 @@ INSERT INTO ".$this->prefix."tgallery VALUES (3, 1, 'uploads/gallery/20170826063
 $sql.="
 INSERT INTO ".$this->prefix."tnationality VALUES (1, 'V', 'Venezolano', '1');
 
-INSERT INTO ".$this->prefix."torganization VALUES ('AmeliaCMS', 'AmeliaCMS ', 'augustoalvarez05@gmail.com', 'Version Beta', 0, 3, 'av 36 entre 22 y 23', 'Todos los derechos reservados 2017', '04245370954', '', '', 2, 0, 0, 'lcoalhost', '23', '1', 'TLS', 'root', '1234', 'asda', '', 3, 2, NULL, NULL);
+INSERT INTO ".$this->prefix."torganization VALUES ('AmeliaCMS', 'AmeliaCMS ', 'augustoalvarez05@gmail.com', 'Version Beta', 0, 3, 'av 36 entre 22 y 23', 'Todos los derechos reservados 2017', '04245370954', '', '', 2, 0, 0, 'lcoalhost', '23', '1', 'TLS', 'root', '1234', 'asda', '', 3, 2, NULL, NULL,'1');
 
 INSERT INTO ".$this->prefix."tpage VALUES (1, 'mkasda', '0', 'asdasd', '', 1, '<p>nkasdka</p>', '1', '1');
 

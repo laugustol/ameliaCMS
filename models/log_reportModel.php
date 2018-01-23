@@ -35,5 +35,11 @@ class log_reportModel{
 		foreach ($data as $val) { $d[]=$val; }
 		return $d;
 	}
+	public function graph(){
+		$this->db->prepare("SELECT count(*) as countx,report FROM ".PREFIX."tlog_report GROUP BY idlog_report");
+		$data=$this->db->execute();
+		foreach ($data as $val) { $d[]=$val; }
+		return $d;	
+	}
 }
 ?>

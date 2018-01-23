@@ -10,7 +10,7 @@ if(!isset($_SESSION["iduser"])){
 <head>
 	<?php
 		$organization = new \models\organizationModel;
-		$org = $organization->query();
+		$org = $organization->query_status();
 	?>
 	<!--Favicon-->
 	<link rel="shortcut icon" href="<?=url_base.(($org["idgallery_favicon"]!=0)? $org["src_favicon"] : 'img/favicon.png')?>">
@@ -68,6 +68,8 @@ if(!isset($_SESSION["iduser"])){
 	<script src="<?=url_base?>third_party/codemirror/mode/htmlmixed/htmlmixed.js"></script>
 	<!--STYLE-->
 	<link rel="stylesheet" type="text/css" href="<?=($_SESSION["environment"])? url_base.'css/style.css': url_base.'css/style.min.css' ?>">
+	<!--ChartJS-->
+	<script src="<?=url_base?>third_party/chartjs/Chart.min.js"></script>
 	<!--INIT-->
 	<script id="initjs" src="<?=($_SESSION["environment"])? url_base.'js/init.js?'.url_base : url_base.'js/init.min.js?'.url_base?>"></script>
 	<title><?=$org["name_one"]?></title>

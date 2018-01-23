@@ -38,6 +38,12 @@ class log_accessModel{
 		foreach ($data as $val) { $d[]=$val; }
 		return $d;
 	}
+	public function graph(){
+		$this->db->prepare("SELECT count(*) as countx,message FROM ".PREFIX."tlog_access GROUP BY message");
+		$data=$this->db->execute();
+		foreach ($data as $val) { $d[]=$val; }
+		return $d;	
+	}
 	private function get_info(){
 		if (!empty($_SERVER['HTTP_CLIENT_IP'])) { 
 			$info["ip"]=$_SERVER['HTTP_CLIENT_IP']; 

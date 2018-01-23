@@ -37,5 +37,11 @@ class log_movementModel{
 		foreach ($data as $val) { $d[]=$val; }
 		return $d;
 	}
+	public function graph(){
+		$this->db->prepare("SELECT count(*) as countx,a.name FROM ".PREFIX."tlog_movement l INNER JOIN ".PREFIX."taction a ON l.idaction=a.idaction GROUP BY l.idaction ORDER BY l.idaction");
+		$data=$this->db->execute();
+		foreach ($data as $val) { $d[]=$val; }
+		return $d;	
+	}
 }
 ?>

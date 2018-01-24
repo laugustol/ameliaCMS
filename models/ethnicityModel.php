@@ -7,19 +7,14 @@ class ethnicityModel{
 		$this->db = new \core\ameliaBD;
 		$this->permission = new \models\permissionModel;
 	}
-	public function listt($draw,$search,$start,$length){
-		$start = (empty($start))? 0 : $start;
-		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."tethnicity) as countx FROM ".PREFIX."tethnicity WHERE CAST(idethnicity as CHAR) LIKE '%$search%' OR name LIKE '%$search%' ORDER BY idethnicity DESC LIMIT $length OFFSET $start ");
-		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+	public function listt(){		
+		$this->db->prepare("SELECT * FROM ".PREFIX."tethnicity ");
+		$d= [];
 		foreach ($this->db->execute() as $key => $val) {
-			$d["data"][$key]["idethnicity"] = $val["idethnicity"];
-			$d["data"][$key]["name"] = $val["name"];
-			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idethnicity"],$val["status"]);
-			$d["recordsFiltered"] = $val["countx"];
-			$d["recordsTotal"]++;
+			$d[$key]["idethnicity"] = $val["idethnicity"];
+			$d[$key]["name"] = $val["name"];
+			$d[$key]["btn"] = $this->permission->getpermission($val["idethnicity"],$val["status"]);
 		}
-		$d["draw"] = $draw;
 		return $d;
 	}
 	public function dependencies(){

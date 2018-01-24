@@ -12,14 +12,12 @@ class ethnicityController{
 		$this->log_movement->add($_SESSION["iduser"],3,5,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"]["add"] = $this->ethnicity->dependencies();
+		$data["dependencies"]["list"] = $this->ethnicity->listt();
 		view("ethnicity.php",1,$data);
 	}
 	public function data($id=""){
 		$this->ethnicity->idethnicity=$id;
 		$this->ethnicity->name=$_POST["name"];
-	}
-	public function listt(){
-		echo json_encode($this->ethnicity->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

@@ -6,10 +6,6 @@
     $ctrl = new controllers\organizationController;
     $ctrl->index();
   });
-  $router->post('organization/listt',function(){
-    $ctrl = new controllers\organizationController;
-    $ctrl->listt();
-  });
   $router->get('organization/add',function(){
     define('routerCtrl','organization');
     define('action','add');

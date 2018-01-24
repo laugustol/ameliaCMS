@@ -6,10 +6,6 @@
     $ctrl = new controllers\galleryController;
     $ctrl->index();
   });
-  $router->post('gallery/listt',function(){
-    $ctrl = new controllers\galleryController;
-    $ctrl->listt();
-  });
   $router->get('gallery/add',function(){
     define('routerCtrl','gallery');
     define('action','add');

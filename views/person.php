@@ -11,31 +11,13 @@
 			<?=$dependencies['add']?>
 			<table id="datatable" class="table table-striped table-bordered table-hover dataTable" width="100%">
                 <thead><th><?=id?></th><th><?=person_identification_card?><th><?=names?><th><?=last_names?></th><th><?=actions?></th></thead>
+                <?php
+                	foreach($dependencies["list"] as $val){
+                		echo "<tr><td>".$val["idperson"]."</td><td>".$val["nationality_identification_card"]."</td><td>".$val["name_complete"]."</td><td>".$val["last_name_complete"]."</td><td>".$val["btn"]."</td></tr>";
+                	}
+                ?>
                 <tfoot><th><?=id?></th><th><?=person_identification_card?><th><?=names?><th><?=last_names?></th><th><?=actions?></th></tfoot>
             </table>
-            <script>
-	            $(document).ready( function () {
-	                $('#datatable').dataTable(
-		                {
-		                	"language":{
-		                    	"url": "<?=url_base?>third_party/datatables/language/es.json"
-		                        },
-	                        "processing": true,
-	                        "serverSide": true,
-	                        "ordering": false,
-	                        "ajax": { url : "<?=url_base.routerCtrl?>/listt", type : "POST" },
-	                        "columns": [
-	                            { "data": "idperson" },
-	                            { "data": "nationality_identification_card" },
-	                            { "data": "name_complete" },
-	                            { "data": "last_name_complete" },
-	                            { "data": "btn" }
-	                        ]
-	                    }
-	                );
-	                
-	            });
-	        </script>
 		<?php }else{ ?>
 			<?=(action!="query")? "<form name='hola' action='".url_base.routerCtrl."/".action."/".$d["idperson"]."' method='POST' class='form-horizontal' enctype='multipart/form-data'>" : "<div class='form-horizontal'>" ?>
 				<input type="hidden" name="event" id="event">

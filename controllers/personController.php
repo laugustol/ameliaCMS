@@ -12,6 +12,7 @@ class personController{
 		$this->log_movement->add($_SESSION["iduser"],3,14,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"] = $this->person->dependencies();
+		$data["dependencies"]["list"] = $this->person->listt();
 		view("person.php",1,$data);
 	}
 	public function data($id=""){
@@ -57,9 +58,6 @@ class personController{
 		$this->person->address=$_POST["address"];
 		$this->person->phone_one=$_POST["phone_one"];
 		$this->person->phone_two=$_POST["phone_two"];
-	}
-	public function listt(){
-		echo json_encode($this->person->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

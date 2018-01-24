@@ -7,10 +7,6 @@
     $ctrl = new controllers\social_networkController;
     $ctrl->index();
   });
-  $router->post('social-network/listt',function(){
-    $ctrl = new controllers\social_networkController;
-    $ctrl->listt();
-  });
   $router->get('social-network/add',function(){
     define('routerCtrl','social-network');
     define('action','add');

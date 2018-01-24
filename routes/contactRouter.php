@@ -6,10 +6,6 @@
     $ctrl = new controllers\contactController;
     $ctrl->index();
   });
-  $router->post('contact/listt',function(){
-    $ctrl = new controllers\contactController;
-    $ctrl->listt();
-  });
   $router->get('contact/add',function(){
     define('routerCtrl','contact');
     define('action','add');

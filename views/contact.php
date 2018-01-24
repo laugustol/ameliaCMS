@@ -11,30 +11,13 @@
 			<?=$dependencies['add']?>
 			<table id="datatable" class="table table-striped table-bordered table-hover dataTable" width="100%">
                 <thead><th><?=id?></th><th><?=contact_name?></th><th><?=actions?></th><th><?=contact_status?></th></thead>
+                <?php
+                	foreach($dependencies["list"] as $val){
+                		echo "<tr><td>".$val["idcontact"]."</td><td>".$val["email"]."</td><td>".$val["btn"]."</td><td>".$val["status"]."</td></tr>";
+                	}
+                ?>
                 <tfoot><th><?=id?></th><th><?=contact_name?></th><th><?=actions?></th><th><?=contact_status?></th></tfoot>
             </table>
-            <script>
-	            $(document).ready( function () {
-	                $('#datatable').dataTable(
-		                {
-		                	"language":{
-		                    	"url": "<?=url_base?>third_party/datatables/language/es.json"
-		                        },
-	                        "processing": true,
-	                        "serverSide": true,
-	                        "ordering": false,
-	                        "ajax": { url : "<?=url_base.routerCtrl?>/listt", type : "POST" },
-	                        "columns": [
-	                            { "data": "idcontact" },
-	                            { "data": "email" },
-	                            { "data": "btn" },
-	                            { "data": "status" },
-	                        ]
-	                    }
-	                );
-	                
-	            });
-	        </script>
 		<?php }else{ ?>
 			<?=(action!="query")? "<form action='".url_base.routerCtrl."/".action."/".$d["idcontact"]."' method='POST' class='form-horizontal'>" : "<div class='form-horizontal'>" ?>
 				<input type="hidden" name="event" id="event">

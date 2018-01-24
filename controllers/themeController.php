@@ -13,6 +13,7 @@ class themeController{
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"]["themes_installed"] = $this->theme->dependencies();
 		$data["dependencies"]["themes_ids"] = $this->theme->dependencies();
+		$data["dependencies"]["list"] = $this->theme->listt();
 		view("theme.php",1,$data);
 	}
 	public function add($src){

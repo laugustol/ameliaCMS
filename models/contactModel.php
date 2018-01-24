@@ -7,20 +7,15 @@ class contactModel{
 		$this->db = new \core\ameliaBD;
 		$this->permission = new \models\permissionModel;
 	}
-	public function listt($draw,$search,$start,$length){
-		$start = (empty($start))? 0 : $start;
-		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."tcontact) as countx FROM ".PREFIX."tcontact WHERE CAST(idcontact as CHAR) LIKE '%$search%' OR name LIKE '%$search%' ORDER BY idcontact DESC LIMIT $length OFFSET $start ");
-		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+	public function listt(){		
+		$this->db->prepare("SELECT * FROM ".PREFIX."tcontact ");
+		$d= [];
 		foreach ($this->db->execute() as $key => $val) {
-			$d["data"][$key]["idcontact"] = $val["idcontact"];
-			$d["data"][$key]["email"] = $val["email"];
-			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idcontact"],$val["status"]);
-			$d["data"][$key]["status"] = ($val["status"])? contact_status_1 : contact_status_0 ;
-			$d["recordsFiltered"] = $val["countx"];
-			$d["recordsTotal"]++;
+			$d[$key]["idcontact"] = $val["idcontact"];
+			$d[$key]["email"] = $val["email"];
+			$d[$key]["btn"] = $this->permission->getpermission($val["idcontact"],$val["status"]);
+			$d[$key]["status"] = ($val["status"])? contact_status_1 : contact_status_0 ;
 		}
-		$d["draw"] = $draw;
 		return $d;
 	}
 	public function dependencies(){

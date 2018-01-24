@@ -6,10 +6,6 @@
     $ctrl = new controllers\stateController;
     $ctrl->index();
   });
-  $router->post('state/listt',function(){
-    $ctrl = new controllers\stateController;
-    $ctrl->listt();
-  });
   $router->get('state/add',function(){
     define('routerCtrl','state');
     define('action','add');

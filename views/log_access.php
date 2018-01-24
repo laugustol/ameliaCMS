@@ -10,33 +10,12 @@
 		<?=$dependencies['add']?>
 		<table id="datatable" class="table table-striped table-bordered table-hover dataTable" width="100%">
             <thead><th><?=id?></th><th><?=log_access_name?><th><?=log_access_message?><th><?=log_access_ip?><th><?=log_access_browser?><th><?=log_access_date_created?><th><?=log_access_operative_system?></th><th><?=actions?></th></thead>
+            <?php
+                    foreach($dependencies["list"] as $val){
+                        echo "<tr><td>".$val["idlog_access"]."</td><td>".$val["name"]."</td><td>".$val["message"]."</td><td>".$val["ip"]."</td><td>".$val["browser"]."</td><td>".$val["date_created"]."</td><td>".$val["operative_system"]."</td><td>".$val["btn"]."</td></tr>";
+                    }
+                ?>
             <tfoot><th><?=id?></th><th><?=log_access_name?><th><?=log_access_message?><th><?=log_access_ip?><th><?=log_access_browser?><th><?=log_access_date_created?><th><?=log_access_operative_system?></th><th><?=actions?></th></tfoot>
         </table>
-        <script>
-            $(document).ready( function () {
-                $('#datatable').dataTable(
-	                {
-	                	"language":{
-	                    	"url": "<?=url_base?>third_party/datatables/language/es.json"
-	                        },
-                        "processing": true,
-                        "serverSide": true,
-                        "ordering": false,
-                        "ajax": { url : "<?=url_base.routerCtrl?>/listt", type : "POST" },
-                        "columns": [
-                            { "data": "idlog_access" },
-                            { "data": "name" },
-                            { "data": "message" },
-                            { "data": "ip" },
-                            { "data": "browser" },
-                            { "data": "date_created" },
-                            { "data": "operative_system" },
-                            { "data": "btn" }
-                        ]
-                    }
-                );
-                
-            });
-        </script>
 	</div>
 </div>

@@ -6,10 +6,6 @@
     $ctrl = new controllers\sliderController;
     $ctrl->index();
   });
-  $router->post('slider/listt',function(){
-    $ctrl = new controllers\sliderController;
-    $ctrl->listt();
-  });
   $router->get('slider/add',function(){
     define('routerCtrl','slider');
     define('action','add');

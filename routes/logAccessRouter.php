@@ -6,10 +6,6 @@
     $ctrl = new controllers\log_accessController;
     $ctrl->index();
   });
-  $router->post('log-access/listt',function(){
-    $ctrl = new controllers\log_accessController;
-    $ctrl->listt();
-  });
   $router->get('log-access/delete/:id',function($id){
     define('routerCtrl','log-access');
     define('action','query');

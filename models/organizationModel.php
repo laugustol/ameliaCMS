@@ -7,19 +7,14 @@ class organizationModel{
 		$this->db = new \core\ameliaBD;
 		$this->permission = new \models\permissionModel;
 	}
-	public function listt($draw,$search,$start,$length){
-		$start = (empty($start))? 0 : $start;
-		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."torganization) as countx FROM ".PREFIX."torganization WHERE CAST(idorganization as CHAR) LIKE '%$search%' OR name_two LIKE '%$search%' ORDER BY idorganization DESC LIMIT $length OFFSET $start ");
-		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+	public function listt(){
+		$this->db->prepare("SELECT * FROM ".PREFIX."torganization ");
+		$d= [];
 		foreach ($this->db->execute() as $key => $val) {
-			$d["data"][$key]["idorganization"] = $val["idorganization"];
-			$d["data"][$key]["name_two"] = $val["name_two"];
-			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idorganization"],$val["status"]);
-			$d["recordsFiltered"] = $val["countx"];
-			$d["recordsTotal"]++;
+			$d[$key]["idorganization"] = $val["idorganization"];
+			$d[$key]["name_two"] = $val["name_two"];
+			$d[$key]["btn"] = $this->permission->getpermission($val["idorganization"],$val["status"]);
 		}
-		$d["draw"] = $draw;
 		return $d;
 	}
 	public function dependencies(){

@@ -12,15 +12,13 @@ class stateController{
 		$this->log_movement->add($_SESSION["iduser"],3,12,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"] = $this->state->dependencies();
+		$data["dependencies"]["list"] = $this->state->listt('state');
 		view("address.php",1,$data);
 	}
 	public function data($id=""){
 		$this->state->idaddress=$id;
 		$this->state->idfather=$_POST["idfather"];
 		$this->state->name=$_POST["name"];
-	}
-	public function listt(){
-		echo json_encode($this->state->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length'],"state"));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

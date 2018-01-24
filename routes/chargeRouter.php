@@ -5,10 +5,6 @@
     $ctrl = new controllers\chargeController;
     $ctrl->index();
   });
-  $router->post('charge/listt',function(){
-    $ctrl = new controllers\chargeController;
-    $ctrl->listt();
-  });
   $router->get('charge/add',function(){
     define('routerCtrl','charge');
     define('action','add');

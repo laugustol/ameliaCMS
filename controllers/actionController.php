@@ -12,6 +12,7 @@ class actionController{
 		$this->log_movement->add($_SESSION["iduser"],3,3,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"] = $this->action->dependencies();
+		$data["dependencies"]["list"] = $this->action->listt();
 		view("action.php",1,$data);
 	}
 	public function data($id=""){
@@ -34,9 +35,6 @@ class actionController{
 			$this->function = action_function_opt7;
 		}
 		$this->action->idicon=$_POST["idicon"];
-	}
-	public function listt(){
-		echo json_encode($this->action->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

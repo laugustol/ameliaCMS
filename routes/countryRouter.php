@@ -6,10 +6,6 @@
     $ctrl = new controllers\countryController;
     $ctrl->index();
   });
-  $router->post('country/listt',function(){
-    $ctrl = new controllers\countryController;
-    $ctrl->listt();
-  });
   $router->get('country/add',function(){
     define('routerCtrl','country');
     define('action','add');

@@ -7,24 +7,19 @@ class log_accessModel{
 		$this->db = new \core\ameliaBD;
 		$this->permission = new \models\permissionModel;
 	}
-	public function listt($draw,$search,$start,$length){
-		$start = (empty($start))? 0 : $start;
-		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,DATE_FORMAT(date_created,'%d-%m-%Y %h:%i:%s %p') as date_created,(SELECT count(*) FROM ".PREFIX."tlog_access) as countx FROM ".PREFIX."tlog_access WHERE CAST(idlog_access as CHAR) LIKE '%$search%' OR name LIKE '%$search%' OR message LIKE '%$search%' OR ip LIKE '%$search%' OR browser LIKE '%$search%' OR CAST(date_created as CHAR) LIKE '%$search%' OR operative_system LIKE '%$search%' ORDER BY idlog_access DESC LIMIT $length OFFSET $start ");
-		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+	public function listt(){
+		$this->db->prepare("SELECT *,DATE_FORMAT(date_created,'%d-%m-%Y %h:%i:%s %p') as date_created FROM ".PREFIX."tlog_access ");
+		$d= [];
 		foreach ($this->db->execute() as $key => $val) {
-			$d["data"][$key]["idlog_access"] = $val["idlog_access"];
-			$d["data"][$key]["name"] = $val["name"];
-			$d["data"][$key]["message"] = $val["message"];
-			$d["data"][$key]["ip"] = $val["ip"];
-			$d["data"][$key]["browser"] = $val["browser"];
-			$d["data"][$key]["date_created"] = $val["date_created"];
-			$d["data"][$key]["operative_system"] = $val["operative_system"];
-			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idlog_access"],$val["status"],3);
-			$d["recordsFiltered"] = $val["countx"];
-			$d["recordsTotal"]++;
+			$d[$key]["idlog_access"] = $val["idlog_access"];
+			$d[$key]["name"] = $val["name"];
+			$d[$key]["message"] = $val["message"];
+			$d[$key]["ip"] = $val["ip"];
+			$d[$key]["browser"] = $val["browser"];
+			$d[$key]["date_created"] = $val["date_created"];
+			$d[$key]["operative_system"] = $val["operative_system"];
+			$d[$key]["btn"] = $this->permission->getpermission($val["idlog_access"],$val["status"],3);
 		}
-		$d["draw"] = $draw;
 		return $d;
 	}
 	public function add($user,$message){

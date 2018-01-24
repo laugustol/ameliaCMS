@@ -6,10 +6,6 @@
     $ctrl = new controllers\parishController;
     $ctrl->index();
   });
-  $router->post('parish/listt',function(){
-    $ctrl = new controllers\parishController;
-    $ctrl->listt();
-  });
   $router->get('parish/add',function(){
     define('routerCtrl','parish');
     define('action','add');

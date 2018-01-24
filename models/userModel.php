@@ -116,22 +116,18 @@ class userModel{
 			return 3;
 		}
 	}
-	public function listt($draw,$search,$start,$length){
-		$start = (empty($start))? 0 : $start;
-		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT u.iduser,u.name,CONCAT(n.name_one,'-',p.identification_card,' ',p.name_one,' ',p.last_name_one) as person,u.status,(SELECT count(*) FROM ".PREFIX."tuser) as countx FROM ".PREFIX."tuser u INNER JOIN ".PREFIX."tperson p ON u.idperson=p.idperson INNER JOIN ".PREFIX."tnationality n ON p.idnationality=n.idnationality WHERE CAST(iduser as CHAR) LIKE '%$search%' OR name LIKE '%$search%' ORDER BY iduser DESC LIMIT $length OFFSET $start ");
+	public function listt(){
+		
+		$this->db->prepare("SELECT u.iduser,u.name,CONCAT(n.name_one,'-',p.identification_card,' ',p.name_one,' ',p.last_name_one) as person,u.status,(SELECT count(*) FROM ".PREFIX."tuser) as countx FROM ".PREFIX."tuser u INNER JOIN ".PREFIX."tperson p ON u.idperson=p.idperson INNER JOIN ".PREFIX."tnationality n ON p.idnationality=n.idnationality; ");
 		$a1 = $this->db->execute();
 		while($b = $a1->fetchAll()){ $c = $b; }
-		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+		$d= [];
 		foreach ($c as $key => $val) {
-			$d["data"][$key]["iduser"] = $val["iduser"];
-			$d["data"][$key]["name"] = $val["name"];
-			$d["data"][$key]["person"] = $val["person"];
-			$d["data"][$key]["btn"] = $this->permission->getpermission($val["iduser"],$val["status"]);
-			$d["recordsFiltered"] = $val["countx"];;
-			$d["recordsTotal"]++;
+			$d[$key]["iduser"] = $val["iduser"];
+			$d[$key]["name"] = $val["name"];
+			$d[$key]["person"] = $val["person"];
+			$d[$key]["btn"] = $this->permission->getpermission($val["iduser"],$val["status"]);
 		}
-		$d["draw"] = $draw;
 		return $d;
 	}
 	public function dependencies(){

@@ -6,10 +6,6 @@
     $ctrl = new controllers\portfolioController;
     $ctrl->index();
   });
-  $router->post('portfolio/listt',function(){
-    $ctrl = new controllers\portfolioController;
-    $ctrl->listt();
-  });
   $router->get('portfolio/add',function(){
     define('routerCtrl','portfolio');
     define('action','add');

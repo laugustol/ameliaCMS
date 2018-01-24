@@ -9,10 +9,8 @@ class log_movementController{
 	}
 	public function index(){
 		$this->permission->getpermission_action(array(3,7));
+		$data["dependencies"]["list"] = $this->log_movement->listt();
 		view("log_movement.php",1,$data);
-	}
-	public function listt(){
-		echo json_encode($this->log_movement->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function delete($id){
 		$this->permission->getpermission_action(7);

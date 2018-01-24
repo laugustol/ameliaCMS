@@ -10,6 +10,11 @@
 		<?=$dependencies['add']?>
 		<table id="datatable" class="table table-striped table-bordered table-hover dataTable" width="100%">
             <thead><th><?=id?></th><th><?=log_movement_user?></th><th><?=log_movement_action?></th><th><?=log_movement_service?></th><th><?=log_movement_message?></th><th ><?=log_movement_data?></th><th><?=log_movement_date_created?></th><th><?=actions?></th></thead>
+            <?php
+                    foreach($dependencies["list"] as $val){
+                        echo "<tr><td>".$val["idlog_movement"]."</td><td>".$val["uname"]."</td><td>".$val["aname"]."</td><td>".$val["sname"]."</td><td>".$val["message"]."</td><td>".$val["data"]."</td><td>".$val["data_created"]."</td><td>".$val["btn"]."</td></tr>";
+                    }
+                ?>
             <tfoot><th><?=id?></th><th><?=log_movement_user?></th><th><?=log_movement_action?></th><th><?=log_movement_service?></th><th><?=log_movement_message?></th><th ><?=log_movement_data?></th><th><?=log_movement_date_created?></th><th><?=actions?></th></tfoot>
         </table>
         <style type="text/css">
@@ -18,30 +23,5 @@
                 word-break:break-all;
             }
         </style>
-        <script>
-            $(document).ready( function () {
-                $('#datatable').dataTable(
-	                {
-	                	"language":{
-	                    	"url": "<?=url_base?>third_party/datatables/language/es.json"
-	                        },
-                        "processing": true,
-                        "serverSide": true,
-                        "ordering": false,
-                        "ajax": { url : "<?=url_base.routerCtrl?>/listt", type : "POST" },
-                        "columns": [
-                            { "data": "idlog_movement" },
-                            { "data": "uname" },
-                            { "data": "aname" },
-                            { "data": "sname" },
-                            { "data": "message" },
-                            { "data": "data" },
-                            { "data": "date_created" },
-                            { "data": "btn" }
-                        ]
-                    }
-                );
-            });
-        </script>
 	</div>
 </div>

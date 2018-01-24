@@ -6,10 +6,6 @@
     $ctrl = new controllers\ethnicityController;
     $ctrl->index();
   });
-  $router->post('ethnicity/listt',function(){
-    $ctrl = new controllers\ethnicityController;
-    $ctrl->listt();
-  });
   $router->get('ethnicity/add',function(){
     define('routerCtrl','ethnicity');
     define('action','add');

@@ -12,6 +12,7 @@ class noticeController{
 		$this->log_movement->add($_SESSION["iduser"],3,2,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"]["add"] = $this->notice->dependencies();
+		$data["dependencies"]["list"] = $this->notice->listt();
 		view("notice.php",1,$data);
 	}
 	public function data($id=""){
@@ -19,9 +20,6 @@ class noticeController{
 		$this->notice->title=$_POST["title"];
 		$this->notice->content=$_POST["content"];
 		$this->notice->url=$_POST["url"];
-	}
-	public function listt(){
-		echo json_encode($this->notice->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

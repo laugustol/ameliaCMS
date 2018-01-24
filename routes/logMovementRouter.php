@@ -6,10 +6,6 @@
     $ctrl = new controllers\log_movementController;
     $ctrl->index();
   });
-  $router->post('log-movement/listt',function(){
-    $ctrl = new controllers\log_movementController;
-    $ctrl->listt();
-  });
   $router->get('log-movement/delete/:id',function($id){
     define('routerCtrl','log-movement');
     define('action','query');

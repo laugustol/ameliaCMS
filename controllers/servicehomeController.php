@@ -13,6 +13,7 @@ class servicehomeController{
 		$this->log_movement->add($_SESSION["iduser"],3,2,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"] = $this->servicehome->dependencies();
+		$data["dependencies"]["list"] = $this->servicehome->listt();
 		view("servicehome.php",1,$data);
 	}
 	public function data($id=""){
@@ -22,9 +23,6 @@ class servicehomeController{
 		$this->servicehome->idicon=$_POST["idicon"];
 		$this->servicehome->idgallery=$_POST["idgallery"];
 		$this->servicehome->idpage=$_POST["idpage"];
-	}
-	public function listt(){
-		echo json_encode($this->servicehome->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

@@ -12,15 +12,13 @@ class municipalityController{
 		$this->log_movement->add($_SESSION["iduser"],3,11,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"] = $this->municipality->dependencies();
+		$data["dependencies"]["list"] = $this->municipality->listt('municipality');
 		view("address.php",1,$data);
 	}
 	public function data($id=""){
 		$this->municipality->idaddress=$id;
 		$this->municipality->idfather=$_POST["idfather"];
 		$this->municipality->name=$_POST["name"];
-	}
-	public function listt(){
-		echo json_encode($this->municipality->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length'],"municipality"));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

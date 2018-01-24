@@ -8,20 +8,15 @@ class serviceModel{
 		$this->permission = new \models\permissionModel;
 		$this->idaction = array();
 	}
-	public function listt($draw,$search,$start,$length){
-		$start = (empty($start))? 0 : $start;
-		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT s1.idservice,s1.name,CASE s1.idfather WHEN 0 THEN '".service_father_opt."' ELSE s2.name END AS father,s1.status,(SELECT  count(*) FROM ".PREFIX."tservice) as countx FROM ".PREFIX."tservice s1 LEFT JOIN ".PREFIX."tservice s2 ON s1.idfather=s2.idservice WHERE CAST(s1.idservice as CHAR) LIKE '%$search%' OR s1.name LIKE '%$search%' OR s2.name LIKE '%$search%' ORDER BY s1.idservice DESC LIMIT $length OFFSET $start ;");		
-		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+	public function listt(){
+		$this->db->prepare("SELECT s1.idservice,s1.name,CASE s1.idfather WHEN 0 THEN '".service_father_opt."' ELSE s2.name END AS father,s1.status,(SELECT  count(*) FROM ".PREFIX."tservice) as countx FROM ".PREFIX."tservice s1 LEFT JOIN ".PREFIX."tservice s2 ON s1.idfather=s2.idservice ;");		
+		$d[]= [];
 		foreach ($this->db->execute() as $key => $val) {
-			$d["data"][$key]["idservice"] = $val["idservice"];
-			$d["data"][$key]["name"] = $val["name"];
-			$d["data"][$key]["father"] = $val["father"];
-			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idservice"],$val["status"]);
-			$d["recordsFiltered"] = $val["countx"];
-			$d["recordsTotal"]++;
+			$d[$key]["idservice"] = $val["idservice"];
+			$d[$key]["name"] = $val["name"];
+			$d[$key]["father"] = $val["father"];
+			$d[$key]["btn"] = $this->permission->getpermission($val["idservice"],$val["status"]);
 		}
-		$d["draw"] = $draw;
 		return $d;
 	}
 	public function dependencies(){

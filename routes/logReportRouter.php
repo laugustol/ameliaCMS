@@ -6,10 +6,6 @@
     $ctrl = new controllers\log_reportController;
     $ctrl->index();
   });
-  $router->post('log-report/listt',function(){
-    $ctrl = new controllers\log_reportController;
-    $ctrl->listt();
-  });
   $router->get('log-report/pdf',function(){
     $ctrl = new controllers\log_reportController;
     $ctrl->pdf();

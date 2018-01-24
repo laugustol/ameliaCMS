@@ -11,10 +11,8 @@ class permissionController{
 		$this->log_movement->add($_SESSION["iduser"],3,7,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"] = $this->permission->dependencies();
+		$data["dependencies"]["list"] = $this->permission->listt();
 		view("permission.php",1,$data);
-	}
-	public function listt(){
-		echo json_encode($this->permission->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function query($id){
 		$this->permission->getpermission_action(array(2,3));

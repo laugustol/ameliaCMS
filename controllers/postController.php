@@ -12,6 +12,7 @@ class postController{
 		$this->log_movement->add($_SESSION["iduser"],3,22,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"]["add"] = $this->post->dependencies();
+		$data["dependencies"]["list"] = $this->post->listt();
 		view("post.php",1,$data);
 	}
 	public function data($id=""){
@@ -21,9 +22,6 @@ class postController{
 		$this->post->color=$_POST["color"];
 		$this->post->idgallery=$_POST["idgallery"];
 		$this->post->content=$_POST["content"];
-	}
-	public function listt(){
-		echo json_encode($this->post->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

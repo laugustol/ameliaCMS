@@ -11,10 +11,8 @@ class log_accessController{
 	public function index(){
 		$this->log_movement->add($_SESSION["iduser"],3,17,log_movement_message_list);
 		$this->permission->getpermission_action(array(3,7));
+		$data["dependencies"]["list"] = $this->log_access->listt();
 		view("log_access.php",1,$data);
-	}
-	public function listt(){
-		echo json_encode($this->log_access->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function delete($id){
 		$this->permission->getpermission_action(7);

@@ -12,15 +12,13 @@ class nationalityController{
 		$this->log_movement->add($_SESSION["iduser"],3,6,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"]["add"] = $this->nationality->dependencies();
+		$data["dependencies"]["list"] = $this->nationality->listt();
 		view("nationality.php",1,$data);
 	}
 	public function data($id=""){
 		$this->nationality->idnationality=$id;
 		$this->nationality->name_one=$_POST["name_one"];
 		$this->nationality->name_two=$_POST["name_two"];
-	}
-	public function listt(){
-		echo json_encode($this->nationality->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

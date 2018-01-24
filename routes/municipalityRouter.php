@@ -6,10 +6,6 @@
     $ctrl = new controllers\municipalityController;
     $ctrl->index();
   });
-  $router->post('municipality/listt',function(){
-    $ctrl = new controllers\municipalityController;
-    $ctrl->listt();
-  });
   $router->get('municipality/add',function(){
     define('routerCtrl','municipality');
     define('action','add');

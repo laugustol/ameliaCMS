@@ -5,10 +5,6 @@
     $ctrl = new controllers\actionController;
     $ctrl->index();
   });
-  $router->post('action/listt',function(){
-    $ctrl = new controllers\actionController;
-    $ctrl->listt();
-  });
   $router->get('action/add',function(){
     define('routerCtrl','action');
     define('action','add');

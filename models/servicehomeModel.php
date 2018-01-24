@@ -7,19 +7,14 @@ class servicehomeModel{
 		$this->db = new \core\ameliaBD;
 		$this->permission = new \models\permissionModel;
 	}
-	public function listt($draw,$search,$start,$length){
-		$start = (empty($start))? 0 : $start;
-		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."tservicehome) as countx FROM ".PREFIX."tservicehome WHERE CAST(idservicehome as CHAR) LIKE '%$search%' OR title LIKE '%$search%' ORDER BY idservicehome DESC LIMIT $length OFFSET $start ");
-		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+	public function listt(){
+		$this->db->prepare("SELECT * FROM ".PREFIX."tservicehome; ");
+		$d= [];
 		foreach ($this->db->execute() as $key => $val) {
-			$d["data"][$key]["idservicehome"] = $val["idservicehome"];
-			$d["data"][$key]["title"] = $val["title"];
-			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idservicehome"],$val["status"]);
-			$d["recordsFiltered"] = $val["countx"];
-			$d["recordsTotal"]++;
+			$d[$key]["idservicehome"] = $val["idservicehome"];
+			$d[$key]["title"] = $val["title"];
+			$d[$key]["btn"] = $this->permission->getpermission($val["idservicehome"],$val["status"]);
 		}
-		$d["draw"] = $draw;
 		return $d;
 	}
 	public function dependencies(){

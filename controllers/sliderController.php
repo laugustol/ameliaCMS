@@ -13,14 +13,12 @@ class sliderController{
 		$this->log_movement->add($_SESSION["iduser"],3,2,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"] = $this->slider->dependencies();
+		$data["dependencies"]["list"] = $this->slider->listt();
 		view("slider.php",1,$data);
 	}
 	public function data($id=""){
 		$this->slider->idslider=$id;
 		$this->slider->name=$_POST["name"];
-	}
-	public function listt(){
-		echo json_encode($this->slider->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

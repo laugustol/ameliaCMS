@@ -12,6 +12,7 @@ class organizationController{
 		$this->log_movement->add($_SESSION["iduser"],3,2,log_movement_message_list);
 		echo $this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"]["add"] = $this->organization->dependencies();
+		$data["dependencies"]["list"] = $this->organization->listt();
 		view("organization.php",1,$data);
 	}
 	public function data($id=""){
@@ -43,9 +44,6 @@ class organizationController{
 		$this->organization->number_days_password_diferrence=$_POST["number_days_password_diferrence"];
 		$this->organization->number_days_password_diferrence=$_POST["number_days_password_diferrence"];
 		$this->organization->number_answer_allowed=$_POST["number_answer_allowed"];
-	}
-	public function listt(){
-		echo json_encode($this->organization->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

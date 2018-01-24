@@ -15,6 +15,7 @@ class contactController{
 		$this->log_movement->add($_SESSION["iduser"],3,2,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"]["add"] = $this->contact->dependencies();
+		$data["dependencies"]["list"] = $this->contact->listt();
 		view("contact.php",1,$data);
 	}
 	public function data($id=""){
@@ -25,9 +26,6 @@ class contactController{
 		$this->contact->message=$_POST["message"];
 		$this->contact->iduser=$_SESSION["iduser"];
 		$this->contact->response=$_POST["response"];
-	}
-	public function listt(){
-		echo json_encode($this->contact->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		if(isset($_POST["event"])){

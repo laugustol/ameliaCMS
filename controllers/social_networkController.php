@@ -12,6 +12,7 @@ class social_networkController{
 		$this->log_movement->add($_SESSION["iduser"],3,24,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"] = $this->social_network->dependencies();
+		$data["dependencies"]["list"] = $this->social_network->listt();
 		view("social_network.php",1,$data);
 	}
 	public function data($id=""){
@@ -19,9 +20,6 @@ class social_networkController{
 		$this->social_network->name=$_POST["name"];
 		$this->social_network->url=$_POST["url"];
 		$this->social_network->idicon=$_POST["idicon"];
-	}
-	public function listt(){
-		echo json_encode($this->social_network->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

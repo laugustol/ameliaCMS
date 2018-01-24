@@ -7,24 +7,19 @@ class log_movementModel{
 		$this->db = new \core\ameliaBD;
 		$this->permission = new \models\permissionModel;
 	}
-	public function listt($draw,$search,$start,$length){
-		$start = (empty($start))? 0 : $start;
-		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT lm.idlog_movement,u.name as uname,a.name as aname,s.name as sname,lm.message,lm.data,DATE_FORMAT(lm.date_created,'%d-%m-%Y %h:%i:%s %p') as date_created,(SELECT count(*) FROM ".PREFIX."tlog_movement) as countx FROM ".PREFIX."tlog_movement lm INNER JOIN ".PREFIX."tuser u ON lm.iduser=u.iduser INNER JOIN ".PREFIX."taction a ON lm.idaction=a.idaction INNER JOIN ".PREFIX."tservice s ON lm.idservice=s.idservice WHERE CAST(lm.idlog_movement as CHAR) LIKE '%$search%' OR u.name LIKE '%$search%' OR a.name LIKE '%$search%' OR s.name LIKE '%$search%' OR lm.message LIKE '%$search%' OR CAST(lm.date_created as CHAR) LIKE '%$search%' ORDER BY lm.idlog_movement DESC LIMIT $length OFFSET $start ");
-		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+	public function listt(){
+		$this->db->prepare("SELECT lm.idlog_movement,u.name as uname,a.name as aname,s.name as sname,lm.message,lm.data,DATE_FORMAT(lm.date_created,'%d-%m-%Y %h:%i:%s %p') as date_created FROM ".PREFIX."tlog_movement lm INNER JOIN ".PREFIX."tuser u ON lm.iduser=u.iduser INNER JOIN ".PREFIX."taction a ON lm.idaction=a.idaction INNER JOIN ".PREFIX."tservice s ON lm.idservice=s.idservice ");
+		$d= [];
 		foreach ($this->db->execute() as $key => $val) {
-			$d["data"][$key]["idlog_movement"] = $val["idlog_movement"];
-			$d["data"][$key]["uname"] = $val["uname"];
-			$d["data"][$key]["aname"] = $val["aname"];
-			$d["data"][$key]["sname"] = $val["sname"];
-			$d["data"][$key]["message"] = $val["message"];
-			$d["data"][$key]["data"] = $val["data"];
-			$d["data"][$key]["date_created"] = $val["date_created"];
-			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idlog_movement"],$val["status"],3);
-			$d["recordsFiltered"] = $val["countx"];
-			$d["recordsTotal"]++;
+			$d[$key]["idlog_movement"] = $val["idlog_movement"];
+			$d[$key]["uname"] = $val["uname"];
+			$d[$key]["aname"] = $val["aname"];
+			$d[$key]["sname"] = $val["sname"];
+			$d[$key]["message"] = $val["message"];
+			$d[$key]["data"] = $val["data"];
+			$d[$key]["date_created"] = $val["date_created"];
+			$d[$key]["btn"] = $this->permission->getpermission($val["idlog_movement"],$val["status"],3);
 		}
-		$d["draw"] = $draw;
 		return $d;
 	}
 	public function add($iduser,$idaction,$idservice,$message,$data=""){

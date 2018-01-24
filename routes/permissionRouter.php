@@ -6,10 +6,6 @@
     $ctrl = new controllers\permissionController;
     $ctrl->index();
   });
-  $router->post('permission/listt',function(){
-    $ctrl = new controllers\permissionController;
-    $ctrl->listt();
-  });
   $router->get('permission/edit/:id',function($id){
     define('routerCtrl','permission');
     define('action','edit');

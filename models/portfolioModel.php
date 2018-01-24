@@ -7,19 +7,14 @@ class portfolioModel{
 		$this->db = new \core\ameliaBD;
 		$this->permission = new \models\permissionModel;
 	}
-	public function listt($draw,$search,$start,$length){
-		$start = (empty($start))? 0 : $start;
-		$length = (empty($length))? 10 : $length;
-		$this->db->prepare("SELECT *,(SELECT count(*) FROM ".PREFIX."tportfolio) as countx FROM ".PREFIX."tportfolio WHERE CAST(idportfolio as CHAR) LIKE '%$search%' OR title LIKE '%$search%' ORDER BY idportfolio DESC LIMIT $length OFFSET $start ");
-		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+	public function listt(){
+		$this->db->prepare("SELECT * FROM ".PREFIX."tportfolio ");
+		$d= [];
 		foreach ($this->db->execute() as $key => $val) {
-			$d["data"][$key]["idportfolio"] = $val["idportfolio"];
-			$d["data"][$key]["title"] = $val["title"];
-			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idportfolio"],$val["status"]);
-			$d["recordsFiltered"] = $val["countx"];
-			$d["recordsTotal"]++;
+			$d[$key]["idportfolio"] = $val["idportfolio"];
+			$d[$key]["title"] = $val["title"];
+			$d[$key]["btn"] = $this->permission->getpermission($val["idportfolio"],$val["status"]);
 		}
-		$d["draw"] = $draw;
 		return $d;
 	}
 	public function dependencies(){

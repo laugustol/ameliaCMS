@@ -6,10 +6,6 @@
     $ctrl = new controllers\pageController;
     $ctrl->index();
   });
-  $router->post('page/listt',function(){
-    $ctrl = new controllers\pageController;
-    $ctrl->listt();
-  });
   $router->get('page/add',function(){
     define('routerCtrl','page');
     define('action','add');

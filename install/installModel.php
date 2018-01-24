@@ -30,9 +30,9 @@ CREATE TABLE ".$this->prefix."taction (
 INSERT INTO ".$this->prefix."taction (idaction, name, function, idicon, status) VALUES
 (1, 'Agregar', 1, 'glyphicon glyphicon-plus', '1'),
 (2, 'Editar', 2, 'glyphicon glyphicon-edit', '1'),
-(3, 'Consultar', 3, 'glyphicon glyphicon-search', 11, '1'),
+(3, 'Consultar', 3, 'glyphicon glyphicon-search', '1'),
 (4, 'Activar', 4, 'glyphicon glyphicon-ok', '1'),
-(5, 'Desactivar', 'glyphicon glyphicon-remove', 21, '1'),
+(5, 'Desactivar',5, 'glyphicon glyphicon-remove', '1'),
 (6, 'Generar', 6, 'glyphicon glyphicon-asterisk', '1'),
 (7, 'Eliminar', 7, 'glyphicon glyphicon-trash', '1');
 

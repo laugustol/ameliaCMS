@@ -7,30 +7,24 @@ class addressModel{
 		$this->db = new \core\ameliaBD;
 		$this->permission = new \models\permissionModel;
 	}
-	public function listt($draw,$search,$start,$length,$controller){
-		$start = (empty($start))? 0 : $start;
-		$length = (empty($length))? 10 : $length;
+	public function listt($controller){
 		if($controller == "country"){
-			$sql1 = "SELECT c.idaddress,c.name,c.status,(SELECT count(*) FROM ".PREFIX."taddress c WHERE c.idfather='0') as countx FROM ".PREFIX."taddress c 
-			WHERE (c.idaddress LIKE '%$search%' OR c.name LIKE '%$search%') AND c.idfather='0' ORDER BY c.idaddress DESC LIMIT $length OFFSET $start ";
+			$sql1 = "SELECT c.idaddress,c.name,c.status FROM ".PREFIX."taddress c ";
 		}else if($controller == "state"){
-			$sql1 = "SELECT s.idaddress,s.name,c.name as father,s.status,(SELECT count(*) FROM ".PREFIX."taddress c INNER JOIN ".PREFIX."taddress s ON c.idaddress=s.idfather WHERE c.idfather='0') as countx FROM ".PREFIX."taddress c INNER JOIN ".PREFIX."taddress s ON c.idaddress=s.idfather WHERE (CAST(s.idaddress as CHAR) LIKE '%$search%' OR s.name LIKE '%$search%' OR c.name LIKE '%$search%') AND c.idfather='0' ORDER BY s.idaddress DESC LIMIT $length OFFSET $start ";
+			$sql1 = "SELECT s.idaddress,s.name,c.name as father,s.status FROM ".PREFIX."taddress c INNER JOIN ".PREFIX."taddress s ON c.idaddress=s.idfather ";
 		}else if($controller == "municipality"){
-			$sql1 = "SELECT m.idaddress,m.name,s.name as father,m.status,(SELECT count(*) FROM ".PREFIX."taddress c INNER JOIN ".PREFIX."taddress s ON c.idaddress=s.idfather INNER JOIN ".PREFIX."taddress m ON s.idaddress=m.idfather WHERE c.idfather='0') as countx FROM ".PREFIX."taddress c INNER JOIN ".PREFIX."taddress s ON c.idaddress=s.idfather INNER JOIN ".PREFIX."taddress m ON s.idaddress=m.idfather WHERE (CAST(m.idaddress as CHAR) LIKE '%$search%' OR m.name LIKE '%$search%' OR s.name LIKE '%$search%') AND c.idfather='0' ORDER BY m.idaddress DESC LIMIT $length OFFSET $start ";
+			$sql1 = "SELECT m.idaddress,m.name,s.name as father,m.status FROM ".PREFIX."taddress c INNER JOIN ".PREFIX."taddress s ON c.idaddress=s.idfather INNER JOIN ".PREFIX."taddress m ON s.idaddress=m.idfather ";
 		}else if($controller == "parish"){
-			$sql1 = "SELECT p.idaddress,p.name,m.name as father,p.status,(SELECT count(*) FROM ".PREFIX."taddress c INNER JOIN ".PREFIX."taddress s ON c.idaddress=s.idfather INNER JOIN ".PREFIX."taddress m ON s.idaddress=m.idfather INNER JOIN ".PREFIX."taddress p ON m.idaddress=p.idfather WHERE c.idfather='0') as countx FROM ".PREFIX."taddress c INNER JOIN ".PREFIX."taddress s ON c.idaddress=s.idfather INNER JOIN ".PREFIX."taddress m ON s.idaddress=m.idfather INNER JOIN ".PREFIX."taddress p ON m.idaddress=p.idfather WHERE (CAST(p.idaddress as CHAR) LIKE '%$search%' OR p.name LIKE '%$search%' OR m.name LIKE '%$search%') AND c.idfather='0' ORDER BY p.idaddress DESC LIMIT $length OFFSET $start ";
+			$sql1 = "SELECT p.idaddress,p.name,m.name as father,p.status FROM ".PREFIX."taddress c INNER JOIN ".PREFIX."taddress s ON c.idaddress=s.idfather INNER JOIN ".PREFIX."taddress m ON s.idaddress=m.idfather INNER JOIN ".PREFIX."taddress p ON m.idaddress=p.idfather ";
 		}
 		$this->db->prepare($sql1);
-		$d["data"]= [];$d["recordsFiltered"] = 0;$d["recordsTotal"] = 0;
+		$d= [];
 		foreach ($this->db->execute() as $key => $val) {
-			$d["data"][$key]["idaddress"] = $val["idaddress"];
-			$d["data"][$key]["name"] = $val["name"];
-			$d["data"][$key]["father"] = $val["father"];
-			$d["data"][$key]["btn"] = $this->permission->getpermission($val["idaddress"],$val["status"]);
-			$d["recordsFiltered"] = $val["countx"];
-			$d["recordsTotal"]++;
+			$d[$key]["idaddress"] = $val["idaddress"];
+			$d[$key]["name"] = $val["name"];
+			$d[$key]["father"] = $val["father"];
+			$d[$key]["btn"] = $this->permission->getpermission($val["idaddress"],$val["status"]);
 		}
-		$d["draw"] = $draw;
 		return $d;
 	}
 	public function dependencies(){

@@ -1,5 +1,6 @@
 var url_base = document.getElementById("initjs").src.split("?")[1];
 $(document).ready(function(){
+    $('#datatable').dataTable({"language":{"url": ""+url_base+"third_party/datatables/language/es.json"},"order":[[0,"desc"]]});
 	$('#side-bar > ul').metisMenu({
 		toggle: false
 	});

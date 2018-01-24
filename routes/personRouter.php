@@ -6,10 +6,6 @@
     $ctrl = new controllers\personController;
     $ctrl->index();
   });
-  $router->post('person/listt',function(){
-    $ctrl = new controllers\personController;
-    $ctrl->listt();
-  });
   $router->get('person/add',function(){
     define('routerCtrl','person');
     define('action','add');

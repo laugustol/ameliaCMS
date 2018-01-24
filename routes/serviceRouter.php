@@ -6,10 +6,6 @@
     $ctrl = new controllers\serviceController;
     $ctrl->index();
   });
-  $router->post('service/listt',function(){
-    $ctrl = new controllers\serviceController;
-    $ctrl->listt();
-  });
   $router->get('service/add',function(){
     define('routerCtrl','service');
     define('action','add');

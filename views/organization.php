@@ -11,28 +11,13 @@
 			<?=$dependencies['add']?>
 			<table id="datatable" class="table table-striped table-bordered table-hover dataTable" width="100%">
                 <thead><th><?=id?></th><th><?=organization_name?></th><th><?=actions?></th></thead>
+                <?php
+                	foreach($dependencies["list"] as $val){
+                		echo "<tr><td>".$val["idorganization"]."</td><td>".$val["name_two"]."</td><td>".$val["btn"]."</td></tr>";
+                	}
+                ?>
                 <tfoot><th><?=id?></th><th><?=organization_name?></th><th><?=actions?></th></tfoot>
             </table>
-            <script>
-	            $(document).ready( function () {
-	                $('#datatable').dataTable(
-		                {
-		                	"language":{
-		                    	"url": "<?=url_base?>third_party/datatables/language/es.json"
-		                        },
-	                        "processing": true,
-	                        "serverSide": true,
-	                        "ordering": false,
-	                        "ajax": { url : "<?=url_base.routerCtrl?>/listt", type : "POST" },
-	                        "columns": [
-	                            { "data": "idorganization" },
-	                            { "data": "name_two" },
-	                            { "data": "btn" }
-	                        ]
-	                    }
-	                ); 
-	            });
-	        </script>
 		<?php }else{ ?>
 			<?=(action!="query")? "<form action='".url_base.routerCtrl."/".action."/".$d["idorganization"]."' method='POST' class='form-horizontal'>" : "<div class='form-horizontal'>" ?>
 				<input type="hidden" name="event" id="event">

@@ -13,6 +13,7 @@ class portfolioController{
 		$this->log_movement->add($_SESSION["iduser"],3,2,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"] = $this->portfolio->dependencies();
+		$data["dependencies"]["list"] = $this->portfolio->listt();
 		view("portfolio.php",1,$data);
 	}
 	public function data($id=""){
@@ -21,9 +22,6 @@ class portfolioController{
 		$this->portfolio->description=$_POST["description"];
 		$this->portfolio->idgallery=$_POST["idgallery"];
 		$this->portfolio->idpage=$_POST["idpage"];
-	}
-	public function listt(){
-		echo json_encode($this->portfolio->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

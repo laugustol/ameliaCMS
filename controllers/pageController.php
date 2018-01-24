@@ -12,6 +12,7 @@ class pageController{
 		$this->log_movement->add($_SESSION["iduser"],3,23,log_movement_message_list);
 		$this->permission->getpermission_action(array(1,2,3,4,5,7));
 		$data["dependencies"]["add"] = $this->page->dependencies();
+		$data["dependencies"]["list"] = $this->page->listt();
 		view("page.php",1,$data);
 	}
 	public function data($id=""){
@@ -22,9 +23,6 @@ class pageController{
 		$this->page->img=$_POST["img"];
 		$this->page->content=$_POST["content"];
 		$this->page->view_main=$_POST["view_main"];
-	}
-	public function listt(){
-		echo json_encode($this->page->listt($_POST["draw"],$_POST["search"]["value"],$_POST["start"],$_POST['length']));
 	}
 	public function add(){
 		$this->permission->getpermission_action(1);

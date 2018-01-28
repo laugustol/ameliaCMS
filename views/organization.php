@@ -13,7 +13,7 @@
                 <thead><th><?=id?></th><th><?=organization_name?></th><th><?=actions?></th></thead>
                 <?php
                 	foreach($dependencies["list"] as $val){
-                		echo "<tr><td>".$val["idorganization"]."</td><td>".$val["name_two"]."</td><td>".$val["btn"]."</td></tr>";
+                		echo "<tr><td>".$val["idorganization"]."</td><td>".$val["name_two"]."</td>".$val["btn"]."</tr>";
                 	}
                 ?>
                 <tfoot><th><?=id?></th><th><?=organization_name?></th><th><?=actions?></th></tfoot>

@@ -9,11 +9,11 @@
 	<div class="box-container">
 		<?php if(action=="index"){ ?>
 		 	<?=$dependencies['add']?>
-			<table id="datatable" class="table table-striped table-bordered table-hover dataTable">
+			<table id="dxatatable" class="table table-striped table-bordered table-hover dataTable">
                 <thead><th><?=id?></th><th><?=permission_charge?></th><th><?=actions?></th></thead>
                 <?php
                 	foreach($dependencies["list"] as $val){
-                		echo "<tr><td>".$val["idcharge"]."</td><td>".$val["name"]."</td><td>".$val["btn"]."</td></tr>";
+                		echo "<tr><td>".$val["idcharge"]."</td><td>".$val["name"]."</td>".$val["btn"]."</tr>";
                 	}
                 ?>
                 <tfoot><th><?=id?></th><th><?=permission_charge?></th><th><?=actions?></th></tfoot>

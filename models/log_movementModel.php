@@ -23,8 +23,12 @@ class log_movementModel{
 		return $d;
 	}
 	public function add($iduser,$idaction,$idservice,$message,$data=""){
-		$this->db->prepare("INSERT INTO ".PREFIX."tlog_movement (iduser,idaction,idservice,message,data,date_created) VALUES (?,?,?,?,?,NOW());");
-		return $this->db->execute(array($iduser,$idaction,$idservice,$message,$data));
+		if(isset($_SESSION["iduser"])){
+			$this->db->prepare("INSERT INTO ".PREFIX."tlog_movement (iduser,idaction,idservice,message,data,date_created) VALUES (?,?,?,?,?,NOW());");
+			return $this->db->execute(array($iduser,$idaction,$idservice,$message,$data));
+		}else{
+			header("location: ".url_base);
+		}
 	}
 	public function pdf(){
 		$this->db->prepare("SELECT lm.idlog_movement,u.name as uname,a.name as aname,s.name as sname,lm.message,lm.data,DATE_FORMAT(lm.date_created,'%d-%m-%Y %h:%i:%s %p') as date_created FROM ".PREFIX."tlog_movement lm INNER JOIN ".PREFIX."tuser u ON lm.iduser=u.iduser INNER JOIN ".PREFIX."taction a ON lm.idaction=a.idaction INNER JOIN ".PREFIX."tservice s ON lm.idservice=s.idservice ORDER BY 1 DESC ");

@@ -32,6 +32,7 @@ Simple CMS escalable con arquitectura MVC
 * Jstree
 * Metismenu
 * Pace.js
-* PHPMAiler
+* PHPMailer
 * TinyMCE
 * Toastr
+* ChartJS
